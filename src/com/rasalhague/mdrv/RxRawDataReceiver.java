@@ -62,8 +62,8 @@ public class RxRawDataReceiver extends Observable
     public void receiveRawData(String rawData)
     {
         //for AirView2
-        CharSequence charSequence = "scan|0,";
-        rawData = rawData.replaceAll((String) charSequence, "");
+//        CharSequence charSequence = "scan|0,";
+//        rawData = rawData.replace(charSequence, "");
 
         char[] charsToProcess = rawData.toCharArray();
 
