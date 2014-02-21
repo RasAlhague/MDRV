@@ -24,9 +24,15 @@ public class ApplicationLogger
 
             //choose file header to add
             FileHandler fileTxt = new FileHandler(fileName);
+            fileTxt.setFormatter(new MyLogFormatter());
             logger.addHandler(fileTxt);
 
-            fileTxt.setFormatter(new MyLogFormatter());
+            Logger parent = logger.getParent();
+            Handler[] handlers = parent.getHandlers();
+            for (Handler handler : handlers)
+            {
+                handler.setFormatter(new MyLogFormatter());
+            }
         }
         catch (SecurityException e)
         {
@@ -50,22 +56,25 @@ class MyLogFormatter extends Formatter
 //        String bracerOpen = "[";
 //        String bracerClose = "]";
 //        String dot = ".";
+        String separator = " ";
+
+        String packageName = this.getClass().getPackage().getName();
 
         builder.append(dataFormat.format(new Date(record.getMillis())));
 
-        builder.append(" - ");
+        builder.append(separator);
 
         builder.append("[").append(record.getLevel()).append("]");
 
-        builder.append(" - ");
+        builder.append(separator);
 
         builder.append("[")
-                .append(record.getSourceClassName())
+                .append(record.getSourceClassName().replace(packageName + ".", ""))
                 .append(".")
                 .append(record.getSourceMethodName())
                 .append("]");
 
-        builder.append(" - ");
+        builder.append(separator);
 
         builder.append(formatMessage(record));
 

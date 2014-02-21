@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add MyLogFormatter class and integrate it">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Fix string">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -68,41 +68,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApplicationLogger.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ApplicationLogger.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="22" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1309">
+            <state line="58" column="31" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.38181818" vertical-offset="645" max-vertical-offset="1462">
               <folding>
                 <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
-                <element signature="method#format#0;class#MyLogFormatter#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeviceConnectionListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="5" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="816">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="COMDeviceCommunication.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.5958042" vertical-offset="67" max-vertical-offset="1020">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="41" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -148,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
       </list>
     </option>
   </component>
@@ -879,7 +851,11 @@
       <created>1393008738246</created>
       <updated>1393008738246</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fix string">
+      <created>1393008837758</created>
+      <updated>1393008837758</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -924,7 +900,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32491767" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32142857" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3211876" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16688062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -976,7 +952,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add form for output data" />
     <MESSAGE value="Added GUI&#10;Now all data out in GUI" />
     <MESSAGE value="Clean up" />
     <MESSAGE value="Names changed according name convention" />
@@ -1001,7 +976,8 @@
     <MESSAGE value="Safe cast&#10;" />
     <MESSAGE value="fix" />
     <MESSAGE value="Add MyLogFormatter class and integrate it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MyLogFormatter class and integrate it" />
+    <MESSAGE value="Fix string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix string" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1284,23 +1260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="41" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1309">
-          <folding>
-            <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
-            <element signature="method#format#0;class#MyLogFormatter#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="5" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="816">
@@ -1310,8 +1269,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.5958042" vertical-offset="67" max-vertical-offset="1020">
+        <state line="71" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.68951046" vertical-offset="0" max-vertical-offset="1020">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="41" selection-start="552" selection-end="552" vertical-scroll-proportion="0.33903134" vertical-offset="0" max-vertical-offset="702">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="31" selection-start="1758" selection-end="1758" vertical-scroll-proportion="0.38181818" vertical-offset="645" max-vertical-offset="1462">
+          <folding>
+            <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
