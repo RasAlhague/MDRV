@@ -94,7 +94,9 @@ public class DeviceConnectionListener implements Runnable
 
         //removing
         //create temp array bcs ConcurrentModificationException
-        ArrayList<DeviceInfo> clone = (ArrayList<DeviceInfo>) comDeviceInfoList.clone();
+
+        ArrayList<DeviceInfo> clone = new ArrayList<DeviceInfo>();
+        clone = clone.getClass().cast(comDeviceInfoList.clone());
         for (DeviceInfo deviceInfo : clone)
         {
             if (!portNamesInfoArrayList.contains(deviceInfo))
