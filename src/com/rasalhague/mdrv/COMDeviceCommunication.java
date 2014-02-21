@@ -70,7 +70,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
 
         serialPort.openPort();
 
-        ApplicationLogger.LOGGER.info(deviceInfo.devicePortName + " " + "has benn opened!");
+        ApplicationLogger.LOGGER.info(deviceInfo.devicePortName + " " + "has been opened!");
 
 //        serialPort.purgePort(SerialPort.PURGE_RXCLEAR);
     }

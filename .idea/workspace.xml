@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="fix">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add MyLogFormatter class and integrate it">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -68,13 +68,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApplicationLogger.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ApplicationLogger.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="39" selection-start="681" selection-end="681" vertical-scroll-proportion="0.45314685" vertical-offset="16" max-vertical-offset="1309">
+            <state line="12" column="22" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1309">
               <folding>
+                <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
                 <element signature="method#format#0;class#MyLogFormatter#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceConnectionListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="5" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="816">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="COMDeviceCommunication.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.5958042" vertical-offset="67" max-vertical-offset="1020">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,12 +144,12 @@
         <option value="$PROJECT_DIR$/src/com/RasAlhague/MDRV/PacketLogger.java" />
         <option value="$PROJECT_DIR$/src/com/RasAlhague/MDRV/MDRV.java" />
         <option value="$PROJECT_DIR$/src/com/RasAlhague/mdrv/MDRV.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
       </list>
     </option>
   </component>
@@ -417,6 +436,36 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="mdrv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rasalhague" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DeviceConnectionListener.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -826,7 +875,11 @@
       <created>1393000839537</created>
       <updated>1393000839537</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Add MyLogFormatter class and integrate it">
+      <created>1393008738246</created>
+      <updated>1393008738246</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -923,7 +976,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Del unused" />
     <MESSAGE value="Add form for output data" />
     <MESSAGE value="Added GUI&#10;Now all data out in GUI" />
     <MESSAGE value="Clean up" />
@@ -948,7 +1000,8 @@
     <MESSAGE value="q" />
     <MESSAGE value="Safe cast&#10;" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="Add MyLogFormatter class and integrate it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MyLogFormatter class and integrate it" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1184,13 +1237,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="18" selection-start="2775" selection-end="2775" vertical-scroll-proportion="0.78601396" vertical-offset="798" max-vertical-offset="1870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="318" column="0" selection-start="9941" selection-end="9941" vertical-scroll-proportion="1.0726496" vertical-offset="4636" max-vertical-offset="5695" />
@@ -1214,16 +1260,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="121" selection-end="121" vertical-scroll-proportion="0.11854951" vertical-offset="0" max-vertical-offset="717">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="45" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.491453" vertical-offset="709" max-vertical-offset="1411">
-          <folding>
-            <element signature="method#scanForDeviceConnections#0;class#DeviceConnectionListener#0" expanded="false" />
-            <element signature="e#2747#2759#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1257,10 +1293,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="39" selection-start="681" selection-end="681" vertical-scroll-proportion="0.45314685" vertical-offset="16" max-vertical-offset="1309">
+        <state line="12" column="22" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1309">
           <folding>
+            <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
             <element signature="method#format#0;class#MyLogFormatter#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="5" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="0" selection-start="1852" selection-end="1852" vertical-scroll-proportion="0.5958042" vertical-offset="67" max-vertical-offset="1020">
+          <folding />
         </state>
       </provider>
     </entry>
