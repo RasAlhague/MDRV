@@ -47,7 +47,7 @@ public class ApplicationLogger
 
 class MyLogFormatter extends Formatter
 {
-    private static final SimpleDateFormat dataFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss.SSS");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss.SSS");
 
     @Override
     public String format(LogRecord record)
@@ -60,7 +60,7 @@ class MyLogFormatter extends Formatter
 
         String packageName = this.getClass().getPackage().getName();
 
-        builder.append(dataFormat.format(new Date(record.getMillis())));
+        builder.append(DATE_FORMAT.format(new Date(record.getMillis())));
 
         builder.append(separator);
 
