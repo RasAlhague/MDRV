@@ -1,12 +1,17 @@
 package com.rasalhague.mdrv;
 
+import org.apache.commons.lang3.SystemUtils;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class DeviceInfo
 {
-    public String deviceName;
-    public String devicePortName;
-    public DeviceTypeEnum deviceType;
+    private final String         deviceVid;
+    private final String         devicePid;
+    public        String         deviceName;
+    public        String         devicePortName;
+    public        DeviceTypeEnum deviceType;
 
     public static ArrayList<DeviceInfo> createArrayListFromNames(String[] portNames, DeviceTypeEnum deviceTypeEnum)
     {
@@ -63,5 +68,28 @@ class DeviceInfo
     {
         devicePortName = devPortName;
         deviceType = devTypeEnum;
+
+        HashMap<String, String> devInfMap = getDeviceName();
+        deviceName = devInfMap.get("devName");
+        devicePid = devInfMap.get("vid");
+        deviceVid = devInfMap.get("pid");
+    }
+
+    private HashMap<String, String> getDeviceName()
+    {
+        if (SystemUtils.IS_OS_WINDOWS)
+        {
+            HashMap<String, String> map = Utils.getDeviceNameFromWinRegistry(devicePortName);
+
+            return map;
+        }
+        else if (SystemUtils.IS_OS_LINUX)
+        {
+            //TODO IS_OS_LINUX get device names impl
+        }
+
+        ApplicationLogger.LOGGER.severe("OS do not support");
+
+        return null;
     }
 }
