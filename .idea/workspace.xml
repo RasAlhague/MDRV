@@ -7,7 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -928,7 +927,11 @@
       <created>1393328912410</created>
       <updated>1393328912410</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Add new check for '\r'&#10;Del unused method">
+      <created>1393329021510</created>
+      <updated>1393329021510</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1025,7 +1028,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Added Jar" />
     <MESSAGE value="Jar fix" />
     <MESSAGE value="Added bad implementation to Logger.java. Need to rework" />
     <MESSAGE value="Add Libs to project dir&#10;Add ApplicationLogger.java what replace sout&#10;" />
@@ -1050,7 +1052,8 @@
     <MESSAGE value="Comment line bcz bug detected and fixed: to access device on linux need root access" />
     <MESSAGE value="Name fix" />
     <MESSAGE value="Name fix&#10;Set pretty out put format form gson" />
-    <option name="LAST_COMMIT_MESSAGE" value="Name fix&#10;Set pretty out put format form gson" />
+    <MESSAGE value="Add new check for '\r'&#10;Del unused method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new check for '\r'&#10;Del unused method" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
