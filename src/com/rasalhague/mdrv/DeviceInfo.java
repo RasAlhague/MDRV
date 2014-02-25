@@ -59,9 +59,9 @@ class DeviceInfo
         return result;
     }
 
-    DeviceInfo(String devicePortName, DeviceTypeEnum deviceTypeEnum)
+    DeviceInfo(String devPortName, DeviceTypeEnum devTypeEnum)
     {
-        this.devicePortName = devicePortName;
-        deviceType = deviceTypeEnum;
+        devicePortName = devPortName;
+        deviceType = devTypeEnum;
     }
 }
