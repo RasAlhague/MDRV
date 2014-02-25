@@ -19,8 +19,8 @@ enum DeviceConnectionStateEnum
 
 public class DeviceConnectionListener implements Runnable
 {
-    private List<DeviceConnectionListenerI> listeners = new ArrayList<DeviceConnectionListenerI>();
-    private ArrayList<DeviceInfo> comDeviceInfoList = new ArrayList<DeviceInfo>();
+    private List<DeviceConnectionListenerI> listeners         = new ArrayList<DeviceConnectionListenerI>();
+    private ArrayList<DeviceInfo>           comDeviceInfoList = new ArrayList<DeviceInfo>();
 
     public DeviceConnectionListener(DeviceConnectionListenerI listenerToAdd)
     {
@@ -77,7 +77,8 @@ public class DeviceConnectionListener implements Runnable
     private void scanForCOMPorts()
     {
         String[] portNames = SerialPortList.getPortNames();
-        ArrayList<DeviceInfo> portNamesInfoArrayList = DeviceInfo.createArrayListFromNames(portNames, DeviceInfo.DeviceTypeEnum.COM);
+        ArrayList<DeviceInfo> portNamesInfoArrayList = DeviceInfo.createArrayListFromNames(portNames,
+                                                                                           DeviceInfo.DeviceTypeEnum.COM);
 
 //        System.out.println("portNames.length = " + String.valueOf(portNames.length));
 

@@ -12,6 +12,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
 {
     SerialPort serialPort;
     RxRawDataReceiver rxRawDataReceiver;
+//    private static final int BYTE_TO_READ_COUNT = 512;
 
     COMDeviceCommunication(DeviceInfo deviceInfo)
     {
@@ -35,14 +36,17 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         {
             try
             {
-                String rawData = serialPort.readString(serialPortEvent.getEventValue());
+                String rawData;
+                rawData = serialPort.readString(serialPortEvent.getEventValue());
+//                rawData = serialPort.readString(BYTE_TO_READ_COUNT);
                 rxRawDataReceiver.receiveRawData(rawData);
 
                 System.out.println(rawData);
             }
-            catch (SerialPortException ex)
+            catch (SerialPortException e)
             {
-                ApplicationLogger.LOGGER.severe(ex.toString());
+                ApplicationLogger.LOGGER.severe(e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -69,10 +73,12 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.devicePortName);
 
         serialPort.openPort();
+        serialPort.closePort();
+        serialPort.openPort();
 
         ApplicationLogger.LOGGER.info(deviceInfo.devicePortName + " " + "has been opened!");
 
-//        serialPort.purgePort(SerialPort.PURGE_RXCLEAR);
+        serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
     }
 
     private void addListener() throws SerialPortException
@@ -82,9 +88,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         ApplicationLogger.LOGGER.info("SerialPort Listening has started");
     }
 
-    public void initializeDevice()
-    {
-    }
+    protected void initializeDevice() {}
 
     /**
      * close port
@@ -103,8 +107,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
     }
 
     /**
-     * Generate serialPort.writeInt(0) for ensure that device still connected
-     * Else - call stop() and kill timer
+     * Generate serialPort.writeInt(0) for ensure that device still connected Else - call stop() and kill timer
      */
     private void testSignalTimer()
     {
