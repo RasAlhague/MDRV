@@ -79,7 +79,7 @@ public class DeviceConnectionListener implements Runnable
         String[] portNames = SerialPortList.getPortNames();
         ArrayList<DeviceInfo> portNamesInfoArrayList = DeviceInfo.createArrayListFromNames(portNames, DeviceInfo.DeviceTypeEnum.COM);
 
-        System.out.println("portNames.length = " + String.valueOf(portNames.length));
+//        System.out.println("portNames.length = " + String.valueOf(portNames.length));
 
         //adding
         for (String port : portNames)

@@ -2,6 +2,7 @@
   <library name="usb4java-1.0.0">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb-api-1.0.2.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-javadoc.jar!/" />
