@@ -93,6 +93,14 @@ public class Utils
         return null;
     }
 
+    public static HashMap<String, String> getDeviceNameFromWinRegistry(String devPortName)
+    {
+        HashMap<String, String> result = searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB",
+                                                        devPortName);
+        System.out.println(result);
+        return result;
+    }
+
     static class StreamReader extends Thread
     {
         private InputStream is;
