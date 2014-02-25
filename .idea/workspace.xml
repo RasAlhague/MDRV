@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Name fix&#10;Set pretty out put format form gson&#10;">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBITry.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/javax.usb.properties" afterPath="$PROJECT_DIR$/src/javax.usb.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -106,10 +104,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MDRV.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MDRV.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="166" column="5" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.32892805" vertical-offset="439" max-vertical-offset="1377">
+            <state line="166" column="5" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="1377">
               <folding>
                 <element signature="method#main#0;class#MDRV#0" expanded="true" />
               </folding>
@@ -117,11 +115,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RxRawDataReceiver.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RxRawDataReceiver.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="5" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="1054">
-              <folding />
+            <state line="86" column="5" selection-start="2336" selection-end="2336" vertical-scroll-proportion="0.8097902" vertical-offset="271" max-vertical-offset="986">
+              <folding>
+                <element signature="method#processReceivedChar#0;class#RxRawDataReceiver#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,9 +201,9 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
       </list>
     </option>
   </component>
@@ -924,7 +924,11 @@
       <created>1393328860450</created>
       <updated>1393328860450</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Name fix&#10;Set pretty out put format form gson">
+      <created>1393328912410</created>
+      <updated>1393328912410</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -949,7 +953,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="450" y="0" width="1044" height="870" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32523617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -967,7 +971,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31034482" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31034482" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31848854" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16688062" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
@@ -1021,7 +1025,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Added driver for devices in to Jar&#10;Change Jar structure" />
     <MESSAGE value="Added Jar" />
     <MESSAGE value="Jar fix" />
     <MESSAGE value="Added bad implementation to Logger.java. Need to rework" />
@@ -1046,7 +1049,8 @@
     <MESSAGE value="Rename&#10;" />
     <MESSAGE value="Comment line bcz bug detected and fixed: to access device on linux need root access" />
     <MESSAGE value="Name fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Name fix" />
+    <MESSAGE value="Name fix&#10;Set pretty out put format form gson" />
+    <option name="LAST_COMMIT_MESSAGE" value="Name fix&#10;Set pretty out put format form gson" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1354,13 +1358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="5" selection-start="2119" selection-end="2119" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1054">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="51" selection-start="1133" selection-end="1133" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
@@ -1373,9 +1370,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="5" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.32892805" vertical-offset="439" max-vertical-offset="1377">
+        <state line="166" column="5" selection-start="5570" selection-end="5570" vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="1377">
           <folding>
             <element signature="method#main#0;class#MDRV#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="5" selection-start="2336" selection-end="2336" vertical-scroll-proportion="0.8097902" vertical-offset="271" max-vertical-offset="986">
+          <folding>
+            <element signature="method#processReceivedChar#0;class#RxRawDataReceiver#0" expanded="true" />
           </folding>
         </state>
       </provider>

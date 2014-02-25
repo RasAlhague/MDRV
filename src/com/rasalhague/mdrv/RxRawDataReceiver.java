@@ -13,7 +13,8 @@ public class RxRawDataReceiver extends Observable
     private ArrayList<RxRawDataPacket> rawDataPackets;
     private String rawDataPacketBuffer = "";
 
-    private final static char END_PACKET_CHAR = '\n';
+    private final static char END_PACKET_CHAR_N = '\n';
+    private final static char END_PACKET_CHAR_R = '\r';
 
     private Boolean firstPacketTrigger = true;
     private DeviceInfo deviceInfo;
@@ -75,32 +76,13 @@ public class RxRawDataReceiver extends Observable
 
     private void processReceivedChar(char receivedChar)
     {
-        if (receivedChar != END_PACKET_CHAR)
-        {
-            addDataToRawDataPacketBuffer(receivedChar);
-        }
-        else
+        if (receivedChar == END_PACKET_CHAR_N || receivedChar == END_PACKET_CHAR_R)
         {
             saveRawDataPacket();
         }
-    }
-
-    private boolean checkForLength_RxDataReceivedArray()
-    {
-        if (rawDataPackets.size() > 1)
+        else
         {
-            for (RxRawDataPacket rxRawDataPacket : rawDataPackets)
-            {
-                for (RxRawDataPacket rawDataPacketToEq : rawDataPackets)
-                {
-                    if (rxRawDataPacket.getRawDataPacketValue().length() != rawDataPacketToEq.getRawDataPacketValue().length())
-                    {
-                        ApplicationLogger.LOGGER.warning("ERROR WITH LENGTH");
-                        return false;
-                    }
-                }
-            }
+            addDataToRawDataPacketBuffer(receivedChar);
         }
-        return true;
     }
 }
