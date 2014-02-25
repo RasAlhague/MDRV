@@ -5,7 +5,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBITry.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataPacket.java" />
@@ -921,7 +920,11 @@
       <created>1393328813931</created>
       <updated>1393328813931</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Name fix">
+      <created>1393328860450</created>
+      <updated>1393328860450</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1018,7 +1021,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Refactor and clean up&#10;Add logging" />
     <MESSAGE value="Added driver for devices in to Jar&#10;Change Jar structure" />
     <MESSAGE value="Added Jar" />
     <MESSAGE value="Jar fix" />
@@ -1043,7 +1045,8 @@
     <MESSAGE value="Change console output format&#10;Change file output format&#10;" />
     <MESSAGE value="Rename&#10;" />
     <MESSAGE value="Comment line bcz bug detected and fixed: to access device on linux need root access" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment line bcz bug detected and fixed: to access device on linux need root access" />
+    <MESSAGE value="Name fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Name fix" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

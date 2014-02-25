@@ -17,7 +17,7 @@ import java.util.Observer;
 public class PacketLogger implements Observer
 {
     private Writer writer;
-    private Gson gson = new GsonBuilder().create();
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     private PacketLogger()
     {
@@ -62,12 +62,12 @@ public class PacketLogger implements Observer
 
     private static class PacketLoggerHolder
     {
-        public static final PacketLogger instance = new PacketLogger();
+        public static final PacketLogger INSTANCE = new PacketLogger();
     }
 
     public static PacketLogger getInstance()
     {
-        return PacketLoggerHolder.instance;
+        return PacketLoggerHolder.INSTANCE;
     }
 
 }
