@@ -13,8 +13,6 @@ import java.util.regex.Pattern;
 
 public class Utils
 {
-    public final static Boolean DEBUG_OUTPUT = false;
-
     public static String addTimeStampToFileName(String name)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy 'at' HH.mm.ss", Locale.ENGLISH);
@@ -46,13 +44,14 @@ public class Utils
         }
         catch (IOException e)
         {
+            ApplicationLogger.severe(e.getMessage());
             e.printStackTrace();
         }
 
         return file;
     }
 
-    public static final HashMap<String, String> searchRegistry(String location, String key)
+    public static HashMap<String, String> searchRegistry(String location, String key)
     {
         try
         {
@@ -83,10 +82,12 @@ public class Utils
         }
         catch (IOException ex)
         {
+            ApplicationLogger.severe(ex.getMessage());
             ex.printStackTrace();
         }
         catch (InterruptedException e)
         {
+            ApplicationLogger.severe(e.getMessage());
             e.printStackTrace();
         }
 
@@ -103,12 +104,12 @@ public class Utils
 
     static class StreamReader extends Thread
     {
-        private InputStream is;
-        private StringWriter sw = new StringWriter();
+        private InputStream inputStream;
+        private StringWriter stringWriter = new StringWriter();
 
         public StreamReader(InputStream is)
         {
-            this.is = is;
+            this.inputStream = is;
         }
 
         @Override
@@ -116,18 +117,20 @@ public class Utils
         {
             try
             {
-                int c;
-                while ((c = is.read()) != -1)
-                { sw.write(c); }
+                int byteOfData;
+                while ((byteOfData = inputStream.read()) != -1)
+                { stringWriter.write(byteOfData); }
             }
             catch (IOException e)
             {
+                ApplicationLogger.severe(e.getMessage());
+                e.printStackTrace();
             }
         }
 
         public String getResult()
         {
-            return sw.toString();
+            return stringWriter.toString();
         }
     }
 }
