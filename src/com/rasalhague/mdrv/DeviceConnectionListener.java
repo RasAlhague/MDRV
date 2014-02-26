@@ -64,7 +64,7 @@ public class DeviceConnectionListener implements Runnable
         long timerPeriod = 1000;
         timer.schedule(timerTask, timerDelay, timerPeriod);
 
-        ApplicationLogger.LOGGER.info("Waiting for devices...");
+        ApplicationLogger.info("Waiting for devices...");
     }
 
     private void scanForDeviceConnections()
@@ -85,6 +85,7 @@ public class DeviceConnectionListener implements Runnable
         //adding
         for (String port : portNames)
         {
+            //TODO need to avoid new DeviceInfo every scan
             DeviceInfo deviceInfo = new DeviceInfo(port, DeviceInfo.DeviceTypeEnum.COM);
             if (!comDeviceInfoList.contains(deviceInfo))
             {
