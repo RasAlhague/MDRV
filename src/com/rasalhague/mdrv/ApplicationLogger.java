@@ -8,7 +8,7 @@ import java.util.logging.*;
 
 public class ApplicationLogger
 {
-    public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     static public void setup()
     {
@@ -42,6 +42,41 @@ public class ApplicationLogger
         {
             logger.log(Level.SEVERE, "Cannot create file due to IO error.", e);
         }
+    }
+
+    static public void severe(String msg)
+    {
+        LOGGER.severe(msg);
+    }
+
+    static public void warning(String msg)
+    {
+        LOGGER.warning(msg);
+    }
+
+    static public void info(String msg)
+    {
+        LOGGER.info(msg);
+    }
+
+    static public void config(String msg)
+    {
+        LOGGER.config(msg);
+    }
+
+    static public void fine(String msg)
+    {
+        LOGGER.fine(msg);
+    }
+
+    static public void finer(String msg)
+    {
+        LOGGER.finer(msg);
+    }
+
+    static public void finest(String msg)
+    {
+        LOGGER.finest(msg);
     }
 }
 
