@@ -11,22 +11,19 @@ import java.util.TimerTask;
 public class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
 {
     SerialPort serialPort;
-    RxRawDataReceiver rxRawDataReceiver;
-//    private static final int BYTE_TO_READ_COUNT = 512;
+    //    private static final int BYTE_TO_READ_COUNT = 512;
 
     COMDeviceCommunication(DeviceInfo deviceInfo)
     {
         super(deviceInfo);
 
-        serialPort = new SerialPort(deviceInfo.devicePortName);
-        rxRawDataReceiver = new RxRawDataReceiver(this.deviceInfo);
+        serialPort = new SerialPort(deviceInfo.getDevicePortName());
     }
 
-    //Factory method
-    public static COMDeviceCommunication getInstance(DeviceInfo deviceInfo)
+    @Override
+    void initializeDevice()
     {
-        //TODO Return correct class. At now AirView2 class is universal.
-        return new AirView2(deviceInfo);
+        ApplicationLogger.warning("Device not specified. Can not choose right init sequence. Initialization ignored.");
     }
 
     @Override
@@ -38,14 +35,14 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
             {
                 String rawData;
                 rawData = serialPort.readString(serialPortEvent.getEventValue());
-//                rawData = serialPort.readString(BYTE_TO_READ_COUNT);
+                //                rawData = serialPort.readString(BYTE_TO_READ_COUNT);
                 rxRawDataReceiver.receiveRawData(rawData);
 
-                System.out.println(rawData);
+                //                System.out.println(rawData);
             }
             catch (SerialPortException e)
             {
-                ApplicationLogger.LOGGER.severe(e.getMessage());
+                ApplicationLogger.severe(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -64,19 +61,20 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         }
         catch (SerialPortException ex)
         {
+            ApplicationLogger.severe(ex.getMessage());
             ex.printStackTrace();
         }
     }
 
     private void openPort() throws SerialPortException
     {
-        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.devicePortName);
+        ApplicationLogger.info("Trying to open " + deviceInfo.getDevicePortName());
 
         serialPort.openPort();
         serialPort.closePort();
         serialPort.openPort();
 
-        ApplicationLogger.LOGGER.info(deviceInfo.devicePortName + " " + "has been opened!");
+        ApplicationLogger.info(deviceInfo.getDevicePortName() + " " + "has been opened!");
 
         serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
     }
@@ -85,10 +83,8 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
     {
         serialPort.addEventListener(this, SerialPort.MASK_RXCHAR);
 
-        ApplicationLogger.LOGGER.info("SerialPort Listening has started");
+        ApplicationLogger.info("SerialPort Listening has started");
     }
-
-    protected void initializeDevice() {}
 
     /**
      * close port
@@ -98,7 +94,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         try
         {
             boolean port = serialPort.closePort();
-            ApplicationLogger.LOGGER.info("Stopping " + serialPort.getPortName() + "result: " + port);
+            ApplicationLogger.info("Stopping " + serialPort.getPortName() + "result: " + port);
         }
         catch (SerialPortException e)
         {

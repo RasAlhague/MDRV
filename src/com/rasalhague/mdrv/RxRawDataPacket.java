@@ -32,7 +32,7 @@ public class RxRawDataPacket
         this.packetLength = rawData.length();
 
         //TODO device switching
-        if (deviceInfo.deviceType == DeviceInfo.DeviceTypeEnum.COM)
+        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceTypeEnum.COM)
         {
             char[] chars = rawData.toCharArray();
             int cCount = 0;
