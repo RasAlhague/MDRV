@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * receiveRawData(String rawData) take a input string from device and works like a buffer
- * for processReceivedChar(char receivedChar) that parsing char by char generate a RxRawDataPacket;
+ * receiveRawData(String rawData) take a input string from device and works like a buffer for processReceivedChar(char
+ * receivedChar) that parsing char by char generate a RxRawDataPacket;
  */
 
 public class RxRawDataReceiver extends Observable
@@ -35,7 +35,7 @@ public class RxRawDataReceiver extends Observable
         {
             RxRawDataPacket rxRawDataPacket = new RxRawDataPacket(rawDataPacketBuffer, deviceInfo);
             rawDataPackets.add(rxRawDataPacket);
-//            checkForLength_RxDataReceivedArray();
+            //            checkForLength_RxDataReceivedArray();
 
             //TODO setChanged(); Wont work
             setChanged();
@@ -58,14 +58,11 @@ public class RxRawDataReceiver extends Observable
     /**
      * Works like a buffer. Sends data char by char to processReceivedChar(char receivedChar);
      *
-     * @param rawData string from device
+     * @param rawData
+     *         string from device
      */
     public void receiveRawData(String rawData)
     {
-        //for AirView2
-//        CharSequence charSequence = "scan|0,";
-//        rawData = rawData.replace(charSequence, "");
-
         char[] charsToProcess = rawData.toCharArray();
 
         for (char charToProcess : charsToProcess)
