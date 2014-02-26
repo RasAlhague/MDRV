@@ -9,9 +9,9 @@ class DeviceInfo
 {
     private final String         deviceVid;
     private final String         devicePid;
-    public        String         deviceName;
-    public        String         devicePortName;
-    public        DeviceTypeEnum deviceType;
+    private final String         deviceName;
+    private final String         devicePortName;
+    private final DeviceTypeEnum deviceType;
 
     public static ArrayList<DeviceInfo> createArrayListFromNames(String[] portNames, DeviceTypeEnum deviceTypeEnum)
     {
@@ -30,12 +30,40 @@ class DeviceInfo
         USB, COM
     }
 
+    public String getDeviceVid()
+    {
+        return deviceVid;
+    }
+
+    public String getDevicePid()
+    {
+        return devicePid;
+    }
+
+    public String getDeviceName()
+    {
+        return deviceName;
+    }
+
+    public String getDevicePortName()
+    {
+        return devicePortName;
+    }
+
+    public DeviceTypeEnum getDeviceType()
+    {
+        return deviceType;
+    }
+
     @Override
     public String toString()
     {
         return "DeviceInfo{" +
-                "devicePortName='" + devicePortName + '\'' +
-                ", deviceType=" + deviceType +
+                "deviceVid='" + getDeviceVid() + '\'' +
+                ", devicePid='" + getDevicePid() + '\'' +
+                ", deviceName='" + getDeviceName() + '\'' +
+                ", devicePortName='" + getDevicePortName() + '\'' +
+                ", deviceType=" + getDeviceType() +
                 '}';
     }
 
@@ -47,11 +75,11 @@ class DeviceInfo
 
         DeviceInfo that = (DeviceInfo) o;
 
-        if (devicePortName != null ? !devicePortName.equals(that.devicePortName) : that.devicePortName != null)
-        {
-            return false;
-        }
-        if (deviceType != that.deviceType) return false;
+        if (!getDeviceName().equals(that.getDeviceName())) return false;
+        if (!getDevicePid().equals(that.getDevicePid())) return false;
+        if (!getDevicePortName().equals(that.getDevicePortName())) return false;
+        if (getDeviceType() != that.getDeviceType()) return false;
+        if (!getDeviceVid().equals(that.getDeviceVid())) return false;
 
         return true;
     }
@@ -59,8 +87,11 @@ class DeviceInfo
     @Override
     public int hashCode()
     {
-        int result = devicePortName != null ? devicePortName.hashCode() : 0;
-        result = 31 * result + (deviceType != null ? deviceType.hashCode() : 0);
+        int result = getDeviceVid().hashCode();
+        result = 31 * result + getDevicePid().hashCode();
+        result = 31 * result + getDeviceName().hashCode();
+        result = 31 * result + getDevicePortName().hashCode();
+        result = 31 * result + getDeviceType().hashCode();
         return result;
     }
 
@@ -69,26 +100,24 @@ class DeviceInfo
         devicePortName = devPortName;
         deviceType = devTypeEnum;
 
-        HashMap<String, String> devInfMap = getDeviceName();
+        HashMap<String, String> devInfMap = takeDeviceName();
         deviceName = devInfMap.get("devName");
-        devicePid = devInfMap.get("vid");
-        deviceVid = devInfMap.get("pid");
+        devicePid = devInfMap.get("pid");
+        deviceVid = devInfMap.get("vid");
     }
 
-    private HashMap<String, String> getDeviceName()
+    private HashMap<String, String> takeDeviceName()
     {
         if (SystemUtils.IS_OS_WINDOWS)
         {
-            HashMap<String, String> map = Utils.getDeviceNameFromWinRegistry(devicePortName);
-
-            return map;
+            return Utils.getDeviceNameFromWinRegistry(getDevicePortName());
         }
         else if (SystemUtils.IS_OS_LINUX)
         {
             //TODO IS_OS_LINUX get device names impl
         }
 
-        ApplicationLogger.LOGGER.severe("OS do not support");
+        ApplicationLogger.severe("OS does not support");
 
         return null;
     }
