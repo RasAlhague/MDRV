@@ -1,11 +1,12 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-class DeviceInfo
+public class DeviceInfo
 {
     private final String         deviceVid;
     private final String         devicePid;
@@ -55,6 +56,11 @@ class DeviceInfo
         return deviceType;
     }
 
+    public boolean equalsPidVid(String pId, String vId)
+    {
+        return pId.equals(devicePid) && vId.equals(deviceVid);
+    }
+
     @Override
     public String toString()
     {
@@ -75,11 +81,8 @@ class DeviceInfo
 
         DeviceInfo that = (DeviceInfo) o;
 
-        if (!getDeviceName().equals(that.getDeviceName())) return false;
-        if (!getDevicePid().equals(that.getDevicePid())) return false;
-        if (!getDevicePortName().equals(that.getDevicePortName())) return false;
-        if (getDeviceType() != that.getDeviceType()) return false;
-        if (!getDeviceVid().equals(that.getDeviceVid())) return false;
+        if (!devicePid.equals(that.devicePid)) return false;
+        if (!deviceVid.equals(that.deviceVid)) return false;
 
         return true;
     }
@@ -87,11 +90,8 @@ class DeviceInfo
     @Override
     public int hashCode()
     {
-        int result = getDeviceVid().hashCode();
-        result = 31 * result + getDevicePid().hashCode();
-        result = 31 * result + getDeviceName().hashCode();
-        result = 31 * result + getDevicePortName().hashCode();
-        result = 31 * result + getDeviceType().hashCode();
+        int result = deviceVid.hashCode();
+        result = 31 * result + devicePid.hashCode();
         return result;
     }
 

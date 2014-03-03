@@ -1,16 +1,17 @@
 package com.rasalhague.mdrv;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 /**
  * receiveRawData(String rawData) take a input string from device and works like a buffer for processReceivedChar(char
- * receivedChar) that parsing char by char generate a RxRawDataPacket;
+ * receivedChar) that parsing char by char generate a DataPacket;
  */
 
 public class RxRawDataReceiver extends Observable
 {
-    private ArrayList<RxRawDataPacket> rawDataPackets;
+    private ArrayList<DataPacket> rawDataPackets;
     private String rawDataPacketBuffer = "";
 
     private final static char END_PACKET_CHAR_N = '\n';
@@ -22,7 +23,7 @@ public class RxRawDataReceiver extends Observable
     public RxRawDataReceiver(DeviceInfo deviceInfo)
     {
         this.deviceInfo = deviceInfo;
-        rawDataPackets = new ArrayList<RxRawDataPacket>();
+        rawDataPackets = new ArrayList<DataPacket>();
     }
 
     private void saveRawDataPacket()
@@ -33,16 +34,20 @@ public class RxRawDataReceiver extends Observable
         }
         else
         {
-            RxRawDataPacket rxRawDataPacket = new RxRawDataPacket(rawDataPacketBuffer, deviceInfo);
-            rawDataPackets.add(rxRawDataPacket);
-            //            checkForLength_RxDataReceivedArray();
+            DataPacket dataPacket = new DataPacket(rawDataPacketBuffer, deviceInfo);
+            rawDataPackets.add(dataPacket);
 
-            //TODO setChanged(); Wont work
-            setChanged();
-            notifyObservers(rawDataPackets);
+            notifySubscribers(rawDataPackets);
         }
 
         wipeRawDataPacketBuffer();
+    }
+
+    private void notifySubscribers(List rawDataPackets)
+    {
+        //TODO setChanged(); Wont work
+        setChanged();
+        notifyObservers(rawDataPackets);
     }
 
     private void addDataToRawDataPacketBuffer(char data)

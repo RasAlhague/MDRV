@@ -1,5 +1,7 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
+
 public abstract class DeviceCommunication implements Runnable
 {
     DeviceInfo        deviceInfo;

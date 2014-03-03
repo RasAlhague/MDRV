@@ -1,5 +1,6 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
 import jssc.SerialPortList;
 
 import java.util.ArrayList;
@@ -32,8 +33,7 @@ public class DeviceConnectionListener implements Runnable
         listeners.add(toAdd);
     }
 
-    private void performDeviceConnectionEvent(DeviceInfo deviceName,
-                                              DeviceConnectionStateEnum connectionStateEnum)
+    private void performDeviceConnectionEvent(DeviceInfo deviceName, DeviceConnectionStateEnum connectionStateEnum)
     {
         // Notify everybody that may be interested.
         for (DeviceConnectionListenerI listenerI : listeners)
@@ -80,7 +80,7 @@ public class DeviceConnectionListener implements Runnable
         ArrayList<DeviceInfo> portNamesInfoArrayList = DeviceInfo.createArrayListFromNames(portNames,
                                                                                            DeviceInfo.DeviceTypeEnum.COM);
 
-//        System.out.println("portNames.length = " + String.valueOf(portNames.length));
+        //        System.out.println("portNames.length = " + String.valueOf(portNames.length));
 
         //adding
         for (String port : portNames)

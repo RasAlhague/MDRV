@@ -1,4 +1,6 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.logging;
+
+import com.rasalhague.mdrv.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,9 +90,9 @@ class MyLogFormatter extends Formatter
     public String format(LogRecord record)
     {
         StringBuilder builder = new StringBuilder();
-//        String bracerOpen = "[";
-//        String bracerClose = "]";
-//        String dot = ".";
+        //        String bracerOpen = "[";
+        //        String bracerClose = "]";
+        //        String dot = ".";
         String separator = " ";
 
         String packageName = this.getClass().getPackage().getName();
@@ -104,10 +106,10 @@ class MyLogFormatter extends Formatter
         builder.append(separator);
 
         builder.append("[")
-                .append(record.getSourceClassName().replace(packageName + ".", ""))
-                .append(".")
-                .append(record.getSourceMethodName())
-                .append("]");
+               .append(record.getSourceClassName().replace(packageName + ".", ""))
+               .append(".")
+               .append(record.getSourceMethodName())
+               .append("]");
 
         builder.append(separator);
 

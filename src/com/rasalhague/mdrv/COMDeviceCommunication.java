@@ -1,5 +1,6 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortEventListener;
@@ -70,8 +71,6 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
     {
         ApplicationLogger.info("Trying to open " + deviceInfo.getDevicePortName());
 
-        serialPort.openPort();
-        serialPort.closePort();
         serialPort.openPort();
 
         ApplicationLogger.info(deviceInfo.getDevicePortName() + " " + "has been opened!");

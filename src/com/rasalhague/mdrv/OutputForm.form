@@ -26,7 +26,7 @@
               <autoscrolls value="true"/>
               <doubleBuffered value="false"/>
               <editable value="false"/>
-              <font name="Consolas" size="11"/>
+              <font name="Comic Sans MS" size="9" style="1"/>
               <lineWrap value="true"/>
             </properties>
           </component>

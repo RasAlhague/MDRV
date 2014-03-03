@@ -1,5 +1,7 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -70,7 +72,7 @@ public class Utils
                     "HKEY_LOCAL_MACHINE.*USB.*VID_(?<vid>.{4})&PID_(?<pid>.{4}).*\\n *\\w* *\\w* *(?<devName>.*\\))",
                     Pattern.UNIX_LINES);
 
-            //TODO need finalize
+            //TODO need to handle probably missing register branch
             Matcher matcher = pattern.matcher(output);
             HashMap<String, String> devInfMap = new HashMap<String, String>();
             matcher.find();
@@ -98,7 +100,7 @@ public class Utils
     {
         HashMap<String, String> result = searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB",
                                                         devPortName);
-        System.out.println(result);
+        //        System.out.println(result);
         return result;
     }
 

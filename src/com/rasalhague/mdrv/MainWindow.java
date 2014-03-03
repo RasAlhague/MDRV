@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 public class MainWindow
 {
     private JButton button;
-    private JPanel jPanel;
+    private JPanel  jPanel;
 
     public static void initialize()
     {

@@ -8,9 +8,9 @@ import java.util.Observer;
 
 public class OutputForm implements Observer
 {
-    private JPanel panel;
+    private JPanel    panel;
     private JTextArea textArea;
-    private JFrame frame;
+    private JFrame    frame;
 
     public OutputForm startGUI()
     {
@@ -43,12 +43,12 @@ public class OutputForm implements Observer
     public void update(Observable o, Object arg)
     {
         //TODO setChanged(); Wont work
-//        if (o.hasChanged())
+        //        if (o.hasChanged())
         {
             if (arg instanceof ArrayList)
             {
-                ArrayList<RxRawDataPacket> rxRawDataPackets = (ArrayList<RxRawDataPacket>) arg;
-                appendTextToTextArea(rxRawDataPackets.get(rxRawDataPackets.size() - 1).getRawDataPacketValue());
+                ArrayList<DataPacket> dataPackets = (ArrayList<DataPacket>) arg;
+                appendTextToTextArea(dataPackets.get(dataPackets.size() - 1).getRawDataPacketValue());
             }
         }
     }

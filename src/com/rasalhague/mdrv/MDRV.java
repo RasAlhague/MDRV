@@ -1,5 +1,8 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.logging.ApplicationLogger;
+import com.rasalhague.mdrv.logging.PacketLogger;
+
 public class MDRV implements DeviceConnectionListenerI
 {
     public static void main(String[] args)
@@ -8,6 +11,8 @@ public class MDRV implements DeviceConnectionListenerI
 
         MDRV mdrv = new MDRV();
         mdrv.doIt();
+
+        //        new USBITry().startUP();
     }
 
     private void doIt()
@@ -25,8 +30,7 @@ public class MDRV implements DeviceConnectionListenerI
     }
 
     @Override
-    public void deviceConnectionEvent(DeviceInfo connectedDevice,
-                                      DeviceConnectionStateEnum deviceConnectionStateEnum)
+    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
         ApplicationLogger.info(connectedDevice.getDevicePortName() + " " + deviceConnectionStateEnum);
 
@@ -38,10 +42,14 @@ public class MDRV implements DeviceConnectionListenerI
                 OutputForm outputForm = new OutputForm();
                 outputForm.startGUI();
 
+                //Create char
+                XChartVisualizer XChartVisualizer = new XChartVisualizer();
+
                 //Call Factory method and set form to out
                 DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
                 deviceCommunication.rxRawDataReceiver.addObserver(outputForm);
                 deviceCommunication.rxRawDataReceiver.addObserver(PacketLogger.getInstance());
+                deviceCommunication.rxRawDataReceiver.addObserver(XChartVisualizer);
 
                 new Thread(deviceCommunication).start();
             }

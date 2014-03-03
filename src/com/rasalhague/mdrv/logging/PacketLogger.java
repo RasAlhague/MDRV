@@ -1,12 +1,14 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.logging;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
+import com.rasalhague.mdrv.DataPacket;
+import com.rasalhague.mdrv.Utils;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -17,7 +19,9 @@ import java.util.Observer;
 public class PacketLogger implements Observer
 {
     private Writer writer;
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private Gson gson = new GsonBuilder().setPrettyPrinting()
+                                         .registerTypeAdapter(ArrayList.class, new DateTimeSerializer())
+                                         .create();
 
     private PacketLogger()
     {
@@ -40,12 +44,12 @@ public class PacketLogger implements Observer
     public void update(Observable o, Object arg)
     {
         //TODO setChanged(); Wont work
-//        if (o.hasChanged())
+        //        if (o.hasChanged())
         {
             if (arg instanceof ArrayList)
             {
-                ArrayList<RxRawDataPacket> dataPackets = (ArrayList<RxRawDataPacket>) arg;
-                RxRawDataPacket lastDataPacket = dataPackets.get(dataPackets.size() - 1);
+                ArrayList<DataPacket> dataPackets = (ArrayList<DataPacket>) arg;
+                DataPacket lastDataPacket = dataPackets.get(dataPackets.size() - 1);
                 gson.toJson(lastDataPacket, writer);
 
                 try
@@ -69,5 +73,12 @@ public class PacketLogger implements Observer
     {
         return PacketLoggerHolder.INSTANCE;
     }
+}
 
+class DateTimeSerializer implements JsonSerializer<ArrayList<Integer>>
+{
+    public JsonElement serialize(ArrayList<Integer> src, Type typeOfSrc, JsonSerializationContext context)
+    {
+        return new JsonPrimitive(src.toString());
+    }
 }
