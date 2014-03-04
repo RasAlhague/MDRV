@@ -24,6 +24,6 @@ final class ez430RF2500 extends COMDeviceCommunication
             e.printStackTrace();
         }
 
-        ApplicationLogger.info("ez430RF2500 has initialized");
+        ApplicationLogger.LOGGER.info("ez430RF2500 has initialized");
     }
 }

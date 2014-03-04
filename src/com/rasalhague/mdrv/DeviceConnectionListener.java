@@ -64,7 +64,7 @@ public class DeviceConnectionListener implements Runnable
         long timerPeriod = 1000;
         timer.schedule(timerTask, timerDelay, timerPeriod);
 
-        ApplicationLogger.info("Waiting for devices...");
+        ApplicationLogger.LOGGER.info("Waiting for devices...");
     }
 
     private void scanForDeviceConnections()

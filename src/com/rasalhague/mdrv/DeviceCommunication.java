@@ -29,7 +29,8 @@ public abstract class DeviceCommunication implements Runnable
             return new ez430RF2500(deviceInfo);
         }
 
-        ApplicationLogger.warning("Device not specified. Getting COMDeviceCommunication to try to work with device.");
+        ApplicationLogger.LOGGER.warning(
+                "Device not specified. Getting COMDeviceCommunication to try to work with device.");
         return new COMDeviceCommunication(deviceInfo);
     }
 

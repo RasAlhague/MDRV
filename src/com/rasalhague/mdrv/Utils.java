@@ -46,7 +46,7 @@ public class Utils
         }
         catch (IOException e)
         {
-            ApplicationLogger.severe(e.getMessage());
+            ApplicationLogger.LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }
 
@@ -84,12 +84,12 @@ public class Utils
         }
         catch (IOException ex)
         {
-            ApplicationLogger.severe(ex.getMessage());
+            ApplicationLogger.LOGGER.severe(ex.getMessage());
             ex.printStackTrace();
         }
         catch (InterruptedException e)
         {
-            ApplicationLogger.severe(e.getMessage());
+            ApplicationLogger.LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }
 
@@ -125,7 +125,7 @@ public class Utils
             }
             catch (IOException e)
             {
-                ApplicationLogger.severe(e.getMessage());
+                ApplicationLogger.LOGGER.severe(e.getMessage());
                 e.printStackTrace();
             }
         }

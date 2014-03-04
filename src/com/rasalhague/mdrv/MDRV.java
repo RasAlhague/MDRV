@@ -32,7 +32,7 @@ public class MDRV implements DeviceConnectionListenerI
     @Override
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
-        ApplicationLogger.info(connectedDevice.getDevicePortName() + " " + deviceConnectionStateEnum);
+        ApplicationLogger.LOGGER.info(connectedDevice.getDevicePortName() + " " + deviceConnectionStateEnum);
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {

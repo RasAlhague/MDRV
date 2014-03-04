@@ -117,7 +117,7 @@ public class DeviceInfo
             //TODO IS_OS_LINUX get device names impl
         }
 
-        ApplicationLogger.severe("OS does not support");
+        ApplicationLogger.LOGGER.severe("OS does not support");
 
         return null;
     }

@@ -24,7 +24,8 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
     @Override
     void initializeDevice()
     {
-        ApplicationLogger.warning("Device not specified. Can not choose right init sequence. Initialization ignored.");
+        ApplicationLogger.LOGGER.warning(
+                "Device not specified. Can not choose right init sequence. Initialization ignored.");
     }
 
     @Override
@@ -43,7 +44,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
             }
             catch (SerialPortException e)
             {
-                ApplicationLogger.severe(e.getMessage());
+                ApplicationLogger.LOGGER.severe(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -62,18 +63,18 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         }
         catch (SerialPortException ex)
         {
-            ApplicationLogger.severe(ex.getMessage());
+            ApplicationLogger.LOGGER.severe(ex.getMessage());
             ex.printStackTrace();
         }
     }
 
     private void openPort() throws SerialPortException
     {
-        ApplicationLogger.info("Trying to open " + deviceInfo.getDevicePortName());
+        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getDevicePortName());
 
         serialPort.openPort();
 
-        ApplicationLogger.info(deviceInfo.getDevicePortName() + " " + "has been opened!");
+        ApplicationLogger.LOGGER.info(deviceInfo.getDevicePortName() + " " + "has been opened!");
 
         serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
     }
@@ -82,7 +83,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
     {
         serialPort.addEventListener(this, SerialPort.MASK_RXCHAR);
 
-        ApplicationLogger.info("SerialPort Listening has started");
+        ApplicationLogger.LOGGER.info("SerialPort Listening has started");
     }
 
     /**
@@ -93,7 +94,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         try
         {
             boolean port = serialPort.closePort();
-            ApplicationLogger.info("Stopping " + serialPort.getPortName() + "result: " + port);
+            ApplicationLogger.LOGGER.info("Stopping " + serialPort.getPortName() + "result: " + port);
         }
         catch (SerialPortException e)
         {

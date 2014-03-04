@@ -27,6 +27,6 @@ final class AirView2 extends COMDeviceCommunication
             e.printStackTrace();
         }
 
-        ApplicationLogger.info("AirView2 has been initialized");
+        ApplicationLogger.LOGGER.info("AirView2 has been initialized");
     }
 }

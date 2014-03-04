@@ -18,7 +18,8 @@ public class RawDataProcessor implements DeviceConstants
             return rawDataProcessingAlgorithm.processData(dataToProcess);
         }
 
-        ApplicationLogger.warning("Can not processData because device not registered, trying to use default regex.");
+        ApplicationLogger.LOGGER.warning(
+                "Can not processData because device not registered, trying to use default regex.");
         return rawDataProcessingAlgorithm.processData(dataToProcess);
     }
 }
