@@ -1,0 +1,8 @@
+.ttip{
+     -fx-background-radius: 0 0 0 0;
+     -fx-background-color: white;
+ }
+
+.page-corner {
+    -fx-shape: " ";
+}

@@ -40,8 +40,13 @@ public class PacketLogger implements Observer
         }
     }
 
+    public static PacketLogger getInstance()
+    {
+        return PacketLoggerHolder.INSTANCE;
+    }
+
     @Override
-    public void update(Observable o, Object arg)
+    public synchronized void update(Observable o, Object arg)
     {
         //TODO setChanged(); Wont work
         //        if (o.hasChanged())
@@ -67,11 +72,6 @@ public class PacketLogger implements Observer
     private static class PacketLoggerHolder
     {
         public static final PacketLogger INSTANCE = new PacketLogger();
-    }
-
-    public static PacketLogger getInstance()
-    {
-        return PacketLoggerHolder.INSTANCE;
     }
 }
 

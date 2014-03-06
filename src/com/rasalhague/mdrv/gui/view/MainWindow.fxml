@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.*?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="600.0"
+            prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="com.rasalhague.mdrv.gui.MainWindowController">
+    <VBox minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <LineChart fx:id="lineChart" alternativeColumnFillVisible="false" animated="false" createSymbols="true"
+                   disable="false" focusTraversable="false" legendSide="BOTTOM" legendVisible="false"
+                   maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+                   minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" verticalGridLinesVisible="true"
+                   VBox.vgrow="SOMETIMES">
+            <xAxis>
+                <NumberAxis animated="false" autoRanging="true" disable="false" focusTraversable="false"
+                            forceZeroInRange="false" label="Frequency, GHz" lowerBound="2.4" minorTickVisible="true"
+                            side="BOTTOM" tickMarkVisible="true" upperBound="2.5"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis animated="false" autoRanging="false" disable="false" forceZeroInRange="false"
+                            label="RSSI, dBm" lowerBound="-110.0" side="LEFT" tickLabelsVisible="true"
+                            upperBound="-40.0"/>
+            </yAxis>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1"/>
+            </padding>
+            <VBox.margin>
+                <Insets fx:id="x2"/>
+            </VBox.margin>
+        </LineChart>
+        <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" VBox.vgrow="NEVER">
+            <children>
+                <Button fx:id="startListeningButton" mnemonicParsing="false"
+                        onMouseClicked="#startListeningButtonMouseClickedEvent" text="Start listening"/>
+                <CheckBox fx:id="maxCheckBox" mnemonicParsing="false" onAction="#maxCheckBoxChangedEvent" text="max"/>
+            </children>
+        </HBox>
+        <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1"/>
+        </padding>
+        <TextArea fx:id="debugTextArea" disable="false" editable="false" maxHeight="1.7976931348623157E308"
+                  maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="-1.0" prefHeight="100.0" prefWidth="-1.0"
+                  text="" wrapText="true" VBox.vgrow="SOMETIMES">
+            <VBox.margin>
+                <Insets fx:id="x2"/>
+            </VBox.margin>
+        </TextArea>
+    </VBox>
+</AnchorPane>

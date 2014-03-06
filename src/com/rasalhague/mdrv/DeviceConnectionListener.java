@@ -1,6 +1,8 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
 
 import java.util.ArrayList;
@@ -8,38 +10,29 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-interface DeviceConnectionListenerI
-{
-    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum);
-}
-
 enum DeviceConnectionStateEnum
 {
     CONNECTED, DISCONNECTED
 }
 
-public class DeviceConnectionListener implements Runnable
+interface DeviceConnectionListenerI
 {
-    private List<DeviceConnectionListenerI> listeners         = new ArrayList<DeviceConnectionListenerI>();
-    private ArrayList<DeviceInfo>           comDeviceInfoList = new ArrayList<DeviceInfo>();
+    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum);
+}
 
-    public DeviceConnectionListener(DeviceConnectionListenerI listenerToAdd)
+public class DeviceConnectionListener implements Runnable, DeviceConnectionListenerI
+{
+    private ArrayList<DeviceInfo>           comDeviceInfoList = new ArrayList<DeviceInfo>();
+    private List<DeviceConnectionListenerI> listeners         = new ArrayList<DeviceConnectionListenerI>();
+
+    public DeviceConnectionListener()
     {
-        addListener(listenerToAdd);
+        addListener(this);
     }
 
     public void addListener(DeviceConnectionListenerI toAdd)
     {
         listeners.add(toAdd);
-    }
-
-    private void performDeviceConnectionEvent(DeviceInfo deviceName, DeviceConnectionStateEnum connectionStateEnum)
-    {
-        // Notify everybody that may be interested.
-        for (DeviceConnectionListenerI listenerI : listeners)
-        {
-            listenerI.deviceConnectionEvent(deviceName, connectionStateEnum);
-        }
     }
 
     @Override
@@ -73,6 +66,8 @@ public class DeviceConnectionListener implements Runnable
 
         //TODO ScanUSB
     }
+
+    //region Observer implementation
 
     private void scanForCOMPorts()
     {
@@ -109,4 +104,43 @@ public class DeviceConnectionListener implements Runnable
         }
 
     }
+
+    private void performDeviceConnectionEvent(DeviceInfo deviceName, DeviceConnectionStateEnum connectionStateEnum)
+    {
+        // Notify everybody that may be interested.
+        for (DeviceConnectionListenerI listenerI : listeners)
+        {
+            listenerI.deviceConnectionEvent(deviceName, connectionStateEnum);
+        }
+    }
+
+    @Override
+    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
+    {
+        ApplicationLogger.LOGGER.info(connectedDevice.getDevicePortName() + " " + deviceConnectionStateEnum);
+
+        if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
+        {
+            if (connectedDevice.getDeviceType() == DeviceInfo.DeviceTypeEnum.COM)
+            {
+                //Create GUI for output
+                //                OutputForm outputForm = new OutputForm();
+                //                outputForm.launchGUI();
+
+                //Call Factory method and set form to out
+                DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
+
+                //                deviceCommunication.rxRawDataReceiver.addObserver(outputForm);
+                deviceCommunication.rxRawDataReceiver.addObserver(PacketLogger.getInstance());
+                //                deviceCommunication.rxRawDataReceiver.addListener(MainWindowController.getInstance());
+                deviceCommunication.rxRawDataReceiver.addListener(PacketAnalysis.getInstance());
+
+                Thread thread = new Thread(deviceCommunication);
+                thread.setName(connectedDevice.getDeviceName() + " Thread");
+                thread.start();
+            }
+        }
+    }
+
+    //endregion
 }

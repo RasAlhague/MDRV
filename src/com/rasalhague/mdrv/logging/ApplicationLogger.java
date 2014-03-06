@@ -5,19 +5,42 @@ import com.rasalhague.mdrv.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.MissingResourceException;
 import java.util.logging.*;
 
-public class ApplicationLogger
+public class ApplicationLogger extends Logger
 {
-    public final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    //    public final static Logger GLOBAL_LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    public final static Logger LOGGER = new ApplicationLogger("ApplicationLogger", null);
+
+    private static ArrayList<LogRecord> logRecordArrayList = new ArrayList<LogRecord>();
+
+    /**
+     * Protected method to construct a logger for a named subsystem.
+     * <p/>
+     * The logger will be initially configured with a null Level and with useParentHandlers set to true.
+     *
+     * @param name
+     *         A name for the logger.  This should be a dot-separated name and should normally be based on the package
+     *         name or class name of the subsystem, such as java.net or javax.swing.  It may be null for anonymous
+     *         Loggers.
+     * @param resourceBundleName
+     *         name of ResourceBundle to be used for localizing messages for this logger.  May be null if none of the
+     *         messages require localization.
+     *
+     * @throws MissingResourceException
+     *         if the resourceBundleName is non-null and no corresponding resource can be found.
+     */
+    protected ApplicationLogger(String name, String resourceBundleName)
+    {
+        super(name, resourceBundleName);
+    }
 
     static public void setup()
     {
-        // Get the global logger to configure it
-        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
-        logger.setLevel(Level.ALL);
+        LOGGER.setLevel(Level.ALL);
 
         try
         {
@@ -26,26 +49,73 @@ public class ApplicationLogger
 
             //choose file header to add
             FileHandler fileTxt = new FileHandler(fileName);
-            fileTxt.setFormatter(new MyLogFormatter());
-            logger.addHandler(fileTxt);
+            LOGGER.addHandler(fileTxt);
 
-            Logger parent = logger.getParent();
-            Handler[] handlers = parent.getHandlers();
-            for (Handler handler : handlers)
-            {
-                handler.setFormatter(new MyLogFormatter());
-            }
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+            LOGGER.addHandler(consoleHandler);
+
+            setFormatterToLoggerHandlers(LOGGER, new MyLogFormatter());
+
+            LOGGER.info("Logger has initialized");
         }
         catch (SecurityException e)
         {
-            logger.log(Level.SEVERE, "Cannot create file due to Security reason.", e);
+            LOGGER.log(Level.SEVERE, "Cannot create file due to Security reason.", e);
         }
         catch (IOException e)
         {
-            logger.log(Level.SEVERE, "Cannot create file due to IO error.", e);
+            LOGGER.log(Level.SEVERE, "Cannot create file due to IO error.", e);
         }
     }
 
+    public synchronized static void addCustomHandler(Handler handler)
+    {
+        LOGGER.addHandler(handler);
+
+        //update formatter
+        setFormatterToLoggerHandlers(LOGGER, new MyLogFormatter());
+
+        //send logged records
+        for (LogRecord record : logRecordArrayList)
+        {
+            handler.publish(record);
+        }
+
+    }
+
+    @Override
+    public synchronized void log(LogRecord record)
+    {
+        super.log(record);
+
+        logRecordArrayList.add(record);
+    }
+
+    private static void setFormatterToLoggerHandlers(Logger logger, Formatter formatter)
+    {
+        //For logger handlers
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler : handlers)
+        {
+            handler.setFormatter(formatter);
+        }
+
+        //For logger parent handlers
+        Logger loggerParent = logger.getParent();
+        if (loggerParent != null)
+        {
+            Handler[] loggerParentHandlers = loggerParent.getHandlers();
+            for (Handler handler : loggerParentHandlers)
+            {
+                handler.setFormatter(formatter);
+            }
+        }
+    }
+
+    //TODO Do not work: out wrong class name (this) instead of caller class name
+    //region Do not work: out wrong class name (this) instead of caller class name
+
+    /*
     static public void severe(String msg)
     {
         LOGGER.severe(msg);
@@ -80,6 +150,9 @@ public class ApplicationLogger
     {
         LOGGER.finest(msg);
     }
+    */
+
+    //endregion
 }
 
 class MyLogFormatter extends Formatter

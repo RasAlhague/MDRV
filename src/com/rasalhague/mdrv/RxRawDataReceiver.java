@@ -8,7 +8,6 @@ import java.util.Observable;
  * receiveRawData(String rawData) take a input string from device and works like a buffer for processReceivedChar(char
  * receivedChar) that parsing char by char generate a DataPacket;
  */
-
 public class RxRawDataReceiver extends Observable
 {
     private ArrayList<DataPacket> rawDataPackets;
@@ -37,17 +36,19 @@ public class RxRawDataReceiver extends Observable
             DataPacket dataPacket = new DataPacket(rawDataPacketBuffer, deviceInfo);
             rawDataPackets.add(dataPacket);
 
-            notifySubscribers(rawDataPackets);
+            notifySubscribers(dataPacket, rawDataPackets);
         }
 
         wipeRawDataPacketBuffer();
     }
 
-    private void notifySubscribers(List rawDataPackets)
+    private void notifySubscribers(DataPacket dataPacket, List rawDataPackets)
     {
         //TODO setChanged(); Wont work
         setChanged();
         notifyObservers(rawDataPackets);
+
+        notifyDataPacketListeners(dataPacket, deviceInfo);
     }
 
     private void addDataToRawDataPacketBuffer(char data)
@@ -87,4 +88,23 @@ public class RxRawDataReceiver extends Observable
             addDataToRawDataPacketBuffer(receivedChar);
         }
     }
+
+    //region Observer implementation (DataPacketListener)
+
+    private List<DataPacketListener> dataPacketListeners = new ArrayList<DataPacketListener>();
+
+    public void addListener(DataPacketListener toAdd)
+    {
+        dataPacketListeners.add(toAdd);
+    }
+
+    private void notifyDataPacketListeners(DataPacket dataPacket, DeviceInfo deviceInfo)
+    {
+        for (DataPacketListener listener : dataPacketListeners)
+        {
+            listener.dataPacketEvent(dataPacket);
+        }
+    }
+
+    //endregion
 }
