@@ -132,7 +132,6 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
 
                 //                deviceCommunication.rxRawDataReceiver.addObserver(outputForm);
                 deviceCommunication.rxRawDataReceiver.addObserver(PacketLogger.getInstance());
-                //                deviceCommunication.rxRawDataReceiver.addListener(MainWindowController.getInstance());
                 deviceCommunication.rxRawDataReceiver.addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);

@@ -2,33 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Format&#10;Fix">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/style.css" />
       <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\MDRV_jar\MDRV.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\MDRV.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\MainWindow.form" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\MainWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\jfxt.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MDRV.iml" afterPath="$PROJECT_DIR$/MDRV.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/MDRV_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/RasAlhague.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/RasAlhague.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\JFreeCharTest.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/JFreeCharTest.java" />
-      <change type="MOVED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\XChartVisualizer.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/XChartVisualizer.java" />
     </list>
     <ignored path="MDRV.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,7 +65,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" line="265" class="com.rasalhague.mdrv.temp.USBITry" package="com.rasalhague.mdrv.temp">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" line="263" class="com.rasalhague.mdrv.temp.USBITry" package="com.rasalhague.mdrv.temp">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -99,7 +80,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" line="283" class="com.rasalhague.mdrv.temp.USBITry" package="com.rasalhague.mdrv.temp">
+      <breakpoint url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" line="281" class="com.rasalhague.mdrv.temp.USBITry" package="com.rasalhague.mdrv.temp">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -127,23 +108,15 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="13" selection-start="4366" selection-end="4366" vertical-scroll-proportion="0.3488372" vertical-offset="510" max-vertical-offset="1241">
+            <state line="101" column="5" selection-start="3299" selection-end="3299" vertical-scroll-proportion="1.1639004" vertical-offset="0" max-vertical-offset="1343">
               <folding>
-                <element signature="e#2420#2583#0" expanded="true" />
-                <element signature="e#2572#2573#0" expanded="true" />
-                <element signature="e#3036#3226#0" expanded="true" />
-                <element signature="e#3215#3216#0" expanded="true" />
+                <element signature="e#2256#2446#0" expanded="true" />
+                <element signature="e#2435#2436#0" expanded="true" />
                 <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#run#0;class#3628:4553" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.fxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="45" selection-start="1579" selection-end="1579" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="867">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,14 +124,14 @@
       <file leaf-file-name="DeviceConnectionListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="94" selection-start="4596" selection-end="4596" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1904">
+            <state line="134" column="0" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
               <folding>
                 <element signature="class#DeviceConnectionStateEnum#0" expanded="false" />
                 <element signature="class#DeviceConnectionListenerI#0" expanded="false" />
-                <element signature="e#782#809#0" expanded="true" />
+                <element signature="e#800#827#0" expanded="true" />
                 <element signature="method#scanForDeviceConnections#0;class#DeviceConnectionListener#0" expanded="true" />
                 <element signature="method#scanForCOMPorts#0;class#DeviceConnectionListener#0" expanded="true" />
-                <element signature="e#2692#2704#0" expanded="true" />
+                <element signature="e#2710#2722#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,15 +140,15 @@
       <file leaf-file-name="PacketAnalysis.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="5" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1598">
+            <state line="16" column="20" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
               <folding>
                 <element signature="docComment;class#PacketAnalysis#0" expanded="true" />
-                <element signature="e#501#555#0" expanded="true" />
+                <element signature="e#510#564#0" expanded="true" />
                 <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
-                <element signature="e#1268#1277#0" expanded="true" />
-                <element signature="e#1392#1425#0" expanded="true" />
+                <element signature="e#1422#1431#0" expanded="true" />
+                <element signature="e#1546#1579#0" expanded="true" />
                 <element signature="method#joinMax#0;class#PacketAnalysis#0" expanded="true" />
-                <element signature="e#2995#3022#0" expanded="true" />
+                <element signature="e#3149#3176#0" expanded="true" />
                 <element signature="method#notifyAnalysisPerformedListeners#0;class#PacketAnalysis#0" expanded="true" />
               </folding>
             </state>
@@ -242,10 +215,10 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
       </list>
     </option>
   </component>
@@ -1254,7 +1227,11 @@
       <created>1393948950767</created>
       <updated>1393948950767</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="New GUI&#10;A lot of refactor">
+      <created>1394149602022</created>
+      <updated>1394149602022</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1288,7 +1265,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39101717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.392" sideWeight="0.306" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23841059" sideWeight="0.5006748" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1351,7 +1328,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add MyLogFormatter class and integrate it" />
     <MESSAGE value="Fix string" />
     <MESSAGE value="Change console output format&#10;Change file output format&#10;" />
     <MESSAGE value="Rename&#10;" />
@@ -1376,7 +1352,8 @@
     <MESSAGE value="jar" />
     <MESSAGE value="." />
     <MESSAGE value="fix app logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix app logger" />
+    <MESSAGE value="New GUI&#10;A lot of refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="New GUI&#10;A lot of refactor" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1511,8 +1488,8 @@
         <state line="82" column="12" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="2329">
           <folding>
             <element signature="method#test1#0;class#USBITry#0" expanded="false" />
-            <element signature="e#6918#7106#0" expanded="false" />
-            <element signature="e#7095#7096#0" expanded="false" />
+            <element signature="e#6916#7104#0" expanded="false" />
+            <element signature="e#7093#7094#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1683,36 +1660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="5" selection-start="1763" selection-end="1763" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1598">
-          <folding>
-            <element signature="docComment;class#PacketAnalysis#0" expanded="true" />
-            <element signature="e#501#555#0" expanded="true" />
-            <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
-            <element signature="e#1268#1277#0" expanded="true" />
-            <element signature="e#1392#1425#0" expanded="true" />
-            <element signature="method#joinMax#0;class#PacketAnalysis#0" expanded="true" />
-            <element signature="e#2995#3022#0" expanded="true" />
-            <element signature="method#notifyAnalysisPerformedListeners#0;class#PacketAnalysis#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="94" selection-start="4596" selection-end="4596" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1904">
-          <folding>
-            <element signature="class#DeviceConnectionStateEnum#0" expanded="false" />
-            <element signature="class#DeviceConnectionListenerI#0" expanded="false" />
-            <element signature="e#782#809#0" expanded="true" />
-            <element signature="method#scanForDeviceConnections#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="method#scanForCOMPorts#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="e#2692#2704#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="1" selection-start="118" selection-end="118" vertical-scroll-proportion="0.24688797" vertical-offset="0" max-vertical-offset="482">
@@ -1722,20 +1669,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="45" selection-start="1579" selection-end="1579" vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="867">
+        <state line="36" column="31" selection-start="2429" selection-end="2429" vertical-scroll-proportion="0.591922" vertical-offset="187" max-vertical-offset="1037">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="0" selection-start="4415" selection-end="4415" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
+          <folding>
+            <element signature="class#DeviceConnectionStateEnum#0" expanded="false" />
+            <element signature="class#DeviceConnectionListenerI#0" expanded="false" />
+            <element signature="e#800#827#0" expanded="true" />
+            <element signature="method#scanForDeviceConnections#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="method#scanForCOMPorts#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="e#2710#2722#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="20" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
+          <folding>
+            <element signature="docComment;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#510#564#0" expanded="true" />
+            <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#1422#1431#0" expanded="true" />
+            <element signature="e#1546#1579#0" expanded="true" />
+            <element signature="method#joinMax#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#3149#3176#0" expanded="true" />
+            <element signature="method#notifyAnalysisPerformedListeners#0;class#PacketAnalysis#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="13" selection-start="4366" selection-end="4366" vertical-scroll-proportion="0.3488372" vertical-offset="510" max-vertical-offset="1241">
+        <state line="101" column="5" selection-start="3299" selection-end="3299" vertical-scroll-proportion="1.1639004" vertical-offset="0" max-vertical-offset="1343">
           <folding>
-            <element signature="e#2420#2583#0" expanded="true" />
-            <element signature="e#2572#2573#0" expanded="true" />
-            <element signature="e#3036#3226#0" expanded="true" />
-            <element signature="e#3215#3216#0" expanded="true" />
+            <element signature="e#2256#2446#0" expanded="true" />
+            <element signature="e#2435#2436#0" expanded="true" />
             <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#3628:4553" expanded="true" />
           </folding>
         </state>
       </provider>

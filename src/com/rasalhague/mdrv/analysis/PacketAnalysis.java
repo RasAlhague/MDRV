@@ -14,11 +14,16 @@ import java.util.List;
  */
 public class PacketAnalysis implements DataPacketListener
 {
-    private HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResultsMap = new HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>();
+    private volatile HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResultsMap = new HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>();
 
     public static PacketAnalysis getInstance()
     {
         return PacketAnalysisHolder.INSTANCE;
+    }
+
+    public HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> getAnalysisResultsMap()
+    {
+        return analysisResultsMap;
     }
 
     @Override

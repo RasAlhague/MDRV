@@ -1,7 +1,5 @@
 package com.rasalhague.mdrv.gui;
 
-import com.rasalhague.mdrv.DataPacket;
-import com.rasalhague.mdrv.DataPacketListener;
 import com.rasalhague.mdrv.DeviceConnectionListener;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
@@ -29,13 +27,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class MainWindowController extends Application implements DataPacketListener, AnalysisPerformedListener
+public class MainWindowController extends Application implements AnalysisPerformedListener
 {
     private static MainWindowController      instance;
     public         LineChart<Number, Number> lineChart;
     public         TextArea                  debugTextArea;
     public         CheckBox                  maxCheckBox;
     public         Button                    startListeningButton;
+    public Button refreshChartButton;
 
     public MainWindowController()
     {
@@ -56,31 +55,6 @@ public class MainWindowController extends Application implements DataPacketListe
         }
 
         return instance;
-    }
-
-    @Override
-    public synchronized void dataPacketEvent(final DataPacket dataPacket)
-    {
-        final XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-        series.setName(dataPacket.getDeviceInfo().getDevicePid());
-
-        int xAxisCounter = 1;
-        for (Integer value : dataPacket.getDataPacketValues())
-        {
-            XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(xAxisCounter, value);
-            series.getData().add(data);
-
-            xAxisCounter++;
-        }
-
-        Platform.runLater(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                lineChart.getData().add(series);
-            }
-        });
     }
 
     @Override
@@ -127,6 +101,11 @@ public class MainWindowController extends Application implements DataPacketListe
         System.out.println(maxCheckBox.isSelected());
     }
 
+    public void refreshChartButtonClickEvent(Event event)
+    {
+        PacketAnalysis.getInstance().getAnalysisResultsMap().clear();
+    }
+
     @Override
     public synchronized void analysisPerformedEvent(final HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResult)
     {
@@ -138,20 +117,24 @@ public class MainWindowController extends Application implements DataPacketListe
                 lineChart.getData().clear();
 
                 Set<DeviceInfo> keySet = analysisResult.keySet();
-                ArrayList<Integer> list = analysisResult.get(keySet.iterator().next()).get(AnalysisKey.MAX);
 
-                final XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-
-                int xAxisCounter = 1;
-                for (Integer value : list)
+                for (DeviceInfo deviceInfo : keySet)
                 {
-                    XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(xAxisCounter, value);
-                    series.getData().add(data);
+                    ArrayList<Integer> list = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
 
-                    xAxisCounter++;
+                    final XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+
+                    int xAxisCounter = 1;
+                    for (Integer value : list)
+                    {
+                        XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(xAxisCounter, value);
+                        series.getData().add(data);
+
+                        xAxisCounter++;
+                    }
+
+                    lineChart.getData().add(series);
                 }
-
-                lineChart.getData().add(series);
             }
         });
     }

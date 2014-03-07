@@ -24,7 +24,7 @@
             </xAxis>
             <yAxis>
                 <NumberAxis animated="false" autoRanging="false" disable="false" forceZeroInRange="false"
-                            label="RSSI, dBm" lowerBound="-110.0" side="LEFT" tickLabelsVisible="true"
+                            label="RSSI, dBm" lowerBound="-120.0" side="LEFT" tickLabelsVisible="true"
                             upperBound="-40.0"/>
             </yAxis>
             <padding>
@@ -34,16 +34,32 @@
                 <Insets fx:id="x2"/>
             </VBox.margin>
         </LineChart>
-        <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" spacing="5.0" VBox.vgrow="NEVER">
-            <children>
-                <Button fx:id="startListeningButton" mnemonicParsing="false"
-                        onMouseClicked="#startListeningButtonMouseClickedEvent" text="Start listening"/>
-                <CheckBox fx:id="maxCheckBox" mnemonicParsing="false" onAction="#maxCheckBoxChangedEvent" text="max"/>
-            </children>
-        </HBox>
         <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1"/>
         </padding>
+        <GridPane alignment="CENTER_LEFT" disable="false" hgap="5.0" prefWidth="-1.0" vgap="5.0" VBox.vgrow="NEVER">
+            <children>
+                <CheckBox fx:id="maxCheckBox" alignment="CENTER_LEFT" mnemonicParsing="false"
+                          onAction="#maxCheckBoxChangedEvent" text="max" GridPane.columnIndex="1"
+                          GridPane.rowIndex="0"/>
+                <Button fx:id="refreshChartButton" alignment="CENTER_RIGHT" cancelButton="false" contentDisplay="LEFT"
+                        defaultButton="false" disable="false" mnemonicParsing="false"
+                        onMouseClicked="#refreshChartButtonClickEvent" text="Refresh chart" textOverrun="ELLIPSIS"
+                        GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Button fx:id="startListeningButton" alignment="BOTTOM_RIGHT" mnemonicParsing="false"
+                        onMouseClicked="#startListeningButtonMouseClickedEvent" text="Start listening"
+                        GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-1.0" prefWidth="-1.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-1.0" prefWidth="-1.0"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-1.0" minWidth="-1.0"
+                                   prefWidth="-1.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
         <TextArea fx:id="debugTextArea" disable="false" editable="false" maxHeight="1.7976931348623157E308"
                   maxWidth="1.7976931348623157E308" minHeight="30.0" minWidth="-1.0" prefHeight="100.0" prefWidth="-1.0"
                   text="" wrapText="true" VBox.vgrow="SOMETIMES">
