@@ -35,7 +35,7 @@
                    horizontalGridLinesVisible = "true"
                    horizontalZeroLineVisible = "true"
                    legendSide = "BOTTOM"
-                   legendVisible = "false"
+                   legendVisible = "true"
                    maxHeight = "1.7976931348623157E308"
                    maxWidth = "1.7976931348623157E308"
                    minHeight = "-Infinity"
@@ -44,7 +44,7 @@
                    prefWidth = "800.0"
                    verticalGridLinesVisible = "true"
                    verticalZeroLineVisible = "true"
-                   VBox.vgrow = "SOMETIMES">
+                   VBox.vgrow = "ALWAYS">
             <xAxis>
                 <NumberAxis animated = "false"
                             autoRanging = "false"
@@ -134,9 +134,9 @@
         <TextArea fx:id = "debugTextArea"
                   disable = "false"
                   editable = "false"
-                  maxHeight = "1.7976931348623157E308"
-                  maxWidth = "1.7976931348623157E308"
-                  minHeight = "30.0"
+                  maxHeight = "-1.0"
+                  maxWidth = "-1.0"
+                  minHeight = "50.0"
                   minWidth = "-1.0"
                   prefHeight = "100.0"
                   prefWidth = "-1.0"

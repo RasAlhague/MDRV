@@ -126,6 +126,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                     ArrayList<Integer> list = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
 
                     final XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+                    series.setName(deviceInfo.getDeviceName());
 
                     int xAxisCounter = 1;
                     for (Integer value : list)
