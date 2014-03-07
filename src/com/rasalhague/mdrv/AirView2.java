@@ -13,13 +13,14 @@ final class AirView2 extends COMDeviceCommunication
     @Override
     public void initializeDevice()
     {
-        //        byte[] gdiByte = new byte[]{0x0A, 0x67, 0x64, 0x69, 0x0A}; //.gdi.
         byte[] intByte = new byte[]{0x69, 0x6E, 0x74}; //int
+        //        byte[] gdiByte = new byte[]{0x0A, 0x67, 0x64, 0x69, 0x0A}; //.gdi.
         byte[] bsByte = new byte[]{0x0A, 0x62, 0x73, 0x0A}; //.bs.
 
         try
         {
             serialPort.writeBytes(intByte);
+            //            serialPort.writeBytes(gdiByte);
             serialPort.writeBytes(bsByte);
         }
         catch (SerialPortException e)

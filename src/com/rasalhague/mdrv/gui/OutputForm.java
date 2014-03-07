@@ -1,4 +1,6 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.gui;
+
+import com.rasalhague.mdrv.DataPacket;
 
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;

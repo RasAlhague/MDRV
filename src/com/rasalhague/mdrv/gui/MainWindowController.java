@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -20,6 +21,8 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -134,6 +137,36 @@ public class MainWindowController extends Application implements AnalysisPerform
                     }
 
                     lineChart.getData().add(series);
+                }
+
+                /**
+                 * Add Tooltip to every node (point) on chart
+                 */
+                for (XYChart.Series<Number, Number> s : lineChart.getData())
+                {
+                    for (XYChart.Data<Number, Number> d : s.getData())
+                    {
+                        final Node node = d.getNode();
+                        final Tooltip t = new Tooltip(d.toString());
+                        t.getStyleClass().add("ttip");
+                        node.setOnMouseEntered(new EventHandler<MouseEvent>()
+                        {
+                            @Override
+                            public void handle(MouseEvent event)
+                            {
+                                t.show(node, event.getScreenX(), event.getScreenY());
+                            }
+                        });
+
+                        node.setOnMouseExited(new EventHandler<MouseEvent>()
+                        {
+                            @Override
+                            public void handle(MouseEvent event)
+                            {
+                                t.hide();
+                            }
+                        });
+                    }
                 }
             }
         });
