@@ -1,7 +1,9 @@
 package com.rasalhague.mdrv;
 
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import jssc.SerialPort;
 import jssc.SerialPortException;
+import jssc.SerialPortTimeoutException;
 
 final class ez430RF2500 extends COMDeviceCommunication
 {
@@ -13,16 +15,38 @@ final class ez430RF2500 extends COMDeviceCommunication
     @Override
     void initializeDevice()
     {
-        byte[] intByte = new byte[]{0x7};
+        final int initRetryingDelay = 500;
 
         try
         {
-            serialPort.writeBytes(intByte);
+            int initRetryingCounter = 1;
+            while (true)
+            {
+                ApplicationLogger.LOGGER.info(initRetryingCounter++ + " try to init ez430RF2500");
+
+                serialPort.setParams(SerialPort.BAUDRATE_9600,
+                                     SerialPort.DATABITS_8,
+                                     SerialPort.STOPBITS_1,
+                                     SerialPort.PARITY_NONE);
+
+                try
+                {
+                    serialPort.readString(1, initRetryingDelay);
+                    break;
+                }
+                catch (SerialPortTimeoutException ignored) {}
+            }
         }
         catch (SerialPortException e)
         {
+            ApplicationLogger.LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }
+        //        catch (InterruptedException e)
+        //        {
+        //            ApplicationLogger.LOGGER.severe(e.getMessage());
+        //            e.printStackTrace();
+        //        }
 
         ApplicationLogger.LOGGER.info("ez430RF2500 has initialized");
     }
