@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Format&#10;Fix">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\.idea\artifacts\MDRV_jar.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\.idea\libraries\jfreechart_1_0_17.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\.idea\libraries\xchart_2_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\temp\JFreeCharTest.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\temp\XChartVisualizer.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MDRV.iml" afterPath="$PROJECT_DIR$/MDRV.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.jnlp" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\commons-lang3-3.2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\gson-2.2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jcommon-1.0.21.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jfreechart-1.0.17.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jssc.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\usb-api-1.0.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\usb4java-1.0.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\xchart-2.3.1.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -112,7 +113,7 @@
       <file leaf-file-name="ez430RF2500.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="9" selection-start="441" selection-end="441" vertical-scroll-proportion="0.16783217" vertical-offset="135" max-vertical-offset="918">
+            <state line="43" column="9" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.73846155" vertical-offset="118" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -1146,7 +1147,11 @@
       <created>1394225204287</created>
       <updated>1394225204287</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Add ez430RF2500 initializing">
+      <created>1394229262877</created>
+      <updated>1394229262877</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1171,7 +1176,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="411" y="0" width="1189" height="870" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32496697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1189,7 +1194,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26702034" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26702034" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3130904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16623877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1216,7 +1221,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Comment line bcz bug detected and fixed: to access device on linux need root access" />
     <MESSAGE value="Name fix" />
     <MESSAGE value="Name fix&#10;Set pretty out put format form gson" />
     <MESSAGE value="Add new check for '\r'&#10;Del unused method" />
@@ -1241,7 +1245,8 @@
     <MESSAGE value="jar" />
     <MESSAGE value="Add Tooltips" />
     <MESSAGE value="Add legend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add legend" />
+    <MESSAGE value="Add ez430RF2500 initializing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ez430RF2500 initializing" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1553,7 +1558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="9" selection-start="441" selection-end="441" vertical-scroll-proportion="0.16783217" vertical-offset="135" max-vertical-offset="918">
+        <state line="43" column="9" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.73846155" vertical-offset="118" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
