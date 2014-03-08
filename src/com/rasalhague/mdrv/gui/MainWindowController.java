@@ -77,6 +77,12 @@ public class MainWindowController extends Application implements AnalysisPerform
             @Override
             public void handle(WindowEvent windowEvent)
             {
+                //Need to stop coz thread prevent exit program
+                if (DeviceConnectionListener.isListening())
+                {
+                    DeviceConnectionListener.stopListening();
+                }
+
                 Platform.exit();
             }
         });
@@ -93,10 +99,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void startListeningButtonMouseClickedEvent(Event event)
     {
-        DeviceConnectionListener devConnListener = new DeviceConnectionListener();
-        Thread devConnListenerThread = new Thread(devConnListener);
-        devConnListenerThread.setDaemon(true);
-        devConnListenerThread.start();
+        DeviceConnectionListener.startListening();
     }
 
     public void maxCheckBoxChangedEvent(ActionEvent event)

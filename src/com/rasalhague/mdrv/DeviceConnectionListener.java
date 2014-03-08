@@ -13,7 +13,8 @@ import java.util.TimerTask;
 
 enum DeviceConnectionStateEnum
 {
-    CONNECTED, DISCONNECTED
+    CONNECTED,
+    DISCONNECTED
 }
 
 interface DeviceConnectionListenerI
@@ -21,30 +22,58 @@ interface DeviceConnectionListenerI
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum);
 }
 
-public class DeviceConnectionListener implements Runnable, DeviceConnectionListenerI
+/**
+ * Singleton
+ */
+public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
     private ArrayList<DeviceInfo>           comDeviceInfoList = new ArrayList<DeviceInfo>();
     private List<DeviceConnectionListenerI> listeners         = new ArrayList<DeviceConnectionListenerI>();
+    private long    timerDelayMs  = 0;
+    private long    timerPeriodMs = 1000;
+    private boolean isListening   = false;
+    private Timer timer;
 
-    public DeviceConnectionListener()
+    private static DeviceConnectionListener instance = new DeviceConnectionListener();
+
+    //    private static class DeviceConnectionListenerHolder
+    //    {
+    //        private final static DeviceConnectionListener INSTANCE = new DeviceConnectionListener();
+    //    }
+    //
+    //    public static DeviceConnectionListener getInstance()
+    //    {
+    //        return DeviceConnectionListenerHolder.INSTANCE;
+    //    }
+
+    public static DeviceConnectionListener getInstance()
+    {
+        return instance;
+    }
+
+    private DeviceConnectionListener()
     {
         addListener(this);
     }
 
-    public void addListener(DeviceConnectionListenerI toAdd)
+    public static void startListening()
     {
-        listeners.add(toAdd);
+        instance.runSchedule();
     }
 
-    @Override
-    public void run()
+    public static void stopListening()
     {
-        startListening();
+        instance.cancelSchedule();
     }
 
-    public void startListening()
+    public static boolean isListening()
     {
-        Timer timer = new Timer();
+        return instance.isListening;
+    }
+
+    private void runSchedule()
+    {
+        timer = new Timer();
         TimerTask timerTask = new TimerTask()
         {
             @Override
@@ -54,11 +83,18 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
             }
         };
 
-        long timerDelay = 0;
-        long timerPeriod = 1000;
-        timer.schedule(timerTask, timerDelay, timerPeriod);
+        timer.schedule(timerTask, timerDelayMs, timerPeriodMs);
+        isListening = true;
 
-        ApplicationLogger.LOGGER.info("Waiting for devices...");
+        ApplicationLogger.LOGGER.info("Listening schedule started. Waiting for devices...");
+    }
+
+    private void cancelSchedule()
+    {
+        timer.cancel();
+        isListening = false;
+
+        ApplicationLogger.LOGGER.info("Listening schedule canceled.");
     }
 
     private void scanForDeviceConnections()
@@ -67,8 +103,6 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
 
         //TODO ScanUSB
     }
-
-    //region Observer implementation
 
     private void scanForCOMPorts()
     {
@@ -106,15 +140,6 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
 
     }
 
-    private void performDeviceConnectionEvent(DeviceInfo deviceName, DeviceConnectionStateEnum connectionStateEnum)
-    {
-        // Notify everybody that may be interested.
-        for (DeviceConnectionListenerI listenerI : listeners)
-        {
-            listenerI.deviceConnectionEvent(deviceName, connectionStateEnum);
-        }
-    }
-
     @Override
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
@@ -136,9 +161,27 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
                 deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);
-                thread.setName(connectedDevice.getDeviceName() + " Thread");
+                thread.setName(connectedDevice.getDeviceName() + "QWEQWEQWEWQE Thread");
+                //TODO Need correct thread control
+                thread.setDaemon(true);
                 thread.start();
             }
+        }
+    }
+
+    //region Observer implementation
+
+    public void addListener(DeviceConnectionListenerI toAdd)
+    {
+        listeners.add(toAdd);
+    }
+
+    private void performDeviceConnectionEvent(DeviceInfo deviceName, DeviceConnectionStateEnum connectionStateEnum)
+    {
+        // Notify everybody that may be interested.
+        for (DeviceConnectionListenerI listenerI : listeners)
+        {
+            listenerI.deviceConnectionEvent(deviceName, connectionStateEnum);
         }
     }
 
