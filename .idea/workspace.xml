@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Format&#10;Fix">
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\MDRV.jnlp" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\commons-lang3-3.2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\gson-2.2.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jcommon-1.0.21.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jfreechart-1.0.17.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\jssc.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\usb-api-1.0.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\usb4java-1.0.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\artifacts\libs\xchart-2.3.1.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="clean up">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hidapi_1_1_sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MDRV.iml" afterPath="$PROJECT_DIR$/MDRV.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -110,20 +103,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ez430RF2500.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="9" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.73846155" vertical-offset="118" max-vertical-offset="833">
+            <state line="49" column="17" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.46011397" vertical-offset="0" max-vertical-offset="816">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="COMDeviceCommunication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
+      <file leaf-file-name="TextAreaHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="9" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1054">
-              <folding />
+            <state line="27" column="5" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+              <folding>
+                <element signature="method#publish#0;class#TextAreaHandler#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HidAPI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="9" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="969">
+              <folding>
+                <element signature="docComment;class#HidAPI#0" expanded="true" />
+                <element signature="docComment;method#HidAPI#0;class#HidAPI#0" expanded="true" />
+                <element signature="docComment;method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+                <element signature="method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+                <element signature="docComment;method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+                <element signature="method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,10 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/RasAlhague/mdrv/MDRV.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBTest.java" />
-        <option value="$PROJECT_DIR$/src/javax.usb.properties" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketLogger.java" />
         <option value="$PROJECT_DIR$/logs/PacketData 24-02-14 at 18.17.21.log" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ApplicationLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor.java" />
@@ -176,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/JFreeCharTest.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
@@ -190,14 +196,19 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css.html" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/hidAPI.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPIImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPIImplImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPI.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="411" />
-    <option name="width" value="1189" />
+    <option name="x" value="228" />
+    <option name="width" value="1372" />
     <option name="height" value="870" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -427,8 +438,8 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -444,6 +455,86 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javahidapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javahidapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hidapi-1.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javahidapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hidapi-1.1.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hidapi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -520,6 +611,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="temp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logging" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -635,7 +748,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.11495327" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/jfreechart-1.0.17/lib/jcommon-1.0.21.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/javahidapi/hidapi-1.1-javadoc.jar!/" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -648,7 +761,7 @@
     <property name="options.splitter.main.proportions" value="0.15210356" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.lastSelected" value="preferences.sourceCode.XML" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="" />
@@ -670,6 +783,7 @@
       <recent name="com.RasAlhague.MDRV.Utils" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.rasalhague.mdrv.temp" />
       <recent name="com.rasalhague.mdrv.RawDataProcessor" />
       <recent name="com.rasalhague.mdrv" />
       <recent name="com.RasAlhague.MDRV" />
@@ -752,6 +866,19 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -777,19 +904,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1151,7 +1265,11 @@
       <created>1394229262877</created>
       <updated>1394229262877</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="clean up">
+      <created>1394229289198</created>
+      <updated>1394229289198</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1175,16 +1293,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="411" y="0" width="1189" height="870" extended-state="0" />
+    <frame x="228" y="0" width="1372" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32496697" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32388663" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14120668" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38731444" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3859649" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.392" sideWeight="0.306" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23841059" sideWeight="0.5006748" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1194,10 +1312,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26702034" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22983257" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3130904" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16623877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1221,7 +1339,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Name fix" />
     <MESSAGE value="Name fix&#10;Set pretty out put format form gson" />
     <MESSAGE value="Add new check for '\r'&#10;Del unused method" />
     <MESSAGE value="Format&#10;Fix" />
@@ -1246,7 +1363,8 @@
     <MESSAGE value="Add Tooltips" />
     <MESSAGE value="Add legend" />
     <MESSAGE value="Add ez430RF2500 initializing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ez430RF2500 initializing" />
+    <MESSAGE value="clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1258,6 +1376,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="25" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="969">
+          <folding>
+            <element signature="docComment;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#HidAPI#0;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+            <element signature="method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+            <element signature="method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-sources.jar!/de/ailis/usb4java/Interface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="93" column="0" selection-start="2683" selection-end="2683" vertical-scroll-proportion="0.0" vertical-offset="853" max-vertical-offset="2397" />
@@ -1425,11 +1557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="31" selection-start="470" selection-end="470" vertical-scroll-proportion="0.39534885" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="8" selection-start="839" selection-end="839" vertical-scroll-proportion="0.6511628" vertical-offset="0" max-vertical-offset="731">
@@ -1512,16 +1639,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="85" selection-end="85" vertical-scroll-proportion="0.11627907" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="5" column="3" selection-start="85" selection-end="85" vertical-scroll-proportion="0.11627907" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="1" selection-start="213" selection-end="213" vertical-scroll-proportion="0.20930232" vertical-offset="0" max-vertical-offset="731">
-          <folding />
-        </state>
+        <state line="9" column="1" selection-start="213" selection-end="213" vertical-scroll-proportion="0.20930232" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
@@ -1533,15 +1656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="63" selection-start="4253" selection-end="4253" vertical-scroll-proportion="0.3488372" vertical-offset="952" max-vertical-offset="1904">
-          <folding>
-            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="80" column="38" selection-start="3449" selection-end="3449" vertical-scroll-proportion="1.5403557" vertical-offset="234" max-vertical-offset="2669">
@@ -1549,16 +1663,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="9" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1054">
+        <state line="43" column="9" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="9" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.73846155" vertical-offset="118" max-vertical-offset="833">
+        <state line="34" column="9" selection-start="979" selection-end="979" vertical-scroll-proportion="0.4755245" vertical-offset="0" max-vertical-offset="1054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/javahidapi/hidapi-1.1-sources.jar!/com/codeminders/hidapi/HIDManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="252" selection-end="252" vertical-scroll-proportion="0.20118344" vertical-offset="0" max-vertical-offset="765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="9" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="969">
+          <folding>
+            <element signature="docComment;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#HidAPI#0;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+            <element signature="method#deviceAdded#0;class#HidAPI#0" expanded="true" />
+            <element signature="docComment;method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+            <element signature="method#deviceRemoved#0;class#HidAPI#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="5" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <folding>
+            <element signature="method#publish#0;class#TextAreaHandler#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="17" selection-start="1699" selection-end="1699" vertical-scroll-proportion="0.46011397" vertical-offset="0" max-vertical-offset="816">
           <folding />
         </state>
       </provider>
@@ -1647,7 +1796,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jssc</last-edited>
+          <last-edited>hidapi-1.1-sources</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

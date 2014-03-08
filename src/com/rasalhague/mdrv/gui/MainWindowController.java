@@ -46,6 +46,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public static void main(String[] args)
     {
+        //        new HidAPI();
         launch();
     }
 
