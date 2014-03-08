@@ -95,7 +95,7 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         try
         {
             boolean port = serialPort.closePort();
-            ApplicationLogger.LOGGER.info("Stopping " + serialPort.getPortName() + "result: " + port);
+            ApplicationLogger.LOGGER.info("Stopping " + serialPort.getPortName() + " result: " + port);
         }
         catch (SerialPortException e)
         {
