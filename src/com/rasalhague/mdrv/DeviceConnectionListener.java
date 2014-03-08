@@ -1,6 +1,7 @@
 package com.rasalhague.mdrv;
 
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
+import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
@@ -131,8 +132,8 @@ public class DeviceConnectionListener implements Runnable, DeviceConnectionListe
                 DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
 
                 //                deviceCommunication.rxRawDataReceiver.addObserver(outputForm);
-                deviceCommunication.rxRawDataReceiver.addObserver(PacketLogger.getInstance());
-                deviceCommunication.rxRawDataReceiver.addListener(PacketAnalysis.getInstance());
+                deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
+                deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);
                 thread.setName(connectedDevice.getDeviceName() + " Thread");

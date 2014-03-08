@@ -1,5 +1,6 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.dev_communication;
 
+import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import jssc.SerialPortException;
 

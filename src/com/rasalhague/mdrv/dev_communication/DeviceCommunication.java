@@ -1,5 +1,7 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.dev_communication;
 
+import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.RxRawDataReceiver;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 public abstract class DeviceCommunication implements Runnable
@@ -11,6 +13,11 @@ public abstract class DeviceCommunication implements Runnable
     {
         deviceInfo = devInfo;
         rxRawDataReceiver = new RxRawDataReceiver(deviceInfo);
+    }
+
+    public RxRawDataReceiver getRxRawDataReceiver()
+    {
+        return rxRawDataReceiver;
     }
 
     //Factory method
