@@ -12,8 +12,9 @@ import java.util.logging.*;
 
 public class ApplicationLogger extends Logger
 {
+    private final static String LOGGER_NAME = "ApplicationLogger";
     //    public final static Logger GLOBAL_LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public final static Logger LOGGER = new ApplicationLogger("ApplicationLogger", null);
+    public final static  Logger LOGGER      = new ApplicationLogger(LOGGER_NAME, null);
 
     private static ArrayList<LogRecord> logRecordArrayList = new ArrayList<LogRecord>();
 
@@ -83,6 +84,8 @@ public class ApplicationLogger extends Logger
 
     }
 
+    //TODO return wrong SourceClassName if active
+/*
     @Override
     public synchronized void log(LogRecord record)
     {
@@ -90,7 +93,7 @@ public class ApplicationLogger extends Logger
 
         logRecordArrayList.add(record);
     }
-
+*/
     private static void setFormatterToLoggerHandlers(Logger logger, Formatter formatter)
     {
         //For logger handlers
@@ -111,57 +114,18 @@ public class ApplicationLogger extends Logger
             }
         }
     }
-
-    //TODO Do not work: out wrong class name (this) instead of caller class name
-    //region Do not work: out wrong class name (this) instead of caller class name
-
-    /*
-    static public void severe(String msg)
-    {
-        LOGGER.severe(msg);
-    }
-
-    static public void warning(String msg)
-    {
-        LOGGER.warning(msg);
-    }
-
-    static public void info(String msg)
-    {
-        LOGGER.info(msg);
-    }
-
-    static public void config(String msg)
-    {
-        LOGGER.config(msg);
-    }
-
-    static public void fine(String msg)
-    {
-        LOGGER.fine(msg);
-    }
-
-    static public void finer(String msg)
-    {
-        LOGGER.finer(msg);
-    }
-
-    static public void finest(String msg)
-    {
-        LOGGER.finest(msg);
-    }
-    */
-
-    //endregion
 }
 
 class MyLogFormatter extends Formatter
 {
+    //    private final static String LOGGER_NAME = "ApplicationLogger";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss.SSS");
 
     @Override
     public String format(LogRecord record)
     {
+        //        LocationInfo locationInfo = new LocationInfo(new Throwable(), LOGGER_NAME);
+
         StringBuilder builder = new StringBuilder();
         //        String bracerOpen = "[";
         //        String bracerClose = "]";
