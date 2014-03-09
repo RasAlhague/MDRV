@@ -1,11 +1,14 @@
 package com.rasalhague.mdrv;
 
+import com.codeminders.hidapi.HIDDeviceInfo;
+import com.codeminders.hidapi.HIDManager;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -27,28 +30,32 @@ interface DeviceConnectionListenerI
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
-    private ArrayList<DeviceInfo>           comDeviceInfoList = new ArrayList<DeviceInfo>();
-    private List<DeviceConnectionListenerI> listeners         = new ArrayList<DeviceConnectionListenerI>();
-    private long    timerDelayMs  = 0;
-    private long    timerPeriodMs = 1000;
-    private boolean isListening   = false;
+    private ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<DeviceInfo>();
+    private List<DeviceConnectionListenerI> listeners           = new ArrayList<DeviceConnectionListenerI>();
+    private long                            scanTimerPeriodMs   = 1000;
+    private boolean                         isListening         = false;
     private Timer timer;
 
     private static DeviceConnectionListener instance = new DeviceConnectionListener();
 
-    //    private static class DeviceConnectionListenerHolder
-    //    {
-    //        private final static DeviceConnectionListener INSTANCE = new DeviceConnectionListener();
-    //    }
-    //
-    //    public static DeviceConnectionListener getInstance()
-    //    {
-    //        return DeviceConnectionListenerHolder.INSTANCE;
-    //    }
+    static
+    {
+        com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
+    }
 
     public static DeviceConnectionListener getInstance()
     {
         return instance;
+    }
+
+    public long getScanTimerPeriodMs()
+    {
+        return scanTimerPeriodMs;
+    }
+
+    public void setScanTimerPeriodMs(long scanTimerPeriodMs)
+    {
+        this.scanTimerPeriodMs = scanTimerPeriodMs;
     }
 
     private DeviceConnectionListener()
@@ -83,7 +90,8 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             }
         };
 
-        timer.schedule(timerTask, timerDelayMs, timerPeriodMs);
+        long timerDelayMs = 0;
+        timer.schedule(timerTask, timerDelayMs, scanTimerPeriodMs);
         isListening = true;
 
         ApplicationLogger.LOGGER.info("Listening schedule started. Waiting for devices...");
@@ -99,69 +107,110 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     private void scanForDeviceConnections()
     {
-        scanForCOMPorts();
+        ArrayList<DeviceInfo> comPortsList = getCOMPortsList();
+        ArrayList<DeviceInfo> hidDevicesList = getHIDDevicesList();
+        ArrayList<DeviceInfo> comHidList = new ArrayList<DeviceInfo>();
+        comHidList.addAll(comPortsList);
+        comHidList.addAll(hidDevicesList);
+        //        System.out.println(comHidList);
 
-        //TODO ScanUSB
+        updateConnectedDeviceList(comHidList);
+        for (DeviceInfo deviceInfo : connectedDeviceList)
+        {
+            System.out.println(deviceInfo);
+
+        }
+        System.out.println();
     }
 
-    private void scanForCOMPorts()
+    /**
+     * Get current connected ports via ArrayList<DeviceInfo>
+     *
+     * @return current connected ports
+     */
+    private ArrayList<DeviceInfo> getCOMPortsList()
     {
+        //Get connected port names
         String[] portNames = SerialPortList.getPortNames();
-        ArrayList<DeviceInfo> portNamesInfoArrayList = DeviceInfo.createArrayListFromNames(portNames,
-                                                                                           DeviceInfo.DeviceTypeEnum.COM);
 
-        //        System.out.println("portNames.length = " + String.valueOf(portNames.length));
+        //Generate array list from portNames
+        ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
 
-        //adding
-        for (String port : portNames)
+        for (String portName : portNames)
         {
-            //TODO need to avoid new DeviceInfo every scan
-            DeviceInfo deviceInfo = new DeviceInfo(port, DeviceInfo.DeviceTypeEnum.COM);
-            if (!comDeviceInfoList.contains(deviceInfo))
+            deviceInfoList.add(new DeviceInfo(portName, DeviceInfo.DeviceType.COM));
+        }
+
+        return deviceInfoList;
+    }
+
+    private ArrayList<DeviceInfo> getHIDDevicesList()
+    {
+        try
+        {
+            HIDDeviceInfo[] hidDeviceInfos = HIDManager.getInstance().listDevices();
+
+            //Generate array list from portNames
+            ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
+
+            for (HIDDeviceInfo hidDeviceInfo : hidDeviceInfos)
             {
-                comDeviceInfoList.add(deviceInfo);
+                deviceInfoList.add(new DeviceInfo(hidDeviceInfo));
+            }
+
+            return deviceInfoList;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private void updateConnectedDeviceList(ArrayList<DeviceInfo> scannedDevicesList)
+    {
+        //adding
+        for (DeviceInfo deviceInfo : scannedDevicesList)
+        {
+            if (!connectedDeviceList.contains(deviceInfo))
+            {
+                connectedDeviceList.add(deviceInfo);
                 performDeviceConnectionEvent(deviceInfo, DeviceConnectionStateEnum.CONNECTED);
             }
         }
 
         //removing
-        //create temp array bcs ConcurrentModificationException
-
+        //create temp array coz ConcurrentModificationException
         ArrayList<DeviceInfo> clone = new ArrayList<DeviceInfo>();
-        clone = clone.getClass().cast(comDeviceInfoList.clone());
+        clone = clone.getClass().cast(connectedDeviceList.clone());
         for (DeviceInfo deviceInfo : clone)
         {
-            if (!portNamesInfoArrayList.contains(deviceInfo))
+            if (!scannedDevicesList.contains(deviceInfo))
             {
                 performDeviceConnectionEvent(deviceInfo, DeviceConnectionStateEnum.DISCONNECTED);
-                comDeviceInfoList.remove(deviceInfo);
+                connectedDeviceList.remove(deviceInfo);
             }
         }
-
     }
 
     @Override
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
-        ApplicationLogger.LOGGER.info(connectedDevice.getDevicePortName() + " " + deviceConnectionStateEnum);
+        ApplicationLogger.LOGGER.info(connectedDevice.getDeviceName() + " " + deviceConnectionStateEnum);
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
-            if (connectedDevice.getDeviceType() == DeviceInfo.DeviceTypeEnum.COM)
+            if (connectedDevice.getDeviceType() == DeviceInfo.DeviceType.COM)
             {
-                //Create GUI for output
-                //                OutputForm outputForm = new OutputForm();
-                //                outputForm.launchGUI();
-
                 //Call Factory method and set form to out
                 DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
 
-                //                deviceCommunication.rxRawDataReceiver.addObserver(outputForm);
                 deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
                 deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);
-                thread.setName(connectedDevice.getDeviceName() + "QWEQWEQWEWQE Thread");
+                thread.setName(connectedDevice.getDeviceName() + "Thread");
                 //TODO Need correct thread control
                 thread.setDaemon(true);
                 thread.start();
