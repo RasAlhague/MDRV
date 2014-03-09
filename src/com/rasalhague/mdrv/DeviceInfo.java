@@ -15,6 +15,12 @@ public class DeviceInfo
     private final String     devicePortName;
     private final DeviceType deviceType;
 
+    public enum DeviceType
+    {
+        HID,
+        COM
+    }
+
     public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
     {
         devicePortName = hidDeviceInfo.getPath();
@@ -46,12 +52,6 @@ public class DeviceInfo
         }
 
         return deviceInfoList;
-    }
-
-    enum DeviceType
-    {
-        HID,
-        COM
     }
 
     public String getDeviceVid()
