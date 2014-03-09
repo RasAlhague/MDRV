@@ -112,15 +112,8 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         ArrayList<DeviceInfo> comHidList = new ArrayList<DeviceInfo>();
         comHidList.addAll(comPortsList);
         comHidList.addAll(hidDevicesList);
-        //        System.out.println(comHidList);
 
         updateConnectedDeviceList(comHidList);
-        for (DeviceInfo deviceInfo : connectedDeviceList)
-        {
-            System.out.println(deviceInfo);
-
-        }
-        System.out.println();
     }
 
     /**
@@ -201,20 +194,16 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
-            if (connectedDevice.getDeviceType() == DeviceInfo.DeviceType.COM)
-            {
-                //Call Factory method and set form to out
-                DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
+            //Call Factory method and set form to out
+            DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
 
-                deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
-                deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
+            deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
+            deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
-                Thread thread = new Thread(deviceCommunication);
-                thread.setName(connectedDevice.getDeviceName() + "Thread");
-                //TODO Need correct thread control
-                thread.setDaemon(true);
-                thread.start();
-            }
+            Thread thread = new Thread(deviceCommunication);
+            //TODO Need correct thread control
+            thread.setDaemon(true);
+            thread.start();
         }
     }
 
