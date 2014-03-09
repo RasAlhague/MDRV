@@ -1,5 +1,6 @@
 package com.rasalhague.mdrv;
 
+import com.codeminders.hidapi.HIDDeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -8,27 +9,49 @@ import java.util.HashMap;
 
 public class DeviceInfo
 {
-    private final String         deviceVid;
-    private final String         devicePid;
-    private final String         deviceName;
-    private final String         devicePortName;
-    private final DeviceTypeEnum deviceType;
+    private final String     deviceVid;
+    private final String     devicePid;
+    private final String     deviceName;
+    private final String     devicePortName;
+    private final DeviceType deviceType;
 
-    public static ArrayList<DeviceInfo> createArrayListFromNames(String[] portNames, DeviceTypeEnum deviceTypeEnum)
+    public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
+    {
+        devicePortName = hidDeviceInfo.getPath();
+        deviceType = DeviceType.HID;
+
+        deviceName = hidDeviceInfo.getProduct_string();
+        devicePid = String.valueOf(hidDeviceInfo.getProduct_id());
+        deviceVid = String.valueOf(hidDeviceInfo.getVendor_id());
+    }
+
+    DeviceInfo(String devPortName, DeviceType devTypeEnum)
+    {
+        devicePortName = devPortName;
+        deviceType = devTypeEnum;
+
+        HashMap<String, String> devInfMap = takeDeviceName();
+        deviceName = devInfMap.get("devName");
+        devicePid = devInfMap.get("pid");
+        deviceVid = devInfMap.get("vid");
+    }
+
+    public static ArrayList<DeviceInfo> createArrayListFromNames(String[] portNames, DeviceType deviceType)
     {
         ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
 
         for (String portName : portNames)
         {
-            deviceInfoList.add(new DeviceInfo(portName, deviceTypeEnum));
+            deviceInfoList.add(new DeviceInfo(portName, deviceType));
         }
 
         return deviceInfoList;
     }
 
-    enum DeviceTypeEnum
+    enum DeviceType
     {
-        USB, COM
+        HID,
+        COM
     }
 
     public String getDeviceVid()
@@ -51,7 +74,7 @@ public class DeviceInfo
         return devicePortName;
     }
 
-    public DeviceTypeEnum getDeviceType()
+    public DeviceType getDeviceType()
     {
         return deviceType;
     }
@@ -93,17 +116,6 @@ public class DeviceInfo
         int result = deviceVid.hashCode();
         result = 31 * result + devicePid.hashCode();
         return result;
-    }
-
-    DeviceInfo(String devPortName, DeviceTypeEnum devTypeEnum)
-    {
-        devicePortName = devPortName;
-        deviceType = devTypeEnum;
-
-        HashMap<String, String> devInfMap = takeDeviceName();
-        deviceName = devInfMap.get("devName");
-        devicePid = devInfMap.get("pid");
-        deviceVid = devInfMap.get("vid");
     }
 
     private HashMap<String, String> takeDeviceName()
