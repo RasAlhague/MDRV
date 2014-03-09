@@ -132,7 +132,8 @@ class MyLogFormatter extends Formatter
         //        String dot = ".";
         String separator = " ";
 
-        String packageName = this.getClass().getPackage().getName();
+        //        String packageName = this.getClass().getPackage().getName();
+        String packageName = "com.rasalhague.mdrv";
 
         builder.append(DATE_FORMAT.format(new Date(record.getMillis())));
 
