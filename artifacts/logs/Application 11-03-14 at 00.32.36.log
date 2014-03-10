@@ -1,0 +1,7 @@
+11/03/14 00:32:36.378 [INFO] [logging.ApplicationLogger.setup] Logger has initialized
+11/03/14 00:32:36.883 [INFO] [DeviceConnectionListener.runSchedule] Listening schedule started. Waiting for devices...
+11/03/14 00:32:36.910 [INFO] [DeviceConnectionListener.deviceConnectionEvent] Gaming Mouse G600 CONNECTED
+11/03/14 00:32:36.912 [INFO] [DeviceConnectionListener.deviceConnectionEvent] Gaming Mouse G600 ignored.
+11/03/14 00:32:36.912 [INFO] [DeviceConnectionListener.deviceConnectionEvent] USB Device CONNECTED
+11/03/14 00:32:36.913 [INFO] [DeviceConnectionListener.deviceConnectionEvent] USB Device ignored.
+11/03/14 00:32:46.744 [INFO] [DeviceConnectionListener.cancelSchedule] Listening schedule canceled.

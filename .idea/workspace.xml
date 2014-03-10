@@ -6,35 +6,21 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Rework">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/UsbHidTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/javahidapi.xml" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\.idea\libraries\usb4java_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\temp\USBITry.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\temp\USBTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MDRV.iml" afterPath="$PROJECT_DIR$/MDRV.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/RasAlhague.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/RasAlhague.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Massive rework / refactor&#10;Now supports HID devices">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/logs/Application 11-03-14 at 00.32.36.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/logs/Application 11-03-14 at 00.32.56.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/commons-lang3-3.2.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/gson-2.2.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/hidapi-1.1-javadoc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/hidapi-1.1-sources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/hidapi-1.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/jssc.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/logs/Application 11-03-14 at 00.32.36.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/logs/Application 11-03-14 at 00.32.56.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\RxRawDataReceiver.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
     </list>
     <ignored path="MDRV.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,7 +100,7 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="5" selection-start="3215" selection-end="3215" vertical-scroll-proportion="0.286" vertical-offset="809" max-vertical-offset="1309">
+            <state line="99" column="5" selection-start="3223" selection-end="3223" vertical-scroll-proportion="0.286" vertical-offset="809" max-vertical-offset="1309">
               <folding>
                 <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
                 <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
@@ -135,7 +121,7 @@
       <file leaf-file-name="COMDeviceCommunication.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="0" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2482">
+            <state line="78" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2482">
               <folding />
             </state>
           </provider>
@@ -1298,7 +1284,11 @@
       <created>1394399756489</created>
       <updated>1394399756489</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Massive rework / refactor&#10;Now supports HID devices">
+      <created>1394490868179</created>
+      <updated>1394490868180</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1369,7 +1359,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add exc logging. Name changes" />
     <MESSAGE value="Encapsulate LOGGER field" />
     <MESSAGE value="Del unused code" />
     <MESSAGE value="//TODO need to avoid new DeviceInfo every scan" />
@@ -1394,7 +1383,8 @@
     <MESSAGE value="deviceConnectionEvent now delegates choosing DeviceType to DeviceCommunication.getInstance" />
     <MESSAGE value="Fix" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="Massive rework / refactor&#10;Now supports HID devices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Massive rework / refactor&#10;Now supports HID devices" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1710,8 +1700,8 @@
         <state line="20" column="24" selection-start="691" selection-end="697" vertical-scroll-proportion="0.46526316" vertical-offset="0" max-vertical-offset="1428">
           <folding>
             <element signature="method#DeviceInfo#0;class#DeviceInfo#0" expanded="true" />
-            <element signature="e#2705#2706#0" expanded="true" />
-            <element signature="e#2745#2746#0" expanded="true" />
+            <element signature="e#2717#2718#0" expanded="true" />
+            <element signature="e#2757#2758#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1755,7 +1745,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="1241">
+        <state line="78" column="0" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2482">
           <folding />
         </state>
       </provider>
@@ -1772,7 +1762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="5" selection-start="3215" selection-end="3215" vertical-scroll-proportion="0.286" vertical-offset="809" max-vertical-offset="1309">
+        <state line="99" column="5" selection-start="3223" selection-end="3223" vertical-scroll-proportion="0.286" vertical-offset="809" max-vertical-offset="1309">
           <folding>
             <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
