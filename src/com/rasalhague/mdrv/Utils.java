@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -102,6 +103,17 @@ public class Utils
                                                         devPortName);
         //        System.out.println(result);
         return result;
+    }
+
+    public static String byteArrayListToCharToString(ArrayList<Byte> byteArrayList)
+    {
+        //Convert ArrayList<Byte> to String
+        String resultString = null;
+        for (Byte byteToProcess : byteArrayList)
+        {
+            resultString += (char) (byteToProcess.byteValue());
+        }
+        return resultString;
     }
 
     static class StreamReader extends Thread

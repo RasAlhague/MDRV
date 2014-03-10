@@ -29,26 +29,31 @@ public class PacketAnalysis implements DataPacketListener
     @Override
     public void dataPacketEvent(DataPacket dataPacket)
     {
-        final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
-
-        /**
-         * ensure that 2 devices is equals
-         * check for key need to create
-         */
-        if (analysisResultsMap.containsKey(deviceInfo))
+        if (dataPacket.isAnalyzable())
         {
-            HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
-            joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
-        }
-        else
-        {
-            ArrayList<Integer> listToAdd = new ArrayList<Integer>(dataPacket.getDataPacketValues());
-            HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<AnalysisKey, ArrayList<Integer>>();
-            hashMapToAdd.put(AnalysisKey.MAX, listToAdd);
-            analysisResultsMap.put(deviceInfo, hashMapToAdd);
+            final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
 
-            HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
-            joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
+            /**
+             * ensure that 2 devices is equals
+             * check for key need to create
+             */
+            if (analysisResultsMap.containsKey(deviceInfo))
+            {
+                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
+                joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
+            }
+            else
+            {
+                ArrayList<Integer> listToAdd = new ArrayList<Integer>(dataPacket.getDataPacketValues());
+                HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<AnalysisKey, ArrayList<Integer>>();
+                hashMapToAdd.put(AnalysisKey.MAX, listToAdd);
+                analysisResultsMap.put(deviceInfo, hashMapToAdd);
+
+                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
+                joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
+            }
+
+            notifyAnalysisPerformedListeners(analysisResultsMap);
         }
     }
 
@@ -75,8 +80,6 @@ public class PacketAnalysis implements DataPacketListener
                     prevData.set(i, newDataNumber);
                 }
             }
-
-            notifyAnalysisPerformedListeners(analysisResultsMap);
 
             return prevData;
         }

@@ -1495,7 +1495,7 @@
     <inspection_tool class="StaticVariableInitialization" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="m_ignorePrimitives" value="false" />
     </inspection_tool>
-    <inspection_tool class="StaticVariableNamingConvention" enabled="true" level="WARNING" enabled_by_default="true">
+    <inspection_tool class="StaticVariableNamingConvention" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="checkMutableFinals" value="false" />
       <option name="m_regex" value="s_[a-z][A-Za-z\d]*" />
       <option name="m_minLength" value="5" />

@@ -18,7 +18,15 @@ public class TextAreaHandler extends Handler
     public synchronized void publish(LogRecord record)
     {
         String msg = getFormatter().format(record);
-        textArea.appendText(msg);
+        try
+        {
+            textArea.appendText(msg);
+        }
+        catch (NullPointerException e)
+        {
+            ApplicationLogger.LOGGER.severe(e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override

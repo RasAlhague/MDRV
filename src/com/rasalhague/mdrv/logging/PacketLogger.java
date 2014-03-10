@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +21,8 @@ public class PacketLogger implements Observer
 {
     private Writer writer;
     private Gson gson = new GsonBuilder().setPrettyPrinting()
-                                         .registerTypeAdapter(ArrayList.class, new DateTimeSerializer())
+                                         .registerTypeAdapter(ArrayList.class, new ArrayListSerializer())
+                                         .registerTypeAdapter(byte[].class, new ByteArraySerializer())
                                          .create();
 
     private PacketLogger()
@@ -75,10 +77,24 @@ public class PacketLogger implements Observer
     }
 }
 
-class DateTimeSerializer implements JsonSerializer<ArrayList<Integer>>
+/**
+ * Custom serializer for ArrayList<Integer>
+ */
+class ArrayListSerializer implements JsonSerializer<ArrayList<Integer>>
 {
     public JsonElement serialize(ArrayList<Integer> src, Type typeOfSrc, JsonSerializationContext context)
     {
         return new JsonPrimitive(src.toString());
+    }
+}
+
+/**
+ * Custom serializer for byte[]
+ */
+class ByteArraySerializer implements JsonSerializer<byte[]>
+{
+    public JsonElement serialize(byte[] src, Type typeOfSrc, JsonSerializationContext context)
+    {
+        return new JsonPrimitive(Arrays.toString(src));
     }
 }

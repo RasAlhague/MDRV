@@ -1,19 +1,24 @@
 package com.rasalhague.mdrv;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
+import com.rasalhague.mdrv.constants.DeviceConstants;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * devicePid Must be Hex value exclude 0x. Example: 0241 deviceVid the same as devicePid
+ */
 public class DeviceInfo
 {
+    //TODO переделать ПИД ВИД в числа, что бы нивилировать чувствительность к геристру
     private final String     deviceVid;
     private final String     devicePid;
     private final String     deviceName;
     private final String     devicePortName;
     private final DeviceType deviceType;
+    private final byte[]     endPacketSequence;
 
     public enum DeviceType
     {
@@ -27,8 +32,19 @@ public class DeviceInfo
         deviceType = DeviceType.HID;
 
         deviceName = hidDeviceInfo.getProduct_string();
-        devicePid = String.valueOf(hidDeviceInfo.getProduct_id());
-        deviceVid = String.valueOf(hidDeviceInfo.getVendor_id());
+        devicePid = Integer.toHexString(hidDeviceInfo.getProduct_id()).toUpperCase();
+        deviceVid = Integer.toHexString(hidDeviceInfo.getVendor_id()).toUpperCase();
+
+        //TODO Hardcoded
+        if (devicePid.equals(DeviceConstants.UnigenISMSniffer.PID))
+        {
+            endPacketSequence = DeviceConstants.UnigenISMSniffer.END_PACKET_SEQUENCE;
+            //            System.out.println("endPacketSequence");
+        }
+        else
+        {
+            endPacketSequence = null;
+        }
     }
 
     DeviceInfo(String devPortName, DeviceType devTypeEnum)
@@ -38,20 +54,22 @@ public class DeviceInfo
 
         HashMap<String, String> devInfMap = takeDeviceName();
         deviceName = devInfMap.get("devName");
-        devicePid = devInfMap.get("pid");
-        deviceVid = devInfMap.get("vid");
-    }
+        devicePid = devInfMap.get("pid").toUpperCase();
+        deviceVid = devInfMap.get("vid").toUpperCase();
 
-    public static ArrayList<DeviceInfo> createArrayListFromNames(String[] portNames, DeviceType deviceType)
-    {
-        ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
-
-        for (String portName : portNames)
+        //TODO Hardcoded
+        if (devicePid.equals(DeviceConstants.AirView2.PID))
         {
-            deviceInfoList.add(new DeviceInfo(portName, deviceType));
+            endPacketSequence = DeviceConstants.AirView2.END_PACKET_SEQUENCE;
         }
-
-        return deviceInfoList;
+        else if (devicePid.equals(DeviceConstants.ez430RF2500.PID))
+        {
+            endPacketSequence = DeviceConstants.ez430RF2500.END_PACKET_SEQUENCE;
+        }
+        else
+        {
+            endPacketSequence = null;
+        }
     }
 
     public String getDeviceVid()
@@ -77,6 +95,11 @@ public class DeviceInfo
     public DeviceType getDeviceType()
     {
         return deviceType;
+    }
+
+    public byte[] getEndPacketSequence()
+    {
+        return endPacketSequence;
     }
 
     public boolean equalsPidVid(String pId, String vId)

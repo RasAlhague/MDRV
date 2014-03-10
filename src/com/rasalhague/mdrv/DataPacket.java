@@ -6,16 +6,17 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Class used for gson serializing Contain data about received data that encapsulate in packet
+ * DataPacket means one pass for each channel. Class used for gson serializing.
  */
 public class DataPacket
 {
+    //TODO maybe final?
     private String             rawDataPacket;
     private ArrayList<Integer> dataPacketValues;
-    private DeviceInfo         deviceInfo;
     private long               packetCreationTimeMs;
-    private int                packetLength;
     private int                pointsAmount;
+    private boolean            isAnalyzable;
+    private DeviceInfo         deviceInfo;
 
     //Getter
     public String getRawDataPacketValue()
@@ -33,15 +34,23 @@ public class DataPacket
         return deviceInfo;
     }
 
-    //Constructor
-    public DataPacket(String rawData, DeviceInfo deviceInfo)
+    public boolean isAnalyzable()
     {
-        this.rawDataPacket = rawData;
+        return isAnalyzable;
+    }
+
+    //Constructor
+    public DataPacket(ArrayList<Byte> rawData, DeviceInfo deviceInfo)
+    {
+        this.rawDataPacket = rawData.toString();
         this.deviceInfo = deviceInfo;
         this.packetCreationTimeMs = new Date().getTime();
-        this.packetLength = rawData.length();
         this.dataPacketValues = RawDataProcessor.processData(rawData, deviceInfo);
-        this.pointsAmount = dataPacketValues.size();
+        if (dataPacketValues != null)
+        {
+            this.pointsAmount = dataPacketValues.size();
+            isAnalyzable = true;
+        }
     }
 
     @Override
@@ -52,7 +61,6 @@ public class DataPacket
                 ", dataPacketValues=" + dataPacketValues +
                 ", deviceInfo=" + deviceInfo +
                 ", packetCreationTimeMs=" + packetCreationTimeMs +
-                ", packetLength=" + packetLength +
                 ", pointsAmount=" + pointsAmount +
                 '}';
     }

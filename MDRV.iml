@@ -11,9 +11,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gson-2.2.4" level="project" />
     <orderEntry type="library" name="jssc" level="project" />
-    <orderEntry type="library" name="usb4java-1.0.0" level="project" />
     <orderEntry type="library" name="commons-lang3-3.2.1" level="project" />
-    <orderEntry type="library" name="hidapi-1.1-sources" level="project" />
+    <orderEntry type="library" name="javahidapi" level="project" />
   </component>
 </module>
 

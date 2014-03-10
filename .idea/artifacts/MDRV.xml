@@ -1,12 +1,11 @@
 <component name="ArtifactManager">
   <artifact type="javafx" build-on-make="true" name="MDRV">
-    <output-path>$PROJECT_DIR$/artifacts</output-path>
+    <output-path>$PROJECT_DIR$/artifacts/</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="com.rasalhague.mdrv.gui.MainWindowController" />
         <option name="description" value="" />
         <option name="htmlParamFile" value="" />
-        <option name="nativeBundle" value="exe" />
         <option name="paramFile" value="" />
         <option name="title" value="" />
         <option name="vendor" value="" />
@@ -16,11 +15,10 @@
       <element id="archive" name="MDRV.jar">
         <element id="module-output" name="MDRV" />
         <element id="directory" name="libs">
-          <element id="file-copy" path="$PROJECT_DIR$/libs/commons-lang3-3.2.1/commons-lang3-3.2.1.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/google-gson-2.2.4/gson-2.2.4.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/jSSC-2.8.0-Release/jssc.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb-api-1.0.2.jar" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0.jar" />
+          <element id="library" level="project" name="gson-2.2.4" />
+          <element id="library" level="project" name="jssc" />
+          <element id="library" level="project" name="commons-lang3-3.2.1" />
+          <element id="library" level="project" name="javahidapi" />
         </element>
       </element>
     </root>

@@ -194,16 +194,25 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
-            //Call Factory method and set form to out
+            //Call Factory method
             DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
 
-            deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
-            deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
+            //filter known devices
+            if (deviceCommunication != null)
+            {
+                deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
+                deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
-            Thread thread = new Thread(deviceCommunication);
-            //TODO Need correct thread control
-            thread.setDaemon(true);
-            thread.start();
+                Thread thread = new Thread(deviceCommunication);
+                //TODO Need correct thread control
+                thread.setDaemon(true);
+                thread.start();
+            }
+            else
+            {
+                ApplicationLogger.LOGGER.info(connectedDevice.getDeviceName() + " " + "ignored.");
+            }
+
         }
     }
 

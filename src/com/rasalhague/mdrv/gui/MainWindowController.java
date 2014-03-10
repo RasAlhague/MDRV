@@ -46,7 +46,6 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public static void main(String[] args)
     {
-        //        new HidAPI();
         launch();
     }
 
@@ -95,6 +94,9 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
+
+        //fake start listening button press
+        //        startListeningButtonMouseClickedEvent(new Event(EventType.ROOT));
     }
 
     public void startListeningButtonMouseClickedEvent(Event event)

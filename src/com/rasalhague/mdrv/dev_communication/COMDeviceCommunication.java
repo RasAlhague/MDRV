@@ -13,7 +13,6 @@ import java.util.TimerTask;
 public class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
 {
     SerialPort serialPort;
-    //    private static final int BYTE_TO_READ_COUNT = 512;
 
     COMDeviceCommunication(DeviceInfo deviceInfo)
     {
@@ -36,12 +35,16 @@ public class COMDeviceCommunication extends DeviceCommunication implements Seria
         {
             try
             {
-                String rawData;
-                rawData = serialPort.readString(serialPortEvent.getEventValue());
-                //                rawData = serialPort.readString(BYTE_TO_READ_COUNT);
-                rxRawDataReceiver.receiveRawData(rawData);
+                byte[] rawData;
+                //                rawData = serialPort.readString(serialPortEvent.getEventValue());
+                //                rxRawDataReceiver.receiveRawData(rawData);
 
-                //                System.out.println(rawData);
+                //                rawData = serialPort.readHexStringArray(serialPortEvent.getEventValue());
+                //                System.out.println(Byte.parseByte(rawData[0], 16));
+                //                rxRawDataReceiver.receiveRawData(rawData);
+
+                rawData = serialPort.readBytes(serialPortEvent.getEventValue());
+                rxRawDataReceiver.receiveRawData(rawData);
             }
             catch (SerialPortException e)
             {
