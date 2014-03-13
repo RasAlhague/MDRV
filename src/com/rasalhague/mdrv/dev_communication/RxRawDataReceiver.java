@@ -17,11 +17,6 @@ public class RxRawDataReceiver extends Observable
     private ArrayList<DataPacket> rawDataPackets;
     private ArrayList<Byte> rawDataBuffer = new ArrayList<Byte>();
 
-    private final static char END_PACKET_CHAR_N = '\n';
-    private final static char END_PACKET_CHAR_R = '\r';
-    //    private final static String END_PACKET_BYTE_N = "0A";
-    //    private final static String END_PACKET_BYTE_R = "0D";
-
     private Boolean firstPacketTrigger = true;
     private DeviceInfo deviceInfo;
 
@@ -62,14 +57,6 @@ public class RxRawDataReceiver extends Observable
         rawDataBuffer.add(data);
     }
 
-    private void addDataToRawDataPacketBuffer(byte[] data)
-    {
-        for (byte b : data)
-        {
-            rawDataBuffer.add(b);
-        }
-    }
-
     private void wipeRawDataPacketBuffer()
     {
         //        rawDataBuffer = "";
@@ -90,27 +77,12 @@ public class RxRawDataReceiver extends Observable
         }
     }
 
-    /**
-     * Works like a buffer. Sends data char by char to processReceivedByte(char receivedChar);
-     *
-     * @param rawData
-     *         string from device
-     */
-    public void receiveRawData(byte[] rawData, boolean isCompletePacket)
-    {
-        if (isCompletePacket)
-        {
-            addDataToRawDataPacketBuffer(rawData);
-            saveRawDataPacket();
-        }
-    }
-
     private void processReceivedByte(byte receivedByte)
     {
         addDataToRawDataPacketBuffer(receivedByte);
 
         /**
-         * Check last 2 bytes in rawDataBuffer with last 2 bytes in deviceInfo.getEndPacketSequence
+         * Check last bytes in rawDataBuffer with last bytes in deviceInfo.getEndPacketSequence
          */
         byte[] endPacketSequence = deviceInfo.getEndPacketSequence();
         if (rawDataBuffer.size() >= endPacketSequence.length)
