@@ -21,37 +21,30 @@ public class PacketAnalysis implements DataPacketListener
         return PacketAnalysisHolder.INSTANCE;
     }
 
-    public HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> getAnalysisResultsMap()
+    public synchronized HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> getAnalysisResultsMap()
     {
         return analysisResultsMap;
     }
 
     @Override
-    public void dataPacketEvent(DataPacket dataPacket)
+    public synchronized void dataPacketEvent(DataPacket dataPacket)
     {
         if (dataPacket.isAnalyzable())
         {
             final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
 
             /**
-             * ensure that 2 devices is equals
-             * check for key need to create
+             * Creates schema when it is needed
              */
-            if (analysisResultsMap.containsKey(deviceInfo))
-            {
-                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
-                joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
-            }
-            else
+            if (!analysisResultsMap.containsKey(deviceInfo))
             {
                 ArrayList<Integer> listToAdd = new ArrayList<Integer>(dataPacket.getDataPacketValues());
                 HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<AnalysisKey, ArrayList<Integer>>();
                 hashMapToAdd.put(AnalysisKey.MAX, listToAdd);
                 analysisResultsMap.put(deviceInfo, hashMapToAdd);
-
-                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
-                joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
             }
+            HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = analysisResultsMap.get(deviceInfo);
+            joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX));
 
             notifyAnalysisPerformedListeners(analysisResultsMap);
         }
@@ -66,7 +59,7 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return
      */
-    private ArrayList<Integer> joinMax(ArrayList<Integer> newData, ArrayList<Integer> prevData)
+    private synchronized ArrayList<Integer> joinMax(ArrayList<Integer> newData, ArrayList<Integer> prevData)
     {
         if (newData.size() == prevData.size())
         {

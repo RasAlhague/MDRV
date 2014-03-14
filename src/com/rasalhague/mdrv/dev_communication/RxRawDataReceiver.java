@@ -28,6 +28,7 @@ public class RxRawDataReceiver extends Observable
 
     private void saveRawDataPacket()
     {
+        //skip first packet coz it can be not full
         if (firstPacketTrigger)
         {
             firstPacketTrigger = false;
@@ -85,7 +86,7 @@ public class RxRawDataReceiver extends Observable
          * Check last bytes in rawDataBuffer with last bytes in deviceInfo.getEndPacketSequence
          */
         byte[] endPacketSequence = deviceInfo.getEndPacketSequence();
-        if (rawDataBuffer.size() >= endPacketSequence.length)
+        if (rawDataBuffer.size() > endPacketSequence.length)
         {
             boolean needToSave = true;
 
@@ -102,7 +103,15 @@ public class RxRawDataReceiver extends Observable
 
             if (needToSave)
             {
+                //Transfer endPacketSequence to the start of packet
+                List<Byte> subList = rawDataBuffer.subList(rawDataBuffer.size() - endPacketSequence.length,
+                                                           rawDataBuffer.size());
+                List<Byte> tempList = new ArrayList<Byte>(subList);
+                subList.clear();
+
                 saveRawDataPacket();
+
+                rawDataBuffer.addAll(tempList);
             }
         }
     }

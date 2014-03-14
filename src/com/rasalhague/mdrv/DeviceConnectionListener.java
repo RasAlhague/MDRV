@@ -190,7 +190,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     @Override
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
-        ApplicationLogger.LOGGER.info(connectedDevice.getDeviceName() + " " + deviceConnectionStateEnum);
+        ApplicationLogger.LOGGER.info(connectedDevice.getName() + " " + deviceConnectionStateEnum);
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
@@ -210,7 +210,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             }
             else
             {
-                ApplicationLogger.LOGGER.info(connectedDevice.getDeviceName() + " " + "ignored.");
+                ApplicationLogger.LOGGER.info(connectedDevice.getName() + " " + "ignored.");
             }
 
         }

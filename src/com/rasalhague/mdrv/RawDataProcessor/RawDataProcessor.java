@@ -5,19 +5,28 @@ import com.rasalhague.mdrv.constants.DeviceConstants;
 
 import java.util.ArrayList;
 
-public class RawDataProcessor implements DeviceConstants
+public class RawDataProcessor
 {
-    static RawDataProcessingAlgorithm rawDataProcessingAlgorithm = new DefaultDataProcessingAlgorithm();
+    static volatile RawDataProcessingAlgorithm rawDataProcessingAlgorithm;
 
-    public static ArrayList<Integer> processData(ArrayList<Byte> dataToProcess, DeviceInfo deviceInfo)
+    public synchronized static ArrayList<Integer> processData(ArrayList<Byte> dataToProcess, DeviceInfo deviceInfo)
     {
-        if (deviceInfo.equalsPidVid(AirView2.PID, AirView2.VID))
+        //TODO Hardcoded
+        if (deviceInfo.equalsPidVid(DeviceConstants.AirView2.PID, DeviceConstants.AirView2.VID))
         {
+            rawDataProcessingAlgorithm = new DefaultDataProcessingAlgorithm();
             return rawDataProcessingAlgorithm.processData(dataToProcess);
         }
 
-        if (deviceInfo.equalsPidVid(ez430RF2500.PID, ez430RF2500.VID))
+        if (deviceInfo.equalsPidVid(DeviceConstants.ez430RF2500.PID, DeviceConstants.ez430RF2500.VID))
         {
+            rawDataProcessingAlgorithm = new DefaultDataProcessingAlgorithm();
+            return rawDataProcessingAlgorithm.processData(dataToProcess);
+        }
+
+        if (deviceInfo.equalsPidVid(DeviceConstants.UnigenISMSniffer.PID, DeviceConstants.UnigenISMSniffer.VID))
+        {
+            rawDataProcessingAlgorithm = new UnigenISMSnifferProcessingAlgorithm();
             return rawDataProcessingAlgorithm.processData(dataToProcess);
         }
 

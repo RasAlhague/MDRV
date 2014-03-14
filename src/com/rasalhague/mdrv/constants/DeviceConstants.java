@@ -38,4 +38,16 @@ public interface DeviceConstants
         static byte[] END_PACKET_SEQUENCE = new byte[]{0x00, 0x00};
     }
 
+    /**
+     * MetaGeek_WiSpy24x2
+     */
+    public interface MetaGeek_WiSpy24x2
+    {
+        static String PID                 = "2410";
+        static String VID                 = "1DD5 ";
+        static String NAME                = "";
+        static String PORT_TYPE           = "HID";
+        static byte[] END_PACKET_SEQUENCE = new byte[]{0x4A, 0x00, 0x00, 0x00};
+    }
+
 }

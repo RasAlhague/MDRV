@@ -1,6 +1,7 @@
 package com.rasalhague.mdrv.dev_communication;
 
 import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.constants.DeviceConstants;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 /**
@@ -31,7 +32,7 @@ public abstract class DeviceCommunication implements Runnable
         String eZ430PID = "F432";
         String ISMSnifferPID = "2001";
 
-        String devPid = deviceInfo.getDevicePid();
+        String devPid = deviceInfo.getProductID();
 
         if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.COM)
         {
@@ -57,6 +58,11 @@ public abstract class DeviceCommunication implements Runnable
             if (devPid.equals(ISMSnifferPID))
             {
                 return new ISMSniffer(deviceInfo);
+            }
+
+            if (devPid.equals(DeviceConstants.MetaGeek_WiSpy24x2.PID))
+            {
+                return new MetaGeek_WiSpy24x2(deviceInfo);
             }
 
             //            ApplicationLogger.LOGGER.warning(

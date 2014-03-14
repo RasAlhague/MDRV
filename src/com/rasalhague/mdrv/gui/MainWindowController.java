@@ -37,7 +37,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         TextArea                  debugTextArea;
     public         CheckBox                  maxCheckBox;
     public         Button                    startListeningButton;
-    public Button refreshChartButton;
+    public         Button                    refreshChartButton;
 
     public MainWindowController()
     {
@@ -95,7 +95,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
 
-        //fake start listening button press
+        //fake button press
         //        startListeningButtonMouseClickedEvent(new Event(EventType.ROOT));
     }
 
@@ -127,20 +127,27 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                 Set<DeviceInfo> keySet = analysisResult.keySet();
 
+                /**
+                 * For every device that processed by Analysis class
+                 */
                 for (DeviceInfo deviceInfo : keySet)
                 {
-                    ArrayList<Integer> list = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
+                    ArrayList<Integer> listMax = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
+                    //                    int points = analysisResult.get(deviceInfo).get(AnalysisKey.POINTS).get(0);
+                    int points = analysisResult.get(deviceInfo).get(AnalysisKey.MAX).size();
 
                     final XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-                    series.setName(deviceInfo.getDeviceName());
+                    series.setName(deviceInfo.getName());
 
-                    int xAxisCounter = 1;
-                    for (Integer value : list)
+                    final double spacing = (85.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
+                    double xAxisCounter = 0.0;
+                    for (Integer value : listMax)
                     {
-                        XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>(xAxisCounter, value);
+                        XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>((double) Math.round((xAxisCounter) * 1000) / 1000,
+                                                                                             value);
                         series.getData().add(data);
 
-                        xAxisCounter++;
+                        xAxisCounter += spacing;
                     }
 
                     lineChart.getData().add(series);
@@ -154,7 +161,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                     for (XYChart.Data<Number, Number> d : s.getData())
                     {
                         final Node node = d.getNode();
-                        final Tooltip t = new Tooltip(d.toString());
+                        final Tooltip t = new Tooltip(d.getXValue() + " " + d.getYValue());
                         t.getStyleClass().add("ttip");
                         node.setOnMouseEntered(new EventHandler<MouseEvent>()
                         {

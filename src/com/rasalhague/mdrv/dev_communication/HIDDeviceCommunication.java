@@ -58,20 +58,20 @@ public class HIDDeviceCommunication extends DeviceCommunication
 
     private void openHIDDevice()
     {
-        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getDeviceName());
+        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getName());
 
         try
         {
             hidDevice = HIDManager.getInstance()
-                                  .openById(Integer.valueOf(deviceInfo.getDeviceVid(), 16),
-                                            Integer.valueOf(deviceInfo.getDevicePid(), 16),
+                                  .openById(Integer.valueOf(deviceInfo.getVendorID(), 16),
+                                            Integer.valueOf(deviceInfo.getProductID(), 16),
                                             null);
 
-            ApplicationLogger.LOGGER.info(deviceInfo.getDeviceName() + " " + "has been opened!");
+            ApplicationLogger.LOGGER.info(deviceInfo.getName() + " " + "has been opened!");
         }
         catch (IOException e)
         {
-            ApplicationLogger.LOGGER.severe(deviceInfo.getDeviceName() + " " + "opening IOException.");
+            ApplicationLogger.LOGGER.severe(deviceInfo.getName() + " " + "opening IOException.");
             ApplicationLogger.LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }

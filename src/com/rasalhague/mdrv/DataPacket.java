@@ -34,6 +34,11 @@ public class DataPacket
         return deviceInfo;
     }
 
+    public int getPointsAmount()
+    {
+        return pointsAmount;
+    }
+
     public boolean isAnalyzable()
     {
         return isAnalyzable;
@@ -51,6 +56,36 @@ public class DataPacket
             this.pointsAmount = dataPacketValues.size();
             isAnalyzable = true;
         }
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DataPacket that = (DataPacket) o;
+
+        if (isAnalyzable != that.isAnalyzable) return false;
+        if (packetCreationTimeMs != that.packetCreationTimeMs) return false;
+        if (pointsAmount != that.pointsAmount) return false;
+        if (!dataPacketValues.equals(that.dataPacketValues)) return false;
+        if (!deviceInfo.equals(that.deviceInfo)) return false;
+        if (!rawDataPacket.equals(that.rawDataPacket)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = rawDataPacket.hashCode();
+        result = 31 * result + dataPacketValues.hashCode();
+        result = 31 * result + (int) (packetCreationTimeMs ^ (packetCreationTimeMs >>> 32));
+        result = 31 * result + pointsAmount;
+        result = 31 * result + (isAnalyzable ? 1 : 0);
+        result = 31 * result + deviceInfo.hashCode();
+        return result;
     }
 
     @Override

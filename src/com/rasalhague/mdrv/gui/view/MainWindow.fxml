@@ -47,7 +47,7 @@
                    VBox.vgrow = "ALWAYS">
             <xAxis>
                 <NumberAxis animated = "false"
-                            autoRanging = "false"
+                            autoRanging = "true"
                             disable = "false"
                             focusTraversable = "false"
                             forceZeroInRange = "false"

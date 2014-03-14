@@ -5,17 +5,18 @@ import com.rasalhague.mdrv.constants.DeviceConstants;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * devicePid Must be Hex value exclude 0x. Example: 0241 deviceVid the same as devicePid
+ * productID Must be Hex value exclude 0x. Example: 0241 vendorID the same as productID
  */
 public class DeviceInfo
 {
     //TODO переделать ПИД ВИД в числа, что бы нивилировать чувствительность к геристру
-    private final String     deviceVid;
-    private final String     devicePid;
-    private final String     deviceName;
+    private final String     vendorID;
+    private final String     productID;
+    private final String     name;
     private final String     devicePortName;
     private final DeviceType deviceType;
     private final byte[]     endPacketSequence;
@@ -31,14 +32,19 @@ public class DeviceInfo
         devicePortName = hidDeviceInfo.getPath();
         deviceType = DeviceType.HID;
 
-        deviceName = hidDeviceInfo.getProduct_string();
-        devicePid = Integer.toHexString(hidDeviceInfo.getProduct_id()).toUpperCase();
-        deviceVid = Integer.toHexString(hidDeviceInfo.getVendor_id()).toUpperCase();
+        name = hidDeviceInfo.getProduct_string();
+        productID = Integer.toHexString(hidDeviceInfo.getProduct_id()).toUpperCase();
+        vendorID = Integer.toHexString(hidDeviceInfo.getVendor_id()).toUpperCase();
 
         //TODO Hardcoded
-        if (devicePid.equals(DeviceConstants.UnigenISMSniffer.PID))
+        if (productID.equals(DeviceConstants.UnigenISMSniffer.PID))
         {
             endPacketSequence = DeviceConstants.UnigenISMSniffer.END_PACKET_SEQUENCE;
+            //            System.out.println("endPacketSequence");
+        }
+        else if (productID.equals(DeviceConstants.MetaGeek_WiSpy24x2.PID))
+        {
+            endPacketSequence = DeviceConstants.MetaGeek_WiSpy24x2.END_PACKET_SEQUENCE;
             //            System.out.println("endPacketSequence");
         }
         else
@@ -53,16 +59,16 @@ public class DeviceInfo
         deviceType = devTypeEnum;
 
         HashMap<String, String> devInfMap = takeDeviceName();
-        deviceName = devInfMap.get("devName");
-        devicePid = devInfMap.get("pid").toUpperCase();
-        deviceVid = devInfMap.get("vid").toUpperCase();
+        name = devInfMap.get("devName");
+        productID = devInfMap.get("pid").toUpperCase();
+        vendorID = devInfMap.get("vid").toUpperCase();
 
         //TODO Hardcoded
-        if (devicePid.equals(DeviceConstants.AirView2.PID))
+        if (productID.equals(DeviceConstants.AirView2.PID))
         {
             endPacketSequence = DeviceConstants.AirView2.END_PACKET_SEQUENCE;
         }
-        else if (devicePid.equals(DeviceConstants.ez430RF2500.PID))
+        else if (productID.equals(DeviceConstants.ez430RF2500.PID))
         {
             endPacketSequence = DeviceConstants.ez430RF2500.END_PACKET_SEQUENCE;
         }
@@ -72,19 +78,19 @@ public class DeviceInfo
         }
     }
 
-    public String getDeviceVid()
+    public String getVendorID()
     {
-        return deviceVid;
+        return vendorID;
     }
 
-    public String getDevicePid()
+    public String getProductID()
     {
-        return devicePid;
+        return productID;
     }
 
-    public String getDeviceName()
+    public String getName()
     {
-        return deviceName;
+        return name;
     }
 
     public String getDevicePortName()
@@ -104,18 +110,19 @@ public class DeviceInfo
 
     public boolean equalsPidVid(String pId, String vId)
     {
-        return pId.equals(devicePid) && vId.equals(deviceVid);
+        return pId.equals(productID) && vId.equals(vendorID);
     }
 
     @Override
     public String toString()
     {
         return "DeviceInfo{" +
-                "deviceVid='" + getDeviceVid() + '\'' +
-                ", devicePid='" + getDevicePid() + '\'' +
-                ", deviceName='" + getDeviceName() + '\'' +
-                ", devicePortName='" + getDevicePortName() + '\'' +
-                ", deviceType=" + getDeviceType() +
+                "vendorID='" + vendorID + '\'' +
+                ", productID='" + productID + '\'' +
+                ", name='" + name + '\'' +
+                ", devicePortName='" + devicePortName + '\'' +
+                ", deviceType=" + deviceType +
+                ", endPacketSequence=" + Arrays.toString(endPacketSequence) +
                 '}';
     }
 
@@ -127,8 +134,8 @@ public class DeviceInfo
 
         DeviceInfo that = (DeviceInfo) o;
 
-        if (!devicePid.equals(that.devicePid)) return false;
-        if (!deviceVid.equals(that.deviceVid)) return false;
+        if (!productID.equals(that.productID)) return false;
+        if (!vendorID.equals(that.vendorID)) return false;
 
         return true;
     }
@@ -136,8 +143,8 @@ public class DeviceInfo
     @Override
     public int hashCode()
     {
-        int result = deviceVid.hashCode();
-        result = 31 * result + devicePid.hashCode();
+        int result = vendorID.hashCode();
+        result = 31 * result + productID.hashCode();
         return result;
     }
 
