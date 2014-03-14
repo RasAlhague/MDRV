@@ -71,11 +71,17 @@ public class MainWindowController extends Application implements AnalysisPerform
         final Scene scene = new Scene(root);
         scene.getStylesheets().add(CSS_RESOURCE_PATH);
 
+        /**
+         * On close actions
+         */
         stage.setOnCloseRequest(new EventHandler<WindowEvent>()
         {
             @Override
             public void handle(WindowEvent windowEvent)
             {
+                //Correctly close file handlers
+                ApplicationLogger.closeHandlers();
+
                 //Need to stop coz thread prevent exit program
                 if (DeviceConnectionListener.isListening())
                 {

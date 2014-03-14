@@ -94,6 +94,15 @@ public class ApplicationLogger extends Logger
         logRecordArrayList.add(record);
     }
 */
+    public synchronized static void closeHandlers()
+    {
+        Handler[] handlers = LOGGER.getHandlers();
+        for (Handler handler : handlers)
+        {
+            handler.close();
+        }
+    }
+
     private static void setFormatterToLoggerHandlers(Logger logger, Formatter formatter)
     {
         //For logger handlers
