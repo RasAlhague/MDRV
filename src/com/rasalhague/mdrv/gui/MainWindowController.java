@@ -6,6 +6,7 @@ import com.rasalhague.mdrv.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
+import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
 import javafx.application.Application;
@@ -67,6 +68,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public void start(Stage stage) throws Exception
     {
         ApplicationLogger.setup();
+        ConfigurationLoader.initialize();
 
         final String tooltipCssPath = "/ToolTip.css";
         final String lineChartCssPath = "/LineChart.css";
