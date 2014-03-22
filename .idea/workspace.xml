@@ -6,24 +6,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Correctly close file handlers in ApplicationLogger.java">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add Configurations file">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cfg/config.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -135,8 +119,9 @@
       <file leaf-file-name="ConfigurationLoader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+            <state line="14" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="method#getConfiguration#0;class#ConfigurationLoader#0" expanded="true" />
               </folding>
             </state>
@@ -157,7 +142,7 @@
       <file leaf-file-name="ConfigurationHolder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="21" selection-start="1312" selection-end="1325" vertical-scroll-proportion="0.66096866" vertical-offset="182" max-vertical-offset="884">
+            <state line="50" column="5" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.73361826" vertical-offset="182" max-vertical-offset="884">
               <folding>
                 <element signature="method#getDeviceConfiguration#0;class#ConfigurationHolder#0" expanded="true" />
                 <element signature="e#1206#1207#0" expanded="true" />
@@ -1276,7 +1261,11 @@
       <created>1395524574119</created>
       <updated>1395524574119</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Add Configurations file">
+      <created>1395527368973</created>
+      <updated>1395527368973</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1347,7 +1336,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Encapsulate fields and small refactor" />
     <MESSAGE value="Refactor: DeviceCommunication.java factory method correctly chose device now; Application logger adaptation; del unused code;" />
     <MESSAGE value="lib" />
     <MESSAGE value="." />
@@ -1372,7 +1360,8 @@
     <MESSAGE value="WiSpy now works" />
     <MESSAGE value="Correctly close file handlers in ApplicationLogger.java" />
     <MESSAGE value="final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final" />
+    <MESSAGE value="Add Configurations file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Configurations file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1560,8 +1549,8 @@
         <state line="119" column="43" selection-start="3548" selection-end="3548" vertical-scroll-proportion="0.0" vertical-offset="758" max-vertical-offset="2244">
           <folding>
             <element signature="method#getHIDDevicesList#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="docComment;method#updateConnectedDeviceList#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="e#4978#4990#0" expanded="true" />
+            <element signature="docComment;method#updateConnectedDeviceList#0;class#DeviceConnectionListener#0" expanded="false" />
+            <element signature="e#5254#5266#0" expanded="true" />
             <element signature="method#deviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
             <element signature="method#addListener#0;class#DeviceConnectionListener#0" expanded="true" />
             <element signature="method#performDeviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
@@ -1621,7 +1610,7 @@
         <state line="10" column="31" selection-start="262" selection-end="262" vertical-scroll-proportion="0.14265734" vertical-offset="0" max-vertical-offset="782">
           <folding>
             <element signature="method#publish#0;class#TextAreaHandler#0" expanded="true" />
-            <element signature="method#run#0;class#546:727" expanded="true" />
+            <element signature="method#run#0;class#546:739" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1709,8 +1698,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+        <state line="14" column="0" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#getConfiguration#0;class#ConfigurationLoader#0" expanded="true" />
           </folding>
         </state>
@@ -1718,7 +1708,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="21" selection-start="1312" selection-end="1325" vertical-scroll-proportion="0.66096866" vertical-offset="182" max-vertical-offset="884">
+        <state line="50" column="5" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.73361826" vertical-offset="182" max-vertical-offset="884">
           <folding>
             <element signature="method#getDeviceConfiguration#0;class#ConfigurationHolder#0" expanded="true" />
             <element signature="e#1206#1207#0" expanded="true" />
