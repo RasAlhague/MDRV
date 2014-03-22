@@ -10,13 +10,12 @@ import java.util.Date;
  */
 public class DataPacket
 {
-    //TODO maybe final?
-    private String             rawDataPacket;
-    private ArrayList<Integer> dataPacketValues;
-    private long               packetCreationTimeMs;
-    private int                pointsAmount;
-    private boolean            isAnalyzable;
-    private DeviceInfo         deviceInfo;
+    private final String             rawDataPacket;
+    private final ArrayList<Integer> dataPacketValues;
+    private final long               packetCreationTimeMs;
+    private       int                pointsAmount;
+    private       boolean            isAnalyzable;
+    private final DeviceInfo         deviceInfo;
 
     //Getter
     public String getRawDataPacketValue()
