@@ -1,7 +1,8 @@
 package com.rasalhague.mdrv;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
-import com.rasalhague.mdrv.constants.DeviceConstants;
+import com.rasalhague.mdrv.configuration.ConfigurationHolder;
+import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -13,7 +14,6 @@ import java.util.HashMap;
  */
 public class DeviceInfo
 {
-    //TODO переделать ПИД ВИД в числа, что бы нивилировать чувствительность к геристру
     private final String     vendorID;
     private final String     productID;
     private final String     name;
@@ -33,24 +33,15 @@ public class DeviceInfo
         deviceType = DeviceType.HID;
 
         name = hidDeviceInfo.getProduct_string();
-        productID = Integer.toHexString(hidDeviceInfo.getProduct_id()).toUpperCase();
-        vendorID = Integer.toHexString(hidDeviceInfo.getVendor_id()).toUpperCase();
+        productID = Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase();
+        vendorID = Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase();
 
-        //TODO Hardcoded
-        if (productID.equals(DeviceConstants.UnigenISMSniffer.PID))
-        {
-            endPacketSequence = DeviceConstants.UnigenISMSniffer.END_PACKET_SEQUENCE;
-            //            System.out.println("endPacketSequence");
-        }
-        else if (productID.equals(DeviceConstants.MetaGeek_WiSpy24x2.PID))
-        {
-            endPacketSequence = DeviceConstants.MetaGeek_WiSpy24x2.END_PACKET_SEQUENCE;
-            //            System.out.println("endPacketSequence");
-        }
-        else
-        {
-            endPacketSequence = null;
-        }
+        ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
+        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(
+                productID,
+                vendorID);
+
+        endPacketSequence = deviceConfiguration.getEndPacketSequence();
     }
 
     DeviceInfo(String devPortName, DeviceType devTypeEnum)
@@ -58,24 +49,17 @@ public class DeviceInfo
         devicePortName = devPortName;
         deviceType = devTypeEnum;
 
-        HashMap<String, String> devInfMap = takeDeviceName();
+        HashMap<String, String> devInfMap = takeCOMDeviceInformation();
         name = devInfMap.get("devName");
-        productID = devInfMap.get("pid").toUpperCase();
-        vendorID = devInfMap.get("vid").toUpperCase();
+        productID = devInfMap.get("pid");
+        vendorID = devInfMap.get("vid");
 
-        //TODO Hardcoded
-        if (productID.equals(DeviceConstants.AirView2.PID))
-        {
-            endPacketSequence = DeviceConstants.AirView2.END_PACKET_SEQUENCE;
-        }
-        else if (productID.equals(DeviceConstants.ez430RF2500.PID))
-        {
-            endPacketSequence = DeviceConstants.ez430RF2500.END_PACKET_SEQUENCE;
-        }
-        else
-        {
-            endPacketSequence = null;
-        }
+        ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
+        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(
+                productID,
+                vendorID);
+
+        endPacketSequence = deviceConfiguration.getEndPacketSequence();
     }
 
     public String getVendorID()
@@ -148,11 +132,11 @@ public class DeviceInfo
         return result;
     }
 
-    private HashMap<String, String> takeDeviceName()
+    private HashMap<String, String> takeCOMDeviceInformation()
     {
         if (SystemUtils.IS_OS_WINDOWS)
         {
-            return Utils.getDeviceNameFromWinRegistry(getDevicePortName());
+            return Utils.searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB", getDevicePortName());
         }
         else if (SystemUtils.IS_OS_LINUX)
         {

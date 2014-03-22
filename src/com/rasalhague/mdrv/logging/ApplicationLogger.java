@@ -20,7 +20,7 @@ public class ApplicationLogger extends Logger
 
     /**
      * Protected method to construct a logger for a named subsystem.
-     * <p/>
+     * <p>
      * The logger will be initially configured with a null Level and with useParentHandlers set to true.
      *
      * @param name
@@ -128,7 +128,7 @@ public class ApplicationLogger extends Logger
 class MyLogFormatter extends Formatter
 {
     //    private final static String LOGGER_NAME = "ApplicationLogger";
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss.SSS");
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy HH:mm:ss.SSS");
 
     @Override
     public String format(LogRecord record)

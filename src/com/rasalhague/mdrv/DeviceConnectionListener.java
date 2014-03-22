@@ -80,21 +80,29 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     private void runSchedule()
     {
-        timer = new Timer();
-        TimerTask timerTask = new TimerTask()
+        if (!isListening)
         {
-            @Override
-            public void run()
+            timer = new Timer();
+            TimerTask timerTask = new TimerTask()
             {
-                scanForDeviceConnections();
-            }
-        };
+                @Override
+                public void run()
+                {
+                    scanForDeviceConnections();
+                }
+            };
 
-        long timerDelayMs = 0;
-        timer.schedule(timerTask, timerDelayMs, scanTimerPeriodMs);
-        isListening = true;
+            long timerDelayMs = 0;
+            timer.schedule(timerTask, timerDelayMs, scanTimerPeriodMs);
+            isListening = true;
 
-        ApplicationLogger.LOGGER.info("Listening schedule started. Waiting for devices...");
+            ApplicationLogger.LOGGER.info("Listening schedule has started. Waiting for devices...");
+        }
+        else
+        {
+            cancelSchedule();
+            runSchedule();
+        }
     }
 
     private void cancelSchedule()
@@ -102,7 +110,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         timer.cancel();
         isListening = false;
 
-        ApplicationLogger.LOGGER.info("Listening schedule canceled.");
+        ApplicationLogger.LOGGER.info("Listening schedule has canceled.");
     }
 
     private void scanForDeviceConnections()
@@ -146,9 +154,12 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             //Generate array list from portNames
             ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
 
-            for (HIDDeviceInfo hidDeviceInfo : hidDeviceInfos)
+            if (hidDeviceInfos != null)
             {
-                deviceInfoList.add(new DeviceInfo(hidDeviceInfo));
+                for (HIDDeviceInfo hidDeviceInfo : hidDeviceInfos)
+                {
+                    deviceInfoList.add(new DeviceInfo(hidDeviceInfo));
+                }
             }
 
             return deviceInfoList;
@@ -161,6 +172,11 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         return null;
     }
 
+    /**
+     * Analise previously scan with current for find new conn or disconn
+     *
+     * @param scannedDevicesList
+     */
     private void updateConnectedDeviceList(ArrayList<DeviceInfo> scannedDevicesList)
     {
         //adding

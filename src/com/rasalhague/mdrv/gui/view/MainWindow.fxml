@@ -7,13 +7,15 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 <AnchorPane id = "AnchorPane"
+            depthTest = "DISABLE"
             maxHeight = "-Infinity"
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
             prefHeight = "-1.0"
-            prefWidth = "-1.0"
+            prefWidth = "993.0"
             xmlns:fx = "http://javafx.com/fxml/1"
             xmlns = "http://javafx.com/javafx/2.2"
             fx:controller = "com.rasalhague.mdrv.gui.MainWindowController">
@@ -25,11 +27,15 @@
           AnchorPane.leftAnchor = "0.0"
           AnchorPane.rightAnchor = "0.0"
           AnchorPane.topAnchor = "0.0">
+        <padding>
+            <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
+        </padding>
         <LineChart fx:id = "lineChart"
                    alternativeColumnFillVisible = "false"
                    alternativeRowFillVisible = "false"
-                   animated = "false"
+                   animated = "true"
                    createSymbols = "true"
+                   depthTest = "INHERIT"
                    disable = "false"
                    focusTraversable = "false"
                    horizontalGridLinesVisible = "true"
@@ -40,8 +46,10 @@
                    maxWidth = "1.7976931348623157E308"
                    minHeight = "-Infinity"
                    minWidth = "-Infinity"
+                   mouseTransparent = "false"
                    prefHeight = "400.0"
                    prefWidth = "800.0"
+                   style = ""
                    verticalGridLinesVisible = "true"
                    verticalZeroLineVisible = "true"
                    VBox.vgrow = "ALWAYS">
@@ -69,8 +77,12 @@
                             forceZeroInRange = "false"
                             label = "RSSI, dBm"
                             lowerBound = "-120.0"
+                            minorTickCount = "5"
+                            minorTickVisible = "false"
                             side = "LEFT"
+                            tickLabelGap = "3.0"
                             tickLabelsVisible = "true"
+                            tickMarkVisible = "true"
                             tickUnit = "5.0"
                             upperBound = "-30.0"/>
             </yAxis>
@@ -81,9 +93,6 @@
                 <Insets fx:id = "x2"/>
             </VBox.margin>
         </LineChart>
-        <padding>
-            <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
-        </padding>
         <GridPane alignment = "CENTER_LEFT"
                   disable = "false"
                   hgap = "5.0"
@@ -95,6 +104,7 @@
                           alignment = "CENTER_LEFT"
                           mnemonicParsing = "false"
                           onAction = "#maxCheckBoxChangedEvent"
+                          selected = "true"
                           text = "max"
                           GridPane.columnIndex = "1"
                           GridPane.rowIndex = "0"/>
@@ -116,7 +126,11 @@
                         onMouseClicked = "#startListeningButtonMouseClickedEvent"
                         text = "Start listening"
                         GridPane.columnIndex = "0"
-                        GridPane.rowIndex = "0"/>
+                        GridPane.rowIndex = "0">
+                    <font>
+                        <Font size = "12.0"/>
+                    </font>
+                </Button>
             </children>
             <columnConstraints>
                 <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "-Infinity" minWidth = "-1.0" prefWidth = "-1.0"/>

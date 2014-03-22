@@ -6,12 +6,24 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="WiSpy now works">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Correctly close file handlers in ApplicationLogger.java">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -77,27 +89,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApplicationLogger.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="51" selection-start="3126" selection-end="3141" vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="901">
-              <folding />
+            <state line="89" column="13" selection-start="2900" selection-end="2900" vertical-scroll-proportion="0.0" vertical-offset="1124" max-vertical-offset="4811">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#run#0;class#4210:7031" expanded="true" />
+                <element signature="e#5067#5083#0" expanded="true" />
+                <element signature="e#5578#5594#0" expanded="true" />
+                <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <file leaf-file-name="DeviceInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="47" selection-start="2561" selection-end="2590" vertical-scroll-proportion="0.40128756" vertical-offset="510" max-vertical-offset="2516">
+            <state line="14" column="13" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
               <folding>
-                <element signature="e#2409#2921#0" expanded="true" />
-                <element signature="e#2910#2911#0" expanded="true" />
-                <element signature="method#startListeningButtonMouseClickedEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#run#0;class#4030:6847" expanded="true" />
+                <element signature="method#DeviceInfo#0;class#DeviceInfo#0" expanded="true" />
+                <element signature="method#DeviceInfo#1;class#DeviceInfo#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacketLogger.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="0" selection-start="2850" selection-end="2850" vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="867">
+              <folding>
+                <element signature="class#CustomExclusionStrategies#0" expanded="false" />
+                <element signature="method#shouldSkipField#0;class#CustomExclusionStrategies#0" expanded="true" />
+                <element signature="method#shouldSkipClass#0;class#CustomExclusionStrategies#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigurationLoader.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+              <folding>
+                <element signature="method#getConfiguration#0;class#ConfigurationLoader#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataPacket.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="969">
+              <folding>
+                <element signature="method#DataPacket#0;class#DataPacket#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigurationHolder.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="21" selection-start="1312" selection-end="1325" vertical-scroll-proportion="0.66096866" vertical-offset="182" max-vertical-offset="884">
+              <folding>
+                <element signature="method#getDeviceConfiguration#0;class#ConfigurationHolder#0" expanded="true" />
+                <element signature="e#1206#1207#0" expanded="true" />
+                <element signature="e#1253#1254#0" expanded="true" />
+                <element signature="class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -116,17 +181,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceCommunication.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/USBITry.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/JFreeCharTest.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/MDRV.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/PacketAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/AirView2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/style.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css.html" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ez430RF2500.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/hidAPI.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPIImpl.java" />
@@ -134,15 +189,12 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/HidAPI.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/USBITry.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/UsbHidTest.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/UnigenISMSnifferImpl.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/UnigenISMSnifferConstants.java" />
@@ -151,28 +203,41 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/ez430RF2500Constants.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/ez430RF2500.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/UnigenISMSniffer.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart2.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/style.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationScheme.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationHolder.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationLoader.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/DeviceConfigurationHolder.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="126" />
-    <option name="width" value="1289" />
+    <option name="x" value="112" />
+    <option name="width" value="1377" />
     <option name="height" value="870" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -183,95 +248,9 @@
             <id />
           </State>
           <State>
-            <id>Abstraction issues</id>
-          </State>
-          <State>
             <id>Android Lint</id>
           </State>
-          <State>
-            <id>Assignment issues</id>
-          </State>
-          <State>
-            <id>Bitwise operation issues</id>
-          </State>
-          <State>
-            <id>Class structure</id>
-          </State>
-          <State>
-            <id>Code maturity issues</id>
-          </State>
-          <State>
-            <id>Code style issues</id>
-          </State>
-          <State>
-            <id>Declaration redundancy</id>
-          </State>
-          <State>
-            <id>Error handling</id>
-          </State>
-          <State>
-            <id>Error handlingGroovy</id>
-          </State>
-          <State>
-            <id>General</id>
-          </State>
-          <State>
-            <id>Groovy</id>
-          </State>
-          <State>
-            <id>Internationalization issues</id>
-          </State>
-          <State>
-            <id>JUnit issues</id>
-          </State>
-          <State>
-            <id>Java language level migration aids</id>
-          </State>
-          <State>
-            <id>Javadoc issues</id>
-          </State>
-          <State>
-            <id>Method MetricsGroovy</id>
-          </State>
-          <State>
-            <id>Method metrics</id>
-          </State>
-          <State>
-            <id>Naming ConventionsGroovy</id>
-          </State>
-          <State>
-            <id>Naming conventions</id>
-          </State>
-          <State>
-            <id>Numeric issues</id>
-          </State>
-          <State>
-            <id>Performance issues</id>
-          </State>
-          <State>
-            <id>Plugin DevKit</id>
-          </State>
-          <State>
-            <id>Probable bugs</id>
-          </State>
-          <State>
-            <id>Properties Files</id>
-          </State>
-          <State>
-            <id>Serialization issues</id>
-          </State>
-          <State>
-            <id>TestNG</id>
-          </State>
-          <State>
-            <id>Threading issues</id>
-          </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>StaticVariableNamingConvention</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
     <entry key="Project Default">
@@ -417,8 +396,6 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,25 +424,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javahidapi" />
+              <option name="myItemId" value="cfg" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -541,7 +500,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
+              <option name="myItemId" value="RawDataProcessor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -568,32 +527,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="PacketLogger.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logging" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ApplicationLogger.java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -685,7 +618,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dev_communication" />
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -729,12 +666,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
+              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -746,7 +685,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.11495327" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/javahidapi" />
@@ -762,10 +701,10 @@
     <property name="options.splitter.main.proportions" value="0.15210356" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
+    <property name="options.lastSelected" value="preferences.JavaFX" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="SearchEverywhereHistory" value="" />
+    <property name="SearchEverywhereHistory" value="&#10;C" />
     <property name="LayoutCode.rearrangeEntries" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
@@ -1329,7 +1268,15 @@
       <created>1394809608082</created>
       <updated>1394809608082</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Correctly close file handlers in ApplicationLogger.java">
+      <created>1394810307533</created>
+      <updated>1394810307533</updated>
+    </task>
+    <task id="LOCAL-00083" summary="final">
+      <created>1395524574119</created>
+      <updated>1395524574119</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1353,7 +1300,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="126" y="0" width="1289" height="870" extended-state="0" />
+    <frame x="112" y="0" width="1377" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1361,25 +1308,25 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14120668" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2968961" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31848854" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31443995" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.392" sideWeight="0.306" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23841059" sideWeight="0.5006748" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.268556" sideWeight="0.552" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26180837" sideWeight="0.552" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32523617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25264013" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3117409" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16623877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20621683" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3108108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16623877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3859649" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1400,8 +1347,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Del unused code" />
-    <MESSAGE value="//TODO need to avoid new DeviceInfo every scan" />
     <MESSAGE value="Encapsulate fields and small refactor" />
     <MESSAGE value="Refactor: DeviceCommunication.java factory method correctly chose device now; Application logger adaptation; del unused code;" />
     <MESSAGE value="lib" />
@@ -1425,7 +1370,9 @@
     <MESSAGE value="jar" />
     <MESSAGE value="clean up" />
     <MESSAGE value="WiSpy now works" />
-    <option name="LAST_COMMIT_MESSAGE" value="WiSpy now works" />
+    <MESSAGE value="Correctly close file handlers in ApplicationLogger.java" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1441,32 +1388,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="0" selection-start="1866" selection-end="1866" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="2505">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="0" selection-start="6863" selection-end="6863" vertical-scroll-proportion="0.0" vertical-offset="3540" max-vertical-offset="3630">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="46" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="1245">
-          <folding />
-        </state>
+        <state line="64" column="46" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="1245" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
@@ -1480,100 +1404,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="0" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2805">
           <folding>
-            <element signature="e#2409#2921#0" expanded="true" />
-            <element signature="e#2910#2911#0" expanded="true" />
-            <element signature="method#startListeningButtonMouseClickedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#run#0;class#4030:6847" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#4210:7031" expanded="true" />
+            <element signature="e#5067#5083#0" expanded="true" />
+            <element signature="e#5578#5594#0" expanded="true" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="36" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="2430">
-          <folding />
-        </state>
+        <state line="33" column="36" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="2430" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="19" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="49" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="3146" selection-end="3146" vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="1740">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="46" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="1245">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="49" selection-start="1002" selection-end="1002" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2805">
-          <folding>
-            <element signature="e#2409#2921#0" expanded="true" />
-            <element signature="e#2910#2911#0" expanded="true" />
-            <element signature="method#startListeningButtonMouseClickedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#run#0;class#4030:6847" expanded="true" />
-          </folding>
-        </state>
+        <state line="41" column="46" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="36" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="2430">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="46" selection-start="960" selection-end="960" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="2978" selection-end="2978" vertical-scroll-proportion="0.0" vertical-offset="1870" max-vertical-offset="2754">
-          <folding />
-        </state>
+        <state line="110" column="0" selection-start="2978" selection-end="2978" vertical-scroll-proportion="0.0" vertical-offset="1870" max-vertical-offset="2754" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="0" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2482">
-          <folding />
-        </state>
+        <state line="78" column="0" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2482" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/jSSC-2.8.0-Release/src/jssc-2.8.0-src.jar!/src/jssc/SerialPort.java">
@@ -1598,16 +1458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="3" selection-start="85" selection-end="85" vertical-scroll-proportion="0.11627907" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="1" selection-start="213" selection-end="213" vertical-scroll-proportion="0.20930232" vertical-offset="0" max-vertical-offset="731" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../LIBS/javahidapi/hidapi-1.1-sources.jar!/com/codeminders/hidapi/HIDDevice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="79" column="22" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.33333334" vertical-offset="352" max-vertical-offset="1173" />
@@ -1618,16 +1468,6 @@
         <state line="10" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="-0.11748252" vertical-offset="186" max-vertical-offset="1156" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="46" selection-start="3368" selection-end="3389" vertical-scroll-proportion="0.43965518" vertical-offset="0" max-vertical-offset="696">
-          <folding>
-            <element signature="method#byteArrayListToCharToString#0;class#Utils#0" expanded="true" />
-            <element signature="class#StreamReader#0;class#Utils#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="47" selection-start="407" selection-end="407" vertical-scroll-proportion="0.2982456" vertical-offset="51" max-vertical-offset="612" />
@@ -1635,11 +1475,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="23" selection-start="251" selection-end="262" vertical-scroll-proportion="0.09770115" vertical-offset="0" max-vertical-offset="833">
-          <folding>
-            <element signature="method#initializeDevice#0;class#ez430RF2500#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="8" column="23" selection-start="251" selection-end="262" vertical-scroll-proportion="0.09770115" vertical-offset="0" max-vertical-offset="833" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java">
@@ -1647,18 +1483,9 @@
         <state line="11" column="4" selection-start="315" selection-end="315" vertical-scroll-proportion="0.24425288" vertical-offset="0" max-vertical-offset="696" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="46" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0" vertical-offset="500" max-vertical-offset="1360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/UsbHidTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="201" selection-end="201" vertical-scroll-proportion="0.12729844" vertical-offset="0" max-vertical-offset="795">
-          <folding />
-        </state>
+        <state line="9" column="23" selection-start="201" selection-end="201" vertical-scroll-proportion="0.12729844" vertical-offset="0" max-vertical-offset="795" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/javahidapi/hidapi-1.1-sources.jar!/com/codeminders/hidapi/HIDDevice.java">
@@ -1668,9 +1495,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1088">
-          <folding />
-        </state>
+        <state line="54" column="0" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1088" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java">
@@ -1678,53 +1503,14 @@
         <state line="9" column="57" selection-start="226" selection-end="236" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="16" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.2764045" vertical-offset="302" max-vertical-offset="1037">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="37" selection-start="701" selection-end="701" vertical-scroll-proportion="0.43965518" vertical-offset="0" max-vertical-offset="696">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="61" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.19944212" vertical-offset="265" max-vertical-offset="1241">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="36" selection-start="86" selection-end="112" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1312" selection-end="1312" vertical-scroll-proportion="0.33194155" vertical-offset="402" max-vertical-offset="986">
-          <folding />
-        </state>
+        <state line="4" column="36" selection-start="86" selection-end="112" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="15" selection-start="80" selection-end="80" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="49" selection-start="998" selection-end="1002" vertical-scroll-proportion="0.6657343" vertical-offset="0" max-vertical-offset="850">
-          <folding />
-        </state>
+        <state line="4" column="15" selection-start="80" selection-end="80" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java">
@@ -1736,71 +1522,208 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="13" selection-start="2923" selection-end="2923" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1751">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="86" selection-start="5987" selection-end="5987" vertical-scroll-proportion="0.58987343" vertical-offset="1110" max-vertical-offset="1870">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="4" selection-start="839" selection-end="839" vertical-scroll-proportion="0.3118881" vertical-offset="151" max-vertical-offset="1071">
-          <folding />
-        </state>
+        <state line="104" column="13" selection-start="2923" selection-end="2923" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1751" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="51" selection-start="511" selection-end="511" vertical-scroll-proportion="0.44541484" vertical-offset="0" max-vertical-offset="561">
-          <folding />
-        </state>
+        <state line="16" column="51" selection-start="511" selection-end="511" vertical-scroll-proportion="0.44541484" vertical-offset="0" max-vertical-offset="561" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.0" vertical-offset="389" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="78" selection-start="887" selection-end="887" vertical-scroll-proportion="0.3721591" vertical-offset="112" max-vertical-offset="816">
-          <folding />
-        </state>
+        <state line="47" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.0" vertical-offset="389" max-vertical-offset="1445" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="51" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.7447699" vertical-offset="78" max-vertical-offset="816">
+        <state line="36" column="51" selection-start="1128" selection-end="1128" vertical-scroll-proportion="0.7447699" vertical-offset="78" max-vertical-offset="816" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0/jre/lib/ext/jfxrt.jar!/javafx/scene/chart/XYChart.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="241" column="38" selection-start="12644" selection-end="12644" vertical-scroll-proportion="0.33333334" vertical-offset="3846" max-vertical-offset="4930" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0/jre/lib/ext/jfxrt.jar!/javafx/scene/Node.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="184" column="22" selection-start="8757" selection-end="8757" vertical-scroll-proportion="0.33333334" vertical-offset="2639" max-vertical-offset="23630" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wispy init.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.57062936" vertical-offset="408" max-vertical-offset="16320" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="43" selection-start="3548" selection-end="3548" vertical-scroll-proportion="0.0" vertical-offset="758" max-vertical-offset="2244">
+          <folding>
+            <element signature="method#getHIDDevicesList#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="docComment;method#updateConnectedDeviceList#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="e#4978#4990#0" expanded="true" />
+            <element signature="method#deviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="method#addListener#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="method#performDeviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="4" selection-start="1606" selection-end="1606" vertical-scroll-proportion="0.095104896" vertical-offset="153" max-vertical-offset="1326">
+          <folding>
+            <element signature="method#searchRegistry#0;class#Utils#0" expanded="true" />
+            <element signature="method#byteArrayListToCharToString#0;class#Utils#0" expanded="true" />
+            <element signature="class#StreamReader#0;class#Utils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="887" selection-end="887" vertical-scroll-proportion="0.43948126" vertical-offset="69" max-vertical-offset="1309" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="73" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.6657343" vertical-offset="0" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="24" selection-start="1938" selection-end="1938" vertical-scroll-proportion="1.097902" vertical-offset="133" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="715">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="51" selection-start="3126" selection-end="3141" vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="901">
+        <state line="130" column="84" selection-start="4134" selection-end="4134" vertical-scroll-proportion="0.3104895" vertical-offset="951" max-vertical-offset="1921">
+          <folding>
+            <element signature="method#setup#0;class#ApplicationLogger#0" expanded="true" />
+            <element signature="method#format#0;class#MyLogFormatter#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="31" selection-start="262" selection-end="262" vertical-scroll-proportion="0.14265734" vertical-offset="0" max-vertical-offset="782">
+          <folding>
+            <element signature="method#publish#0;class#TextAreaHandler#0" expanded="true" />
+            <element signature="method#run#0;class#546:727" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="17" selection-start="24" selection-end="24" vertical-scroll-proportion="0.023776224" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="20" selection-start="68" selection-end="68" vertical-scroll-proportion="0.047552448" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="20" selection-start="4345" selection-end="4345" vertical-scroll-proportion="0.75783473" vertical-offset="454" max-vertical-offset="1156">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="47" selection-start="2561" selection-end="2590" vertical-scroll-proportion="0.40128756" vertical-offset="510" max-vertical-offset="2516">
+        <state line="89" column="13" selection-start="2900" selection-end="2900" vertical-scroll-proportion="0.0" vertical-offset="1124" max-vertical-offset="4811">
           <folding>
-            <element signature="e#2409#2921#0" expanded="true" />
-            <element signature="e#2910#2911#0" expanded="true" />
-            <element signature="method#startListeningButtonMouseClickedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#maxCheckBoxChangedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#refreshChartButtonClickEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#run#0;class#4030:6847" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#4210:7031" expanded="true" />
+            <element signature="e#5067#5083#0" expanded="true" />
+            <element signature="e#5578#5594#0" expanded="true" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="23" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="9" selection-start="531" selection-end="531" vertical-scroll-proportion="0.28531468" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="0" selection-start="2850" selection-end="2850" vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="867">
+          <folding>
+            <element signature="class#CustomExclusionStrategies#0" expanded="false" />
+            <element signature="method#shouldSkipField#0;class#CustomExclusionStrategies#0" expanded="true" />
+            <element signature="method#shouldSkipClass#0;class#CustomExclusionStrategies#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+          <folding>
+            <element signature="method#DeviceInfo#0;class#DeviceInfo#0" expanded="true" />
+            <element signature="method#DeviceInfo#1;class#DeviceInfo#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="969">
+          <folding>
+            <element signature="method#DataPacket#0;class#DataPacket#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <folding>
+            <element signature="method#getConfiguration#0;class#ConfigurationLoader#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="21" selection-start="1312" selection-end="1325" vertical-scroll-proportion="0.66096866" vertical-offset="182" max-vertical-offset="884">
+          <folding>
+            <element signature="method#getDeviceConfiguration#0;class#ConfigurationHolder#0" expanded="true" />
+            <element signature="e#1206#1207#0" expanded="true" />
+            <element signature="e#1253#1254#0" expanded="true" />
+            <element signature="class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1852,7 +1775,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1877,7 +1800,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.7 (1)</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

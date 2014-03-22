@@ -1,7 +1,6 @@
 package com.rasalhague.mdrv.dev_communication;
 
 import com.rasalhague.mdrv.DeviceInfo;
-import com.rasalhague.mdrv.constants.DeviceConstants;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 /**
@@ -28,9 +27,11 @@ public abstract class DeviceCommunication implements Runnable
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
     {
+        //TODO Hardcoded
         String AirView2PID = "0241";
         String eZ430PID = "F432";
         String ISMSnifferPID = "2001";
+        String MetaGeek_WiSpy24x2PID = "2410";
 
         String devPid = deviceInfo.getProductID();
 
@@ -48,6 +49,8 @@ public abstract class DeviceCommunication implements Runnable
                 return new ez430RF2500(deviceInfo);
             }
 
+            //TODO Custom device
+
             ApplicationLogger.LOGGER.warning(
                     "Device not specified. Getting COMDeviceCommunication to try to work with COM device.");
 
@@ -60,10 +63,12 @@ public abstract class DeviceCommunication implements Runnable
                 return new ISMSniffer(deviceInfo);
             }
 
-            if (devPid.equals(DeviceConstants.MetaGeek_WiSpy24x2.PID))
+            if (devPid.equals(MetaGeek_WiSpy24x2PID))
             {
                 return new MetaGeek_WiSpy24x2(deviceInfo);
             }
+
+            //TODO Custom device
 
             //            ApplicationLogger.LOGGER.warning(
             //                    "Device not specified. Getting HIDDeviceCommunication to try to work with HID device.");

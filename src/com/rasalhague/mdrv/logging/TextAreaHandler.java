@@ -1,5 +1,6 @@
 package com.rasalhague.mdrv.logging;
 
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
 import java.util.logging.Handler;
@@ -17,10 +18,17 @@ public class TextAreaHandler extends Handler
     @Override
     public synchronized void publish(LogRecord record)
     {
-        String msg = getFormatter().format(record);
+        final String msg = getFormatter().format(record);
         try
         {
-            textArea.appendText(msg);
+            Platform.runLater(new Runnable()
+            {
+                @Override
+                public synchronized void run()
+                {
+                    textArea.appendText(msg);
+                }
+            });
         }
         catch (NullPointerException e)
         {

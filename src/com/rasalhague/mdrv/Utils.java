@@ -1,6 +1,8 @@
 package com.rasalhague.mdrv;
 
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +72,7 @@ public class Utils
             String output = reader.getResult();
 
             Pattern pattern = Pattern.compile(
-                    "HKEY_LOCAL_MACHINE.*USB.*VID_(?<vid>.{4})&PID_(?<pid>.{4}).*\\n *\\w* *\\w* *(?<devName>.*\\))",
+                    "HKEY_LOCAL_MACHINE.*USB.*VID_(?<vid>.{4})&PID_(?<pid>.{4}).*\\n *\\w* *\\w* *(?<devName>.*) ",
                     Pattern.UNIX_LINES);
 
             //TODO need to handle probably missing register branch
@@ -97,14 +99,6 @@ public class Utils
         return null;
     }
 
-    public static HashMap<String, String> getDeviceNameFromWinRegistry(String devPortName)
-    {
-        HashMap<String, String> result = searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB",
-                                                        devPortName);
-        //        System.out.println(result);
-        return result;
-    }
-
     public static String byteArrayListToCharToString(ArrayList<Byte> byteArrayList)
     {
         //Convert ArrayList<Byte> to String
@@ -114,6 +108,19 @@ public class Utils
             resultString += (char) (byteToProcess.byteValue());
         }
         return resultString;
+    }
+
+    public static boolean isSeriesExist(ObservableList<XYChart.Series<Number, Number>> lineChartData, String name)
+    {
+        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+        {
+            if (numberSeries.getName().equals(name))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     static class StreamReader extends Thread
