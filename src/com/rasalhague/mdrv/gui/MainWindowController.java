@@ -52,8 +52,8 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         CheckBox                  maxCheckBox;
     public         Button                    startListeningButton;
     public         Button                    refreshChartButton;
-    public GridPane   tooltipPane;
-    public TitledPane chartLegendPane;
+    public         GridPane                  tooltipPane;
+    public         TitledPane                chartLegendPane;
 
     public MainWindowController()
     {
@@ -194,24 +194,21 @@ public class MainWindowController extends Application implements AnalysisPerform
              */
             int updateDelayMs = 50;
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-            scheduledExecutorService.schedule(() -> {
+            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
-                Platform.runLater(() -> {
+                vBox.getChildren().clear();
+                lineChart.getData().forEach(series -> {
 
-                    vBox.getChildren().clear();
-                    lineChart.getData().forEach(series -> {
+                    //Get numberSeries color and set it to text
+                    String numberSeriesString = series.getNode().toString();
+                    int indexOf = numberSeriesString.indexOf("stroke=");
+                    String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
 
-                        //Get numberSeries color and set it to text
-                        String numberSeriesString = series.getNode().toString();
-                        int indexOf = numberSeriesString.indexOf("stroke=");
-                        String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
-
-                        Text seriesText = new Text(series.getName());
-                        seriesText.setFill(Paint.valueOf(substring));
-                        vBox.getChildren().add(seriesText);
-                    });
+                    Text seriesText = new Text(series.getName());
+                    seriesText.setFill(Paint.valueOf(substring));
+                    vBox.getChildren().add(seriesText);
                 });
-            }, updateDelayMs, TimeUnit.MILLISECONDS);
+            }), updateDelayMs, TimeUnit.MILLISECONDS);
         });
 
         /**
@@ -222,28 +219,20 @@ public class MainWindowController extends Application implements AnalysisPerform
             final int expandTimeMs = 2000;
 
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-            scheduledExecutorService.schedule(() -> {
+            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
-                Platform.runLater(() -> {
+                chartLegendPane.setOpacity(selectedOpacity);
+                chartLegendPane.setExpanded(true);
+            }), 0, TimeUnit.SECONDS);
 
-                    chartLegendPane.setOpacity(selectedOpacity);
-                    chartLegendPane.setExpanded(true);
-                });
+            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
-            }, 0, TimeUnit.SECONDS);
-
-            scheduledExecutorService.schedule(() -> {
-
-                Platform.runLater(() -> {
-
-                    if (chartLegendPane.isCollapsible())
-                    {
-                        chartLegendPane.setOpacity(unSelectedOpacity);
-                    }
-                    chartLegendPane.setExpanded(false);
-                });
-
-            }, expandTimeMs, TimeUnit.MILLISECONDS);
+                if (chartLegendPane.isCollapsible())
+                {
+                    chartLegendPane.setOpacity(unSelectedOpacity);
+                }
+                chartLegendPane.setExpanded(false);
+            }), expandTimeMs, TimeUnit.MILLISECONDS);
         });
     }
 
@@ -254,7 +243,6 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void maxCheckBoxChangedEvent(ActionEvent event)
     {
-        CheckBox checkBox = (CheckBox) event.getSource();
         System.out.println(maxCheckBox.isSelected());
     }
 
@@ -266,63 +254,58 @@ public class MainWindowController extends Application implements AnalysisPerform
     @Override
     public synchronized void analysisPerformedEvent(final HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResult)
     {
-        Platform.runLater(new Runnable()
-        {
-            @Override
-            public synchronized void run()
+        Platform.runLater(() -> {
+
+            ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+
+            /**
+             * For every device that processed by Analysis class
+             */
+            Set<DeviceInfo> keySet = analysisResult.keySet();
+            for (DeviceInfo deviceInfo : keySet)
             {
-
-                ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
-
-                /**
-                 * For every device that processed by Analysis class
-                 */
-                Set<DeviceInfo> keySet = analysisResult.keySet();
-                for (DeviceInfo deviceInfo : keySet)
+                if (maxCheckBox.isSelected())
                 {
-                    if (maxCheckBox.isSelected())
+
+                    //Generate XYChart.Series
+                    ArrayList<Integer> listMax = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
+                    int points = analysisResult.get(deviceInfo).get(AnalysisKey.MAX).size();
+
+                    XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
+                    series.setName(deviceInfo.getName());
+
+                    final double spacing = (85.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
+                    double xAxisCounter = 0.0;
+                    for (Integer value : listMax)
                     {
+                        XYChart.Data<Number, Number> data = new XYChart.Data<>((double) Math.round((xAxisCounter) *
+                                                                                                           1000) / 1000,
+                                                                               value);
+                        seriesData.add(data);
 
-                        //Generate XYChart.Series
-                        ArrayList<Integer> listMax = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
-                        int points = analysisResult.get(deviceInfo).get(AnalysisKey.MAX).size();
+                        xAxisCounter += spacing;
+                    }
 
-                        XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
-                        ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
-                        series.setName(deviceInfo.getName());
-
-                        final double spacing = (85.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
-                        double xAxisCounter = 0.0;
-                        for (Integer value : listMax)
+                    //Use XYChart.Series
+                    if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
+                    {
+                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
                         {
-                            XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>((double) Math.round((xAxisCounter) *
-                                                                                                                             1000) /
-                                                                                                         1000, value);
-                            seriesData.add(data);
-
-                            xAxisCounter += spacing;
-                        }
-
-                        //Use XYChart.Series
-                        if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
-                        {
-                            for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                            if (numberSeries.getName().equals(deviceInfo.getName()))
                             {
-                                if (numberSeries.getName().equals(deviceInfo.getName()))
+                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
+                                for (int i = 0; i < data.size(); i++)
                                 {
-                                    ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                                    for (int i = 0; i < data.size(); i++)
-                                    {
-                                        XYChart.Data<Number, Number> numberData = data.get(i);
-                                        numberData.setYValue(series.getData().get(i).getYValue());
-                                    }
+                                    XYChart.Data<Number, Number> numberData = data.get(i);
+                                    numberData.setYValue(series.getData().get(i).getYValue());
                                 }
                             }
                         }
-                        else
-                        {
-                            lineChartData.add(series);
-                        }
+                    }
+                    else
+                    {
+                        lineChartData.add(series);
                     }
                 }
             }
@@ -348,9 +331,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             }
         }
 
-        chartBackground.setOnMouseEntered(mouseEvent -> {
-            tooltipPane.setVisible(true);
-        });
+        chartBackground.setOnMouseEntered(mouseEvent -> tooltipPane.setVisible(true));
 
         chartBackground.setOnMouseMoved(mouseEvent -> {
 
@@ -453,9 +434,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             }
         });
 
-        chartBackground.setOnMouseExited(mouseEvent -> {
-            tooltipPane.setVisible(false);
-        });
+        chartBackground.setOnMouseExited(mouseEvent -> tooltipPane.setVisible(false));
 
         //        xAxis.setOnMouseEntered(new EventHandler<MouseEvent>()
         //        {

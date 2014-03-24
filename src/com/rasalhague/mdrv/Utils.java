@@ -77,7 +77,7 @@ public class Utils
 
             //TODO need to handle probably missing register branch
             Matcher matcher = pattern.matcher(output);
-            HashMap<String, String> devInfMap = new HashMap<String, String>();
+            HashMap<String, String> devInfMap = new HashMap<>();
             matcher.find();
             devInfMap.put("vid", matcher.group("vid"));
             devInfMap.put("pid", matcher.group("pid"));
@@ -85,15 +85,10 @@ public class Utils
 
             return devInfMap;
         }
-        catch (IOException ex)
+        catch (IOException | InterruptedException ex)
         {
             ApplicationLogger.LOGGER.severe(ex.getMessage());
             ex.printStackTrace();
-        }
-        catch (InterruptedException e)
-        {
-            ApplicationLogger.LOGGER.severe(e.getMessage());
-            e.printStackTrace();
         }
 
         return null;

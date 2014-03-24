@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class PacketAnalysis implements DataPacketListener
 {
-    private volatile HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResultsMap = new HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>();
+    private volatile HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResultsMap = new HashMap<>();
 
     public static PacketAnalysis getInstance()
     {
@@ -38,8 +38,8 @@ public class PacketAnalysis implements DataPacketListener
              */
             if (!analysisResultsMap.containsKey(deviceInfo))
             {
-                ArrayList<Integer> listToAdd = new ArrayList<Integer>(dataPacket.getDataPacketValues());
-                HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<AnalysisKey, ArrayList<Integer>>();
+                ArrayList<Integer> listToAdd = new ArrayList<>(dataPacket.getDataPacketValues());
+                HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
                 hashMapToAdd.put(AnalysisKey.MAX, listToAdd);
                 analysisResultsMap.put(deviceInfo, hashMapToAdd);
             }
@@ -90,7 +90,7 @@ public class PacketAnalysis implements DataPacketListener
 
     //region Observer implementation
 
-    private List<AnalysisPerformedListener> analysisPerformedListeners = new ArrayList<AnalysisPerformedListener>();
+    private List<AnalysisPerformedListener> analysisPerformedListeners = new ArrayList<>();
 
     public void addListener(AnalysisPerformedListener toAdd)
     {

@@ -18,7 +18,7 @@ class DefaultDataProcessingAlgorithm implements RawDataProcessingAlgorithm
 
         Pattern pattern = Pattern.compile(DEFAULT_REGEX_PATTERN);
         Matcher matcher = pattern.matcher(strToProcess);
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<>();
         while (matcher.find())
         {
             int itemToAdd = Integer.parseInt(matcher.group("data"));

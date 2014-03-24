@@ -30,8 +30,8 @@ interface DeviceConnectionListenerI
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
-    private ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<DeviceInfo>();
-    private List<DeviceConnectionListenerI> listeners           = new ArrayList<DeviceConnectionListenerI>();
+    private ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
+    private List<DeviceConnectionListenerI> listeners           = new ArrayList<>();
     private long                            scanTimerPeriodMs   = 1000;
     private boolean                         isListening         = false;
     private Timer timer;
@@ -117,7 +117,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     {
         ArrayList<DeviceInfo> comPortsList = getCOMPortsList();
         ArrayList<DeviceInfo> hidDevicesList = getHIDDevicesList();
-        ArrayList<DeviceInfo> comHidList = new ArrayList<DeviceInfo>();
+        ArrayList<DeviceInfo> comHidList = new ArrayList<>();
         comHidList.addAll(comPortsList);
         comHidList.addAll(hidDevicesList);
 
@@ -135,7 +135,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         String[] portNames = SerialPortList.getPortNames();
 
         //Generate array list from portNames
-        ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
+        ArrayList<DeviceInfo> deviceInfoList = new ArrayList<>();
 
         for (String portName : portNames)
         {
@@ -152,7 +152,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             HIDDeviceInfo[] hidDeviceInfos = HIDManager.getInstance().listDevices();
 
             //Generate array list from portNames
-            ArrayList<DeviceInfo> deviceInfoList = new ArrayList<DeviceInfo>();
+            ArrayList<DeviceInfo> deviceInfoList = new ArrayList<>();
 
             if (hidDeviceInfos != null)
             {
@@ -191,7 +191,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
         //removing
         //create temp array coz ConcurrentModificationException
-        ArrayList<DeviceInfo> clone = new ArrayList<DeviceInfo>();
+        ArrayList<DeviceInfo> clone = new ArrayList<>();
         clone = clone.getClass().cast(connectedDeviceList.clone());
         for (DeviceInfo deviceInfo : clone)
         {

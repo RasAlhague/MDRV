@@ -21,14 +21,7 @@ public class TextAreaHandler extends Handler
         final String msg = getFormatter().format(record);
         try
         {
-            Platform.runLater(new Runnable()
-            {
-                @Override
-                public synchronized void run()
-                {
-                    textArea.appendText(msg);
-                }
-            });
+            Platform.runLater(() -> textArea.appendText(msg));
         }
         catch (NullPointerException e)
         {

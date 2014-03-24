@@ -15,7 +15,7 @@ import java.util.Observable;
 public class RxRawDataReceiver extends Observable
 {
     private ArrayList<DataPacket> rawDataPackets;
-    private ArrayList<Byte> rawDataBuffer = new ArrayList<Byte>();
+    private ArrayList<Byte> rawDataBuffer = new ArrayList<>();
 
     private Boolean firstPacketTrigger = true;
     private DeviceInfo deviceInfo;
@@ -23,7 +23,7 @@ public class RxRawDataReceiver extends Observable
     public RxRawDataReceiver(DeviceInfo deviceInfo)
     {
         this.deviceInfo = deviceInfo;
-        rawDataPackets = new ArrayList<DataPacket>();
+        rawDataPackets = new ArrayList<>();
     }
 
     private void saveRawDataPacket()
@@ -106,7 +106,7 @@ public class RxRawDataReceiver extends Observable
                 //Transfer endPacketSequence to the start of packet
                 List<Byte> subList = rawDataBuffer.subList(rawDataBuffer.size() - endPacketSequence.length,
                                                            rawDataBuffer.size());
-                List<Byte> tempList = new ArrayList<Byte>(subList);
+                List<Byte> tempList = new ArrayList<>(subList);
                 subList.clear();
 
                 saveRawDataPacket();
@@ -118,7 +118,7 @@ public class RxRawDataReceiver extends Observable
 
     //region Observer implementation (DataPacketListener)
 
-    private List<DataPacketListener> dataPacketListeners = new ArrayList<DataPacketListener>();
+    private List<DataPacketListener> dataPacketListeners = new ArrayList<>();
 
     public void addListener(DataPacketListener toAdd)
     {

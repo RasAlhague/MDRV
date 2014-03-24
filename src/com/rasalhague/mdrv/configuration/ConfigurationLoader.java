@@ -44,7 +44,6 @@ public class ConfigurationLoader
                 /**
                  * If /cfg/config.cfg does not exists - get reserved file from CONFIG_FILE_RESERVED_PATH
                  */
-                configFile = new File(CONFIG_FILE_RESERVED_PATH);
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(ConfigurationLoader.class.getResourceAsStream(
                         CONFIG_FILE_RESERVED_PATH)))
                 )

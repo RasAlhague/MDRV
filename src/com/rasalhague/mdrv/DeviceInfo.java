@@ -47,7 +47,7 @@ public class DeviceInfo
     DeviceInfo(String devPortName, DeviceType devTypeEnum)
     {
         devicePortName = devPortName;
-        deviceType = devTypeEnum;
+        deviceType = DeviceType.COM;
 
         HashMap<String, String> devInfMap = takeCOMDeviceInformation();
         name = devInfMap.get("devName");

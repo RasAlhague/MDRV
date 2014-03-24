@@ -7,7 +7,7 @@ public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlg
     @Override
     public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess)
     {
-        ArrayList<Byte> arrayList = new ArrayList<Byte>();
+        ArrayList<Byte> arrayList = new ArrayList<>();
         byte byteCounter = 0;
         for (int i = 0; i < dataToProcess.size(); )
         {
@@ -30,11 +30,11 @@ public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlg
             }
         }
 
-        ArrayList<Integer> finalArrayList = new ArrayList<Integer>();
+        ArrayList<Integer> finalArrayList = new ArrayList<>();
         for (Byte aByte : arrayList)
         {
             //$frequency[$i] = ((hexdec($frequency_temp[3*$i]) - 254) + 82) * 1.428 - 97;
-            finalArrayList.add((int) ((aByte - 135)));
+            finalArrayList.add((aByte - 135));
         }
 
         return finalArrayList;
