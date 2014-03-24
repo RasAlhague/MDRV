@@ -141,7 +141,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                      LineChart<Number, Number> lineChart) throws InterruptedException
     {
         double selectedOpacity = 1.0;
-        double unSelectedOpacity = 0.5;
+        double unSelectedOpacity = 0.7;
 
         VBox vBox = (VBox) chartLegendPane.getContent();
 
@@ -159,8 +159,29 @@ public class MainWindowController extends Application implements AnalysisPerform
          */
         chartLegendPane.setOnMouseExited(mouseEvent -> {
 
-            chartLegendPane.setOpacity(unSelectedOpacity);
+            if (chartLegendPane.isCollapsible())
+            {
+                chartLegendPane.setOpacity(unSelectedOpacity);
+            }
             chartLegendPane.setExpanded(false);
+        });
+
+        /**
+         * Set Collapsible realization
+         * Click on vBox change chartLegendPane Collapsible state
+         */
+        vBox.setOnMouseClicked(mouseEvent -> {
+
+            if (chartLegendPane.isCollapsible())
+            {
+                chartLegendPane.setOpacity(selectedOpacity);
+                chartLegendPane.setCollapsible(false);
+            }
+            else
+            {
+                chartLegendPane.setOpacity(unSelectedOpacity);
+                chartLegendPane.setCollapsible(true);
+            }
         });
 
         /**
@@ -215,7 +236,10 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                 Platform.runLater(() -> {
 
-                    chartLegendPane.setOpacity(unSelectedOpacity);
+                    if (chartLegendPane.isCollapsible())
+                    {
+                        chartLegendPane.setOpacity(unSelectedOpacity);
+                    }
                     chartLegendPane.setExpanded(false);
                 });
 

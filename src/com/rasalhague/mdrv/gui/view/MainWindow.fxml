@@ -170,8 +170,8 @@
     </GridPane>
     <TitledPane fx:id = "chartLegendPane"
                 animated = "true"
-                collapsible = "true"
-                expanded = "false"
+                collapsible = "false"
+                expanded = "true"
                 mnemonicParsing = "false"
                 mouseTransparent = "false"
                 opacity = "0.5"
@@ -179,14 +179,11 @@
                 prefHeight = "-1.0"
                 prefWidth = "-1.0"
                 text = "Chart legend"
+                textOverrun = "ELLIPSIS"
                 AnchorPane.rightAnchor = "0.0"
                 AnchorPane.topAnchor = "0.0">
         <content>
-            <VBox prefHeight = "-1.0" prefWidth = "-1.0">
-                <children>
-                    <Label text = "Label"/>
-                </children>
-            </VBox>
+            <VBox prefHeight = "-1.0" prefWidth = "-1.0"/>
         </content>
     </TitledPane>
     <padding>

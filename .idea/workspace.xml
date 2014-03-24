@@ -6,13 +6,12 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Rework Tooltip">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="ChartLegendPane behavior realization!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -81,11 +80,21 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="43" selection-start="4438" selection-end="4474" vertical-scroll-proportion="0.28455284" vertical-offset="283" max-vertical-offset="4199">
+            <state line="169" column="38" selection-start="5476" selection-end="5499" vertical-scroll-proportion="0.43089432" vertical-offset="804" max-vertical-offset="6018">
               <folding>
-                <element signature="method#run#0;class#8150:11104" expanded="true" />
+                <element signature="docComment;method#initChartLegendPane#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#run#0;class#8888:11842" expanded="true" />
                 <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.fxml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="32" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -161,8 +170,8 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
       </list>
     </option>
   </component>
@@ -1340,7 +1349,11 @@
       <created>1395625473810</created>
       <updated>1395625473810</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="ChartLegendPane behavior realization!">
+      <created>1395663048196</created>
+      <updated>1395663048196</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1411,7 +1424,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="fix app logger" />
     <MESSAGE value="New GUI&#10;A lot of refactor" />
     <MESSAGE value="Add Refresh button&#10;Add multi dev series support" />
     <MESSAGE value="Add Tooltips" />
@@ -1436,7 +1448,8 @@
     <MESSAGE value=" Configurations file" />
     <MESSAGE value="Configuration file reservation" />
     <MESSAGE value="Rework Tooltip" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework Tooltip" />
+    <MESSAGE value="ChartLegendPane behavior realization!" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChartLegendPane behavior realization!" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1475,7 +1488,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="0" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2805">
           <folding>
-            <element signature="method#run#0;class#8150:11104" expanded="true" />
+            <element signature="docComment;method#initChartLegendPane#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#8888:11842" expanded="true" />
             <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
@@ -1754,13 +1768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="28" selection-start="4951" selection-end="4951" vertical-scroll-proportion="0.64827585" vertical-offset="635" max-vertical-offset="1360">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="356" selection-end="356" vertical-scroll-proportion="0.2303523" vertical-offset="0" max-vertical-offset="799">
@@ -1778,11 +1785,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="32" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="43" selection-start="4438" selection-end="4474" vertical-scroll-proportion="0.28455284" vertical-offset="283" max-vertical-offset="4199">
+        <state line="169" column="38" selection-start="5476" selection-end="5499" vertical-scroll-proportion="0.43089432" vertical-offset="804" max-vertical-offset="6018">
           <folding>
-            <element signature="method#run#0;class#8150:11104" expanded="true" />
+            <element signature="docComment;method#initChartLegendPane#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#8888:11842" expanded="true" />
             <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
