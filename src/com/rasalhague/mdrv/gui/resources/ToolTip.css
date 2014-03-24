@@ -1,3 +1,4 @@
-.ttip{
-     -fx-font: 14 monospace;
- }
+#tooltipPane{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-background-radius: 5;
+}

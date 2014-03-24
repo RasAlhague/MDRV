@@ -6,13 +6,13 @@
     <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment=" Configurations file">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Configuration file reservation">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -81,17 +81,22 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="0" selection-start="2233" selection-end="2233" vertical-scroll-proportion="0.951049" vertical-offset="527" max-vertical-offset="4845">
+            <state line="311" column="43" selection-start="12238" selection-end="12238" vertical-scroll-proportion="0.8590786" vertical-offset="2664" max-vertical-offset="4760">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#run#0;class#4314:7135" expanded="true" />
-                <element signature="e#5171#5187#0" expanded="true" />
-                <element signature="e#5682#5698#0" expanded="true" />
-                <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#run#0;class#4583:7537" expanded="true" />
+                <element signature="e#5440#5456#0" expanded="true" />
+                <element signature="e#5951#5967#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToolTip.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="43" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -139,9 +144,7 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart2.css" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/style.css" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationScheme.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationHolder.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/cfgloader/ConfigurationLoader.java" />
@@ -155,17 +158,19 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="112" />
-    <option name="width" value="1475" />
+    <option name="x" value="111" />
+    <option name="width" value="1476" />
     <option name="height" value="870" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -324,12 +329,117 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="MDRV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shape" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -584,7 +694,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="constants" />
+              <option name="myItemId" value="dev_communication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -606,13 +716,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
+              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -641,7 +750,7 @@
     <property name="options.splitter.main.proportions" value="0.15210356" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.lastSelected" value="preferences.JavaFX" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="&#10;C" />
@@ -1225,7 +1334,11 @@
       <created>1395527408658</created>
       <updated>1395527408658</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Configuration file reservation">
+      <created>1395530106997</created>
+      <updated>1395530106997</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1249,7 +1362,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="112" y="0" width="1475" height="870" extended-state="0" />
+    <frame x="111" y="0" width="1476" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1259,18 +1372,18 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2968961" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31443995" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4764398" sideWeight="0.694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.392" sideWeight="0.306" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23841059" sideWeight="0.5006748" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26180837" sideWeight="0.552" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2565445" sideWeight="0.552" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32523617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19195484" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3108108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19452055" sideWeight="0.49932525" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31020942" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16623877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1296,7 +1409,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="lib" />
     <MESSAGE value="." />
     <MESSAGE value="fix app logger" />
     <MESSAGE value="New GUI&#10;A lot of refactor" />
@@ -1321,7 +1433,8 @@
     <MESSAGE value="final" />
     <MESSAGE value="Add Configurations file" />
     <MESSAGE value=" Configurations file" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Configurations file" />
+    <MESSAGE value="Configuration file reservation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Configuration file reservation" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1337,6 +1450,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="55" selection-start="6128" selection-end="6128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="46" selection-start="1993" selection-end="1993" vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="1245" />
@@ -1353,14 +1473,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="0" selection-start="1994" selection-end="1994" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="2805">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#run#0;class#4314:7135" expanded="true" />
-            <element signature="e#5171#5187#0" expanded="true" />
-            <element signature="e#5682#5698#0" expanded="true" />
-            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#4583:7537" expanded="true" />
+            <element signature="e#5440#5456#0" expanded="true" />
+            <element signature="e#5951#5967#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1415,21 +1531,6 @@
     <entry file="jar://$PROJECT_DIR$/../LIBS/javahidapi/hidapi-1.1-sources.jar!/com/codeminders/hidapi/HIDDeviceInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="-0.11748252" vertical-offset="186" max-vertical-offset="1156" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="47" selection-start="407" selection-end="407" vertical-scroll-proportion="0.2982456" vertical-offset="51" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="23" selection-start="251" selection-end="262" vertical-scroll-proportion="0.09770115" vertical-offset="0" max-vertical-offset="833" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="315" selection-end="315" vertical-scroll-proportion="0.24425288" vertical-offset="0" max-vertical-offset="696" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/temp/UsbHidTest.java">
@@ -1508,12 +1609,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="43" selection-start="3548" selection-end="3548" vertical-scroll-proportion="0.0" vertical-offset="758" max-vertical-offset="2244">
           <folding>
-            <element signature="method#getHIDDevicesList#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="method#getHIDDevicesList#0;class#DeviceConnectionListener#0" expanded="false" />
             <element signature="docComment;method#updateConnectedDeviceList#0;class#DeviceConnectionListener#0" expanded="false" />
-            <element signature="e#5254#5266#0" expanded="true" />
-            <element signature="method#deviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="method#addListener#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="method#performDeviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
+            <element signature="e#5254#5266#0" expanded="false" />
+            <element signature="method#deviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="false" />
+            <element signature="method#addListener#0;class#DeviceConnectionListener#0" expanded="false" />
+            <element signature="method#performDeviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1535,13 +1636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="24" selection-start="1938" selection-end="1938" vertical-scroll-proportion="1.097902" vertical-offset="133" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="31" selection-start="262" selection-end="262" vertical-scroll-proportion="0.14265734" vertical-offset="0" max-vertical-offset="782">
@@ -1552,58 +1646,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="17" selection-start="24" selection-end="24" vertical-scroll-proportion="0.023776224" vertical-offset="0" max-vertical-offset="715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="20" selection-start="68" selection-end="68" vertical-scroll-proportion="0.047552448" vertical-offset="0" max-vertical-offset="715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="20" selection-start="4345" selection-end="4345" vertical-scroll-proportion="0.75783473" vertical-offset="454" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="9" selection-start="531" selection-end="531" vertical-scroll-proportion="0.28531468" vertical-offset="0" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.5811966" vertical-offset="0" max-vertical-offset="702">
-          <folding>
-            <element signature="class#ApplicationConfigsHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="576" selection-end="576" vertical-scroll-proportion="0.26153848" vertical-offset="34" max-vertical-offset="969">
-          <folding>
-            <element signature="method#DataPacket#0;class#DataPacket#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="74" column="0" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.5811966" vertical-offset="0" max-vertical-offset="702" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java">
@@ -1619,17 +1664,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="10" selection-start="471" selection-end="471" vertical-scroll-proportion="0.7504798" vertical-offset="0" max-vertical-offset="952">
-          <folding />
-        </state>
+        <state line="23" column="10" selection-start="471" selection-end="471" vertical-scroll-proportion="0.7504798" vertical-offset="0" max-vertical-offset="952" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="38" selection-start="1246" selection-end="1276" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
           <folding>
-            <element signature="method#searchRegistry#0;class#Utils#0" expanded="true" />
-            <element signature="method#byteArrayListToCharToString#0;class#Utils#0" expanded="true" />
+            <element signature="method#searchRegistry#0;class#Utils#0" expanded="false" />
+            <element signature="method#byteArrayListToCharToString#0;class#Utils#0" expanded="false" />
             <element signature="class#StreamReader#0;class#Utils#0" expanded="false" />
           </folding>
         </state>
@@ -1639,19 +1682,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="0" selection-start="1906" selection-end="1906" vertical-scroll-proportion="0.0" vertical-offset="452" max-vertical-offset="1547">
           <folding>
-            <element signature="method#DeviceInfo#0;class#DeviceInfo#0" expanded="true" />
+            <element signature="method#DeviceInfo#0;class#DeviceInfo#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="17" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.57062936" vertical-offset="51" max-vertical-offset="1649">
-          <folding>
-            <element signature="e#3484#3485#0" expanded="true" />
-            <element signature="e#3526#3527#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="32" column="17" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.57062936" vertical-offset="51" max-vertical-offset="1649" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java">
@@ -1663,18 +1701,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="9" selection-start="971" selection-end="971" vertical-scroll-proportion="0.4993007" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="23" selection-start="218" selection-end="218" vertical-scroll-proportion="0.19020979" vertical-offset="0" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="4" selection-start="431" selection-end="431" vertical-scroll-proportion="0.26153848" vertical-offset="0" max-vertical-offset="833">
+          <folding>
+            <element signature="method#initializeDevice#0;class#ez430RF2500#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="5" selection-start="316" selection-end="316" vertical-scroll-proportion="0.23776224" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="56" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.6657343" vertical-offset="0" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="47" selection-start="407" selection-end="407" vertical-scroll-proportion="0.28531468" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="4" selection-start="2161" selection-end="2161" vertical-scroll-proportion="1.260809" vertical-offset="99" max-vertical-offset="1343">
+          <folding>
+            <element signature="method#DataPacket#0;class#DataPacket#0" expanded="false" />
+            <element signature="method#equals#0;class#DataPacket#0" expanded="false" />
+            <element signature="method#hashCode#0;class#DataPacket#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0/jre/lib/ext/jfxrt.jar!/javafx/scene/shape/Shape.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="22" selection-start="3907" selection-end="3907" vertical-scroll-proportion="0.33333334" vertical-offset="1092" max-vertical-offset="4148">
+          <folding>
+            <element signature="method#setFill#0;class#Shape#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="9" selection-start="3932" selection-end="3932" vertical-scroll-proportion="0.96866095" vertical-offset="187" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/LineChart.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="20" selection-start="92" selection-end="92" vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ToolTip.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="43" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2233" selection-end="2233" vertical-scroll-proportion="0.951049" vertical-offset="527" max-vertical-offset="4845">
+        <state line="311" column="43" selection-start="12238" selection-end="12238" vertical-scroll-proportion="0.8590786" vertical-offset="2664" max-vertical-offset="4760">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#MainWindowController#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#main#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#run#0;class#4314:7135" expanded="true" />
-            <element signature="e#5171#5187#0" expanded="true" />
-            <element signature="e#5682#5698#0" expanded="true" />
-            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#run#0;class#4583:7537" expanded="true" />
+            <element signature="e#5440#5456#0" expanded="true" />
+            <element signature="e#5951#5967#0" expanded="true" />
           </folding>
         </state>
       </provider>

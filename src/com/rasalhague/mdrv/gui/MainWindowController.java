@@ -25,9 +25,13 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.Tooltip;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         CheckBox                  maxCheckBox;
     public         Button                    startListeningButton;
     public         Button                    refreshChartButton;
+    public GridPane tooltipPane;
 
     public MainWindowController()
     {
@@ -101,8 +106,9 @@ public class MainWindowController extends Application implements AnalysisPerform
         lineChart = (LineChart<Number, Number>) scene.lookup("#lineChart");
         debugTextArea = (TextArea) scene.lookup("#debugTextArea");
         maxCheckBox = (CheckBox) scene.lookup("#maxCheckBox");
+        tooltipPane = (GridPane) scene.lookup("#tooltipPane");
 
-        bindTooltipToLineChart(lineChart);
+        bindTooltipToLineChart(lineChart, tooltipPane);
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
@@ -160,8 +166,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                         double xAxisCounter = 0.0;
                         for (Integer value : listMax)
                         {
-                            XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>((double) Math.round((xAxisCounter) * 1000) / 1000,
-                                                                                                 value);
+                            XYChart.Data<Number, Number> data = new XYChart.Data<Number, Number>((double) Math.round((xAxisCounter) *
+                                                                                                                             1000) /
+                                                                                                         1000, value);
                             seriesData.add(data);
 
                             xAxisCounter += spacing;
@@ -193,12 +200,15 @@ public class MainWindowController extends Application implements AnalysisPerform
         });
     }
 
-    private void bindTooltipToLineChart(final LineChart<Number, Number> lineChart)
+    private void bindTooltipToLineChart(final LineChart<Number, Number> lineChart, GridPane tooltipPane)
     {
+        Font tooltipFont = Font.font(Font.getDefault().getName(),
+                                     FontWeight.BOLD,
+                                     FontPosture.REGULAR,
+                                     Font.getDefault().getSize());
+
         final Axis<Number> xAxis = lineChart.getXAxis();
         final Axis<Number> yAxis = lineChart.getYAxis();
-
-        final Tooltip tooltip = new Tooltip();
 
         final Node chartBackground = lineChart.lookup(".chart-plot-background");
         for (Node n : chartBackground.getParent().getChildrenUnmodifiable())
@@ -210,22 +220,18 @@ public class MainWindowController extends Application implements AnalysisPerform
         }
 
         chartBackground.setOnMouseEntered(mouseEvent -> {
-            tooltip.show(lineChart, mouseEvent.getScreenX(), mouseEvent.getScreenY());
+            tooltipPane.setVisible(true);
         });
 
         chartBackground.setOnMouseMoved(mouseEvent -> {
-            StringBuilder sToOut = new StringBuilder();
 
+            ArrayList<ArrayList<Text>> rowsToView = new ArrayList<>();
+
+            /**
+             * Mouse coordinates
+             */
             Double xAxisValueForDisplay = (Double) xAxis.getValueForDisplay(mouseEvent.getX());
-            Double yAxisValueForDisplay = (Double) yAxis.getValueForDisplay(mouseEvent.getY());
-
-            sToOut.append("X: ");
-            sToOut.append(xAxisValueForDisplay);
-            sToOut.append('\t');
-            sToOut.append("Y: ");
-            sToOut.append(yAxisValueForDisplay);
-            sToOut.append('\n');
-            sToOut.append('\n');
+            //            Double yAxisValueForDisplay = (Double) yAxis.getValueForDisplay(mouseEvent.getY());
 
             ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
             for (XYChart.Series<Number, Number> numberSeries : lineChartData)
@@ -234,54 +240,92 @@ public class MainWindowController extends Application implements AnalysisPerform
                 for (XYChart.Data<Number, Number> numberData : data)
                 {
                     Double xValue = (Double) numberData.getXValue();
-                    //                        Double yValue = (Double) numberData.getYValue();
+                    Number yValue = numberData.getYValue();
                     double range = 0.25;
-                    Effect effect = null;
+                    ArrayList<Text> rowTexts = new ArrayList<>();
 
                     if (xValue > xAxisValueForDisplay - range && xValue < xAxisValueForDisplay + range)
                     {
-                        sToOut.append("RSSI: ");
-                        sToOut.append(String.valueOf(numberData.getYValue()));
-                        sToOut.append('\t');
-                        sToOut.append("Freq: ");
-                        sToOut.append(String.valueOf(numberData.getXValue()));
-                        sToOut.append(" - ");
-                        sToOut.append(numberSeries.getName());
-                        sToOut.append('\n');
+                        /**
+                         * Create Text object, configure and add it to row array
+                         */
+                        Text dBm = new Text(String.valueOf(yValue));
+                        Text dBmText = new Text(" dBm");
+                        Text hz = new Text('\t' + "2 4" + String.valueOf(xValue));
+                        Text hzText = new Text(" Hz");
 
-                        effect = new DropShadow();
+                        rowTexts.add(dBm);
+                        rowTexts.add(dBmText);
+                        rowTexts.add(hz);
+                        rowTexts.add(hzText);
+                        rowsToView.add(rowTexts);
+
+                        //Get numberSeries color and set it to text
+                        String numberSeriesString = numberSeries.getNode().toString();
+                        int indexOf = numberSeriesString.indexOf("stroke=");
+                        String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
+
+                        for (Text text : rowTexts)
+                        {
+                            text.setFill(Paint.valueOf(substring));
+                            text.setFont(tooltipFont);
+                        }
+
+                        /**
+                         * Highlight selected node
+                         */
                         numberData.getNode().setVisible(true);
-                        numberData.getNode().setEffect(effect);
+                        numberData.getNode().setEffect(new DropShadow());
                     }
                     else
                     {
+                        /**
+                         * Highlight down non selected node
+                         */
                         numberData.getNode().setVisible(false);
-                        numberData.getNode().setEffect(effect);
+                        numberData.getNode().setEffect(null);
                     }
                 }
             }
 
-            //Wont refresh into null string
-            if (sToOut.length() != 0)
+            /**
+             * Add rowsToView with text objects to the tooltipPane
+             */
+            //            tooltipPane.getRowConstraints().clear();
+            //            tooltipPane.getColumnConstraints().clear();
+            if (rowsToView.size() > 0)
             {
-                tooltip.setText(sToOut.toString());
+                tooltipPane.getChildren().clear();
+                for (int row = 0; row < rowsToView.size(); row++)
+                {
+                    ArrayList<Text> texts = rowsToView.get(row);
+                    for (int column = 0; column < texts.size(); column++)
+                    {
+                        tooltipPane.add(texts.get(column), column, row);
+                    }
+                }
             }
-            tooltip.setX(mouseEvent.getScreenX() + 30);
-            tooltip.setY(mouseEvent.getScreenY() + 10);
 
-            //Manage visibility when empty string
-            if (tooltip.getText().length() == 0 && tooltip.isShowing())
+            /**
+             * Update tooltipPane position with Position Correction
+             */
+            int tooltipXPosCorrection = 30;
+            int tooltipYPosCorrection = -30;
+            double activeZoneXStart = lineChart.getWidth() - tooltipPane.getWidth();
+            double activeZoneYStart = tooltipPane.getHeight();
+            if (mouseEvent.getSceneX() <= (activeZoneXStart - tooltipXPosCorrection))
             {
-                tooltip.hide();
+                tooltipPane.setLayoutX(mouseEvent.getSceneX() + tooltipXPosCorrection);
             }
-            else if (tooltip.getText().length() > 0 && !tooltip.isShowing())
+
+            if (mouseEvent.getSceneY() >= (activeZoneYStart - tooltipYPosCorrection))
             {
-                tooltip.show(lineChart, mouseEvent.getScreenX(), mouseEvent.getScreenY());
+                tooltipPane.setLayoutY(mouseEvent.getSceneY() + tooltipYPosCorrection);
             }
         });
 
         chartBackground.setOnMouseExited(mouseEvent -> {
-            tooltip.hide();
+            tooltipPane.setVisible(false);
         });
 
         //        xAxis.setOnMouseEntered(new EventHandler<MouseEvent>()
