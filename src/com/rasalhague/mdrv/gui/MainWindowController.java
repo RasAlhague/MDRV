@@ -281,7 +281,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                     {
                         XYChart.Data<Number, Number> data = new XYChart.Data<>((double) Math.round((xAxisCounter) *
                                                                                                            1000) / 1000,
-                                                                               value);
+                                                                               value
+                        );
                         seriesData.add(data);
 
                         xAxisCounter += spacing;
