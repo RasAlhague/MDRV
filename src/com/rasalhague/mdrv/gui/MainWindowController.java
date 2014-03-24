@@ -249,6 +249,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public void refreshChartButtonClickEvent(Event event)
     {
         PacketAnalysis.getInstance().getAnalysisResultsMap().clear();
+        lineChart.getData().clear();
     }
 
     @Override
