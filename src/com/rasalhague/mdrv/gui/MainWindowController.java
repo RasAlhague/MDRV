@@ -11,6 +11,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -25,8 +26,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TitledPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -37,6 +40,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MainWindowController extends Application implements AnalysisPerformedListener
 {
@@ -46,7 +52,8 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         CheckBox                  maxCheckBox;
     public         Button                    startListeningButton;
     public         Button                    refreshChartButton;
-    public GridPane tooltipPane;
+    public GridPane   tooltipPane;
+    public TitledPane chartLegendPane;
 
     public MainWindowController()
     {
@@ -107,8 +114,12 @@ public class MainWindowController extends Application implements AnalysisPerform
         debugTextArea = (TextArea) scene.lookup("#debugTextArea");
         maxCheckBox = (CheckBox) scene.lookup("#maxCheckBox");
         tooltipPane = (GridPane) scene.lookup("#tooltipPane");
+        chartLegendPane = (TitledPane) scene.lookup("#chartLegendPane");
 
+        //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
+        //init chartLegendPane
+        initChartLegendPane(chartLegendPane, lineChart);
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
@@ -116,6 +127,100 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //fake button press
         startListeningButtonMouseClickedEvent(new Event(EventType.ROOT));
+    }
+
+    /**
+     * ChartLegendPane behavior realization
+     *
+     * @param chartLegendPane
+     * @param lineChart
+     *
+     * @throws InterruptedException
+     */
+    private void initChartLegendPane(TitledPane chartLegendPane,
+                                     LineChart<Number, Number> lineChart) throws InterruptedException
+    {
+        double selectedOpacity = 1.0;
+        double unSelectedOpacity = 0.5;
+
+        VBox vBox = (VBox) chartLegendPane.getContent();
+
+        /**
+         * Behavior OnMouseEntered
+         */
+        chartLegendPane.setOnMouseEntered(mouseEvent -> {
+
+            chartLegendPane.setOpacity(selectedOpacity);
+            chartLegendPane.setExpanded(true);
+        });
+
+        /**
+         * Behavior OnMouseExited
+         */
+        chartLegendPane.setOnMouseExited(mouseEvent -> {
+
+            chartLegendPane.setOpacity(unSelectedOpacity);
+            chartLegendPane.setExpanded(false);
+        });
+
+        /**
+         * Update legend list according to lineChart series
+         */
+        lineChart.getData().addListener((Observable observable) -> {
+
+            /**
+             * Delay needed for TOD_O Color wont work coz first series return wrong data
+             */
+            int updateDelayMs = 50;
+            ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+            scheduledExecutorService.schedule(() -> {
+
+                Platform.runLater(() -> {
+
+                    vBox.getChildren().clear();
+                    lineChart.getData().forEach(series -> {
+
+                        //Get numberSeries color and set it to text
+                        String numberSeriesString = series.getNode().toString();
+                        int indexOf = numberSeriesString.indexOf("stroke=");
+                        String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
+
+                        Text seriesText = new Text(series.getName());
+                        seriesText.setFill(Paint.valueOf(substring));
+                        vBox.getChildren().add(seriesText);
+                    });
+                });
+            }, updateDelayMs, TimeUnit.MILLISECONDS);
+        });
+
+        /**
+         * Auto expand on vBox item added
+         */
+        vBox.getChildren().addListener((Observable observable1) -> {
+
+            final int expandTimeMs = 2000;
+
+            ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+            scheduledExecutorService.schedule(() -> {
+
+                Platform.runLater(() -> {
+
+                    chartLegendPane.setOpacity(selectedOpacity);
+                    chartLegendPane.setExpanded(true);
+                });
+
+            }, 0, TimeUnit.SECONDS);
+
+            scheduledExecutorService.schedule(() -> {
+
+                Platform.runLater(() -> {
+
+                    chartLegendPane.setOpacity(unSelectedOpacity);
+                    chartLegendPane.setExpanded(false);
+                });
+
+            }, expandTimeMs, TimeUnit.MILLISECONDS);
+        });
     }
 
     public void startListeningButtonMouseClickedEvent(Event event)
