@@ -15,7 +15,6 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,9 +27,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -50,10 +52,14 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         LineChart<Number, Number> lineChart;
     public         TextArea                  debugTextArea;
     public         CheckBox                  maxCheckBox;
-    public         Button                    startListeningButton;
     public         Button                    refreshChartButton;
     public         GridPane                  tooltipPane;
     public         TitledPane                chartLegendPane;
+    public VBox                    chartLegendVbox;
+    public javafx.scene.shape.Line horizontalLine;
+    public Line                    verticalLine;
+    public Button                  showDebugInfoBnt;
+    public VBox                    controlBntsVBox;
 
     public MainWindowController()
     {
@@ -82,13 +88,14 @@ public class MainWindowController extends Application implements AnalysisPerform
         ApplicationLogger.setup();
         ConfigurationLoader.initialize();
 
-        final String tooltipCssPath = "/ToolTip.css";
-        final String lineChartCssPath = "/LineChart.css";
+        final String chartStyleCssPath = "/ChartStyle.css";
+        final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
+        //        final String popupMenuPath = "/com/rasalhague/mdrv/gui/view/PopupMenu.fxml";
 
-        Parent root = FXMLLoader.load(getClass().getResource("/com/rasalhague/mdrv/gui/view/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(rootPath));
+        //        Parent popupMenu = FXMLLoader.load(getClass().getResource(popupMenuPath));
         final Scene scene = new Scene(root);
-        scene.getStylesheets().add(tooltipCssPath);
-        scene.getStylesheets().add(lineChartCssPath);
+        scene.getStylesheets().add(chartStyleCssPath);
 
         /**
          * On close actions
@@ -115,18 +122,66 @@ public class MainWindowController extends Application implements AnalysisPerform
         maxCheckBox = (CheckBox) scene.lookup("#maxCheckBox");
         tooltipPane = (GridPane) scene.lookup("#tooltipPane");
         chartLegendPane = (TitledPane) scene.lookup("#chartLegendPane");
+        chartLegendVbox = (VBox) scene.lookup("#chartLegendVbox");
+        horizontalLine = (javafx.scene.shape.Line) scene.lookup("#horizontalLine");
+        verticalLine = (javafx.scene.shape.Line) scene.lookup("#verticalLine");
+        controlBntsVBox = (VBox) scene.lookup("#controlBntsVBox");
 
         //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
         //init chartLegendPane
         initChartLegendPane(chartLegendPane, lineChart);
+        //init horizontalLine
+        initXYLines(horizontalLine, verticalLine, lineChart);
+        //init popup
+        initPopupMenu(controlBntsVBox, scene);
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
 
         //fake button press
-        startListeningButtonMouseClickedEvent(new Event(EventType.ROOT));
+        DeviceConnectionListener.startListening();
+    }
+
+    private void initPopupMenu(VBox controlBntsVBox, Scene scene)
+    {
+        double width = controlBntsVBox.getWidth();
+        double height = controlBntsVBox.getHeight();
+
+        scene.setOnMouseMoved((MouseEvent mouseEvent) -> {
+
+            if (mouseEvent.getSceneX() < width && mouseEvent.getSceneY() < height)
+            {
+                controlBntsVBox.setVisible(true);
+            }
+            else
+            {
+                controlBntsVBox.setVisible(false);
+            }
+        });
+    }
+
+    private void initXYLines(Line horizontalLine, Line verticalLine, LineChart<Number, Number> lineChart)
+    {
+        //        Rectangle clip = new Rectangle(lineChart.getWidth(), lineChart.getHeight());
+        //        clip.setLayoutX(lineChart.getLayoutX());
+        //        clip.setLayoutY(lineChart.getLayoutY());
+        //        Rectangle clip2 = new Rectangle(lineChart.getWidth(), lineChart.getHeight());
+        //        clip.setLayoutX(lineChart.getLayoutX());
+        //        clip.setLayoutY(lineChart.getLayoutY());
+
+        lineChart.setOnMouseMoved((MouseEvent mouseEvent) -> {
+
+            horizontalLine.setLayoutX(lineChart.getLayoutX() + lineChart.getYAxis().getWidth());
+            horizontalLine.setEndX(lineChart.getWidth() - (lineChart.getLayoutX() + lineChart.getYAxis().getWidth()));
+
+            verticalLine.setLayoutY(lineChart.getLayoutY());
+            verticalLine.setEndY(lineChart.getHeight() - lineChart.getXAxis().getHeight());
+
+            horizontalLine.setLayoutY(mouseEvent.getSceneY());
+            verticalLine.setLayoutX(mouseEvent.getSceneX());
+        });
     }
 
     /**
@@ -137,13 +192,16 @@ public class MainWindowController extends Application implements AnalysisPerform
      *
      * @throws InterruptedException
      */
-    private void initChartLegendPane(TitledPane chartLegendPane,
-                                     LineChart<Number, Number> lineChart) throws InterruptedException
+    private void initChartLegendPane(TitledPane chartLegendPane, LineChart<Number, Number> lineChart)
     {
         double selectedOpacity = 1.0;
         double unSelectedOpacity = 0.7;
 
+        //this
         VBox vBox = (VBox) chartLegendPane.getContent();
+
+        //or this
+        //        VBox vBox = chartLegendVbox;
 
         /**
          * Behavior OnMouseEntered
@@ -216,8 +274,12 @@ public class MainWindowController extends Application implements AnalysisPerform
          */
         vBox.getChildren().addListener((Observable observable1) -> {
 
-            final int expandTimeMs = 2000;
+            //Set visible false when nothing to show
+            if (vBox.getChildren().size() == 0) { chartLegendPane.setVisible(false); }
+            else { chartLegendPane.setVisible(true); }
 
+            //Expand on item add/remove and shrink until shrinkDelayMs
+            final int shrinkDelayMs = 2000;
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
@@ -232,18 +294,19 @@ public class MainWindowController extends Application implements AnalysisPerform
                     chartLegendPane.setOpacity(unSelectedOpacity);
                 }
                 chartLegendPane.setExpanded(false);
-            }), expandTimeMs, TimeUnit.MILLISECONDS);
+            }), shrinkDelayMs, TimeUnit.MILLISECONDS);
         });
-    }
-
-    public void startListeningButtonMouseClickedEvent(Event event)
-    {
-        DeviceConnectionListener.startListening();
     }
 
     public void maxCheckBoxChangedEvent(ActionEvent event)
     {
         System.out.println(maxCheckBox.isSelected());
+    }
+
+    public void showDebugInfoBntClick()
+    {
+        if (debugTextArea.getHeight() != 0) { debugTextArea.setMaxHeight(0); }
+        else { debugTextArea.setMaxHeight(Region.USE_COMPUTED_SIZE); }
     }
 
     public void refreshChartButtonClickEvent(Event event)
@@ -277,6 +340,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                     series.setName(deviceInfo.getName());
 
                     final double spacing = (85.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
+                    //                    final double spacing = (95.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
                     double xAxisCounter = 0.0;
                     for (Integer value : listMax)
                     {
@@ -307,7 +371,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                     }
                     else
                     {
+                        lineChart.setAnimated(false);
                         lineChartData.add(series);
+                        lineChart.setAnimated(true);
                     }
                 }
             }
@@ -335,7 +401,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         chartBackground.setOnMouseEntered(mouseEvent -> tooltipPane.setVisible(true));
 
-        chartBackground.setOnMouseMoved(mouseEvent -> {
+        chartBackground.setOnMouseMoved((MouseEvent mouseEvent) -> {
 
             ArrayList<ArrayList<Text>> rowsToView = new ArrayList<>();
 

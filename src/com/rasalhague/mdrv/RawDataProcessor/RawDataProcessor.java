@@ -30,6 +30,12 @@ public class RawDataProcessor
             return rawDataProcessingAlgorithm.processData(dataToProcess);
         }
 
+        if (deviceInfo.equalsPidVid(DeviceConstants.MetaGeek_WiSpy24x2.PID, DeviceConstants.MetaGeek_WiSpy24x2.VID))
+        {
+            rawDataProcessingAlgorithm = new MetaGeekWiSpy24x2ProcessingAlgorithm();
+            return rawDataProcessingAlgorithm.processData(dataToProcess);
+        }
+
         //        ApplicationLogger.LOGGER.warning(
         //                "Can not processData because device not registered, trying to use default regex.");
         //        return rawDataProcessingAlgorithm.processData(dataToProcess);

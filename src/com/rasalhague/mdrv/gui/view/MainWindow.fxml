@@ -4,156 +4,123 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.shape.Line?>
 <AnchorPane id = "AnchorPane"
             depthTest = "DISABLE"
             maxHeight = "-Infinity"
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
-            prefHeight = "-1.0"
-            prefWidth = "993.0"
+            prefHeight = "520.5"
+            prefWidth = "1001.0"
             xmlns:fx = "http://javafx.com/fxml/1"
             xmlns = "http://javafx.com/javafx/2.2"
             fx:controller = "com.rasalhague.mdrv.gui.MainWindowController">
-    <VBox minHeight = "-1.0"
-          prefHeight = "-1.0"
-          prefWidth = "-1.0"
-          spacing = "1.0"
-          AnchorPane.bottomAnchor = "0.0"
-          AnchorPane.leftAnchor = "0.0"
-          AnchorPane.rightAnchor = "0.0"
-          AnchorPane.topAnchor = "0.0">
-        <padding>
-            <Insets fx:id = "x2"/>
-        </padding>
-        <LineChart fx:id = "lineChart"
-                   alternativeColumnFillVisible = "false"
-                   alternativeRowFillVisible = "false"
-                   animated = "true"
-                   createSymbols = "true"
-                   depthTest = "INHERIT"
-                   disable = "false"
-                   focusTraversable = "false"
-                   horizontalGridLinesVisible = "true"
-                   horizontalZeroLineVisible = "true"
-                   legendSide = "BOTTOM"
-                   legendVisible = "false"
-                   maxHeight = "1.7976931348623157E308"
-                   maxWidth = "1.7976931348623157E308"
-                   minHeight = "-Infinity"
-                   minWidth = "-Infinity"
-                   mouseTransparent = "false"
-                   prefHeight = "400.0"
-                   prefWidth = "800.0"
-                   style = ""
-                   verticalGridLinesVisible = "true"
-                   verticalZeroLineVisible = "true"
-                   VBox.margin = "$x2"
-                   VBox.vgrow = "ALWAYS">
-            <xAxis>
-                <NumberAxis animated = "false"
-                            autoRanging = "false"
-                            disable = "false"
-                            focusTraversable = "false"
-                            forceZeroInRange = "false"
-                            label = "Frequency, GHz"
-                            lowerBound = "0.0"
-                            minorTickVisible = "true"
-                            side = "BOTTOM"
-                            tickLabelRotation = "0.0"
-                            tickLabelsVisible = "true"
-                            tickLength = "8.0"
-                            tickMarkVisible = "true"
-                            tickUnit = "10.0"
-                            upperBound = "86.0"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis animated = "false"
-                            autoRanging = "false"
-                            disable = "false"
-                            forceZeroInRange = "false"
-                            label = "RSSI, dBm"
-                            lowerBound = "-120.0"
-                            minorTickCount = "5"
-                            minorTickVisible = "false"
-                            side = "LEFT"
-                            tickLabelGap = "3.0"
-                            tickLabelsVisible = "true"
-                            tickMarkVisible = "true"
-                            tickUnit = "5.0"
-                            upperBound = "-30.0"/>
-            </yAxis>
-            <padding>
-                <Insets fx:id = "x2"/>
-            </padding>
-        </LineChart>
-        <GridPane alignment = "CENTER_LEFT"
-                  disable = "false"
-                  hgap = "5.0"
-                  prefWidth = "-1.0"
-                  vgap = "5.0"
-                  VBox.vgrow = "NEVER">
-            <children>
-                <CheckBox fx:id = "maxCheckBox"
-                          alignment = "CENTER_LEFT"
-                          mnemonicParsing = "false"
-                          onAction = "#maxCheckBoxChangedEvent"
-                          selected = "true"
-                          text = "max"
-                          GridPane.columnIndex = "1"
-                          GridPane.rowIndex = "0"/>
-                <Button fx:id = "refreshChartButton"
-                        alignment = "CENTER_RIGHT"
-                        cancelButton = "false"
-                        contentDisplay = "LEFT"
-                        defaultButton = "false"
-                        disable = "false"
-                        mnemonicParsing = "false"
-                        onMouseClicked = "#refreshChartButtonClickEvent"
-                        text = "Refresh chart"
-                        textOverrun = "ELLIPSIS"
-                        GridPane.columnIndex = "2"
-                        GridPane.rowIndex = "0"/>
-                <Button fx:id = "startListeningButton"
-                        alignment = "BOTTOM_RIGHT"
-                        mnemonicParsing = "false"
-                        onMouseClicked = "#startListeningButtonMouseClickedEvent"
-                        text = "Start listening"
-                        GridPane.columnIndex = "0"
-                        GridPane.rowIndex = "0">
-                    <font>
-                        <Font size = "12.0"/>
-                    </font>
-                </Button>
-            </children>
-            <columnConstraints>
-                <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "-Infinity" minWidth = "-1.0" prefWidth = "-1.0"/>
-                <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "-Infinity" minWidth = "-1.0" prefWidth = "-1.0"/>
-                <ColumnConstraints halignment = "RIGHT"
-                                   hgrow = "SOMETIMES"
-                                   maxWidth = "-1.0"
-                                   minWidth = "-1.0"
-                                   prefWidth = "-1.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight = "10.0" prefHeight = "30.0" vgrow = "SOMETIMES"/>
-            </rowConstraints>
-        </GridPane>
-        <TextArea fx:id = "debugTextArea"
-                  disable = "false"
-                  editable = "false"
-                  maxHeight = "-1.0"
-                  maxWidth = "-1.0"
-                  minHeight = "50.0"
-                  minWidth = "-1.0"
-                  prefHeight = "100.0"
-                  prefWidth = "-1.0"
-                  text = ""
-                  wrapText = "true"
-                  VBox.vgrow = "SOMETIMES"/>
-    </VBox>
+    <GridPane visible = "true"
+              AnchorPane.bottomAnchor = "0.0"
+              AnchorPane.leftAnchor = "0.0"
+              AnchorPane.rightAnchor = "0.0"
+              AnchorPane.topAnchor = "0.0">
+        <children>
+            <LineChart fx:id = "lineChart"
+                       alternativeColumnFillVisible = "false"
+                       alternativeRowFillVisible = "false"
+                       animated = "true"
+                       createSymbols = "true"
+                       depthTest = "INHERIT"
+                       disable = "false"
+                       focusTraversable = "false"
+                       horizontalGridLinesVisible = "true"
+                       horizontalZeroLineVisible = "true"
+                       legendSide = "BOTTOM"
+                       legendVisible = "false"
+                       maxHeight = "1.7976931348623157E308"
+                       maxWidth = "1.7976931348623157E308"
+                       minHeight = "-Infinity"
+                       minWidth = "-Infinity"
+                       mouseTransparent = "false"
+                       prefHeight = "-1.0"
+                       prefWidth = "-1.0"
+                       style = ""
+                       verticalGridLinesVisible = "true"
+                       verticalZeroLineVisible = "true"
+                       GridPane.columnIndex = "0"
+                       GridPane.halignment = "CENTER"
+                       GridPane.hgrow = "ALWAYS"
+                       GridPane.rowIndex = "0"
+                       GridPane.valignment = "CENTER"
+                       GridPane.vgrow = "ALWAYS">
+                <xAxis>
+                    <NumberAxis animated = "false"
+                                autoRanging = "false"
+                                disable = "false"
+                                focusTraversable = "false"
+                                forceZeroInRange = "false"
+                                label = "Frequency, GHz"
+                                lowerBound = "0.0"
+                                minorTickVisible = "false"
+                                side = "BOTTOM"
+                                tickLabelRotation = "0.0"
+                                tickLabelsVisible = "true"
+                                tickLength = "5.0"
+                                tickMarkVisible = "true"
+                                tickUnit = "2.0"
+                                upperBound = "100.0"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis animated = "false"
+                                autoRanging = "false"
+                                disable = "false"
+                                forceZeroInRange = "false"
+                                label = "RSSI, dBm"
+                                lowerBound = "-120.0"
+                                minorTickCount = "5"
+                                minorTickVisible = "false"
+                                side = "LEFT"
+                                tickLabelGap = "3.0"
+                                tickLabelsVisible = "true"
+                                tickLength = "5.0"
+                                tickMarkVisible = "true"
+                                tickUnit = "5.0"
+                                upperBound = "-30.0"/>
+                </yAxis>
+                <padding>
+                    <Insets fx:id = "x2"/>
+                </padding>
+            </LineChart>
+            <TextArea fx:id = "debugTextArea"
+                      disable = "false"
+                      editable = "false"
+                      maxHeight = "0.0"
+                      maxWidth = "-1.0"
+                      minHeight = "0.0"
+                      minWidth = "0.0"
+                      prefHeight = "130.0"
+                      prefWidth = "-1.0"
+                      text = ""
+                      visible = "true"
+                      wrapText = "true"
+                      GridPane.columnIndex = "0"
+                      GridPane.hgrow = "NEVER"
+                      GridPane.rowIndex = "1"/>
+        </children>
+        <columnConstraints>
+            <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "10.0" prefWidth = "-1.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "ALWAYS"/>
+            <RowConstraints fillHeight = "true"
+                            minHeight = "0.0"
+                            prefHeight = "-1.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
+    </GridPane>
+    <padding>
+        <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
+    </padding>
     <GridPane fx:id = "tooltipPane"
               alignment = "CENTER"
               gridLinesVisible = "false"
@@ -172,21 +139,81 @@
                 animated = "true"
                 collapsible = "false"
                 expanded = "true"
+                minHeight = "-1.0"
+                minWidth = "-1.0"
                 mnemonicParsing = "false"
                 mouseTransparent = "false"
                 opacity = "1.0"
                 pickOnBounds = "false"
                 prefHeight = "-1.0"
                 prefWidth = "-1.0"
-                text = "Chart legend"
+                text = ""
                 textOverrun = "ELLIPSIS"
+                visible = "false"
                 AnchorPane.rightAnchor = "0.0"
                 AnchorPane.topAnchor = "0.0">
         <content>
             <VBox prefHeight = "-1.0" prefWidth = "-1.0"/>
         </content>
     </TitledPane>
-    <padding>
-        <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
-    </padding>
+    <VBox fx:id = "chartLegendVbox"
+          prefHeight = "-1.0"
+          prefWidth = "-1.0"
+          AnchorPane.rightAnchor = "0.0"
+          AnchorPane.topAnchor = "0.0"/>
+    <Group id = "Group" layoutX = "0.0" layoutY = "0.0">
+        <children>
+            <Line fx:id = "horizontalLine"
+                  endX = "100.0"
+                  endY = "0.0"
+                  layoutX = "0.0"
+                  layoutY = "100.0"
+                  mouseTransparent = "true"
+                  scaleY = "1.0"
+                  startX = "0.0"
+                  translateY = "0.0"/>
+            <Line fx:id = "verticalLine"
+                  endX = "0.0"
+                  endY = "100.0"
+                  layoutX = "500.0"
+                  layoutY = "0.0"
+                  mouseTransparent = "true"
+                  startX = "0.0"
+                  startY = "0.0"/>
+        </children>
+    </Group>
+    <VBox fx:id = "controlBntsVBox"
+          fillWidth = "true"
+          layoutX = "5.0"
+          layoutY = "5.0"
+          prefHeight = "-1.0"
+          prefWidth = "-1.0"
+          spacing = "3.0"
+          visible = "true">
+        <children>
+            <Button fx:id = "refreshChartButton"
+                    cancelButton = "false"
+                    defaultButton = "false"
+                    mnemonicParsing = "false"
+                    onMouseClicked = "#refreshChartButtonClickEvent"
+                    text = "Refresh chart"
+                    VBox.vgrow = "NEVER"/>
+            <Button fx:id = "showDebugInfoBnt"
+                    mnemonicParsing = "false"
+                    onMouseClicked = "#showDebugInfoBntClick"
+                    text = "Show debug info"
+                    VBox.vgrow = "NEVER"/>
+            <CheckBox fx:id = "maxCheckBox"
+                      allowIndeterminate = "false"
+                      indeterminate = "false"
+                      mnemonicParsing = "false"
+                      onMouseClicked = "#maxCheckBoxChangedEvent"
+                      selected = "true"
+                      text = "max"
+                      underline = "false"/>
+        </children>
+        <padding>
+            <Insets bottom = "10.0" left = "10.0" right = "10.0" top = "10.0"/>
+        </padding>
+    </VBox>
 </AnchorPane>

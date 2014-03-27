@@ -50,6 +50,11 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
+    private void smooth()
+    {
+
+    }
+
     /**
      * This method join new data to second parameter prevData
      *
