@@ -110,7 +110,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                 DeviceConnectionListener.stopListening();
             }
 
-            Platform.exit();
+            //TODO correct program closing
+            System.exit(1);
+            //            Platform.exit();
         });
 
         stage.setScene(scene);
@@ -130,7 +132,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
         //init chartLegendPane
-        initChartLegendPane(chartLegendPane, lineChart);
+        initChartLegend(chartLegendVbox, lineChart);
         //init horizontalLine
         initXYLines(horizontalLine, verticalLine, lineChart);
         //init popup
@@ -187,60 +189,89 @@ public class MainWindowController extends Application implements AnalysisPerform
     /**
      * ChartLegendPane behavior realization
      *
-     * @param chartLegendPane
      * @param lineChart
      *
      * @throws InterruptedException
      */
-    private void initChartLegendPane(TitledPane chartLegendPane, LineChart<Number, Number> lineChart)
+    private void initChartLegend(VBox chartLegendVbox, LineChart<Number, Number> lineChart)
     {
         double selectedOpacity = 1.0;
         double unSelectedOpacity = 0.7;
 
         //this
-        VBox vBox = (VBox) chartLegendPane.getContent();
-
+        //        VBox vBox = (VBox) chartLegendPane.getContent();
         //or this
-        //        VBox vBox = chartLegendVbox;
 
-        /**
-         * Behavior OnMouseEntered
-         */
-        chartLegendPane.setOnMouseEntered(mouseEvent -> {
+        boolean chartLegendPaneTrigger = false;
+        if (chartLegendPane != null && chartLegendPaneTrigger)
+        {
+            /**
+             * TitledPane Behavior OnMouseEntered
+             */
+            chartLegendPane.setOnMouseEntered(mouseEvent -> {
 
-            chartLegendPane.setOpacity(selectedOpacity);
-            chartLegendPane.setExpanded(true);
-        });
-
-        /**
-         * Behavior OnMouseExited
-         */
-        chartLegendPane.setOnMouseExited(mouseEvent -> {
-
-            if (chartLegendPane.isCollapsible())
-            {
-                chartLegendPane.setOpacity(unSelectedOpacity);
-            }
-            chartLegendPane.setExpanded(false);
-        });
-
-        /**
-         * Set Collapsible realization
-         * Click on vBox change chartLegendPane Collapsible state
-         */
-        vBox.setOnMouseClicked(mouseEvent -> {
-
-            if (chartLegendPane.isCollapsible())
-            {
                 chartLegendPane.setOpacity(selectedOpacity);
-                chartLegendPane.setCollapsible(false);
-            }
-            else
-            {
-                chartLegendPane.setOpacity(unSelectedOpacity);
-                chartLegendPane.setCollapsible(true);
-            }
-        });
+                chartLegendPane.setExpanded(true);
+            });
+
+            /**
+             * TitledPane Behavior OnMouseExited
+             */
+            chartLegendPane.setOnMouseExited(mouseEvent -> {
+
+                if (chartLegendPane.isCollapsible())
+                {
+                    chartLegendPane.setOpacity(unSelectedOpacity);
+                }
+                chartLegendPane.setExpanded(false);
+            });
+
+            /**
+             * Set Collapsible realization
+             * Click on vBox change chartLegendPane Collapsible state
+             */
+            chartLegendVbox.setOnMouseClicked(mouseEvent -> {
+
+                if (chartLegendPane.isCollapsible())
+                {
+                    chartLegendPane.setOpacity(selectedOpacity);
+                    chartLegendPane.setCollapsible(false);
+                }
+                else
+                {
+                    chartLegendPane.setOpacity(unSelectedOpacity);
+                    chartLegendPane.setCollapsible(true);
+                }
+            });
+
+            /**
+             * TitledPane Auto expand on vBox item added
+             */
+            chartLegendVbox.getChildren().addListener((Observable observable1) -> {
+
+                //Set visible false when nothing to show
+                if (chartLegendVbox.getChildren().size() == 0) { chartLegendPane.setVisible(false); }
+                else { chartLegendPane.setVisible(true); }
+
+                //Expand on item add/remove and shrink until shrinkDelayMs
+                final int shrinkDelayMs = 2000;
+                ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+                scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
+
+                    chartLegendPane.setOpacity(selectedOpacity);
+                    chartLegendPane.setExpanded(true);
+                }), 0, TimeUnit.SECONDS);
+
+                scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
+
+                    if (chartLegendPane.isCollapsible())
+                    {
+                        chartLegendPane.setOpacity(unSelectedOpacity);
+                    }
+                    chartLegendPane.setExpanded(false);
+                }), shrinkDelayMs, TimeUnit.MILLISECONDS);
+            });
+        }
 
         /**
          * Update legend list according to lineChart series
@@ -254,7 +285,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
-                vBox.getChildren().clear();
+                chartLegendVbox.getChildren().clear();
                 lineChart.getData().forEach(series -> {
 
                     //Get numberSeries color and set it to text
@@ -264,38 +295,11 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                     Text seriesText = new Text(series.getName());
                     seriesText.setFill(Paint.valueOf(substring));
-                    vBox.getChildren().add(seriesText);
+                    chartLegendVbox.getChildren().add(seriesText);
                 });
             }), updateDelayMs, TimeUnit.MILLISECONDS);
         });
 
-        /**
-         * Auto expand on vBox item added
-         */
-        vBox.getChildren().addListener((Observable observable1) -> {
-
-            //Set visible false when nothing to show
-            if (vBox.getChildren().size() == 0) { chartLegendPane.setVisible(false); }
-            else { chartLegendPane.setVisible(true); }
-
-            //Expand on item add/remove and shrink until shrinkDelayMs
-            final int shrinkDelayMs = 2000;
-            ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
-
-                chartLegendPane.setOpacity(selectedOpacity);
-                chartLegendPane.setExpanded(true);
-            }), 0, TimeUnit.SECONDS);
-
-            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
-
-                if (chartLegendPane.isCollapsible())
-                {
-                    chartLegendPane.setOpacity(unSelectedOpacity);
-                }
-                chartLegendPane.setExpanded(false);
-            }), shrinkDelayMs, TimeUnit.MILLISECONDS);
-        });
     }
 
     public void maxCheckBoxChangedEvent(ActionEvent event)

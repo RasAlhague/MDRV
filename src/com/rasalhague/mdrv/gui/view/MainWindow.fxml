@@ -138,6 +138,7 @@
     <TitledPane fx:id = "chartLegendPane"
                 animated = "true"
                 collapsible = "false"
+                disable = "false"
                 expanded = "true"
                 minHeight = "-1.0"
                 minWidth = "-1.0"
