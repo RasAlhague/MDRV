@@ -19,7 +19,9 @@ public class DeviceInfo
     private final String     name;
     private final String     devicePortName;
     private final DeviceType deviceType;
-    private final byte[]     endPacketSequence;
+    private byte[] endPacketSequence;
+    private float  initialFrequency;
+    private float  channelSpacing;
 
     public enum DeviceType
     {
@@ -36,12 +38,7 @@ public class DeviceInfo
         productID = Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase();
         vendorID = Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase();
 
-        ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
-        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(
-                productID,
-                vendorID);
-
-        endPacketSequence = deviceConfiguration.getEndPacketSequence();
+        setSomeFieldsFromConfig(productID, vendorID);
     }
 
     DeviceInfo(String devPortName, DeviceType devTypeEnum)
@@ -54,12 +51,20 @@ public class DeviceInfo
         productID = devInfMap.get("pid");
         vendorID = devInfMap.get("vid");
 
+        setSomeFieldsFromConfig(productID, vendorID);
+    }
+
+    private void setSomeFieldsFromConfig(String pID, String vID)
+    {
         ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
-        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(
-                productID,
-                vendorID);
+        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(pID,
+                                                                                                                 vID);
 
         endPacketSequence = deviceConfiguration.getEndPacketSequence();
+        initialFrequency = deviceConfiguration.getInitialFrequency();
+        channelSpacing = deviceConfiguration.getChannelSpacing();
+
+        //        System.out.println(pID + "\t" + initialFrequency + "\t" + channelSpacing);
     }
 
     public String getVendorID()
@@ -90,6 +95,16 @@ public class DeviceInfo
     public byte[] getEndPacketSequence()
     {
         return endPacketSequence;
+    }
+
+    public float getInitialFrequency()
+    {
+        return initialFrequency;
+    }
+
+    public float getChannelSpacing()
+    {
+        return channelSpacing;
     }
 
     public boolean equalsPidVid(String pId, String vId)

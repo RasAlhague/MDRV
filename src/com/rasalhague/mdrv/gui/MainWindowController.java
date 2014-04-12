@@ -199,7 +199,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         double unSelectedOpacity = 0.7;
 
         //this
-        //        VBox vBox = (VBox) chartLegendPane.getContent();
+        //                VBox vBox = (VBox) chartLegendPane.getContent();
         //or this
 
         boolean chartLegendPaneTrigger = false;
@@ -279,7 +279,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         lineChart.getData().addListener((Observable observable) -> {
 
             /**
-             * Delay needed for TOD_O Color wont work coz first series return wrong data
+             * Delay needed for TODO Color wont work coz first series return wrong data
              */
             int updateDelayMs = 50;
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
@@ -305,6 +305,22 @@ public class MainWindowController extends Application implements AnalysisPerform
     public void maxCheckBoxChangedEvent(ActionEvent event)
     {
         System.out.println(maxCheckBox.isSelected());
+    }
+
+    public void verticalLineSwitchEvent(ActionEvent event)
+    {
+        verticalLine.setVisible(!verticalLine.isVisible());
+
+        CheckBox checkBox = (CheckBox) event.getSource();
+        checkBox.setSelected(verticalLine.isVisible());
+    }
+
+    public void horizontalLineSwitchEvent(ActionEvent event)
+    {
+        horizontalLine.setVisible(!horizontalLine.isVisible());
+
+        CheckBox checkBox = (CheckBox) event.getSource();
+        checkBox.setSelected(horizontalLine.isVisible());
     }
 
     public void showDebugInfoBntClick()
@@ -334,30 +350,36 @@ public class MainWindowController extends Application implements AnalysisPerform
             {
                 if (maxCheckBox.isSelected())
                 {
-
-                    //Generate XYChart.Series
+                    /**
+                     * Generate XYChart.Series
+                     */
                     ArrayList<Integer> listMax = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
-                    int points = analysisResult.get(deviceInfo).get(AnalysisKey.MAX).size();
+                    int points = listMax.size();
 
                     XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
                     series.setName(deviceInfo.getName());
+                    //get seriesData from XYChart.Series to work with
+                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
 
-                    final double spacing = (85.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
-                    //                    final double spacing = (95.0 / points)/*(double)Math.round((85.0 / points) * 1000) / 1000*/;
-                    double xAxisCounter = 0.0;
+                    final float initialFrequency = deviceInfo.getInitialFrequency();
+                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
+                    //                    System.out.println("initialFrequency " + initialFrequency);
+                    //                    System.out.println("channelSpacing " + channelSpacing);
+
+                    //set every point to the seriesData
+                    float xAxisCounter = initialFrequency;
                     for (Integer value : listMax)
                     {
-                        XYChart.Data<Number, Number> data = new XYChart.Data<>((double) Math.round((xAxisCounter) *
-                                                                                                           1000) / 1000,
-                                                                               value
-                        );
+                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
                         seriesData.add(data);
 
-                        xAxisCounter += spacing;
+                        xAxisCounter += channelSpacingKHz;
                     }
 
-                    //Use XYChart.Series
+                    /**
+                     * Use XYChart.Series
+                     * Update series
+                     */
                     if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
                     {
                         for (XYChart.Series<Number, Number> numberSeries : lineChartData)
@@ -373,6 +395,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                             }
                         }
                     }
+                    //or create if does not exist
                     else
                     {
                         lineChart.setAnimated(false);
@@ -412,7 +435,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             /**
              * Mouse coordinates
              */
-            Double xAxisValueForDisplay = (Double) xAxis.getValueForDisplay(mouseEvent.getX());
+            double xAxisValueForDisplay = (double) xAxis.getValueForDisplay(mouseEvent.getX());
             //            Double yAxisValueForDisplay = (Double) yAxis.getValueForDisplay(mouseEvent.getY());
 
             ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
@@ -421,9 +444,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
                 for (XYChart.Data<Number, Number> numberData : data)
                 {
-                    Double xValue = (Double) numberData.getXValue();
+                    float xValue = (float) numberData.getXValue();
                     Number yValue = numberData.getYValue();
-                    double range = 0.25;
+                    float range = 0.25f;
                     ArrayList<Text> rowTexts = new ArrayList<>();
 
                     if (xValue > xAxisValueForDisplay - range && xValue < xAxisValueForDisplay + range)
@@ -433,7 +456,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                          */
                         Text dBm = new Text(String.valueOf(yValue));
                         Text dBmText = new Text(" dBm");
-                        Text hz = new Text('\t' + "2 4" + String.valueOf(xValue));
+                        Text hz = new Text('\t'/* + "2 4"*/ + String.valueOf(xValue));
                         Text hzText = new Text(" Hz");
 
                         rowTexts.add(dBm);

@@ -7,16 +7,6 @@ public class ConfigurationHolder
     private List<DeviceConfigurationHolder> devicesConfiguration;
     private ApplicationConfigsHolder        applicationConfiguration;
 
-    public List<DeviceConfigurationHolder> getDevicesConfiguration()
-    {
-        return devicesConfiguration;
-    }
-
-    public void setDevicesConfiguration(List<DeviceConfigurationHolder> devicesConfiguration)
-    {
-        this.devicesConfiguration = devicesConfiguration;
-    }
-
     public DeviceConfigurationHolder getDeviceConfiguration(String productID, String vendorID)
     {
         for (DeviceConfigurationHolder devConfiguration : devicesConfiguration)
@@ -50,11 +40,16 @@ public class ConfigurationHolder
         }
     }
 
+    /**
+     * Contains config fields Too add new config fields simple add field to class
+     */
     public class DeviceConfigurationHolder
     {
         private String vendorID;
         private String productID;
         private byte[] endPacketSequence;
+        private float  initialFrequency;
+        private float  channelSpacing;
 
         public String getVendorID()
         {
@@ -69,6 +64,16 @@ public class ConfigurationHolder
         public byte[] getEndPacketSequence()
         {
             return endPacketSequence;
+        }
+
+        public float getInitialFrequency()
+        {
+            return initialFrequency;
+        }
+
+        public float getChannelSpacing()
+        {
+            return channelSpacing;
         }
     }
 }
