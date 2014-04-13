@@ -6,8 +6,11 @@ import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * productID Must be Hex value exclude 0x. Example: 0241 vendorID the same as productID
@@ -46,10 +49,10 @@ public class DeviceInfo
         devicePortName = devPortName;
         deviceType = DeviceType.COM;
 
-        HashMap<String, String> devInfMap = takeCOMDeviceInformation();
+        HashMap<String, String> devInfMap = takeCOMDeviceInformation(devicePortName);
         name = devInfMap.get("devName");
-        productID = devInfMap.get("pid");
-        vendorID = devInfMap.get("vid");
+        productID = devInfMap.get("pid").toUpperCase();
+        vendorID = devInfMap.get("vid").toUpperCase();
 
         setSomeFieldsFromConfig(productID, vendorID);
     }
@@ -147,15 +150,50 @@ public class DeviceInfo
         return result;
     }
 
-    private HashMap<String, String> takeCOMDeviceInformation()
+    private HashMap<String, String> takeCOMDeviceInformation(String devicePortName)
     {
         if (SystemUtils.IS_OS_WINDOWS)
         {
-            return Utils.searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB", getDevicePortName());
+            return Utils.searchRegistry("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Enum\\USB", devicePortName);
         }
         else if (SystemUtils.IS_OS_LINUX)
         {
             //TODO IS_OS_LINUX get device names impl
+
+            String[] request = new String[]{"dmesg", "grep -i usb"};
+            String output = "";
+            try
+            {
+                Process process = Runtime.getRuntime().exec(request);
+                Utils.StreamReader reader = new Utils.StreamReader(process.getInputStream());
+                reader.start();
+                process.waitFor();
+                reader.join();
+                output = reader.getResult();
+            }
+            catch (IOException | InterruptedException e)
+            {
+                ApplicationLogger.LOGGER.severe(e.getMessage());
+                e.printStackTrace();
+            }
+
+            Pattern pattern = Pattern.compile(
+                    "New USB device found.*?idVendor=(?<vid>.{4}), idProduct=(?<pid>.{4}).*?\\n.*?\\n.*?Product: (?<devName>.*)((\\n.*?){0,6}(?<portName>tty.*):)?");
+
+            Matcher matcher = pattern.matcher(output);
+            HashMap<String, String> devInfMap = new HashMap<>();
+            while (matcher.find())
+            {
+                String portName = matcher.group("portName");
+                if (portName != null && devicePortName.contains(portName))
+                {
+                    devInfMap.put("vid", matcher.group("vid").trim());
+                    devInfMap.put("pid", matcher.group("pid").trim());
+                    devInfMap.put("devName", matcher.group("devName").trim());
+                }
+            }
+
+            return devInfMap;
         }
 
         ApplicationLogger.LOGGER.severe("OS does not support");

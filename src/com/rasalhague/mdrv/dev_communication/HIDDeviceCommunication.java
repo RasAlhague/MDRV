@@ -46,12 +46,15 @@ public class HIDDeviceCommunication extends DeviceCommunication
             }
             catch (IOException e)
             {
+                //for Windows
                 if (e.getMessage().equals("The device is not connected."))
                 {
                     break;
                 }
                 ApplicationLogger.LOGGER.severe(e.getMessage());
                 e.printStackTrace();
+                //for linux xD
+                break;
             }
         }
     }
