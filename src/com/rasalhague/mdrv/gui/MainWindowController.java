@@ -38,6 +38,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.apache.commons.collections4.OrderedMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,6 +88,8 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         ApplicationLogger.setup();
         ConfigurationLoader.initialize();
+
+        //        Replay.getInstance().loadReplay();
 
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
@@ -331,12 +334,12 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void refreshChartButtonClickEvent(Event event)
     {
-        PacketAnalysis.getInstance().getAnalysisResultsMap().clear();
+        PacketAnalysis.getInstance().getPrevAnalysisResultsMap().clear();
         lineChart.getData().clear();
     }
 
     @Override
-    public synchronized void analysisPerformedEvent(final HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysisResult)
+    public synchronized void analysisPerformedEvent(final OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
     {
         Platform.runLater(() -> {
 
@@ -345,7 +348,8 @@ public class MainWindowController extends Application implements AnalysisPerform
             /**
              * For every device that processed by Analysis class
              */
-            Set<DeviceInfo> keySet = analysisResult.keySet();
+            //            Set<DeviceInfo> keySet = analysisResult.keySet();
+            Set<DeviceInfo> keySet = analysisResult.get(analysisResult.lastKey()).keySet();
             for (DeviceInfo deviceInfo : keySet)
             {
                 if (maxCheckBox.isSelected())
@@ -353,8 +357,13 @@ public class MainWindowController extends Application implements AnalysisPerform
                     /**
                      * Generate XYChart.Series
                      */
-                    ArrayList<Integer> listMax = analysisResult.get(deviceInfo).get(AnalysisKey.MAX);
-                    int points = listMax.size();
+                    ArrayList<Integer> listMax = analysisResult.get(analysisResult.lastKey())
+                                                               .get(deviceInfo)
+                                                               .get(AnalysisKey.MAX);
+
+                    //                    System.out.println(analysisResult.lastKey());
+                    //                    System.out.println(deviceInfo.getName());
+                    //                    System.out.println(listMax);
 
                     XYChart.Series<Number, Number> series = new XYChart.Series<>();
                     series.setName(deviceInfo.getName());
@@ -363,8 +372,6 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                     final float initialFrequency = deviceInfo.getInitialFrequency();
                     final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
-                    //                    System.out.println("initialFrequency " + initialFrequency);
-                    //                    System.out.println("channelSpacing " + channelSpacing);
 
                     //set every point to the seriesData
                     float xAxisCounter = initialFrequency;

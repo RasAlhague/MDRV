@@ -33,6 +33,11 @@ public class DataPacket
         return deviceInfo;
     }
 
+    public long getPacketCreationTimeMs()
+    {
+        return packetCreationTimeMs;
+    }
+
     public int getPointsAmount()
     {
         return pointsAmount;

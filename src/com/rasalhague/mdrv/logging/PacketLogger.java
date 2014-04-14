@@ -8,7 +8,6 @@ import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -17,28 +16,20 @@ import java.util.*;
  */
 public class PacketLogger implements Observer
 {
-    private Writer writer;
-    private Gson gson = new GsonBuilder().setPrettyPrinting()
-                                         .registerTypeAdapter(ArrayList.class, new ArrayListSerializer())
-                                         .registerTypeAdapter(byte[].class, new ByteArraySerializer())
-                                         .setExclusionStrategies(new CustomExclusionStrategies())
-                                         .create();
+    private Gson gson = new GsonBuilder()
+            //            .setPrettyPrinting()
+            //                                         .registerTypeAdapter(ArrayList.class, new ArrayListSerializer())
+            //                                         .registerTypeAdapter(byte[].class, new ByteArraySerializer())
+            .setExclusionStrategies(new CustomExclusionStrategies()).create();
+
+    private File logFile;
 
     private PacketLogger()
     {
         String filePath = "logs" + File.separator;
         String fileName = Utils.addTimeStampToFileName("PacketData");
 
-        File logFile = Utils.createFile(filePath + fileName);
-
-        try
-        {
-            writer = new FileWriter(logFile);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        logFile = Utils.createFile(filePath + fileName);
     }
 
     public static PacketLogger getInstance()
@@ -55,12 +46,11 @@ public class PacketLogger implements Observer
             if (arg instanceof ArrayList)
             {
                 ArrayList<DataPacket> dataPackets = (ArrayList<DataPacket>) arg;
-                DataPacket lastDataPacket = dataPackets.get(dataPackets.size() - 1);
-                gson.toJson(lastDataPacket, writer);
+                //                DataPacket lastDataPacket = dataPackets.get(dataPackets.size() - 1);
 
-                try
+                try (FileWriter writer = new FileWriter(logFile, false))
                 {
-                    writer.flush();
+                    writer.write(gson.toJson(dataPackets));
                 }
                 catch (IOException e)
                 {
