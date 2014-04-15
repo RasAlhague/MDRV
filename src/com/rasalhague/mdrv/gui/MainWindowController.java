@@ -466,13 +466,13 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     {
                                         double opacity = 0.3;
                                         Node numberSeriesNode = numberSeries.getNode();
-                                        if (numberSeriesNode.getOpacity() > opacity)
+                                        if (replaySliderValue > replaySliderPreviousValue)
                                         {
-                                            numberSeriesNode.setOpacity(opacity);
+                                            numberSeriesNode.setOpacity(0.9);
                                         }
                                         else
                                         {
-                                            numberSeriesNode.setOpacity(0.9);
+                                            numberSeriesNode.setOpacity(opacity);
                                         }
                                     }
                                 }
