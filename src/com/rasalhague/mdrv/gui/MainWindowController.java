@@ -22,10 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -56,11 +53,14 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         Button                    refreshChartButton;
     public         GridPane                  tooltipPane;
     public         TitledPane                chartLegendPane;
-    public VBox                    chartLegendVbox;
-    public javafx.scene.shape.Line horizontalLine;
-    public Line                    verticalLine;
-    public Button                  showDebugInfoBnt;
-    public VBox                    controlBntsVBox;
+    public  VBox                    chartLegendVbox;
+    public  javafx.scene.shape.Line horizontalLine;
+    public  Line                    verticalLine;
+    public  Button                  showDebugInfoBnt;
+    public  VBox                    controlBntsVBox;
+    public  Slider                  replaySlider;
+    public  CheckBox                replayModeSwitcher;
+    private double                  replaySliderPreviousValue;
 
     public MainWindowController()
     {
@@ -131,6 +131,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         horizontalLine = (javafx.scene.shape.Line) scene.lookup("#horizontalLine");
         verticalLine = (javafx.scene.shape.Line) scene.lookup("#verticalLine");
         controlBntsVBox = (VBox) scene.lookup("#controlBntsVBox");
+        replaySlider = (Slider) scene.lookup("#replaySlider");
+        replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
 
         //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
@@ -140,6 +142,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         initXYLines(horizontalLine, verticalLine, lineChart);
         //init popup
         initPopupMenu(controlBntsVBox, scene);
+        initReplaySlider(replaySlider);
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
@@ -305,6 +308,29 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     }
 
+    private void initReplaySlider(Slider replaySlider)
+    {
+        replaySlider.setOnMouseDragged((MouseEvent event) -> {
+
+            replayModeSwitcher.setSelected(true);
+
+            if (replaySlider.getValue() == replaySlider.getMax())
+            {
+                replayModeSwitcher.setSelected(false);
+            }
+        });
+
+        replaySlider.setOnMouseClicked((MouseEvent event) -> {
+
+            replayModeSwitcher.setSelected(true);
+
+            if (replaySlider.getValue() == replaySlider.getMax())
+            {
+                replayModeSwitcher.setSelected(false);
+            }
+        });
+    }
+
     public void maxCheckBoxChangedEvent(ActionEvent event)
     {
         System.out.println(maxCheckBox.isSelected());
@@ -316,6 +342,11 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         CheckBox checkBox = (CheckBox) event.getSource();
         checkBox.setSelected(verticalLine.isVisible());
+    }
+
+    public void replayModeSwitcherEvent(ActionEvent event)
+    {
+
     }
 
     public void horizontalLineSwitchEvent(ActionEvent event)
@@ -334,7 +365,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void refreshChartButtonClickEvent(Event event)
     {
-        PacketAnalysis.getInstance().getPrevAnalysisResultsMap().clear();
+        PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
     }
 
@@ -343,74 +374,127 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         Platform.runLater(() -> {
 
-            ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+            /**
+             * replaySlider behavior
+             */
+            replaySlider.setMax(analysisResult.size() - 1);
+            int replaySliderValue = (int) (replayModeSwitcher.isSelected() ? replaySlider.getValue() : replaySlider.getMax());
+            boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
+            ArrayList<Integer> queryArray = new ArrayList<>();
+            if (!replayModeSwitcher.isSelected())
+            {
+                replaySlider.setValue(replaySlider.getMax());
+            }
+
+            //why user click at replaySlider field we will get queryArray!
+            if (isToLeft)
+            {
+                for (int i = (int) replaySliderPreviousValue; i >= replaySliderValue; i--)
+                {
+                    queryArray.add(i);
+                }
+            }
+            else
+            {
+                for (int i = (int) (replayModeSwitcher.isSelected() ? replaySliderPreviousValue :
+                        replaySliderPreviousValue +
+                                1); i <= replaySliderValue; i++)
+                {
+                    queryArray.add(i);
+                }
+            }
 
             /**
              * For every device that processed by Analysis class
              */
-            //            Set<DeviceInfo> keySet = analysisResult.keySet();
-            Set<DeviceInfo> keySet = analysisResult.get(analysisResult.lastKey()).keySet();
-            for (DeviceInfo deviceInfo : keySet)
+            ArrayList<Long> longs = new ArrayList<>(analysisResult.keySet());
+            for (Integer que : queryArray)
             {
-                if (maxCheckBox.isSelected())
+                Long timeKey = longs.get(que);
+                Set<DeviceInfo> keySet = analysisResult.get(timeKey).keySet();
+                for (DeviceInfo deviceInfo : keySet)
                 {
-                    /**
-                     * Generate XYChart.Series
-                     */
-                    ArrayList<Integer> listMax = analysisResult.get(analysisResult.lastKey())
-                                                               .get(deviceInfo)
-                                                               .get(AnalysisKey.MAX);
-
-                    //                    System.out.println(analysisResult.lastKey());
-                    //                    System.out.println(deviceInfo.getName());
-                    //                    System.out.println(listMax);
-
-                    XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                    series.setName(deviceInfo.getName());
-                    //get seriesData from XYChart.Series to work with
-                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
-
-                    final float initialFrequency = deviceInfo.getInitialFrequency();
-                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
-
-                    //set every point to the seriesData
-                    float xAxisCounter = initialFrequency;
-                    for (Integer value : listMax)
+                    if (maxCheckBox.isSelected())
                     {
-                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
-                        seriesData.add(data);
+                        /**
+                         * Generate XYChart.Series
+                         */
+                        ArrayList<Integer> listMax = analysisResult.get(timeKey).get(deviceInfo).get(AnalysisKey.MAX);
 
-                        xAxisCounter += channelSpacingKHz;
-                    }
+                        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                        series.setName(deviceInfo.getName());
+                        //get seriesData from XYChart.Series to work with
+                        ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
 
-                    /**
-                     * Use XYChart.Series
-                     * Update series
-                     */
-                    if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
-                    {
-                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                        final float initialFrequency = deviceInfo.getInitialFrequency();
+                        final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
+
+                        //set every point to the seriesData
+                        float xAxisCounter = initialFrequency;
+                        for (Integer value : listMax)
                         {
-                            if (numberSeries.getName().equals(deviceInfo.getName()))
+                            XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
+                            seriesData.add(data);
+
+                            xAxisCounter += channelSpacingKHz;
+                        }
+
+                        /**
+                         * Use XYChart.Series
+                         * Update series
+                         */
+                        ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+
+                        if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
+                        {
+                            for (XYChart.Series<Number, Number> numberSeries : lineChartData)
                             {
-                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                                for (int i = 0; i < data.size(); i++)
+                                if (numberSeries.getName().equals(deviceInfo.getName()))
                                 {
-                                    XYChart.Data<Number, Number> numberData = data.get(i);
-                                    numberData.setYValue(series.getData().get(i).getYValue());
+                                    ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
+                                    for (int i = 0; i < data.size(); i++)
+                                    {
+                                        XYChart.Data<Number, Number> numberData = data.get(i);
+                                        numberData.setYValue(series.getData().get(i).getYValue());
+                                    }
+
+                                    //set opacity to non created series
+                                    if (analysisResult.get(timeKey)
+                                                      .get(deviceInfo)
+                                                      .containsKey(AnalysisKey.NEW_SERIES) &&
+                                            replaySliderValue != replaySliderPreviousValue)
+                                    {
+                                        double opacity = 0.3;
+                                        Node numberSeriesNode = numberSeries.getNode();
+                                        if (numberSeriesNode.getOpacity() > opacity)
+                                        {
+                                            numberSeriesNode.setOpacity(opacity);
+                                        }
+                                        else
+                                        {
+                                            numberSeriesNode.setOpacity(0.9);
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                    //or create if does not exist
-                    else
-                    {
-                        lineChart.setAnimated(false);
-                        lineChartData.add(series);
-                        lineChart.setAnimated(true);
+                        //or create if does not exist
+                        else
+                        {
+                            lineChart.setAnimated(false);
+                            lineChartData.add(series);
+                            lineChart.setAnimated(true);
+
+                            //TODO add marker to dev spawn point
+                            //                            StackPane node = (StackPane) replaySlider.getChildrenUnmodifiable().get(1);
+                        }
+
                     }
                 }
             }
+
+            //update replaySliderPreviousValue in the end
+            replaySliderPreviousValue = replaySlider.getValue();
         });
     }
 

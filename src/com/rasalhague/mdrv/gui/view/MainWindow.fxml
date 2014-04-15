@@ -13,12 +13,14 @@
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
-            prefHeight = "520.5"
-            prefWidth = "1001.0"
+            prefHeight = "556.4999000000025"
+            prefWidth = "1057.0"
             xmlns:fx = "http://javafx.com/fxml/1"
             xmlns = "http://javafx.com/javafx/2.2"
             fx:controller = "com.rasalhague.mdrv.gui.MainWindowController">
-    <GridPane visible = "true"
+    <GridPane hgap = "0.0"
+              vgap = "5.0"
+              visible = "true"
               AnchorPane.bottomAnchor = "0.0"
               AnchorPane.leftAnchor = "0.0"
               AnchorPane.rightAnchor = "0.0"
@@ -54,20 +56,20 @@
                        GridPane.vgrow = "ALWAYS">
                 <xAxis>
                     <NumberAxis animated = "false"
-                                autoRanging = "true"
+                                autoRanging = "false"
                                 disable = "false"
                                 focusTraversable = "false"
                                 forceZeroInRange = "false"
                                 label = "Frequency, MHz"
-                                lowerBound = "0.0"
+                                lowerBound = "2395.0"
                                 minorTickVisible = "false"
                                 side = "BOTTOM"
                                 tickLabelRotation = "0.0"
                                 tickLabelsVisible = "true"
                                 tickLength = "5.0"
                                 tickMarkVisible = "true"
-                                tickUnit = "2.0"
-                                upperBound = "100.0"/>
+                                tickUnit = "5.0"
+                                upperBound = "2500.0"/>
                 </xAxis>
                 <yAxis>
                     <NumberAxis animated = "false"
@@ -84,12 +86,27 @@
                                 tickLength = "5.0"
                                 tickMarkVisible = "true"
                                 tickUnit = "5.0"
-                                upperBound = "-30.0"/>
+                                upperBound = "-40.0"/>
                 </yAxis>
                 <padding>
                     <Insets fx:id = "x2"/>
                 </padding>
             </LineChart>
+            <Slider fx:id = "replaySlider"
+                    blockIncrement = "10.0"
+                    focusTraversable = "true"
+                    majorTickUnit = "1.0"
+                    max = "10.0"
+                    minorTickCount = "0"
+                    showTickLabels = "false"
+                    showTickMarks = "false"
+                    snapToTicks = "true"
+                    value = "-1.0"
+                    visible = "true"
+                    GridPane.columnIndex = "0"
+                    GridPane.hgrow = "ALWAYS"
+                    GridPane.rowIndex = "1"
+                    GridPane.vgrow = "NEVER"/>
             <TextArea fx:id = "debugTextArea"
                       disable = "false"
                       editable = "false"
@@ -104,11 +121,14 @@
                       wrapText = "true"
                       GridPane.columnIndex = "0"
                       GridPane.hgrow = "NEVER"
-                      GridPane.rowIndex = "1"/>
+                      GridPane.rowIndex = "2"/>
         </children>
         <columnConstraints>
             <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "10.0" prefWidth = "-1.0"/>
         </columnConstraints>
+        <padding>
+            <Insets fx:id = "x2"/>
+        </padding>
         <rowConstraints>
             <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "ALWAYS"/>
             <RowConstraints fillHeight = "true"
@@ -116,6 +136,7 @@
                             prefHeight = "-1.0"
                             valignment = "CENTER"
                             vgrow = "NEVER"/>
+            <RowConstraints minHeight = "0.0" valignment = "CENTER" vgrow = "NEVER"/>
         </rowConstraints>
     </GridPane>
     <padding>
@@ -236,6 +257,10 @@
                       onAction = "#verticalLineSwitchEvent"
                       selected = "true"
                       text = "Vertical line"/>
+            <CheckBox fx:id = "replayModeSwitcher"
+                      mnemonicParsing = "false"
+                      onAction = "#replayModeSwitcherEvent"
+                      text = "Manual replay mode"/>
         </children>
         <padding>
             <Insets bottom = "10.0" left = "10.0" right = "10.0" top = "10.0"/>

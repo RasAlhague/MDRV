@@ -16,17 +16,16 @@ import java.util.List;
  */
 public class PacketAnalysis implements DataPacketListener
 {
-    private volatile HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>                   prevAnalysisResultsMap = new HashMap<>();
-    private volatile OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults   = new LinkedMap<>();
+    private volatile OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedMap<>();
 
     public static PacketAnalysis getInstance()
     {
         return PacketAnalysisHolder.INSTANCE;
     }
 
-    public synchronized HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> getPrevAnalysisResultsMap()
+    public OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResults()
     {
-        return prevAnalysisResultsMap;
+        return timedAnalysisResults;
     }
 
     @Override
@@ -61,6 +60,7 @@ public class PacketAnalysis implements DataPacketListener
             else
             {
                 hashMapToAdd.put(AnalysisKey.MAX, new ArrayList<>(dataPacket.getDataPacketValues()));
+                hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
             }
 
             /**

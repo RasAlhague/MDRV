@@ -2,5 +2,7 @@ package com.rasalhague.mdrv.analysis;
 
 public enum AnalysisKey
 {
-    MAX, MEDIAN
+    MAX,
+    MEDIAN,
+    NEW_SERIES
 }
