@@ -8,7 +8,7 @@ import java.util.logging.LogRecord;
 
 public class TextAreaHandler extends Handler
 {
-    volatile TextArea textArea;
+    private volatile TextArea textArea;
 
     public TextAreaHandler(TextArea textArea)
     {

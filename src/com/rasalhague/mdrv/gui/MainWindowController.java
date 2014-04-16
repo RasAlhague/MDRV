@@ -56,15 +56,15 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         Button                    refreshChartButton;
     public         GridPane                  tooltipPane;
     public         TitledPane                chartLegendPane;
-    public  VBox                    chartLegendVbox;
-    public  javafx.scene.shape.Line horizontalLine;
-    public  Line                    verticalLine;
-    public  Button                  showDebugInfoBnt;
-    public  VBox                    controlBntsVBox;
-    public  Slider                  replaySlider;
-    public  CheckBox                replayModeSwitcher;
-    public  Button                  openReplayBtn;
-    private double                  replaySliderPreviousValue;
+    public         VBox                      chartLegendVbox;
+    public         javafx.scene.shape.Line   horizontalLine;
+    public         Line                      verticalLine;
+    public         Button                    showDebugInfoBnt;
+    public         VBox                      controlBntsVBox;
+    public         Slider                    replaySlider;
+    public         CheckBox                  replayModeSwitcher;
+    public         Button                    openReplayBtn;
+    private        double                    replaySliderPreviousValue;
 
     public MainWindowController()
     {
@@ -76,7 +76,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         launch();
     }
 
-    public static MainWindowController getInstance()
+    private static MainWindowController getInstance()
     {
         if (instance == null)
         {
@@ -306,10 +306,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                     HBox hBox = new HBox();
                     CheckBox checkBox = new CheckBox();
-                    checkBox.setOnMouseClicked(event -> {
-
-                        series.getNode().setVisible(checkBox.isSelected());
-                    });
+                    checkBox.setOnMouseClicked(event -> series.getNode().setVisible(checkBox.isSelected()));
                     hBox.getChildren().add(checkBox);
 
                     checkBox.setSelected(true);
@@ -401,7 +398,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         Replay.getInstance().loadReplay();
     }
 
-    public void refreshChart()
+    void refreshChart()
     {
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();

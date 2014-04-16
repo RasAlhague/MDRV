@@ -5,7 +5,6 @@ import com.rasalhague.mdrv.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.MissingResourceException;
 import java.util.logging.*;
@@ -16,8 +15,6 @@ public class ApplicationLogger extends Logger
     //    public final static Logger GLOBAL_LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public final static  Logger LOGGER      = new ApplicationLogger();
 
-    private static ArrayList<LogRecord> logRecordArrayList = new ArrayList<>();
-
     /**
      * Protected method to construct a logger for a named subsystem.
      * <p>
@@ -26,7 +23,7 @@ public class ApplicationLogger extends Logger
      * @throws MissingResourceException
      *         if the resourceBundleName is non-null and no corresponding resource can be found.
      */
-    protected ApplicationLogger()
+    private ApplicationLogger()
     {
         super(ApplicationLogger.LOGGER_NAME, null);
     }
@@ -67,25 +64,8 @@ public class ApplicationLogger extends Logger
 
         //update formatter
         setFormatterToLoggerHandlers(LOGGER, new MyLogFormatter());
-
-        //send logged records
-        for (LogRecord record : logRecordArrayList)
-        {
-            handler.publish(record);
-        }
-
     }
 
-    //TODO return wrong SourceClassName if active
-/*
-    @Override
-    public synchronized void log(LogRecord record)
-    {
-        super.log(record);
-
-        logRecordArrayList.add(record);
-    }
-*/
     public synchronized static void closeHandlers()
     {
         Handler[] handlers = LOGGER.getHandlers();

@@ -30,32 +30,17 @@ interface DeviceConnectionListenerI
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
-    private ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
-    private List<DeviceConnectionListenerI> listeners           = new ArrayList<>();
-    private long                            scanTimerPeriodMs   = 1000;
-    private boolean                         isListening         = false;
+    private final ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
+    private final List<DeviceConnectionListenerI> listeners           = new ArrayList<>();
+    private       long                            scanTimerPeriodMs   = 1000;
+    private       boolean                         isListening         = false;
     private Timer timer;
 
-    private static DeviceConnectionListener instance = new DeviceConnectionListener();
+    private static final DeviceConnectionListener instance = new DeviceConnectionListener();
 
     static
     {
         com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
-    }
-
-    public static DeviceConnectionListener getInstance()
-    {
-        return instance;
-    }
-
-    public long getScanTimerPeriodMs()
-    {
-        return scanTimerPeriodMs;
-    }
-
-    public void setScanTimerPeriodMs(long scanTimerPeriodMs)
-    {
-        this.scanTimerPeriodMs = scanTimerPeriodMs;
     }
 
     private DeviceConnectionListener()
@@ -139,7 +124,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
         for (String portName : portNames)
         {
-            deviceInfoList.add(new DeviceInfo(portName, DeviceInfo.DeviceType.COM));
+            deviceInfoList.add(new DeviceInfo(portName));
         }
 
         return deviceInfoList;
@@ -234,7 +219,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     //region Observer implementation
 
-    public void addListener(DeviceConnectionListenerI toAdd)
+    void addListener(DeviceConnectionListenerI toAdd)
     {
         listeners.add(toAdd);
     }

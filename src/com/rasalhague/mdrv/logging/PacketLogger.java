@@ -21,17 +21,17 @@ import java.util.List;
  */
 public class PacketLogger implements DataPacketListener
 {
-    private static PacketLogger INSTANCE = new PacketLogger();
+    private static final PacketLogger INSTANCE = new PacketLogger();
 
-    private Gson gson = new GsonBuilder()
+    private final Gson gson = new GsonBuilder()
             //            .setPrettyPrinting()
             //                                         .registerTypeAdapter(ArrayList.class, new ArrayListSerializer())
             //                                         .registerTypeAdapter(byte[].class, new ByteArraySerializer())
             .setExclusionStrategies(new CustomExclusionStrategies()).create();
 
-    private File       logFile;
-    private JsonWriter jsonWriter;
-    private Writer     writer;
+    private final File       logFile;
+    private       JsonWriter jsonWriter;
+    private       Writer     writer;
     private boolean firstPacketExist = false;
     private long    packetCounter    = 0;
 

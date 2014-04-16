@@ -8,7 +8,7 @@ import jssc.SerialPortTimeoutException;
 
 final class ez430RF2500 extends COMDeviceCommunication
 {
-    protected ez430RF2500(DeviceInfo deviceInfo)
+    ez430RF2500(DeviceInfo deviceInfo)
     {
         super(deviceInfo);
     }

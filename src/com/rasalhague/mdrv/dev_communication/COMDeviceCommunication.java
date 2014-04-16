@@ -10,9 +10,9 @@ import jssc.SerialPortException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
+class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
 {
-    SerialPort serialPort;
+    final SerialPort serialPort;
 
     COMDeviceCommunication(DeviceInfo deviceInfo)
     {

@@ -134,7 +134,7 @@ public class PacketAnalysis implements DataPacketListener
 
     //region Observer implementation
 
-    private List<AnalysisPerformedListener> analysisPerformedListeners = new ArrayList<>();
+    private final List<AnalysisPerformedListener> analysisPerformedListeners = new ArrayList<>();
 
     public void addListener(AnalysisPerformedListener toAdd)
     {

@@ -8,8 +8,8 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
  */
 public abstract class DeviceCommunication implements Runnable
 {
-    DeviceInfo        deviceInfo;
-    RxRawDataReceiver rxRawDataReceiver;
+    final DeviceInfo        deviceInfo;
+    final RxRawDataReceiver rxRawDataReceiver;
 
     DeviceCommunication(DeviceInfo devInfo)
     {

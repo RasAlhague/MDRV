@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class RawDataProcessor
 {
-    static volatile RawDataProcessingAlgorithm rawDataProcessingAlgorithm;
+    private static volatile RawDataProcessingAlgorithm rawDataProcessingAlgorithm;
 
     public synchronized static ArrayList<Integer> processData(ArrayList<Byte> dataToProcess, DeviceInfo deviceInfo)
     {

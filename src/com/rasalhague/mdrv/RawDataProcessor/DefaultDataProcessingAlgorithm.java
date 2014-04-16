@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 class DefaultDataProcessingAlgorithm implements RawDataProcessingAlgorithm
 {
-    final static String DEFAULT_REGEX_PATTERN = "(?<data>-\\d{2,3})";
+    private final static String DEFAULT_REGEX_PATTERN = "(?<data>-\\d{2,3})";
 
     @Override
     public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess)

@@ -120,8 +120,8 @@ public class Utils
 
     static class StreamReader extends Thread
     {
-        private InputStream inputStream;
-        private StringWriter stringWriter = new StringWriter();
+        private final InputStream inputStream;
+        private final StringWriter stringWriter = new StringWriter();
 
         public StreamReader(InputStream is)
         {

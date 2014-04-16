@@ -22,7 +22,7 @@ public class Replay
     private static final Replay INSTANCE = new Replay();
     private static final Gson   gson     = new GsonBuilder().setPrettyPrinting().create();
 
-    public ArrayList<DataPacket> loadedDataPackets;
+    private ArrayList<DataPacket> loadedDataPackets;
 
     public static Replay getInstance()
     {
@@ -60,8 +60,7 @@ public class Replay
             {
                 JsonReader jsonReader = new JsonReader(fileReader);
                 Type type = new TypeToken<ArrayList<DataPacket>>() {}.getType();
-                ArrayList<DataPacket> dataPackets = gson.fromJson(jsonReader, type);
-                return dataPackets;
+                return gson.fromJson(jsonReader, type);
             }
             catch (FileNotFoundException e)
             {
@@ -78,7 +77,7 @@ public class Replay
 
     //region Observer implementation
 
-    private ArrayList<DataPacketListener> dataPacketListeners = new ArrayList<>();
+    private final ArrayList<DataPacketListener> dataPacketListeners = new ArrayList<>();
 
     public void addListener(DataPacketListener toAdd)
     {

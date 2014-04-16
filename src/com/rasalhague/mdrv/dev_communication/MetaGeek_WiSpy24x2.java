@@ -6,7 +6,7 @@ import org.apache.commons.lang3.SystemUtils;
 
 import java.io.IOException;
 
-public class MetaGeek_WiSpy24x2 extends HIDDeviceCommunication
+class MetaGeek_WiSpy24x2 extends HIDDeviceCommunication
 {
     MetaGeek_WiSpy24x2(DeviceInfo devInfo)
     {

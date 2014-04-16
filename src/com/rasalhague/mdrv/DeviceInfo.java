@@ -22,9 +22,9 @@ public class DeviceInfo
     private final String     name;
     private final String     devicePortName;
     private final DeviceType deviceType;
-    private byte[] endPacketSequence;
-    private float  initialFrequency;
-    private float  channelSpacing;
+    private       byte[]     endPacketSequence;
+    private       float      initialFrequency;
+    private       float      channelSpacing;
 
     public enum DeviceType
     {
@@ -44,7 +44,7 @@ public class DeviceInfo
         setSomeFieldsFromConfig(productID, vendorID);
     }
 
-    DeviceInfo(String devPortName, DeviceType devTypeEnum)
+    DeviceInfo(String devPortName)
     {
         devicePortName = devPortName;
         deviceType = DeviceType.COM;

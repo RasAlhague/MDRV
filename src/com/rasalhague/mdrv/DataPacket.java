@@ -17,12 +17,6 @@ public class DataPacket
     private       boolean            isAnalyzable;
     private final DeviceInfo         deviceInfo;
 
-    //Getter
-    public String getRawDataPacketValue()
-    {
-        return rawDataPacket;
-    }
-
     public ArrayList<Integer> getDataPacketValues()
     {
         return dataPacketValues;
@@ -36,11 +30,6 @@ public class DataPacket
     public long getPacketCreationTimeMs()
     {
         return packetCreationTimeMs;
-    }
-
-    public int getPointsAmount()
-    {
-        return pointsAmount;
     }
 
     public boolean isAnalyzable()

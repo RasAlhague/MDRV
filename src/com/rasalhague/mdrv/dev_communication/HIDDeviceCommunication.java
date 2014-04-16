@@ -7,7 +7,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.io.IOException;
 
-public class HIDDeviceCommunication extends DeviceCommunication
+class HIDDeviceCommunication extends DeviceCommunication
 {
     HIDDevice hidDevice;
 

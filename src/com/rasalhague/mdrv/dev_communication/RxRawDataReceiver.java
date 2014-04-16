@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class RxRawDataReceiver
 {
-    private ArrayList<DataPacket> rawDataPackets;
-    private ArrayList<Byte> rawDataBuffer = new ArrayList<>();
+    private final ArrayList<DataPacket> rawDataPackets;
+    private final ArrayList<Byte> rawDataBuffer = new ArrayList<>();
 
     private Boolean firstPacketTrigger = true;
-    private DeviceInfo deviceInfo;
+    private final DeviceInfo deviceInfo;
 
     public RxRawDataReceiver(DeviceInfo deviceInfo)
     {
@@ -113,7 +113,7 @@ public class RxRawDataReceiver
 
     //region Observer implementation (DataPacketListener)
 
-    private List<DataPacketListener> dataPacketListeners = new ArrayList<>();
+    private final List<DataPacketListener> dataPacketListeners = new ArrayList<>();
 
     public void addListener(DataPacketListener toAdd)
     {
