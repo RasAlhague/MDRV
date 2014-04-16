@@ -3,8 +3,10 @@ package com.rasalhague.mdrv.replay;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import com.rasalhague.mdrv.DataPacket;
 import com.rasalhague.mdrv.DataPacketListener;
+import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import javax.swing.*;
@@ -20,12 +22,32 @@ public class Replay
     private static final Replay INSTANCE = new Replay();
     private static final Gson   gson     = new GsonBuilder().setPrettyPrinting().create();
 
+    public ArrayList<DataPacket> loadedDataPackets;
+
     public static Replay getInstance()
     {
         return INSTANCE;
     }
 
     public void loadReplay()
+    {
+        loadedDataPackets = loadPacketsFromFile();
+        if (loadedDataPackets != null)
+        {
+            PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
+
+            for (DataPacket dataPacket : loadedDataPackets)
+            {
+                packetAnalysis.dataPacketEvent(dataPacket);
+            }
+        }
+        else
+        {
+            ApplicationLogger.LOGGER.severe("loadedDataPackets != null");
+        }
+    }
+
+    private ArrayList<DataPacket> loadPacketsFromFile()
     {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
@@ -36,9 +58,10 @@ public class Replay
 
             try (FileReader fileReader = new FileReader(inputFile))
             {
+                JsonReader jsonReader = new JsonReader(fileReader);
                 Type type = new TypeToken<ArrayList<DataPacket>>() {}.getType();
-                ArrayList<DataPacket> dataPackets = gson.fromJson(fileReader, type);
-                //                    System.out.println(Arrays.toString(dataPackets.get(0).getDeviceInfo().getEndPacketSequence()));
+                ArrayList<DataPacket> dataPackets = gson.fromJson(jsonReader, type);
+                return dataPackets;
             }
             catch (FileNotFoundException e)
             {
@@ -50,6 +73,7 @@ public class Replay
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     //region Observer implementation

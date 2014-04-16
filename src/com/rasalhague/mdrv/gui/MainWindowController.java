@@ -8,7 +8,9 @@ import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
+import com.rasalhague.mdrv.replay.Replay;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.Observable;
@@ -61,6 +63,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public  VBox                    controlBntsVBox;
     public  Slider                  replaySlider;
     public  CheckBox                replayModeSwitcher;
+    public  Button                  openReplayBtn;
     private double                  replaySliderPreviousValue;
 
     public MainWindowController()
@@ -90,8 +93,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         ApplicationLogger.setup();
         ConfigurationLoader.initialize();
 
-        //        Replay.getInstance().loadReplay();
-
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
         //        final String popupMenuPath = "/com/rasalhague/mdrv/gui/view/PopupMenu.fxml";
@@ -107,6 +108,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         stage.setOnCloseRequest(windowEvent -> {
             //Correctly close file handlers
             ApplicationLogger.closeHandlers();
+
+            PacketLogger.getInstance().closeWriter();
 
             //Need to stop coz thread prevent exit program
             if (DeviceConnectionListener.isListening())
@@ -134,6 +137,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         controlBntsVBox = (VBox) scene.lookup("#controlBntsVBox");
         replaySlider = (Slider) scene.lookup("#replaySlider");
         replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
+        openReplayBtn = (Button) scene.lookup("#openReplayBtn");
 
         //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
@@ -340,6 +344,18 @@ public class MainWindowController extends Application implements AnalysisPerform
                 replayModeSwitcher.setSelected(false);
             }
         });
+
+        replaySlider.valueProperty().addListener(observable -> {
+
+            if (replayModeSwitcher.isSelected())
+            {
+                OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = PacketAnalysis
+                        .getInstance()
+                        .getTimedAnalysisResults();
+
+                updateChartSeries(timedAnalysisResults);
+            }
+        });
     }
 
     public void maxCheckBoxChangedEvent(ActionEvent event)
@@ -376,6 +392,17 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void refreshChartButtonClickEvent(Event event)
     {
+        refreshChart();
+    }
+
+    public void openReplayBtnClick(ActionEvent actionEvent)
+    {
+        refreshChart();
+        Replay.getInstance().loadReplay();
+    }
+
+    public void refreshChart()
+    {
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
         replaySliderPreviousValue = 0;
@@ -390,15 +417,24 @@ public class MainWindowController extends Application implements AnalysisPerform
              * replaySlider behavior
              */
             replaySlider.setMax(analysisResult.size() - 1);
-            int replaySliderValue = (int) (replayModeSwitcher.isSelected() ? replaySlider.getValue() : replaySlider.getMax());
-            boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
-            ArrayList<Integer> queryArray = new ArrayList<>();
             if (!replayModeSwitcher.isSelected())
             {
                 replaySlider.setValue(replaySlider.getMax());
             }
 
-            //why user click at replaySlider field we will get queryArray!
+            updateChartSeries(analysisResult);
+        });
+    }
+
+    private void updateChartSeries(final OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
+    {
+        Platform.runLater(() -> {
+
+            int replaySliderValue = (int) replaySlider.getValue();
+
+            //when user click at replaySlider field we will get queryArray!
+            ArrayList<Integer> queryArray = new ArrayList<>();
+            boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
             if (isToLeft)
             {
                 for (int i = (int) replaySliderPreviousValue; i >= replaySliderValue; i--)
@@ -471,6 +507,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     }
 
                                     //set opacity to non created series
+                                    //                                    int replaySliderValue = (int) replaySlider.getValue();
                                     if (analysisResult.get(timeKey)
                                                       .get(deviceInfo)
                                                       .containsKey(AnalysisKey.NEW_SERIES) &&
@@ -501,7 +538,6 @@ public class MainWindowController extends Application implements AnalysisPerform
                             //TODO add marker to dev spawn point
                             //                            StackPane node = (StackPane) replaySlider.getChildrenUnmodifiable().get(1);
                         }
-
                     }
                 }
             }

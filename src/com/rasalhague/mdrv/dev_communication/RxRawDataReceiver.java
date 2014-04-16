@@ -6,13 +6,12 @@ import com.rasalhague.mdrv.DeviceInfo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 /**
  * receiveRawData(String rawData) take a input string from device and works like a buffer for processReceivedByte(char
  * receivedChar) that parsing char by char generate a DataPacket;
  */
-public class RxRawDataReceiver extends Observable
+public class RxRawDataReceiver
 {
     private ArrayList<DataPacket> rawDataPackets;
     private ArrayList<Byte> rawDataBuffer = new ArrayList<>();
@@ -44,13 +43,9 @@ public class RxRawDataReceiver extends Observable
         wipeRawDataPacketBuffer();
     }
 
-    private void notifySubscribers(DataPacket dataPacket, List rawDataPackets)
+    private void notifySubscribers(DataPacket dataPacket, ArrayList<DataPacket> rawDataPackets)
     {
-        //TODO setChanged(); Wont work
-        setChanged();
-        notifyObservers(rawDataPackets);
-
-        notifyDataPacketListeners(dataPacket, deviceInfo);
+        notifyDataPacketListeners(dataPacket, rawDataPackets);
     }
 
     private void addDataToRawDataPacketBuffer(byte data)
@@ -125,7 +120,7 @@ public class RxRawDataReceiver extends Observable
         dataPacketListeners.add(toAdd);
     }
 
-    private void notifyDataPacketListeners(DataPacket dataPacket, DeviceInfo deviceInfo)
+    private void notifyDataPacketListeners(DataPacket dataPacket, ArrayList<DataPacket> rawDataPackets)
     {
         for (DataPacketListener listener : dataPacketListeners)
         {

@@ -216,7 +216,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             //filter known devices
             if (deviceCommunication != null)
             {
-                deviceCommunication.getRxRawDataReceiver().addObserver(PacketLogger.getInstance());
+                deviceCommunication.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
                 deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);

@@ -1,28 +1,39 @@
 package com.rasalhague.mdrv.logging;
 
 import com.google.gson.*;
+import com.google.gson.stream.JsonWriter;
 import com.rasalhague.mdrv.DataPacket;
+import com.rasalhague.mdrv.DataPacketListener;
 import com.rasalhague.mdrv.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Lazy singleton realization
  */
-public class PacketLogger implements Observer
+public class PacketLogger implements DataPacketListener
 {
+    private static PacketLogger INSTANCE = new PacketLogger();
+
     private Gson gson = new GsonBuilder()
             //            .setPrettyPrinting()
             //                                         .registerTypeAdapter(ArrayList.class, new ArrayListSerializer())
             //                                         .registerTypeAdapter(byte[].class, new ByteArraySerializer())
             .setExclusionStrategies(new CustomExclusionStrategies()).create();
 
-    private File logFile;
+    private File       logFile;
+    private JsonWriter jsonWriter;
+    private Writer     writer;
+    private boolean firstPacketExist = false;
+    private long    packetCounter    = 0;
 
     private PacketLogger()
     {
@@ -30,39 +41,70 @@ public class PacketLogger implements Observer
         String fileName = Utils.addTimeStampToFileName("PacketData");
 
         logFile = Utils.createFile(filePath + fileName);
+        try
+        {
+            writer = new FileWriter(logFile, false);
+            jsonWriter = new JsonWriter(writer);
+            jsonWriter.beginArray();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        ApplicationLogger.LOGGER.info("PacketLogger has been started");
     }
 
     public static PacketLogger getInstance()
     {
-        return PacketLoggerHolder.INSTANCE;
+        return INSTANCE;
     }
 
     @Override
-    public synchronized void update(Observable o, Object arg)
+    public void dataPacketEvent(DataPacket dataPacket)
     {
-        //TODO setChanged(); Wont work
-        //        if (o.hasChanged())
-        {
-            if (arg instanceof ArrayList)
-            {
-                ArrayList<DataPacket> dataPackets = (ArrayList<DataPacket>) arg;
-                //                DataPacket lastDataPacket = dataPackets.get(dataPackets.size() - 1);
+        packetCounter++;
 
-                try (FileWriter writer = new FileWriter(logFile, false))
-                {
-                    writer.write(gson.toJson(dataPackets));
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+        //append - 2d parameter
+        try /*(FileWriter writer = new FileWriter(logFile, false))*/
+        {
+            //firstPacketExist needs for exclude null in the end
+            if (firstPacketExist)
+            {
+                writer.write("," + gson.toJson(dataPacket));
             }
+            else
+            {
+                writer.write(gson.toJson(dataPacket));
+            }
+            writer.flush();
+            firstPacketExist = true;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
-    private static class PacketLoggerHolder
+    public void closeWriter()
     {
-        public static final PacketLogger INSTANCE = new PacketLogger();
+        try
+        {
+            jsonWriter.endArray();
+            jsonWriter.flush();
+            jsonWriter.close();
+
+            if (packetCounter < 5)
+            {
+                logFile.delete();
+                ApplicationLogger.LOGGER.info("PacketData file has been deleted via small count of packets");
+            }
+        }
+        catch (IOException e)
+        {
+            ApplicationLogger.LOGGER.severe(e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
 
