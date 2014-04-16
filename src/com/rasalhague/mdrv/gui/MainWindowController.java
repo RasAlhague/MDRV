@@ -26,6 +26,7 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -297,11 +298,21 @@ public class MainWindowController extends Application implements AnalysisPerform
                     //Get numberSeries color and set it to text
                     String numberSeriesString = series.getNode().toString();
                     int indexOf = numberSeriesString.indexOf("stroke=");
-                    String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
+                    String colorValue = numberSeriesString.substring(indexOf + 7, indexOf + 17);
 
-                    Text seriesText = new Text(series.getName());
-                    seriesText.setFill(Paint.valueOf(substring));
-                    chartLegendVbox.getChildren().add(seriesText);
+                    HBox hBox = new HBox();
+                    CheckBox checkBox = new CheckBox();
+                    checkBox.setOnMouseClicked(event -> {
+
+                        series.getNode().setVisible(checkBox.isSelected());
+                    });
+                    hBox.getChildren().add(checkBox);
+
+                    checkBox.setSelected(true);
+                    checkBox.setText(series.getName());
+                    checkBox.setTextFill(Paint.valueOf(colorValue));
+
+                    chartLegendVbox.getChildren().add(hBox);
                 });
             }), updateDelayMs, TimeUnit.MILLISECONDS);
         });
@@ -367,6 +378,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
+        replaySliderPreviousValue = 0;
     }
 
     @Override
@@ -481,6 +493,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                         //or create if does not exist
                         else
                         {
+                            //disable stupid series creating animation
                             lineChart.setAnimated(false);
                             lineChartData.add(series);
                             lineChart.setAnimated(true);
@@ -521,7 +534,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         chartBackground.setOnMouseMoved((MouseEvent mouseEvent) -> {
 
-            ArrayList<ArrayList<Text>> rowsToView = new ArrayList<>();
+            HashMap<ArrayList<Text>, Boolean> rowsToView = new HashMap<>();
 
             /**
              * Mouse coordinates
@@ -554,7 +567,10 @@ public class MainWindowController extends Application implements AnalysisPerform
                         rowTexts.add(dBmText);
                         rowTexts.add(hz);
                         rowTexts.add(hzText);
-                        rowsToView.add(rowTexts);
+                        if (numberSeries.getNode().isVisible())
+                        {
+                            rowsToView.put(rowTexts, numberSeries.getNode().isVisible());
+                        }
 
                         //Get numberSeries color and set it to text
                         String numberSeriesString = numberSeries.getNode().toString();
@@ -570,8 +586,11 @@ public class MainWindowController extends Application implements AnalysisPerform
                         /**
                          * Highlight selected node
                          */
-                        numberData.getNode().setVisible(true);
-                        numberData.getNode().setEffect(new DropShadow());
+                        if (numberSeries.getNode().isVisible())
+                        {
+                            numberData.getNode().setVisible(true);
+                            numberData.getNode().setEffect(new DropShadow());
+                        }
                     }
                     else
                     {
@@ -587,17 +606,24 @@ public class MainWindowController extends Application implements AnalysisPerform
             /**
              * Add rowsToView with text objects to the tooltipPane
              */
-            //            tooltipPane.getRowConstraints().clear();
-            //            tooltipPane.getColumnConstraints().clear();
+            //if (rowsToView.size() > 0) is needed for tooltipPane always visibility
             if (rowsToView.size() > 0)
             {
                 tooltipPane.getChildren().clear();
-                for (int row = 0; row < rowsToView.size(); row++)
+                ArrayList<ArrayList<Text>> rowsToViewKeySet = new ArrayList<>(rowsToView.keySet());
+                //sorting in 1 line xD
+                rowsToViewKeySet.sort((o1, o2) -> Integer.compare(Integer.parseInt(o1.get(0).getText()),
+                                                                  Integer.parseInt(o2.get(0).getText())));
+
+                for (int row = 0; row < rowsToViewKeySet.size(); row++)
                 {
-                    ArrayList<Text> texts = rowsToView.get(row);
-                    for (int column = 0; column < texts.size(); column++)
+                    ArrayList<Text> texts = rowsToViewKeySet.get(row);
+                    if (rowsToView.get(texts))
                     {
-                        tooltipPane.add(texts.get(column), column, row);
+                        for (int column = 0; column < texts.size(); column++)
+                        {
+                            tooltipPane.add(texts.get(column), column, row);
+                        }
                     }
                 }
             }
@@ -682,4 +708,5 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //        return cursorCoords;
     }
+
 }

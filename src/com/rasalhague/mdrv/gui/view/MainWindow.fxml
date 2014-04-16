@@ -9,10 +9,12 @@
 <?import javafx.scene.shape.Line?>
 <AnchorPane id = "AnchorPane"
             depthTest = "DISABLE"
+            layoutX = "0.0"
             maxHeight = "-Infinity"
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
+            padding = "$x1"
             prefHeight = "556.4999000000025"
             prefWidth = "1057.0"
             xmlns:fx = "http://javafx.com/fxml/1"
@@ -101,7 +103,7 @@
                     showTickLabels = "false"
                     showTickMarks = "false"
                     snapToTicks = "true"
-                    value = "-1.0"
+                    value = "0.0"
                     visible = "true"
                     GridPane.columnIndex = "0"
                     GridPane.hgrow = "ALWAYS"
@@ -139,9 +141,6 @@
             <RowConstraints minHeight = "0.0" valignment = "CENTER" vgrow = "NEVER"/>
         </rowConstraints>
     </GridPane>
-    <padding>
-        <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
-    </padding>
     <GridPane fx:id = "tooltipPane"
               alignment = "CENTER"
               gridLinesVisible = "false"
@@ -179,11 +178,16 @@
         </content>
     </TitledPane>
     <VBox fx:id = "chartLegendVbox"
-          mouseTransparent = "true"
+          mouseTransparent = "false"
           prefHeight = "-1.0"
           prefWidth = "-1.0"
+          spacing = "3.0"
           AnchorPane.rightAnchor = "0.0"
-          AnchorPane.topAnchor = "0.0"/>
+          AnchorPane.topAnchor = "0.0">
+        <padding>
+            <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
+        </padding>
+    </VBox>
     <Group id = "Group" layoutX = "0.0" layoutY = "0.0">
         <children>
             <Line fx:id = "horizontalLine"
@@ -219,12 +223,13 @@
     </Group>
     <VBox fx:id = "controlBntsVBox"
           fillWidth = "true"
-          layoutX = "5.0"
-          layoutY = "5.0"
+          padding = "$x1"
           prefHeight = "-1.0"
           prefWidth = "-1.0"
           spacing = "3.0"
-          visible = "true">
+          visible = "true"
+          AnchorPane.leftAnchor = "0.0"
+          AnchorPane.topAnchor = "0.0">
         <children>
             <Button fx:id = "refreshChartButton"
                     cancelButton = "false"
@@ -262,8 +267,5 @@
                       onAction = "#replayModeSwitcherEvent"
                       text = "Manual replay mode"/>
         </children>
-        <padding>
-            <Insets bottom = "10.0" left = "10.0" right = "10.0" top = "10.0"/>
-        </padding>
     </VBox>
 </AnchorPane>
