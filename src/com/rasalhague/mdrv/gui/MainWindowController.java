@@ -400,9 +400,13 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     void refreshChart()
     {
+        //        Platform.runLater(() -> {
+
+        replaySliderPreviousValue = 0;
+        replaySlider.setValue(0);
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
-        replaySliderPreviousValue = 0;
+        //        });
     }
 
     @Override
@@ -423,7 +427,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         });
     }
 
-    private void updateChartSeries(final OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
+    private synchronized void updateChartSeries(final OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
     {
         Platform.runLater(() -> {
 
@@ -448,14 +452,23 @@ public class MainWindowController extends Application implements AnalysisPerform
                     queryArray.add(i);
                 }
             }
+            //counter out of range exc
+            if (analysisResult.size() < queryArray.size())
+            {
+                queryArray.clear();
+            }
 
             /**
              * For every device that processed by Analysis class
              */
-            ArrayList<Long> longs = new ArrayList<>(analysisResult.keySet());
             for (Integer que : queryArray)
             {
-                Long timeKey = longs.get(que);
+                //TODO Exception in thread "JavaFX Application Thread" java.util.ConcurrentModificationException
+                ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
+                Long timeKey = timeKeys.get(que);
+                //                Long[] timeKeys = analysisResult.keySet().toArray(new Long[analysisResult.keySet().size()]);
+                //                Long timeKey = timeKeys[que];
+
                 Set<DeviceInfo> keySet = analysisResult.get(timeKey).keySet();
                 for (DeviceInfo deviceInfo : keySet)
                 {
