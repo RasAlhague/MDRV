@@ -28,6 +28,16 @@ public class PacketAnalysis implements DataPacketListener
         return timedAnalysisResults;
     }
 
+    /**
+     * countering ConcurrentModificationException
+     *
+     * @return
+     */
+    public synchronized OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResultsClone()
+    {
+        return new LinkedMap<>(timedAnalysisResults);
+    }
+
     @Override
     public synchronized void dataPacketEvent(DataPacket dataPacket)
     {
@@ -83,7 +93,7 @@ public class PacketAnalysis implements DataPacketListener
             }
 
             //            System.out.println(timedAnalysisResults);
-            notifyAnalysisPerformedListeners(timedAnalysisResults);
+            notifyAnalysisPerformedListeners(getTimedAnalysisResultsClone());
         }
     }
 

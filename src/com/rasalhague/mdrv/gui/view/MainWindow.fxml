@@ -108,9 +108,11 @@
                     value = "0.0"
                     visible = "true"
                     GridPane.columnIndex = "0"
+                    GridPane.halignment = "CENTER"
                     GridPane.hgrow = "ALWAYS"
                     GridPane.rowIndex = "1"
-                    GridPane.vgrow = "NEVER"/>
+                    GridPane.valignment = "CENTER"
+                    GridPane.vgrow = "SOMETIMES"/>
             <TextArea fx:id = "debugTextArea"
                       disable = "false"
                       editable = "false"

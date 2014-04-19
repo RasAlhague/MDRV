@@ -14,8 +14,6 @@
     <orderEntry type="library" name="commons-lang3-3.2.1" level="project" />
     <orderEntry type="library" name="javahidapi" level="project" />
     <orderEntry type="library" name="commons-collections4-4.0-sources" level="project" />
-    <orderEntry type="library" name="jsr80-1.0.1" level="project" />
-    <orderEntry type="library" name="usb4java-1.2.0" level="project" />
   </component>
 </module>
 

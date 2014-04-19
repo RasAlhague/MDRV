@@ -40,7 +40,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.commons.collections4.OrderedMap;
-import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -353,11 +352,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
             if (replayModeSwitcher.isSelected())
             {
-                OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = PacketAnalysis
-                        .getInstance()
-                        .getTimedAnalysisResults();
-
-                updateChartSeries(timedAnalysisResults);
+                updateChartSeries(PacketAnalysis.getInstance().getTimedAnalysisResultsClone());
             }
         });
     }
@@ -407,13 +402,10 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     void refreshChart()
     {
-        //        Platform.runLater(() -> {
-
         replaySliderPreviousValue = 0;
         replaySlider.setValue(0);
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
-        //        });
     }
 
     @Override
@@ -421,154 +413,136 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         Platform.runLater(() -> {
 
-            OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResultTemp = new LinkedMap<>(
-                    analysisResult);
-
             /**
              * replaySlider behavior
              */
-            replaySlider.setMax(analysisResultTemp.size() - 1);
+            replaySlider.setMax(analysisResult.size() - 1);
+            //            if ((replaySlider.getMax() % 10) == 0) {replaySlider.setMajorTickUnit(replaySlider.getMax());}
             if (!replayModeSwitcher.isSelected())
             {
                 replaySlider.setValue(replaySlider.getMax());
             }
 
-            updateChartSeries(analysisResultTemp);
+            updateChartSeries(analysisResult);
+
+            //update replaySliderPreviousValue in the end
+            replaySliderPreviousValue = replaySlider.getValue();
         });
     }
 
     private synchronized void updateChartSeries(final OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
     {
-        Platform.runLater(() -> {
+        int replaySliderValue = (int) replaySlider.getValue();
 
-            int replaySliderValue = (int) replaySlider.getValue();
-
-            //when user click at replaySlider field we will get queryArray!
-            ArrayList<Integer> queryArray = new ArrayList<>();
-            boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
-            if (isToLeft)
+        //when user click at replaySlider field we will get queryArray!
+        ArrayList<Integer> queryArray = new ArrayList<>();
+        boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
+        if (isToLeft)
+        {
+            for (int i = (int) replaySliderPreviousValue; i >= replaySliderValue; i--)
             {
-                for (int i = (int) replaySliderPreviousValue; i >= replaySliderValue; i--)
-                {
-                    queryArray.add(i);
-                }
+                queryArray.add(i);
             }
-            else
+        }
+        else
+        {
+            for (int i = (int) (replayModeSwitcher.isSelected() ? replaySliderPreviousValue : replaySliderPreviousValue +
+                    1); i <= replaySliderValue; i++)
             {
-                for (int i = (int) (replayModeSwitcher.isSelected() ? replaySliderPreviousValue :
-                        replaySliderPreviousValue +
-                                1); i <= replaySliderValue; i++)
-                {
-                    queryArray.add(i);
-                }
+                queryArray.add(i);
             }
-            //counter out of range exc
-            if (analysisResult.size() < queryArray.size())
+        }
+        //counter out of range exc
+        if (analysisResult.size() < queryArray.size())
+        {
+            queryArray.clear();
+        }
+
+        /**
+         * For every device that processed by Analysis class
+         */
+        ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
+        for (Integer que : queryArray)
+        {
+            Long timeKey = timeKeys.get(que);
+
+            Set<DeviceInfo> keySet = analysisResult.get(timeKey).keySet();
+            for (DeviceInfo deviceInfo : keySet)
             {
-                queryArray.clear();
-            }
-
-            /**
-             * For every device that processed by Analysis class
-             */
-            //            ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
-            for (Integer que : queryArray)
-            {
-                //TODO Exception in thread "JavaFX Application Thread" java.util.ConcurrentModificationException
-                //                ArrayList<Long> timeKeys = new ArrayList<>(/*analysisResult.keySet()*/);
-                //                analysisResult.keySet().forEach(timeKeys::add);
-                //                Long timeKey = timeKeys.get(que);
-
-                //                Long timeKey = timeKeys.get(que);
-
-                Long timeKey = new ArrayList<>(analysisResult.keySet()).get(que);
-
-                Set<DeviceInfo> keySet = analysisResult.get(timeKey).keySet();
-                for (DeviceInfo deviceInfo : keySet)
+                if (maxCheckBox.isSelected())
                 {
-                    if (maxCheckBox.isSelected())
+                    /**
+                     * Generate XYChart.Series
+                     */
+                    ArrayList<Integer> listMax = analysisResult.get(timeKey).get(deviceInfo).get(AnalysisKey.MAX);
+
+                    XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                    series.setName(deviceInfo.getName());
+                    //get seriesData from XYChart.Series to work with
+                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
+
+                    final float initialFrequency = deviceInfo.getInitialFrequency();
+                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
+
+                    //set every point to the seriesData
+                    float xAxisCounter = initialFrequency;
+                    for (Integer value : listMax)
                     {
-                        /**
-                         * Generate XYChart.Series
-                         */
-                        ArrayList<Integer> listMax = analysisResult.get(timeKey).get(deviceInfo).get(AnalysisKey.MAX);
+                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
+                        seriesData.add(data);
 
-                        XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                        series.setName(deviceInfo.getName());
-                        //get seriesData from XYChart.Series to work with
-                        ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
+                        xAxisCounter += channelSpacingKHz;
+                    }
 
-                        final float initialFrequency = deviceInfo.getInitialFrequency();
-                        final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
+                    /**
+                     * Use XYChart.Series
+                     * Update series
+                     */
+                    ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
 
-                        //set every point to the seriesData
-                        float xAxisCounter = initialFrequency;
-                        for (Integer value : listMax)
+                    if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
+                    {
+                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
                         {
-                            XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
-                            seriesData.add(data);
-
-                            xAxisCounter += channelSpacingKHz;
-                        }
-
-                        /**
-                         * Use XYChart.Series
-                         * Update series
-                         */
-                        ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
-
-                        if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
-                        {
-                            for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                            if (numberSeries.getName().equals(deviceInfo.getName()))
                             {
-                                if (numberSeries.getName().equals(deviceInfo.getName()))
+                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
+                                for (int i = 0; i < data.size(); i++)
                                 {
-                                    ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                                    for (int i = 0; i < data.size(); i++)
-                                    {
-                                        XYChart.Data<Number, Number> numberData = data.get(i);
-                                        numberData.setYValue(series.getData().get(i).getYValue());
-                                    }
+                                    XYChart.Data<Number, Number> numberData = data.get(i);
+                                    numberData.setYValue(series.getData().get(i).getYValue());
+                                }
 
-                                    //set opacity to non created series
-                                    //                                    int replaySliderValue = (int) replaySlider.getValue();
-                                    if (analysisResult.get(timeKey)
-                                                      .get(deviceInfo)
-                                                      .containsKey(AnalysisKey.NEW_SERIES) &&
-                                            replaySliderValue != replaySliderPreviousValue)
+                                //set opacity to non created series
+                                //                                    int replaySliderValue = (int) replaySlider.getValue();
+                                if (analysisResult.get(timeKey).get(deviceInfo).containsKey(AnalysisKey.NEW_SERIES) &&
+                                        replaySliderValue != replaySliderPreviousValue)
+                                {
+                                    double opacity = 0.3;
+                                    Node numberSeriesNode = numberSeries.getNode();
+                                    if (replaySliderValue > replaySliderPreviousValue)
                                     {
-                                        double opacity = 0.3;
-                                        Node numberSeriesNode = numberSeries.getNode();
-                                        if (replaySliderValue > replaySliderPreviousValue)
-                                        {
-                                            numberSeriesNode.setOpacity(0.9);
-                                        }
-                                        else
-                                        {
-                                            numberSeriesNode.setOpacity(opacity);
-                                        }
+                                        numberSeriesNode.setOpacity(0.9);
+                                    }
+                                    else
+                                    {
+                                        numberSeriesNode.setOpacity(opacity);
                                     }
                                 }
                             }
                         }
-                        //or create if does not exist
-                        else
-                        {
-                            //disable stupid series creating animation
-                            lineChart.setAnimated(false);
-                            lineChartData.add(series);
-                            lineChart.setAnimated(true);
-
-                            //TODO add marker to dev spawn point
-                            //                            StackPane node = (StackPane) replaySlider.getChildrenUnmodifiable().get(1);
-                        }
+                    }
+                    //or create if does not exist
+                    else
+                    {
+                        //disable stupid series creating animation
+                        lineChart.setAnimated(false);
+                        lineChartData.add(series);
+                        lineChart.setAnimated(true);
                     }
                 }
             }
-
-            //update replaySliderPreviousValue in the end
-            replaySliderPreviousValue = replaySlider.getValue();
-        });
+        }
     }
 
     private void bindTooltipToLineChart(final LineChart<Number, Number> lineChart, GridPane tooltipPane)
