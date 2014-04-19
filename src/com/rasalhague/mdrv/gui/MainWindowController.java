@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,6 +40,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.commons.collections4.OrderedMap;
+import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -92,6 +94,11 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         ApplicationLogger.setup();
         ConfigurationLoader.initialize();
+
+        //        Test test = new Test();
+        //        UsbDevice device = test.findDevice(null, test.ismvid, test.ismpid);
+        //        System.out.println(device);
+        //                test.libusbWay();
 
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
@@ -414,16 +421,19 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         Platform.runLater(() -> {
 
+            OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResultTemp = new LinkedMap<>(
+                    analysisResult);
+
             /**
              * replaySlider behavior
              */
-            replaySlider.setMax(analysisResult.size() - 1);
+            replaySlider.setMax(analysisResultTemp.size() - 1);
             if (!replayModeSwitcher.isSelected())
             {
                 replaySlider.setValue(replaySlider.getMax());
             }
 
-            updateChartSeries(analysisResult);
+            updateChartSeries(analysisResultTemp);
         });
     }
 
@@ -461,13 +471,17 @@ public class MainWindowController extends Application implements AnalysisPerform
             /**
              * For every device that processed by Analysis class
              */
+            //            ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
             for (Integer que : queryArray)
             {
                 //TODO Exception in thread "JavaFX Application Thread" java.util.ConcurrentModificationException
-                ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
-                Long timeKey = timeKeys.get(que);
-                //                Long[] timeKeys = analysisResult.keySet().toArray(new Long[analysisResult.keySet().size()]);
-                //                Long timeKey = timeKeys[que];
+                //                ArrayList<Long> timeKeys = new ArrayList<>(/*analysisResult.keySet()*/);
+                //                analysisResult.keySet().forEach(timeKeys::add);
+                //                Long timeKey = timeKeys.get(que);
+
+                //                Long timeKey = timeKeys.get(que);
+
+                Long timeKey = new ArrayList<>(analysisResult.keySet()).get(que);
 
                 Set<DeviceInfo> keySet = analysisResult.get(timeKey).keySet();
                 for (DeviceInfo deviceInfo : keySet)
@@ -607,7 +621,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                         Text dBm = new Text(String.valueOf(yValue));
                         Text dBmText = new Text(" dBm");
                         Text hz = new Text('\t'/* + "2 4"*/ + String.valueOf(xValue));
-                        Text hzText = new Text(" Hz");
+                        Text hzText = new Text(" kHz");
 
                         rowTexts.add(dBm);
                         rowTexts.add(dBmText);
@@ -669,6 +683,12 @@ public class MainWindowController extends Application implements AnalysisPerform
                         for (int column = 0; column < texts.size(); column++)
                         {
                             tooltipPane.add(texts.get(column), column, row);
+
+                            //set up alignment for first column
+                            if (column == 0)
+                            {
+                                tooltipPane.getColumnConstraints().get(0).setHalignment(HPos.RIGHT);
+                            }
                         }
                     }
                 }
