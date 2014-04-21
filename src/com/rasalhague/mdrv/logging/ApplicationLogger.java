@@ -56,6 +56,8 @@ public class ApplicationLogger extends Logger
         {
             LOGGER.log(Level.SEVERE, "Cannot create file due to IO error.", e);
         }
+
+        //        LogOutputStream.setup();
     }
 
     public synchronized static void addCustomHandler(Handler handler)

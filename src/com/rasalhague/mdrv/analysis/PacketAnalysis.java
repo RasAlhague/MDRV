@@ -4,11 +4,10 @@ import com.rasalhague.mdrv.DataPacket;
 import com.rasalhague.mdrv.DataPacketListener;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import org.apache.commons.collections4.OrderedMap;
-import org.apache.commons.collections4.map.LinkedMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -16,14 +15,14 @@ import java.util.List;
  */
 public class PacketAnalysis implements DataPacketListener
 {
-    private volatile OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedMap<>();
+    private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedHashMap<>();
 
     public static PacketAnalysis getInstance()
     {
         return PacketAnalysisHolder.INSTANCE;
     }
 
-    public OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResults()
+    public LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResults()
     {
         return timedAnalysisResults;
     }
@@ -33,9 +32,9 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return
      */
-    public synchronized OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResultsClone()
+    public synchronized LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResultsClone()
     {
-        return new LinkedMap<>(timedAnalysisResults);
+        return new LinkedHashMap<>(timedAnalysisResults);
     }
 
     @Override
@@ -97,11 +96,6 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
-    private void smooth()
-    {
-
-    }
-
     /**
      * This method join new data to second parameter prevData
      *
@@ -151,7 +145,7 @@ public class PacketAnalysis implements DataPacketListener
         analysisPerformedListeners.add(toAdd);
     }
 
-    private void notifyAnalysisPerformedListeners(OrderedMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResultsMap)
+    private void notifyAnalysisPerformedListeners(LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResultsMap)
     {
         for (AnalysisPerformedListener listener : analysisPerformedListeners)
         {
