@@ -32,8 +32,9 @@ public class PacketLogger implements DataPacketListener
     private final File       logFile;
     private       JsonWriter jsonWriter;
     private       Writer     writer;
-    private boolean firstPacketExist = false;
-    private long    packetCounter    = 0;
+    private       boolean firstPacketExist       = false;
+    private       long    packetCounter          = 0;
+    private final int     packetsRequiredToWrite = 10;
 
     private PacketLogger()
     {
@@ -94,7 +95,7 @@ public class PacketLogger implements DataPacketListener
             jsonWriter.flush();
             jsonWriter.close();
 
-            if (packetCounter < 5)
+            if (packetCounter < packetsRequiredToWrite)
             {
                 logFile.delete();
                 ApplicationLogger.LOGGER.info("PacketData file has been deleted via small count of packets");
