@@ -335,7 +335,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             if (replayModeSwitcher.isSelected() && !chartBlocked)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
-                analysisPerformedEvent(packetAnalysis.getTimedAnalysisResultsClone());
+                analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
             }
         });
 
@@ -351,7 +351,7 @@ public class MainWindowController extends Application implements AnalysisPerform
             if (replayModeSwitcher.isSelected() && !chartBlocked)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
-                analysisPerformedEvent(packetAnalysis.getTimedAnalysisResultsClone());
+                analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
             }
         });
 

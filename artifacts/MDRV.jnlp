@@ -12,7 +12,7 @@
     </resources>
     <resources>
         <j2se version = "1.6+" href = "http://java.sun.com/products/autodl/j2se"/>
-        <jar href = "MDRV.jar" size = "74766" download = "eager"/>
+        <jar href = "MDRV.jar" size = "74878" download = "eager"/>
         <jar href = "libs/commons-collections4-4.0.jar" size = "610259" download = "eager"/>
         <jar href = "libs/commons-lang3-3.2.1.jar" size = "385091" download = "eager"/>
         <jar href = "libs/gson-2.2.4.jar" size = "190418" download = "eager"/>

@@ -1,6 +1,7 @@
-<html><head>
-  <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
-<script>
+<html>
+<head>
+    <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
+    <script>
     function launchApplication(jnlpfile) {
         dtjava.launch(            {
                 url : 'MDRV.jnlp'
@@ -12,9 +13,10 @@
         );
         return false;
     }
-</script>
 
-<script>
+    </script>
+
+    <script>
     function javafxEmbed_MDRV_id() {
         dtjava.embed(
             {
@@ -32,12 +34,18 @@
     }
     <!-- Embed FX application into web page once page is loaded -->
     dtjava.addOnloadCallback(javafxEmbed_MDRV_id);
-</script>
 
-</head><body>
+    </script>
+
+</head>
+<body>
 <h2>Test page for <b>MDRV</b></h2>
-  <b>Webstart:</b> <a href='MDRV.jnlp' onclick="return launchApplication('MDRV.jnlp');">click to launch this app as webstart</a><br><hr><br>
+<b>Webstart:</b> <a href='MDRV.jnlp' onclick="return launchApplication('MDRV.jnlp');">click to launch this app as
+    webstart</a><br>
+<hr>
+<br>
 
-  <!-- Applet will be inserted here -->
-  <div id='javafx-app-placeholder'></div>
-</body></html>
+<!-- Applet will be inserted here -->
+<div id='javafx-app-placeholder'></div>
+</body>
+</html>
