@@ -19,6 +19,8 @@ public class RxRawDataReceiver
     private Boolean firstPacketTrigger = true;
     private final DeviceInfo deviceInfo;
 
+    private int packetCounter = 0;
+
     public RxRawDataReceiver(DeviceInfo deviceInfo)
     {
         this.deviceInfo = deviceInfo;
@@ -34,10 +36,15 @@ public class RxRawDataReceiver
         }
         else
         {
-            DataPacket dataPacket = new DataPacket(rawDataBuffer, deviceInfo);
-            rawDataPackets.add(dataPacket);
+            if (packetCounter > 10)
+            {
+                DataPacket dataPacket = new DataPacket(rawDataBuffer, deviceInfo);
+                rawDataPackets.add(dataPacket);
 
-            notifySubscribers(dataPacket, rawDataPackets);
+                notifySubscribers(dataPacket, rawDataPackets);
+            }
+            packetCounter++;
+            //            System.out.println(rawDataPackets);
         }
 
         wipeRawDataPacketBuffer();
@@ -60,7 +67,7 @@ public class RxRawDataReceiver
     }
 
     /**
-     * Works like a buffer. Sends data char by char to processReceivedByte(char receivedChar);
+     * RawData entry point. Works like a buffer. Sends data char by char to processReceivedByte(char receivedChar);
      *
      * @param rawData
      *         string from device

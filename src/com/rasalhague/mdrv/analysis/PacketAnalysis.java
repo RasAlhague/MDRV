@@ -63,8 +63,10 @@ public class PacketAnalysis implements DataPacketListener
             HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
             if (prevResultsMap != null)
             {
-                hashMapToAdd.put(AnalysisKey.MAX,
-                                 joinMax(dataPacket.getDataPacketValues(), prevResultsMap.get(AnalysisKey.MAX)));
+                ArrayList<Integer> joinMax = joinMax(dataPacket.getDataPacketValues(),
+                                                     prevResultsMap.get(AnalysisKey.MAX));
+
+                hashMapToAdd.put(AnalysisKey.MAX, joinMax);
             }
             else
             {
@@ -126,8 +128,11 @@ public class PacketAnalysis implements DataPacketListener
         }
         else
         {
-            ApplicationLogger.LOGGER.severe("newData.size() != prevData.size(); can not process");
-            return null;
+            ApplicationLogger.LOGGER.severe("newData.size() != prevData.size(); can not process. Returning prevData");
+            ApplicationLogger.LOGGER.info("prevData" + prevData.size());
+            ApplicationLogger.LOGGER.info("newData" + newData.size());
+
+            return prevData;
         }
     }
 

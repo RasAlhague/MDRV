@@ -20,11 +20,13 @@ final class AirView2 extends COMDeviceCommunication
 
         try
         {
+            //            Thread.sleep(5000);
             serialPort.writeBytes(intByte);
             //            serialPort.writeBytes(gdiByte);
             serialPort.writeBytes(bsByte);
+            Thread.sleep(5000);
         }
-        catch (SerialPortException e)
+        catch (SerialPortException | InterruptedException e)
         {
             e.printStackTrace();
         }

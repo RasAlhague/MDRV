@@ -472,8 +472,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         {
             queryArray.clear();
         }
-        System.out.println("queryArray.size() -- " + queryArray.size());
-        System.out.println("queryArray.size() -- " + queryArray);
+        //        System.out.println("queryArray.size() -- " + queryArray.size());
+        //        System.out.println("queryArray.size() -- " + queryArray);
 
         /**
          * Speed up algorithm!

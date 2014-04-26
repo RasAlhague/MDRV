@@ -45,6 +45,7 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
 
                 rawData = serialPort.readBytes(serialPortEvent.getEventValue());
                 rxRawDataReceiver.receiveRawData(rawData);
+                //                System.out.println(Arrays.toString(rawData));
             }
             catch (SerialPortException e)
             {
@@ -80,7 +81,7 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
 
         ApplicationLogger.LOGGER.info(deviceInfo.getDevicePortName() + " " + "has been opened!");
 
-        serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
+        //        serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
     }
 
     private void addListener() throws SerialPortException

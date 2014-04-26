@@ -23,7 +23,12 @@ final class ez430RF2500 extends COMDeviceCommunication
             int initRetryingCounter = 1;
             while (true)
             {
+                //TODO do not work on linux (Ubuntu)
                 ApplicationLogger.LOGGER.info(initRetryingCounter++ + " try to init ez430RF2500");
+
+                serialPort.closePort();
+
+                serialPort.openPort();
 
                 serialPort.setParams(SerialPort.BAUDRATE_9600,
                                      SerialPort.DATABITS_8,
@@ -32,10 +37,14 @@ final class ez430RF2500 extends COMDeviceCommunication
 
                 try
                 {
-                    serialPort.readString(1, initRetryingDelay);
+                    String s = serialPort.readString(1, initRetryingDelay);
+                    System.out.println(s);
                     break;
                 }
-                catch (SerialPortTimeoutException ignored) {}
+                catch (SerialPortTimeoutException ignored)
+                {
+                    //                    System.out.println(ignored.getMessage());
+                }
             }
         }
         catch (SerialPortException e)
