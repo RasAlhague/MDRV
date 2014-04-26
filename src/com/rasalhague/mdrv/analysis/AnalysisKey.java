@@ -4,5 +4,7 @@ public enum AnalysisKey
 {
     MAX,
     MEDIAN,
-    NEW_SERIES
+    NEW_SERIES,
+    MODE,
+    AVR
 }
