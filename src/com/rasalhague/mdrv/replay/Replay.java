@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * Provides replay loading
+ */
 public class Replay
 {
     private static final Replay INSTANCE = new Replay();
@@ -24,11 +27,21 @@ public class Replay
 
     private ArrayList<DataPacket> loadedDataPackets;
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static Replay getInstance()
     {
         return INSTANCE;
     }
 
+    /**
+     * Load replay.
+     * <p>
+     * Load and send loaded data via packetAnalysis.dataPacketEvent(dataPacket);
+     */
     public void loadReplay()
     {
         loadedDataPackets = loadPacketsFromFile();
@@ -79,6 +92,13 @@ public class Replay
 
     private final ArrayList<DataPacketListener> dataPacketListeners = new ArrayList<>();
 
+    /**
+     * Add listener.
+     *
+     * Observer realisation
+     *
+     * @param toAdd the to add
+     */
     public void addListener(DataPacketListener toAdd)
     {
         dataPacketListeners.add(toAdd);
