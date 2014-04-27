@@ -249,14 +249,33 @@
                     onMouseClicked = "#showDebugInfoBntClick"
                     text = "Show debug info"
                     VBox.vgrow = "NEVER"/>
+            <Button fx:id = "analyseCollectedData"
+                    mnemonicParsing = "false"
+                    onAction = "#analyseCollectedDataBntAction"
+                    text = "Analyse collected data"
+                    VBox.vgrow = "NEVER">
+                <VBox.margin>
+                    <Insets fx:id = "x2"/>
+                </VBox.margin>
+            </Button>
             <CheckBox fx:id = "maxCheckBox"
                       allowIndeterminate = "false"
                       indeterminate = "false"
                       mnemonicParsing = "false"
                       onMouseClicked = "#maxCheckBoxChangedEvent"
                       selected = "true"
-                      text = "max"
+                      text = "Max"
                       underline = "false"/>
+            <CheckBox fx:id = "modeCheckBox"
+                      mnemonicParsing = "false"
+                      selected = "true"
+                      text = "Mode"
+                      VBox.vgrow = "SOMETIMES"/>
+            <CheckBox fx:id = "medianCheckBox"
+                      mnemonicParsing = "false"
+                      selected = "true"
+                      text = "Median"
+                      VBox.vgrow = "SOMETIMES"/>
             <CheckBox id = "verticalLineSwitcher"
                       fx:id = "horizontalLineSwitcher"
                       mnemonicParsing = "false"

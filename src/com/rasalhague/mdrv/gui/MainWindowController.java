@@ -65,7 +65,10 @@ public class MainWindowController extends Application implements AnalysisPerform
     public         Slider                    replaySlider;
     public         CheckBox                  replayModeSwitcher;
     public         Button                    openReplayBtn;
-    private int replaySliderPreviousValue;
+    public  Button   analyseCollectedData;
+    public  CheckBox modeCheckBox;
+    public  CheckBox medianCheckBox;
+    private int      replaySliderPreviousValue;
 
     public MainWindowController()
     {
@@ -139,6 +142,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         replaySlider = (Slider) scene.lookup("#replaySlider");
         replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
         openReplayBtn = (Button) scene.lookup("#openReplayBtn");
+        modeCheckBox = (CheckBox) scene.lookup("#modeCheckBox");
+        medianCheckBox = (CheckBox) scene.lookup("#medianCheckBox");
 
         //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
@@ -416,6 +421,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         lineChart.getData().clear();
     }
 
+    public void analyseCollectedDataBntAction(ActionEvent actionEvent)
+    {
+        PacketAnalysis.getInstance().analyseAndSaveCollectedData();
+    }
+
     boolean chartBlocked = false;
 
     @Override
@@ -515,77 +525,83 @@ public class MainWindowController extends Application implements AnalysisPerform
         {
             HashMap<AnalysisKey, ArrayList<Integer>> analysisForDevice = combinedAnalysisResult.get(deviceInfo);
 
-            if (maxCheckBox.isSelected())
+            Set<AnalysisKey> analysisForDeviceKeys = analysisForDevice.keySet();
+            for (AnalysisKey analysisForDeviceKey : analysisForDeviceKeys)
             {
                 /**
                  * Generate XYChart.Series
                  */
-                ArrayList<Integer> listMax = new ArrayList<>(analysisForDevice.get(AnalysisKey.MAX));
-
                 XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                series.setName(deviceInfo.getName());
-                //get seriesData from XYChart.Series to work with
-                ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
+                String seriesName = deviceInfo.getName() + analysisForDeviceKey.toString();
+                series.setName(seriesName);
 
-                final float initialFrequency = deviceInfo.getInitialFrequency();
-                final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
-
-                //set every point to the seriesData
-                float xAxisCounter = initialFrequency;
-                for (Integer value : listMax)
+                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
+                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
+                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
                 {
-                    XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
-                    seriesData.add(data);
+                    ArrayList<Integer> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
 
-                    xAxisCounter += channelSpacingKHz;
-                }
+                    //get seriesData from XYChart.Series to work with
+                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
 
-                /**
-                 * Use XYChart.Series
-                 * Update series
-                 */
-                ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+                    final float initialFrequency = deviceInfo.getInitialFrequency();
+                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
 
-                if (Utils.isSeriesExist(lineChartData, deviceInfo.getName()))
-                //                lineChartData.clear();
-                //                if (false)
-                {
-                    for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                    //set every point to the seriesData
+                    float xAxisCounter = initialFrequency;
+                    for (Integer value : listMax)
                     {
-                        if (numberSeries.getName().equals(deviceInfo.getName()))
-                        {
-                            ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                            for (int i = 0; i < data.size(); i++)
-                            {
-                                XYChart.Data<Number, Number> numberData = data.get(i);
-                                numberData.setYValue(series.getData().get(i).getYValue());
-                            }
+                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
+                        seriesData.add(data);
 
-                            //set opacity to non created series
-                            if (analysisForDevice.containsKey(AnalysisKey.NEW_SERIES) &&
-                                    replaySliderValue != replaySliderPreviousValue)
+                        xAxisCounter += channelSpacingKHz;
+                    }
+
+                    /**
+                     * Use XYChart.Series
+                     * Update series
+                     */
+                    ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+
+                    if (Utils.isSeriesExist(lineChartData, seriesName))
+                    {
+                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                        {
+                            if (numberSeries.getName().equals(seriesName))
                             {
-                                double opacity = 0.3;
-                                Node numberSeriesNode = numberSeries.getNode();
-                                if (replaySliderValue > replaySliderPreviousValue)
+                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
+                                for (int i = 0; i < data.size(); i++)
                                 {
-                                    numberSeriesNode.setOpacity(0.9);
+                                    XYChart.Data<Number, Number> numberData = data.get(i);
+                                    numberData.setYValue(series.getData().get(i).getYValue());
                                 }
-                                else
+
+                                //set opacity to non created series
+                                if (analysisForDevice.containsKey(AnalysisKey.NEW_SERIES) &&
+                                        replaySliderValue != replaySliderPreviousValue)
                                 {
-                                    numberSeriesNode.setOpacity(opacity);
+                                    double opacity = 0.3;
+                                    Node numberSeriesNode = numberSeries.getNode();
+                                    if (replaySliderValue > replaySliderPreviousValue)
+                                    {
+                                        numberSeriesNode.setOpacity(0.9);
+                                    }
+                                    else
+                                    {
+                                        numberSeriesNode.setOpacity(opacity);
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                //or create if does not exist
-                else
-                {
-                    //disable stupid series creating animation
-                    lineChart.setAnimated(false);
-                    lineChartData.add(series);
-                    lineChart.setAnimated(true);
+                    //or create if does not exist
+                    else
+                    {
+                        //disable stupid series creating animation
+                        lineChart.setAnimated(false);
+                        lineChartData.add(series);
+                        lineChart.setAnimated(true);
+                    }
                 }
             }
         }

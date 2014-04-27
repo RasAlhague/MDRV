@@ -5,10 +5,7 @@ import com.rasalhague.mdrv.DataPacketListener;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Lazy singleton realization
@@ -16,6 +13,18 @@ import java.util.List;
 public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedHashMap<>();
+
+    public boolean isAnalysisOn()
+    {
+        return isAnalysisOn;
+    }
+
+    public void setAnalysisOn(boolean isAnalysisOn)
+    {
+        this.isAnalysisOn = isAnalysisOn;
+    }
+
+    private boolean isAnalysisOn = true;
 
     /**
      * Gets instance.
@@ -44,62 +53,200 @@ public class PacketAnalysis implements DataPacketListener
     @Override
     public synchronized void dataPacketEvent(DataPacket dataPacket)
     {
-        if (dataPacket.isAnalyzable())
+        if (isAnalysisOn)
         {
-            final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
-            final long packetCreationTimeMs = dataPacket.getPacketCreationTimeMs();
-
-            //search for last <AnalysisKey> for specific dev
-            HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = null;
-            ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> list = new ArrayList<>(
-                    timedAnalysisResults.values());
-            for (int i = list.size() - 1; i >= 0; i--)
+            if (dataPacket.isAnalyzable())
             {
-                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> value = list.get(i);
-                if (value.containsKey(deviceInfo))
+                final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
+                final long packetCreationTimeMs = dataPacket.getPacketCreationTimeMs();
+
+                //search for last <AnalysisKey> for specific dev
+                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = null;
+                ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> list = new ArrayList<>(
+                        timedAnalysisResults.values());
+                for (int i = list.size() - 1; i >= 0; i--)
                 {
-                    prevResultsMap = value.get(deviceInfo);
-                    break;
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> value = list.get(i);
+                    if (value.containsKey(deviceInfo) && value.get(deviceInfo).containsKey(AnalysisKey.MAX))
+                    {
+                        prevResultsMap = value.get(deviceInfo);
+                        break;
+                    }
+                }
+
+                /**
+                 * generate scheme and put <AnalysisKey> into
+                 */
+                HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
+                if (prevResultsMap != null)
+                {
+                    /**
+                     * MAX
+                     */
+                    //                    if (prevResultsMap.containsKey(AnalysisKey.MAX))
+                    //                    {
+                    ArrayList<Integer> joinMax = joinMax(dataPacket.getDataPacketValues(),
+                                                         prevResultsMap.get(AnalysisKey.MAX));
+
+                    hashMapToAdd.put(AnalysisKey.MAX, joinMax);
+                    //                    }
+                }
+                else
+                {
+                    hashMapToAdd.put(AnalysisKey.MAX, dataPacket.getDataPacketValues());
+                    hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
+                }
+
+                /**
+                 * CURRENT
+                 */
+                hashMapToAdd.put(AnalysisKey.CURRENT, dataPacket.getDataPacketValues());
+
+                /**
+                 * When we have 2 or > DataPacket in one moment
+                 * if packetCreationTimeMs does not exist, timedAnalysisResults will created
+                 * else - it will be just updated
+                 */
+                if (!timedAnalysisResults.containsKey(packetCreationTimeMs))
+                {
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map = new HashMap<>();
+                    map.put(deviceInfo, hashMapToAdd);
+
+                    timedAnalysisResults.put(packetCreationTimeMs, map);
+                }
+                else
+                {
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map1 = timedAnalysisResults.get(
+                            packetCreationTimeMs);
+
+                    map1.put(deviceInfo, hashMapToAdd);
+                }
+
+                //            System.out.println(timedAnalysisResults);
+                notifyAnalysisPerformedListeners(getTimedAnalysisResults());
+            }
+        }
+    }
+
+    public void analyseAndSaveCollectedData()
+    {
+        setAnalysisOn(false);
+
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysedCollectedData = analyseCollectedData();
+
+        timedAnalysisResults.put(new Date().getTime(), analysedCollectedData);
+        notifyAnalysisPerformedListeners(getTimedAnalysisResults());
+
+        saveAnalysedCollectedData(analysedCollectedData);
+
+        setAnalysisOn(true);
+    }
+
+    private void saveAnalysedCollectedData(HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysedCollectedData)
+    {
+
+    }
+
+    private HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analyseCollectedData()
+    {
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> finalMap = new HashMap<>();
+
+        HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> modeHelperMap = new HashMap<>();
+
+        Set<Long> timeKeys = timedAnalysisResults.keySet();
+        for (Long timeKey : timeKeys)
+        {
+            Set<DeviceInfo> deviceInfoKeys = timedAnalysisResults.get(timeKey).keySet();
+            for (DeviceInfo deviceInfo : deviceInfoKeys)
+            {
+                /**
+                 * MODE
+                 */
+                ArrayList<Integer> currentPacketData = timedAnalysisResults.get(timeKey)
+                                                                           .get(deviceInfo)
+                                                                           .get(AnalysisKey.CURRENT);
+                if (currentPacketData != null)
+                {
+                    if (!modeHelperMap.containsKey(deviceInfo))
+                    {
+                        ArrayList<HashMap<Integer, Integer>> arrayList = new ArrayList<>();
+                        currentPacketData.forEach(o -> arrayList.add(new HashMap<>()));
+                        modeHelperMap.put(deviceInfo, arrayList);
+                    }
+                    ArrayList<HashMap<Integer, Integer>> pointsHelperArray = modeHelperMap.get(deviceInfo);
+                    for (int i = 0, currentPacketDataSize = currentPacketData.size(); i < currentPacketDataSize; i++)
+                    {
+                        Integer currentDataPoint = currentPacketData.get(i);
+                        HashMap<Integer, Integer> helperDataPointMap = pointsHelperArray.get(i);
+
+                        if (helperDataPointMap.containsKey(currentDataPoint))
+                        {
+                            helperDataPointMap.put(currentDataPoint, helperDataPointMap.get(currentDataPoint) + 1);
+                        }
+                        else
+                        {
+                            helperDataPointMap.put(currentDataPoint, 1);
+                        }
+                    }
+
+                    /**
+                     * AVR
+                     */
+                }
+                else
+                {
+                    ApplicationLogger.LOGGER.info("currentPacketData = null");
                 }
             }
-
-            //generate scheme and put <AnalysisKey> into
-            HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
-            if (prevResultsMap != null)
-            {
-                ArrayList<Integer> joinMax = joinMax(dataPacket.getDataPacketValues(),
-                                                     prevResultsMap.get(AnalysisKey.MAX));
-
-                hashMapToAdd.put(AnalysisKey.MAX, joinMax);
-            }
-            else
-            {
-                hashMapToAdd.put(AnalysisKey.MAX, new ArrayList<>(dataPacket.getDataPacketValues()));
-                hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
-            }
-
-            /**
-             * if packetCreationTimeMs does not exist, timedAnalysisResults will created
-             * else - it will be just updated
-             */
-            if (!timedAnalysisResults.containsKey(packetCreationTimeMs))
-            {
-                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map = new HashMap<>();
-                map.put(deviceInfo, hashMapToAdd);
-
-                timedAnalysisResults.put(packetCreationTimeMs, map);
-            }
-            else
-            {
-                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map1 = timedAnalysisResults.get(
-                        packetCreationTimeMs);
-
-                map1.put(deviceInfo, hashMapToAdd);
-            }
-
-            //            System.out.println(timedAnalysisResults);
-            notifyAnalysisPerformedListeners(getTimedAnalysisResults());
         }
+        //        System.out.println(modeHelperMap);
+
+        /**
+         * MODE postprocessing
+         */
+        HashMap<DeviceInfo, ArrayList<Integer>> mode = new HashMap<>();
+
+        Set<DeviceInfo> modeHelperMapDeviceKeys = modeHelperMap.keySet();
+        for (DeviceInfo modeHelperMapDeviceKey : modeHelperMapDeviceKeys)
+        {
+            if (!mode.containsKey(modeHelperMapDeviceKey))
+            {
+                mode.put(modeHelperMapDeviceKey, new ArrayList<>());
+            }
+
+            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = modeHelperMap.get(modeHelperMapDeviceKey);
+            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            {
+                int maxRSSICountValue = 0;
+                int maxRSSI = 0;
+
+                Set<Integer> rssiKeys = helperDataPointMap.keySet();
+                for (Integer helperDataPointMapKey : rssiKeys)
+                {
+                    if (helperDataPointMap.get(helperDataPointMapKey) > maxRSSICountValue || maxRSSICountValue == 0)
+                    {
+                        maxRSSICountValue = helperDataPointMap.get(helperDataPointMapKey);
+                        maxRSSI = helperDataPointMapKey;
+                    }
+                }
+
+                mode.get(modeHelperMapDeviceKey).add(maxRSSI);
+            }
+
+        }
+        //        System.out.println(mode);
+
+        /**
+         * Set up finalMap
+         */
+        modeHelperMapDeviceKeys.forEach(deviceInfo -> {
+            finalMap.put(deviceInfo, new HashMap<>());
+            finalMap.get(deviceInfo).put(AnalysisKey.MODE, mode.get(deviceInfo));
+        });
+        //        System.out.println();
+        //        System.out.println(finalMap);
+
+        return finalMap;
     }
 
     /**
@@ -155,7 +302,8 @@ public class PacketAnalysis implements DataPacketListener
     /**
      * Add listener.
      *
-     * @param toAdd the to add
+     * @param toAdd
+     *         the to add
      */
     public void addListener(AnalysisPerformedListener toAdd)
     {

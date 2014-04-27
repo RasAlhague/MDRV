@@ -64,6 +64,11 @@ public class PacketLogger implements DataPacketListener
     @Override
     public void dataPacketEvent(DataPacket dataPacket)
     {
+        writeDataPacket(dataPacket);
+    }
+
+    private synchronized void writeDataPacket(DataPacket dataPacket)
+    {
         packetCounter++;
 
         //append - 2d parameter
