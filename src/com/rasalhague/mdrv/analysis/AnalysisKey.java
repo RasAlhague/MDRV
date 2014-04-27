@@ -6,5 +6,6 @@ public enum AnalysisKey
     MEDIAN,
     NEW_SERIES,
     MODE,
-    AVR
+    AVR,
+    CURRENT
 }
