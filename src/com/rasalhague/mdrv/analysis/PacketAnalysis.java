@@ -17,11 +17,25 @@ public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedHashMap<>();
 
+    /**
+     * Gets instance.
+     * <p>
+     * Singleton realisation.
+     *
+     * @return the instance
+     */
     public static PacketAnalysis getInstance()
     {
         return PacketAnalysisHolder.INSTANCE;
     }
 
+    /**
+     * Gets timed analysis results.
+     * <p>
+     * Returns LinkedHashMap with final analysis results.
+     *
+     * @return the timed analysis results
+     */
     public LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResults()
     {
         return timedAnalysisResults;
@@ -128,6 +142,9 @@ public class PacketAnalysis implements DataPacketListener
 
     private static class PacketAnalysisHolder
     {
+        /**
+         * The constant INSTANCE.
+         */
         public static final PacketAnalysis INSTANCE = new PacketAnalysis();
     }
 
@@ -135,6 +152,11 @@ public class PacketAnalysis implements DataPacketListener
 
     private final List<AnalysisPerformedListener> analysisPerformedListeners = new ArrayList<>();
 
+    /**
+     * Add listener.
+     *
+     * @param toAdd the to add
+     */
     public void addListener(AnalysisPerformedListener toAdd)
     {
         analysisPerformedListeners.add(toAdd);
