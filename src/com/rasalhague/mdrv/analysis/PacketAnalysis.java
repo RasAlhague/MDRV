@@ -151,7 +151,7 @@ public class PacketAnalysis implements DataPacketListener
     {
         HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> finalMap = new HashMap<>();
 
-        HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> modeHelperMap = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap = new HashMap<>();
 
         Set<Long> timeKeys = timedAnalysisResults.keySet();
         for (Long timeKey : timeKeys)
@@ -165,15 +165,16 @@ public class PacketAnalysis implements DataPacketListener
                 ArrayList<Integer> currentPacketData = timedAnalysisResults.get(timeKey)
                                                                            .get(deviceInfo)
                                                                            .get(AnalysisKey.CURRENT);
+                //its null when i add other data except CURRENT -- MEDIAN MODE
                 if (currentPacketData != null)
                 {
-                    if (!modeHelperMap.containsKey(deviceInfo))
+                    if (!helperMap.containsKey(deviceInfo))
                     {
                         ArrayList<HashMap<Integer, Integer>> arrayList = new ArrayList<>();
                         currentPacketData.forEach(o -> arrayList.add(new HashMap<>()));
-                        modeHelperMap.put(deviceInfo, arrayList);
+                        helperMap.put(deviceInfo, arrayList);
                     }
-                    ArrayList<HashMap<Integer, Integer>> pointsHelperArray = modeHelperMap.get(deviceInfo);
+                    ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(deviceInfo);
                     for (int i = 0, currentPacketDataSize = currentPacketData.size(); i < currentPacketDataSize; i++)
                     {
                         Integer currentDataPoint = currentPacketData.get(i);
@@ -199,22 +200,41 @@ public class PacketAnalysis implements DataPacketListener
                 }
             }
         }
-        //        System.out.println(modeHelperMap);
+        //        System.out.println(helperMap);
 
+        /**
+         * Set up finalMap
+         */
+        HashMap<DeviceInfo, ArrayList<Integer>> mode = calculateMode(helperMap);
+        HashMap<DeviceInfo, ArrayList<Integer>> median = calculateMedian(helperMap);
+
+        helperMap.keySet().forEach(deviceInfo -> {
+            finalMap.put(deviceInfo, new HashMap<>());
+            finalMap.get(deviceInfo).put(AnalysisKey.MODE, mode.get(deviceInfo));
+            finalMap.get(deviceInfo).put(AnalysisKey.MEDIAN, median.get(deviceInfo));
+        });
+        //        System.out.println();
+        //        System.out.println(finalMap);
+
+        return finalMap;
+    }
+
+    private synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMode(HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap)
+    {
         /**
          * MODE postprocessing
          */
         HashMap<DeviceInfo, ArrayList<Integer>> mode = new HashMap<>();
 
-        Set<DeviceInfo> modeHelperMapDeviceKeys = modeHelperMap.keySet();
-        for (DeviceInfo modeHelperMapDeviceKey : modeHelperMapDeviceKeys)
+        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
+        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
         {
-            if (!mode.containsKey(modeHelperMapDeviceKey))
+            if (!mode.containsKey(helperMapDeviceKey))
             {
-                mode.put(modeHelperMapDeviceKey, new ArrayList<>());
+                mode.put(helperMapDeviceKey, new ArrayList<>());
             }
 
-            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = modeHelperMap.get(modeHelperMapDeviceKey);
+            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
             for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
             {
                 int maxRSSICountValue = 0;
@@ -230,23 +250,41 @@ public class PacketAnalysis implements DataPacketListener
                     }
                 }
 
-                mode.get(modeHelperMapDeviceKey).add(maxRSSI);
+                mode.get(helperMapDeviceKey).add(maxRSSI);
             }
-
         }
         //        System.out.println(mode);
 
-        /**
-         * Set up finalMap
-         */
-        modeHelperMapDeviceKeys.forEach(deviceInfo -> {
-            finalMap.put(deviceInfo, new HashMap<>());
-            finalMap.get(deviceInfo).put(AnalysisKey.MODE, mode.get(deviceInfo));
-        });
-        //        System.out.println();
-        //        System.out.println(finalMap);
+        return mode;
+    }
 
-        return finalMap;
+    private synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMedian(HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap)
+    {
+        /**
+         * MEDIAN postprocessing
+         */
+        HashMap<DeviceInfo, ArrayList<Integer>> median = new HashMap<>();
+
+        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
+        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
+        {
+            if (!median.containsKey(helperMapDeviceKey))
+            {
+                median.put(helperMapDeviceKey, new ArrayList<>());
+            }
+
+            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            {
+                TreeMap<Integer, Integer> helperDataPointMapTree = new TreeMap<>(helperDataPointMap);
+                ArrayList<Integer> rssiSortedArray = new ArrayList<>(helperDataPointMapTree.keySet());
+                int rssiSortedArraySize = rssiSortedArray.size();
+                median.get(helperMapDeviceKey).add(rssiSortedArray.get(rssiSortedArraySize / 2));
+            }
+        }
+        //        System.out.println(median);
+
+        return median;
     }
 
     /**
