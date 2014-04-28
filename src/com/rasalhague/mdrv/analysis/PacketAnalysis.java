@@ -13,6 +13,8 @@ import java.util.*;
 public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedHashMap<>();
+    private HelperAnalysisMap helperAnalysisMap = new HelperAnalysisMap();
+    private long              dataPacketCounter = 0;
 
     public boolean isAnalysisOn()
     {
@@ -67,7 +69,9 @@ public class PacketAnalysis implements DataPacketListener
                 for (int i = list.size() - 1; i >= 0; i--)
                 {
                     HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> value = list.get(i);
-                    if (value.containsKey(deviceInfo) && value.get(deviceInfo).containsKey(AnalysisKey.MAX))
+                    if (value.containsKey(deviceInfo) &&
+                            value.get(deviceInfo).containsKey(AnalysisKey.MAX) &&
+                            value.get(deviceInfo).containsKey(AnalysisKey.AVR))
                     {
                         prevResultsMap = value.get(deviceInfo);
                         break;
@@ -80,20 +84,21 @@ public class PacketAnalysis implements DataPacketListener
                 HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
                 if (prevResultsMap != null)
                 {
-                    /**
-                     * MAX
-                     */
-                    //                    if (prevResultsMap.containsKey(AnalysisKey.MAX))
-                    //                    {
+                    //MAX
                     ArrayList<Integer> joinMax = joinMax(dataPacket.getDataPacketValues(),
                                                          prevResultsMap.get(AnalysisKey.MAX));
 
+                    //AVR
+                    ArrayList<Integer> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
+                                                         prevResultsMap.get(AnalysisKey.AVR));
+
                     hashMapToAdd.put(AnalysisKey.MAX, joinMax);
-                    //                    }
+                    hashMapToAdd.put(AnalysisKey.AVR, joinAvr);
                 }
                 else
                 {
                     hashMapToAdd.put(AnalysisKey.MAX, dataPacket.getDataPacketValues());
+                    hashMapToAdd.put(AnalysisKey.AVR, dataPacket.getDataPacketValues());
                     hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
                 }
 
@@ -101,6 +106,28 @@ public class PacketAnalysis implements DataPacketListener
                  * CURRENT
                  */
                 hashMapToAdd.put(AnalysisKey.CURRENT, dataPacket.getDataPacketValues());
+
+                /**
+                 * Perform Analysis for MODE and MEDIAN and AVR
+                 */
+                //                long startAll = System.nanoTime();
+
+                helperAnalysisMap.updateHelperMap(dataPacket);
+                //                long startMode = System.nanoTime();
+                hashMapToAdd.put(AnalysisKey.MODE, helperAnalysisMap.calculateMode().get(deviceInfo));
+                //                long startMedian = System.nanoTime();
+                hashMapToAdd.put(AnalysisKey.MEDIAN, helperAnalysisMap.calculateMedian().get(deviceInfo));
+
+                //                long endTime = System.nanoTime();
+                //                long durationAll = endTime - startAll;
+                //                long durationMode = endTime - startMode;
+                //                long durationMedian = endTime - startMedian;
+                //                System.out.println("Packet #                        - " + dataPacketCounter);
+                //                System.out.println("Mode                            - " + durationMode);
+                //                System.out.println("Median                          - " + durationMedian);
+                //                System.out.println("updateHelperMap + Mode + Median - " + durationAll);
+                //                System.out.println("-\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-");
+                //                dataPacketCounter++;
 
                 /**
                  * When we have 2 or > DataPacket in one moment
@@ -159,9 +186,6 @@ public class PacketAnalysis implements DataPacketListener
             Set<DeviceInfo> deviceInfoKeys = timedAnalysisResults.get(timeKey).keySet();
             for (DeviceInfo deviceInfo : deviceInfoKeys)
             {
-                /**
-                 * MODE
-                 */
                 ArrayList<Integer> currentPacketData = timedAnalysisResults.get(timeKey)
                                                                            .get(deviceInfo)
                                                                            .get(AnalysisKey.CURRENT);
@@ -189,10 +213,6 @@ public class PacketAnalysis implements DataPacketListener
                             helperDataPointMap.put(currentDataPoint, 1);
                         }
                     }
-
-                    /**
-                     * AVR
-                     */
                 }
                 else
                 {
@@ -297,6 +317,35 @@ public class PacketAnalysis implements DataPacketListener
      * @return
      */
     private synchronized ArrayList<Integer> joinMax(ArrayList<Integer> newData, ArrayList<Integer> prevData)
+    {
+        if (newData.size() == prevData.size())
+        {
+            ArrayList<Integer> joinedData = new ArrayList<>(prevData);
+
+            for (int i = 0, prevDataSize = prevData.size(); i < prevDataSize; i++)
+            {
+                Integer prevNumber = prevData.get(i);
+                Integer newDataNumber = newData.get(i);
+
+                if (newDataNumber > prevNumber)
+                {
+                    joinedData.set(i, newDataNumber);
+                }
+            }
+
+            return joinedData;
+        }
+        else
+        {
+            ApplicationLogger.LOGGER.severe("newData.size() != prevData.size(); can not process. Returning prevData");
+            ApplicationLogger.LOGGER.info("prevData" + prevData.size());
+            ApplicationLogger.LOGGER.info("newData" + newData.size());
+
+            return prevData;
+        }
+    }
+
+    private synchronized ArrayList<Integer> joinAvr(ArrayList<Integer> newData, ArrayList<Integer> prevData)
     {
         if (newData.size() == prevData.size())
         {
