@@ -34,7 +34,8 @@ public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlg
         for (Byte aByte : arrayList)
         {
             //$frequency[$i] = ((hexdec($frequency_temp[3*$i]) - 254) + 82) * 1.428 - 97;
-            finalArrayList.add((aByte - 135));
+            //            finalArrayList.add((aByte - 135));
+            finalArrayList.add((int) ((((aByte - 135) + 100) * 1.428) - 100));
         }
 
         return finalArrayList;
