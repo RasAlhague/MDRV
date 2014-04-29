@@ -205,7 +205,6 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
                 deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(deviceCommunication);
-                //TODO Need correct thread control
                 thread.setDaemon(true);
                 thread.start();
             }

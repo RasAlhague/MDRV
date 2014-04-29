@@ -23,7 +23,7 @@ public abstract class DeviceCommunication implements Runnable
     }
 
     /**
-     * Factory method. Choose device. TODO config file with init sequence and etc.
+     * Factory method. Choose device.
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
     {
@@ -49,8 +49,6 @@ public abstract class DeviceCommunication implements Runnable
                 return new ez430RF2500(deviceInfo);
             }
 
-            //TODO Custom device
-
             ApplicationLogger.LOGGER.warning(
                     "Device not specified. Getting COMDeviceCommunication to try to work with COM device.");
 
@@ -67,8 +65,6 @@ public abstract class DeviceCommunication implements Runnable
             {
                 return new MetaGeek_WiSpy24x2(deviceInfo);
             }
-
-            //TODO Custom device
 
             //            ApplicationLogger.LOGGER.warning(
             //                    "Device not specified. Getting HIDDeviceCommunication to try to work with HID device.");

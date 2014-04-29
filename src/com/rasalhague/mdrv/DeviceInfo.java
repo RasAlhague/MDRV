@@ -158,8 +158,6 @@ public class DeviceInfo
         }
         else if (SystemUtils.IS_OS_LINUX)
         {
-            //TODO IS_OS_LINUX get device names impl
-
             String[] request = new String[]{"dmesg", "grep -i usb"};
             String output = "";
             try

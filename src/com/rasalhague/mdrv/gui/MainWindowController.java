@@ -396,19 +396,19 @@ public class MainWindowController extends Application implements AnalysisPerform
             try
             {
                 int number = Integer.parseInt(chartUpdateDelayTextField.getText());
-                if (number >= 300)
+                if (number >= 100)
                 {
                     chartUpdateDelayMs = number;
                     initChartBlockingTimer();
                 }
                 else
                 {
-                    ApplicationLogger.LOGGER.info("Delay must be a number that higher than 300 ms.");
+                    ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
                 }
             }
             catch (NumberFormatException e)
             {
-                ApplicationLogger.LOGGER.info("Delay must be a number that higher than 300 ms.");
+                ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
             }
 
         });
@@ -471,195 +471,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         replaySlider.setValue(0);
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
         lineChart.getData().clear();
-    }
-
-    /**
-     * GUI UPDATE SECTION
-     */
-
-    boolean chartInUse = false;
-
-    @Override
-    public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
-    {
-        if (chartCanUpdate)
-        {
-            chartInUse = true;
-            chartCanUpdate = false;
-
-            Platform.runLater(() -> {
-
-                /**
-                 * replaySlider behavior
-                 */
-                replaySlider.setMax(analysisResult.size() - 1);
-                if (!replayModeSwitcher.isSelected())
-                {
-                    replaySlider.setValue(replaySlider.getMax());
-                }
-
-                updateChartSeries(analysisResult);
-
-                //update replaySliderPreviousValue in the end
-                replaySliderPreviousValue = (int) replaySlider.getValue();
-
-                chartInUse = false;
-            });
-        }
-    }
-
-    private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
-    {
-        int replaySliderValue = (int) replaySlider.getValue();
-
-        //when user click at replaySlider field we will get queryArray!
-        ArrayList<Integer> queryArray = new ArrayList<>();
-        boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
-        //        System.out.println("replaySliderPreviousValue -- " + replaySliderPreviousValue);
-        //        System.out.println("replaySliderValue -- " + replaySliderValue);
-        if (isToLeft)
-        {
-            for (int i = replaySliderPreviousValue; i >= replaySliderValue; i--)
-            {
-                queryArray.add(i);
-            }
-        }
-        else
-        {
-            for (int i = replayModeSwitcher.isSelected() ? replaySliderPreviousValue : replaySliderPreviousValue +
-                    1; i <= replaySliderValue; i++)
-            {
-                queryArray.add(i);
-            }
-        }
-        //counter out of range exc
-        if (analysisResult.size() < queryArray.size())
-        {
-            queryArray.clear();
-        }
-        //        System.out.println("queryArray.size() -- " + queryArray.size());
-        //        System.out.println("queryArray.size() -- " + queryArray);
-
-        /**
-         * Speed up algorithm!
-         * Create combined HashMap with final values for every device
-         */
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> combinedAnalysisResult = new HashMap<>();
-        ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
-        for (Integer que : queryArray)
-        {
-            Long timeKey = timeKeys.get(que);
-
-            Set<DeviceInfo> deviceInfoKeys = analysisResult.get(timeKey).keySet();
-            for (DeviceInfo deviceInfo : deviceInfoKeys)
-            {
-                if (combinedAnalysisResult.containsKey(deviceInfo))
-                {
-                    //TODO AnalysisKey.NEW_SERIES in combinedAnalysisResult
-                    //                    boolean isNewSeries = combinedAnalysisResult.get(deviceInfo).containsKey(AnalysisKey.NEW_SERIES);
-                    //                    if (isNewSeries) System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-                    combinedAnalysisResult.remove(deviceInfo);
-                    combinedAnalysisResult.put(deviceInfo, analysisResult.get(timeKey).get(deviceInfo));
-
-                    //                    if (isNewSeries) combinedAnalysisResult.get(deviceInfo).put(AnalysisKey.NEW_SERIES, null);
-                }
-                else
-                {
-                    combinedAnalysisResult.put(deviceInfo, analysisResult.get(timeKey).get(deviceInfo));
-                }
-            }
-        }
-        //        System.out.println("combinedAnalysisResult -- " + combinedAnalysisResult);
-
-        /**
-         * For every device that processed by Analysis class update his line on chart
-         */
-        Set<DeviceInfo> deviceInfoKeys = combinedAnalysisResult.keySet();
-        for (DeviceInfo deviceInfo : deviceInfoKeys)
-        {
-            HashMap<AnalysisKey, ArrayList<Byte>> analysisForDevice = combinedAnalysisResult.get(deviceInfo);
-
-            Set<AnalysisKey> analysisForDeviceKeys = analysisForDevice.keySet();
-            for (AnalysisKey analysisForDeviceKey : analysisForDeviceKeys)
-            {
-                /**
-                 * Generate XYChart.Series
-                 */
-                XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                String seriesName = deviceInfo.getName() + analysisForDeviceKey.toString();
-                series.setName(seriesName);
-
-                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
-                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
-                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
-                {
-                    ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
-
-                    //get seriesData from XYChart.Series to work with
-                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
-
-                    final float initialFrequency = deviceInfo.getInitialFrequency();
-                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
-
-                    //set every point to the seriesData
-                    float xAxisCounter = initialFrequency;
-                    for (Byte value : listMax)
-                    {
-                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
-                        seriesData.add(data);
-
-                        xAxisCounter += channelSpacingKHz;
-                    }
-
-                    /**
-                     * Use XYChart.Series
-                     * Update series
-                     */
-                    ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
-
-                    if (Utils.isSeriesExist(lineChartData, seriesName))
-                    {
-                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
-                        {
-                            if (numberSeries.getName().equals(seriesName))
-                            {
-                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                                for (int i = 0; i < data.size(); i++)
-                                {
-                                    XYChart.Data<Number, Number> numberData = data.get(i);
-                                    numberData.setYValue(series.getData().get(i).getYValue());
-                                }
-
-                                //set opacity to non created series
-                                if (analysisForDevice.containsKey(AnalysisKey.NEW_SERIES) &&
-                                        replaySliderValue != replaySliderPreviousValue)
-                                {
-                                    double opacity = 0.3;
-                                    Node numberSeriesNode = numberSeries.getNode();
-                                    if (replaySliderValue > replaySliderPreviousValue)
-                                    {
-                                        numberSeriesNode.setOpacity(0.9);
-                                    }
-                                    else
-                                    {
-                                        numberSeriesNode.setOpacity(opacity);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    //or create if does not exist
-                    else
-                    {
-                        //disable stupid series creating animation
-                        lineChart.setAnimated(false);
-                        lineChartData.add(series);
-                        lineChart.setAnimated(true);
-                    }
-                }
-            }
-        }
     }
 
     private void bindTooltipToLineChart(final LineChart<Number, Number> lineChart, GridPane tooltipPane)
@@ -866,4 +677,196 @@ public class MainWindowController extends Application implements AnalysisPerform
         //        return cursorCoords;
     }
 
+    /**
+     * GUI UPDATE SECTION
+     */
+
+    boolean chartInUse = false;
+
+    @Override
+    public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    {
+        if (chartCanUpdate)
+        {
+            chartInUse = true;
+            chartCanUpdate = false;
+
+            Platform.runLater(() -> {
+
+                /**
+                 * replaySlider behavior
+                 */
+                replaySlider.setMax(analysisResult.size() - 1);
+                if (!replayModeSwitcher.isSelected())
+                {
+                    replaySlider.setValue(replaySlider.getMax());
+                }
+
+                updateChartSeries(analysisResult);
+
+                //update replaySliderPreviousValue in the end
+                replaySliderPreviousValue = (int) replaySlider.getValue();
+
+                chartInUse = false;
+            });
+        }
+    }
+
+    private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    {
+        int replaySliderValue = (int) replaySlider.getValue();
+
+        //when user click at replaySlider field we will get queryArray!
+        ArrayList<Integer> queryArray = new ArrayList<>();
+        boolean isToLeft = (replaySliderPreviousValue > replaySliderValue);
+        //        System.out.println("replaySliderPreviousValue -- " + replaySliderPreviousValue);
+        //        System.out.println("replaySliderValue -- " + replaySliderValue);
+        if (isToLeft)
+        {
+            for (int i = replaySliderPreviousValue; i >= replaySliderValue; i--)
+            {
+                queryArray.add(i);
+            }
+        }
+        else
+        {
+            for (int i = replayModeSwitcher.isSelected() ? replaySliderPreviousValue : replaySliderPreviousValue +
+                    1; i <= replaySliderValue; i++)
+            {
+                queryArray.add(i);
+            }
+        }
+        //counter out of range exc
+        if (analysisResult.size() < queryArray.size())
+        {
+            queryArray.clear();
+        }
+        //        System.out.println("queryArray.size() -- " + queryArray.size());
+        //        System.out.println("queryArray.size() -- " + queryArray);
+
+        /**
+         * Speed up algorithm!
+         * Create combined HashMap with final values for every device
+         */
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> combinedAnalysisResult = new HashMap<>();
+        ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
+        queryArray.forEach(que -> {
+
+            Long timeKey = timeKeys.get(que);
+
+            Set<DeviceInfo> deviceInfoKeys = analysisResult.get(timeKey).keySet();
+            for (DeviceInfo deviceInfo : deviceInfoKeys)
+            {
+                HashMap<AnalysisKey, ArrayList<Byte>> myHM = new HashMap<>();
+                Set<AnalysisKey> analysisKeys = analysisResult.get(timeKey).get(deviceInfo).keySet();
+                if (combinedAnalysisResult.containsKey(deviceInfo))
+                {
+                    analysisKeys.forEach(analysisKey -> {
+
+                        combinedAnalysisResult.get(deviceInfo).remove(analysisKey);
+                        combinedAnalysisResult.get(deviceInfo)
+                                              .put(analysisKey,
+                                                   analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
+                    });
+                }
+                else
+                {
+                    analysisKeys.forEach(analysisKey -> {
+
+                        myHM.put(analysisKey, analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
+                    });
+                    combinedAnalysisResult.put(deviceInfo, myHM);
+                }
+            }
+        });
+
+        /**
+         * For every device that processed by Analysis class update his line on chart
+         */
+        Set<DeviceInfo> deviceInfoKeys = combinedAnalysisResult.keySet();
+        for (DeviceInfo deviceInfo : deviceInfoKeys)
+        {
+            HashMap<AnalysisKey, ArrayList<Byte>> analysisForDevice = combinedAnalysisResult.get(deviceInfo);
+
+            Set<AnalysisKey> analysisForDeviceKeys = analysisForDevice.keySet();
+            for (AnalysisKey analysisForDeviceKey : analysisForDeviceKeys)
+            {
+                /**
+                 * Generate XYChart.Series
+                 */
+                XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
+                series.setName(seriesName);
+
+                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
+                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
+                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
+                {
+                    ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
+
+                    //get seriesData from XYChart.Series to work with
+                    ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
+
+                    final float initialFrequency = deviceInfo.getInitialFrequency();
+                    final float channelSpacingKHz = deviceInfo.getChannelSpacing() / 1000;
+
+                    //set every point to the seriesData
+                    float xAxisCounter = initialFrequency;
+                    for (Byte value : listMax)
+                    {
+                        XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
+                        seriesData.add(data);
+
+                        xAxisCounter += channelSpacingKHz;
+                    }
+
+                    /**
+                     * Use XYChart.Series
+                     * Update series
+                     */
+                    ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+
+                    if (Utils.isSeriesExist(lineChartData, seriesName))
+                    {
+                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
+                        {
+                            if (numberSeries.getName().equals(seriesName))
+                            {
+                                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
+                                for (int i = 0; i < data.size(); i++)
+                                {
+                                    XYChart.Data<Number, Number> numberData = data.get(i);
+                                    numberData.setYValue(series.getData().get(i).getYValue());
+                                }
+
+                                //set opacity to non created series
+                                if (analysisForDevice.containsKey(AnalysisKey.NEW_SERIES) &&
+                                        replaySliderValue != replaySliderPreviousValue)
+                                {
+                                    double opacity = 0.3;
+                                    Node numberSeriesNode = numberSeries.getNode();
+                                    if (replaySliderValue > replaySliderPreviousValue)
+                                    {
+                                        numberSeriesNode.setOpacity(0.9);
+                                    }
+                                    else
+                                    {
+                                        numberSeriesNode.setOpacity(opacity);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //or create if does not exist
+                    else
+                    {
+                        //disable stupid series creating animation
+                        lineChart.setAnimated(false);
+                        lineChartData.add(series);
+                        lineChart.setAnimated(true);
+                    }
+                }
+            }
+        }
+    }
 }
