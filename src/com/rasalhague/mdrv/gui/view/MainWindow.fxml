@@ -262,7 +262,6 @@
                       allowIndeterminate = "false"
                       indeterminate = "false"
                       mnemonicParsing = "false"
-                      onMouseClicked = "#maxCheckBoxChangedEvent"
                       selected = "true"
                       text = "Max"
                       underline = "false"/>
@@ -287,10 +286,16 @@
                       onAction = "#verticalLineSwitchEvent"
                       selected = "true"
                       text = "Vertical line"/>
-            <CheckBox fx:id = "replayModeSwitcher"
-                      mnemonicParsing = "false"
-                      onAction = "#replayModeSwitcherEvent"
-                      text = "Manual replay mode"/>
+            <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
+            <HBox alignment = "CENTER" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
+                <children>
+                    <Label text = "Chart update delay"/>
+                    <TextField fx:id = "chartUpdateDelayTextField"
+                               prefWidth = "48.0"
+                               promptText = "Chart update delay"
+                               text = "1000"/>
+                </children>
+            </HBox>
         </children>
     </VBox>
 </AnchorPane>

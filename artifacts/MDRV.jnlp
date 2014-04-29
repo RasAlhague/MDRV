@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec = "1.0" xmlns:jfx = "http://javafx.com" href = "MDRV.jnlp">
-    <information>
-        <title>Sample JavaFX Application</title>
-        <vendor>Unknown vendor</vendor>
-        <description>Sample JavaFX 2.0 application.</description>
-        <offline-allowed/>
-    </information>
-    <resources>
-        <jfx:javafx-runtime version = "2.2+"
-                            href = "http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-    </resources>
-    <resources>
-        <j2se version = "1.6+" href = "http://java.sun.com/products/autodl/j2se"/>
-        <jar href = "MDRV.jar" size = "80315" download = "eager"/>
-        <jar href = "libs/commons-collections4-4.0.jar" size = "610259" download = "eager"/>
-        <jar href = "libs/commons-lang3-3.2.1.jar" size = "385091" download = "eager"/>
-        <jar href = "libs/gson-2.2.4.jar" size = "190418" download = "eager"/>
-        <jar href = "libs/hidapi-1.1-javadoc.jar" size = "42702" download = "eager"/>
-        <jar href = "libs/hidapi-1.1-sources.jar" size = "8278" download = "eager"/>
-        <jar href = "libs/hidapi-1.1.jar" size = "204673" download = "eager"/>
-        <jar href = "libs/jssc.jar" size = "153562" download = "eager"/>
-    </resources>
-    <applet-desc width = "600" height = "400" main-class = "com.javafx.main.NoJavaFXFallback" name = "MDRV">
-        <param name = "requiredFXVersion" value = "2.2+"/>
-    </applet-desc>
-    <jfx:javafx-desc width = "600"
-                     height = "400"
-                     main-class = "com.rasalhague.mdrv.gui.MainWindowController"
-                     name = "MDRV"/>
-    <update check = "background"/>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MDRV.jnlp">
+  <information>
+    <title>Sample JavaFX Application</title>
+    <vendor>Unknown vendor</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="MDRV.jar" size="80792" download="eager" />
+    <jar href="libs/commons-collections4-4.0.jar" size="610259" download="eager" />
+    <jar href="libs/commons-lang3-3.2.1.jar" size="385091" download="eager" />
+    <jar href="libs/gson-2.2.4.jar" size="190418" download="eager" />
+    <jar href="libs/hidapi-1.1-javadoc.jar" size="42702" download="eager" />
+    <jar href="libs/hidapi-1.1-sources.jar" size="8278" download="eager" />
+    <jar href="libs/hidapi-1.1.jar" size="204673" download="eager" />
+    <jar href="libs/jssc.jar" size="153562" download="eager" />
+  </resources>
+  <applet-desc  width="600" height="400" main-class="com.javafx.main.NoJavaFXFallback"  name="MDRV" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="600" height="400" main-class="com.rasalhague.mdrv.gui.MainWindowController"  name="MDRV" />
+  <update check="background"/>
 </jnlp>

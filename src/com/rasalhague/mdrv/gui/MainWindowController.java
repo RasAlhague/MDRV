@@ -50,25 +50,29 @@ import java.util.concurrent.TimeUnit;
 
 public class MainWindowController extends Application implements AnalysisPerformedListener
 {
-    private static MainWindowController      instance;
-    public         LineChart<Number, Number> lineChart;
-    public         TextArea                  debugTextArea;
-    public         CheckBox                  maxCheckBox;
-    public         Button                    refreshChartButton;
-    public         GridPane                  tooltipPane;
-    public         TitledPane                chartLegendPane;
-    public         VBox                      chartLegendVbox;
-    public         javafx.scene.shape.Line   horizontalLine;
-    public         Line                      verticalLine;
-    public         Button                    showDebugInfoBnt;
-    public         VBox                      controlBntsVBox;
-    public         Slider                    replaySlider;
-    public         CheckBox                  replayModeSwitcher;
-    public         Button                    openReplayBtn;
-    public  Button   analyseCollectedData;
-    public  CheckBox modeCheckBox;
-    public  CheckBox medianCheckBox;
-    private int      replaySliderPreviousValue;
+    private static          MainWindowController      instance;
+    public                  LineChart<Number, Number> lineChart;
+    public                  TextArea                  debugTextArea;
+    public                  CheckBox                  maxCheckBox;
+    public                  Button                    refreshChartButton;
+    public                  GridPane                  tooltipPane;
+    public                  TitledPane                chartLegendPane;
+    public                  VBox                      chartLegendVbox;
+    public                  javafx.scene.shape.Line   horizontalLine;
+    public                  Line                      verticalLine;
+    public                  Button                    showDebugInfoBnt;
+    public                  VBox                      controlBntsVBox;
+    public                  Slider                    replaySlider;
+    public                  CheckBox                  replayModeSwitcher;
+    public                  Button                    openReplayBtn;
+    public                  Button                    analyseCollectedData;
+    public                  CheckBox                  modeCheckBox;
+    public                  CheckBox                  medianCheckBox;
+    public                  TextField                 chartUpdateDelayTextField;
+    private                 int                       replaySliderPreviousValue;
+    private static volatile Boolean                   chartCanUpdate;
+    private static int                      chartUpdateDelayMs  = 1000;
+    private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
 
     public MainWindowController()
     {
@@ -144,16 +148,15 @@ public class MainWindowController extends Application implements AnalysisPerform
         openReplayBtn = (Button) scene.lookup("#openReplayBtn");
         modeCheckBox = (CheckBox) scene.lookup("#modeCheckBox");
         medianCheckBox = (CheckBox) scene.lookup("#medianCheckBox");
+        chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
 
-        //init tooltip
         bindTooltipToLineChart(lineChart, tooltipPane);
-        //init chartLegendPane
         initChartLegend(chartLegendVbox, lineChart);
-        //init horizontalLine
         initXYLines(horizontalLine, verticalLine, lineChart);
-        //init popup
         initPopupMenu(controlBntsVBox, scene);
         initReplaySlider(replaySlider);
+        initChartUpdateDelayTextField(chartUpdateDelayTextField);
+        initChartBlockingTimer();
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
@@ -161,6 +164,22 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //fake button press
         DeviceConnectionListener.startListening();
+    }
+
+    /**
+     * INIT SECTION
+     */
+
+    private void initChartBlockingTimer()
+    {
+        chartCanUpdateTimer.shutdown();
+        chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
+
+        chartCanUpdateTimer.scheduleAtFixedRate(() -> {
+
+            chartCanUpdate = true;
+
+        }, 0, chartUpdateDelayMs, TimeUnit.MILLISECONDS);
     }
 
     private void initPopupMenu(VBox controlBntsVBox, Scene scene)
@@ -337,7 +356,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                 replayModeSwitcher.setSelected(false);
             }
 
-            if (replayModeSwitcher.isSelected() && !chartBlocked)
+            if (replayModeSwitcher.isSelected() && !chartInUse)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
                 analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
@@ -353,7 +372,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                 replayModeSwitcher.setSelected(false);
             }
 
-            if (replayModeSwitcher.isSelected() && !chartBlocked)
+            if (replayModeSwitcher.isSelected() && !chartInUse)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
                 analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
@@ -362,7 +381,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //        replaySlider.valueProperty().addListener(observable -> {
         //
-        //            if (replayModeSwitcher.isSelected() && !chartBlocked)
+        //            if (replayModeSwitcher.isSelected() && !chartInUse)
         //            {
         //                PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
         //                analysisPerformedEvent(packetAnalysis.getTimedAnalysisResultsClone());
@@ -370,22 +389,47 @@ public class MainWindowController extends Application implements AnalysisPerform
         //        });
     }
 
-    public void maxCheckBoxChangedEvent(ActionEvent event)
+    private void initChartUpdateDelayTextField(TextField chartUpdateDelayTextField)
     {
-        System.out.println(maxCheckBox.isSelected());
+        chartUpdateDelayTextField.textProperty().addListener(observable -> {
+
+            try
+            {
+                int number = Integer.parseInt(chartUpdateDelayTextField.getText());
+                if (number >= 300)
+                {
+                    chartUpdateDelayMs = number;
+                    initChartBlockingTimer();
+                }
+                else
+                {
+                    ApplicationLogger.LOGGER.info("Delay must be a number that higher than 300 ms.");
+                }
+            }
+            catch (NumberFormatException e)
+            {
+                ApplicationLogger.LOGGER.info("Delay must be a number that higher than 300 ms.");
+            }
+
+        });
     }
 
+    /**
+     * EVENTS SECTION
+     */
+
+    /**
+     * Vertical line switch event.
+     *
+     * @param event
+     *         the event
+     */
     public void verticalLineSwitchEvent(ActionEvent event)
     {
         verticalLine.setVisible(!verticalLine.isVisible());
 
         CheckBox checkBox = (CheckBox) event.getSource();
         checkBox.setSelected(verticalLine.isVisible());
-    }
-
-    public void replayModeSwitcherEvent(ActionEvent event)
-    {
-
     }
 
     public void horizontalLineSwitchEvent(ActionEvent event)
@@ -413,6 +457,14 @@ public class MainWindowController extends Application implements AnalysisPerform
         Replay.getInstance().loadReplay();
     }
 
+    public void analyseCollectedDataBntAction(ActionEvent actionEvent)
+    {
+        PacketAnalysis.getInstance().analyseAndSaveCollectedData();
+    }
+
+    /**
+     * HELPERS
+     */
     void refreshChart()
     {
         replaySliderPreviousValue = 0;
@@ -421,36 +473,39 @@ public class MainWindowController extends Application implements AnalysisPerform
         lineChart.getData().clear();
     }
 
-    public void analyseCollectedDataBntAction(ActionEvent actionEvent)
-    {
-        PacketAnalysis.getInstance().analyseAndSaveCollectedData();
-    }
+    /**
+     * GUI UPDATE SECTION
+     */
 
-    boolean chartBlocked = false;
+    boolean chartInUse = false;
 
     @Override
     public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
     {
-        chartBlocked = true;
+        if (chartCanUpdate)
+        {
+            chartInUse = true;
+            chartCanUpdate = false;
 
-        Platform.runLater(() -> {
+            Platform.runLater(() -> {
 
-            /**
-             * replaySlider behavior
-             */
-            replaySlider.setMax(analysisResult.size() - 1);
-            if (!replayModeSwitcher.isSelected())
-            {
-                replaySlider.setValue(replaySlider.getMax());
-            }
+                /**
+                 * replaySlider behavior
+                 */
+                replaySlider.setMax(analysisResult.size() - 1);
+                if (!replayModeSwitcher.isSelected())
+                {
+                    replaySlider.setValue(replaySlider.getMax());
+                }
 
-            updateChartSeries(analysisResult);
+                updateChartSeries(analysisResult);
 
-            //update replaySliderPreviousValue in the end
-            replaySliderPreviousValue = (int) replaySlider.getValue();
+                //update replaySliderPreviousValue in the end
+                replaySliderPreviousValue = (int) replaySlider.getValue();
 
-            chartBlocked = false;
-        });
+                chartInUse = false;
+            });
+        }
     }
 
     private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
