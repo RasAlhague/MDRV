@@ -480,7 +480,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     boolean chartInUse = false;
 
     @Override
-    public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
+    public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
         if (chartCanUpdate)
         {
@@ -508,7 +508,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         }
     }
 
-    private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult)
+    private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
         int replaySliderValue = (int) replaySlider.getValue();
 
@@ -544,7 +544,7 @@ public class MainWindowController extends Application implements AnalysisPerform
          * Speed up algorithm!
          * Create combined HashMap with final values for every device
          */
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> combinedAnalysisResult = new HashMap<>();
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> combinedAnalysisResult = new HashMap<>();
         ArrayList<Long> timeKeys = new ArrayList<>(analysisResult.keySet());
         for (Integer que : queryArray)
         {
@@ -578,7 +578,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         Set<DeviceInfo> deviceInfoKeys = combinedAnalysisResult.keySet();
         for (DeviceInfo deviceInfo : deviceInfoKeys)
         {
-            HashMap<AnalysisKey, ArrayList<Integer>> analysisForDevice = combinedAnalysisResult.get(deviceInfo);
+            HashMap<AnalysisKey, ArrayList<Byte>> analysisForDevice = combinedAnalysisResult.get(deviceInfo);
 
             Set<AnalysisKey> analysisForDeviceKeys = analysisForDevice.keySet();
             for (AnalysisKey analysisForDeviceKey : analysisForDeviceKeys)
@@ -594,7 +594,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                         (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
                         (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
                 {
-                    ArrayList<Integer> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
+                    ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
 
                     //get seriesData from XYChart.Series to work with
                     ObservableList<XYChart.Data<Number, Number>> seriesData = series.getData();
@@ -604,7 +604,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                     //set every point to the seriesData
                     float xAxisCounter = initialFrequency;
-                    for (Integer value : listMax)
+                    for (Byte value : listMax)
                     {
                         XYChart.Data<Number, Number> data = new XYChart.Data<>(xAxisCounter, value);
                         seriesData.add(data);
@@ -763,8 +763,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                 tooltipPane.getChildren().clear();
                 ArrayList<ArrayList<Text>> rowsToViewKeySet = new ArrayList<>(rowsToView.keySet());
                 //sorting in 1 line xD
-                rowsToViewKeySet.sort((o1, o2) -> Integer.compare(Integer.parseInt(o1.get(0).getText()),
-                                                                  Integer.parseInt(o2.get(0).getText())));
+                rowsToViewKeySet.sort((o1, o2) -> Byte.compare(Byte.parseByte(o1.get(0).getText()),
+                                                               Byte.parseByte(o2.get(0).getText())));
 
                 for (int row = 0; row < rowsToViewKeySet.size(); row++)
                 {

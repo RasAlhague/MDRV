@@ -11,17 +11,17 @@ class DefaultDataProcessingAlgorithm implements RawDataProcessingAlgorithm
     private final static String DEFAULT_REGEX_PATTERN = "(?<data>-\\d{2,3})";
 
     @Override
-    public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess)
+    public ArrayList<Byte> processData(ArrayList<Byte> dataToProcess)
     {
         //Convert ArrayList<Byte> to String
         String strToProcess = Utils.byteArrayListToCharToString(dataToProcess);
 
         Pattern pattern = Pattern.compile(DEFAULT_REGEX_PATTERN);
         Matcher matcher = pattern.matcher(strToProcess);
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Byte> list = new ArrayList<>();
         while (matcher.find())
         {
-            int itemToAdd = Integer.parseInt(matcher.group("data"));
+            Byte itemToAdd = Byte.parseByte(matcher.group("data"));
             list.add(itemToAdd);
         }
 

@@ -9,7 +9,7 @@ public class RawDataProcessor
 {
     private static volatile RawDataProcessingAlgorithm rawDataProcessingAlgorithm;
 
-    public synchronized static ArrayList<Integer> processData(ArrayList<Byte> dataToProcess, DeviceInfo deviceInfo)
+    public synchronized static ArrayList<Byte> processData(ArrayList<Byte> dataToProcess, DeviceInfo deviceInfo)
     {
         //TODO Hardcoded
         if (deviceInfo.equalsPidVid(DeviceConstants.AirView2.PID, DeviceConstants.AirView2.VID))

@@ -8,5 +8,5 @@ import java.util.LinkedHashMap;
 
 public interface AnalysisPerformedListener
 {
-    public void analysisPerformedEvent(LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResult);
+    public void analysisPerformedEvent(LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult);
 }

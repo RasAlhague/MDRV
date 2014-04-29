@@ -9,10 +9,25 @@
     <bookmark url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" line="67" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Little fix">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Fix china`s algorithm">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MDRV.iml" afterPath="$PROJECT_DIR$/MDRV.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -31,7 +46,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties converted="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -68,26 +83,15 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true" />
     <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="MDRV" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="UnigenISMSnifferProcessingAlgorithm.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5145119" vertical-offset="0" max-vertical-offset="758">
-              <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -117,7 +121,6 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ISMSniffer.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessingAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/PopupMenu.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
@@ -127,8 +130,6 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
@@ -137,28 +138,31 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Test.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/LogOutputStream.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/replay/Replay.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="49" />
-    <option name="y" value="24" />
-    <option name="width" value="1551" />
-    <option name="height" value="876" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="886" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="My">
@@ -324,7 +328,7 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -397,9 +401,97 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RawDataProcessor" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dev_communication" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="analysis" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -414,7 +506,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.15607476" />
-    <property name="last_opened_file_path" value="/opt/JavaFXSceneBuilder1.1/JavaFXSceneBuilder1.1" />
+    <property name="last_opened_file_path" value="D:/Programs/jprofiler8/bin/jprofiler.exe" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -427,7 +519,7 @@
     <property name="options.splitter.main.proportions" value="0.15210356" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.lastSelected" value="editor" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="&#10;C" />
@@ -482,9 +574,46 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Debug with VisualVM">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="WINDOW" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Debug with VisualVM" />
+      <ConfigurationWrapper RunnerId="JProfiler" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -493,6 +622,75 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -533,102 +731,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <list size="1">
@@ -1151,7 +1253,11 @@
       <created>1398775831330</created>
       <updated>1398775831330</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Fix china`s algorithm">
+      <created>1398776304529</created>
+      <updated>1398776304529</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1175,35 +1281,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="24" width="1551" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32388663" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32356688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2267516" sideWeight="0.552" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4636724" sideWeight="0.30616173" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30971128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32388663" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953104" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20212062" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28535032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49407116" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49936306" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4993395" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.38038436" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19452055" sideWeight="0.5013089" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22589168" sideWeight="0.552" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32356688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20154044" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30971128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16575342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.61895293" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953104" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16575342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3586819" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1226,7 +1336,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add initialFrequency and channelSpacing to config file.&#10;Improve chart series accurate" />
     <MESSAGE value="Add linux com name, pid, vid search&#10;Now all devices works on linux" />
     <MESSAGE value="Update config.cfg" />
     <MESSAGE value="Restructure analysis output - preparation to replay including" />
@@ -1251,7 +1360,8 @@
     <MESSAGE value="REAL TIME MODE AND MEDIAN ALGORITM" />
     <MESSAGE value="Add chart Update Delay" />
     <MESSAGE value="Little fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Little fix" />
+    <MESSAGE value="Fix china`s algorithm" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix china`s algorithm" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1279,10 +1389,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="645">
-          <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1547" max-vertical-offset="5916">
+          <caret line="149" column="52" selection-start-line="149" selection-start-column="52" selection-end-line="149" selection-end-column="52" />
+          <folding>
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,9 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6953" max-vertical-offset="7055">
           <caret line="409" column="0" selection-start-line="409" selection-start-column="0" selection-end-line="409" selection-end-column="0" />
-          <folding>
-            <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1301,18 +1420,16 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="5049">
           <caret line="175" column="24" selection-start-line="175" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding>
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7936#8022#0" expanded="false" />
-            <element signature="e#9253#9259#0" expanded="false" />
-            <element signature="e#14656#14722#0" expanded="false" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18762#18852#0" expanded="false" />
-            <element signature="e#19535#19609#0" expanded="false" />
-            <element signature="e#20357#20412#0" expanded="false" />
-            <element signature="e#31991#32055#0" expanded="false" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1328,9 +1445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2771">
           <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding>
-            <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1339,18 +1453,16 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2584">
           <caret line="340" column="0" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
           <folding>
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7936#8022#0" expanded="false" />
-            <element signature="e#9253#9259#0" expanded="false" />
-            <element signature="e#14656#14722#0" expanded="false" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18762#18852#0" expanded="false" />
-            <element signature="e#19535#19609#0" expanded="false" />
-            <element signature="e#20357#20412#0" expanded="false" />
-            <element signature="e#31991#32055#0" expanded="false" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1360,18 +1472,16 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1620" max-vertical-offset="8820">
           <caret line="114" column="31" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
           <folding>
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7936#8022#0" expanded="false" />
-            <element signature="e#9253#9259#0" expanded="false" />
-            <element signature="e#14656#14722#0" expanded="false" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18762#18852#0" expanded="false" />
-            <element signature="e#19535#19609#0" expanded="false" />
-            <element signature="e#20357#20412#0" expanded="false" />
-            <element signature="e#31991#32055#0" expanded="false" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1380,9 +1490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1800">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1456,20 +1563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12854442" vertical-offset="0" max-vertical-offset="833">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/constants/DeviceConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
@@ -1526,13 +1619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1140">
@@ -1544,13 +1630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="555">
           <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="855">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1596,13 +1675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5343008" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="44" column="56" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33189654" vertical-offset="656" max-vertical-offset="1170">
@@ -1638,30 +1710,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/beans/InvalidationListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
-          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.538462" vertical-offset="751" max-vertical-offset="1470">
           <caret line="77" column="72" selection-start-line="77" selection-start-column="72" selection-end-line="77" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33245382" vertical-offset="1473" max-vertical-offset="3990">
-          <caret line="613" column="22" selection-start-line="613" selection-start-column="22" selection-end-line="613" selection-end-column="22" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
@@ -1674,41 +1730,138 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0/jre/lib/ext/jfxrt.jar!/com/sun/javafx/WeakReferenceQueue.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5540897" vertical-offset="360" max-vertical-offset="5370">
-          <caret line="112" column="11" selection-start-line="112" selection-start-column="11" selection-end-line="112" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.6348548" vertical-offset="51" max-vertical-offset="629">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2960436" vertical-offset="0" max-vertical-offset="2210">
+          <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
           <folding>
-            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7936#8022#0" expanded="false" />
-            <element signature="e#9253#9259#0" expanded="false" />
-            <element signature="e#14656#14722#0" expanded="false" />
-            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
-            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18762#18852#0" expanded="false" />
-            <element signature="e#19535#19609#0" expanded="false" />
-            <element signature="e#20357#20412#0" expanded="false" />
-            <element signature="e#31991#32055#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#updateHelperMap#0;class#HelperAnalysisMap#0" expanded="true" />
+            <element signature="method#calculateMode#0;class#HelperAnalysisMap#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1717">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#DataPacket#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="method#DataPacket#0;class#DataPacket#0" expanded="true" />
+            <element signature="method#equals#0;class#DataPacket#0" expanded="true" />
+            <element signature="method#hashCode#0;class#DataPacket#0" expanded="true" />
+            <element signature="method#toString#0;class#DataPacket#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23255815" vertical-offset="0" max-vertical-offset="731">
+          <caret line="10" column="117" selection-start-line="10" selection-start-column="117" selection-end-line="10" selection-end-column="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5540897" vertical-offset="0" max-vertical-offset="2580">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        <state vertical-scroll-proportion="-8.581819" vertical-offset="6362" max-vertical-offset="7038">
+          <caret line="402" column="34" selection-start-line="402" selection-start-column="34" selection-end-line="402" selection-end-column="34" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="docComment;method#getInstance#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="docComment;method#getTimedAnalysisResults#0;class#PacketAnalysis#0" expanded="true" />
             <element signature="method#dataPacketEvent#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#analyseAndSaveCollectedData#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#saveAnalysedCollectedData#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#analyseCollectedData#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#calculateMode#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#calculateMedian#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="docComment;method#joinMax#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#joinMax#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="method#joinAvr#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="class#PacketAnalysisHolder#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="docComment;field#INSTANCE#0;class#PacketAnalysisHolder#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="docComment;method#addListener#0;class#PacketAnalysis#0" expanded="true" />
+            <element signature="e#15378#15379#0" expanded="true" />
+            <element signature="e#15431#15432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3018" max-vertical-offset="10982">
+          <caret line="388" column="21" selection-start-line="388" selection-start-column="21" selection-end-line="388" selection-end-column="21" />
+          <folding>
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5145119" vertical-offset="0" max-vertical-offset="758">
-          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="833">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8073654" vertical-offset="140" max-vertical-offset="901">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>

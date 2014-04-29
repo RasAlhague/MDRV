@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class MetaGeekWiSpy24x2ProcessingAlgorithm implements RawDataProcessingAlgorithm
 {
     @Override
-    public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess)
+    public ArrayList<Byte> processData(ArrayList<Byte> dataToProcess)
     {
         final int devPassLength = 64;
         final int serviceBytesCount = 5;
         //        System.out.println(dataToProcess.size());
         //        System.out.println(dataToProcess);
 
-        ArrayList<Integer> clearPointArray = new ArrayList<>();
+        ArrayList<Byte> clearPointArray = new ArrayList<>();
         for (int i = 0, dataToProcessSize = dataToProcess.size(); i < dataToProcessSize; i++)
         {
             Byte data = dataToProcess.get(i);
@@ -22,7 +22,7 @@ public class MetaGeekWiSpy24x2ProcessingAlgorithm implements RawDataProcessingAl
             }
             else
             {
-                clearPointArray.add(Integer.valueOf(data) - 170);
+                clearPointArray.add((byte) (data - 170));
             }
         }
 

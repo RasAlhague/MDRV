@@ -10,19 +10,19 @@ import java.util.TreeMap;
 
 public class HelperAnalysisMap
 {
-    HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap = new HashMap<>();
+    HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = new HashMap<>();
 
     public synchronized void updateHelperMap(DataPacket dataPacket)
     {
         DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
-        ArrayList<Integer> dataPacketValues = dataPacket.getDataPacketValues();
+        ArrayList<Byte> dataPacketValues = dataPacket.getDataPacketValues();
 
         if (!helperMap.containsKey(deviceInfo))
         {
-            ArrayList<HashMap<Integer, Integer>> arrayList = new ArrayList<>();
-            for (Integer dataPacketValue : dataPacketValues)
+            ArrayList<HashMap<Byte, Integer>> arrayList = new ArrayList<>();
+            for (Byte dataPacketValue : dataPacketValues)
             {
-                HashMap<Integer, Integer> pointToCountRelationMap = new HashMap<>();
+                HashMap<Byte, Integer> pointToCountRelationMap = new HashMap<>();
                 pointToCountRelationMap.put(dataPacketValue, 1);
                 arrayList.add(pointToCountRelationMap);
             }
@@ -30,15 +30,15 @@ public class HelperAnalysisMap
             helperMap.put(deviceInfo, arrayList);
         }
 
-        helperMap.forEach((DeviceInfo deviceInf, ArrayList<HashMap<Integer, Integer>> helperMapForDevice) -> {
+        helperMap.forEach((DeviceInfo deviceInf, ArrayList<HashMap<Byte, Integer>> helperMapForDevice) -> {
 
             if (deviceInfo.equals(deviceInf))
             {
                 for (int i = 0, dataPacketValuesSize = dataPacketValues.size(); i < dataPacketValuesSize; i++)
                 {
 
-                    Integer dataPacketValue = dataPacketValues.get(i);
-                    HashMap<Integer, Integer> pointToCountRelationMap = helperMapForDevice.get(i);
+                    Byte dataPacketValue = dataPacketValues.get(i);
+                    HashMap<Byte, Integer> pointToCountRelationMap = helperMapForDevice.get(i);
 
                     if (pointToCountRelationMap.containsKey(dataPacketValue))
                     {
@@ -54,14 +54,14 @@ public class HelperAnalysisMap
         });
     }
 
-    public synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMode()
+    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode()
     {
         /**
          * MODE postprocessing
          */
-        HashMap<DeviceInfo, ArrayList<Integer>> mode = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<Byte>> mode = new HashMap<>();
         int maxRSSICountValue;
-        int maxRSSI;
+        byte maxRSSI;
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
         for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
@@ -71,14 +71,14 @@ public class HelperAnalysisMap
                 mode.put(helperMapDeviceKey, new ArrayList<>());
             }
 
-            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
                 maxRSSICountValue = 0;
                 maxRSSI = 0;
 
-                Set<Integer> rssiKeys = helperDataPointMap.keySet();
-                for (Integer helperDataPointMapKey : rssiKeys)
+                Set<Byte> rssiKeys = helperDataPointMap.keySet();
+                for (Byte helperDataPointMapKey : rssiKeys)
                 {
                     if (helperDataPointMap.get(helperDataPointMapKey) > maxRSSICountValue || maxRSSICountValue == 0)
                     {
@@ -94,12 +94,12 @@ public class HelperAnalysisMap
         return mode;
     }
 
-    public synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMedian()
+    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian()
     {
         /**
          * MEDIAN postprocessing
          */
-        HashMap<DeviceInfo, ArrayList<Integer>> median = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<Byte>> median = new HashMap<>();
         int rssiSortedArraySize;
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
@@ -110,10 +110,10 @@ public class HelperAnalysisMap
                 median.put(helperMapDeviceKey, new ArrayList<>());
             }
 
-            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
-                ArrayList<Integer> rssiSortedArray = new ArrayList<>(new TreeMap<>(helperDataPointMap).keySet());
+                ArrayList<Byte> rssiSortedArray = new ArrayList<>(new TreeMap<>(helperDataPointMap).keySet());
                 rssiSortedArraySize = rssiSortedArray.size();
                 median.get(helperMapDeviceKey).add(rssiSortedArray.get(rssiSortedArraySize / 2));
             }

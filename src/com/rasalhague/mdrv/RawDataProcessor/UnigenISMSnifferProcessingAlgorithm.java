@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlgorithm
 {
     @Override
-    public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess)
+    public ArrayList<Byte> processData(ArrayList<Byte> dataToProcess)
     {
         ArrayList<Byte> arrayList = new ArrayList<>();
         byte byteCounter = 0;
@@ -30,12 +30,12 @@ public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlg
             }
         }
 
-        ArrayList<Integer> finalArrayList = new ArrayList<>();
+        ArrayList<Byte> finalArrayList = new ArrayList<>();
         for (Byte aByte : arrayList)
         {
             //$frequency[$i] = ((hexdec($frequency_temp[3*$i]) - 254) + 82) * 1.428 - 97;
             //            finalArrayList.add((aByte - 135));
-            finalArrayList.add((int) ((((aByte - 135) + 100) * 1.428) - 100));
+            finalArrayList.add((byte) ((((aByte - 135) + 100) * 1.428) - 100));
         }
 
         return finalArrayList;

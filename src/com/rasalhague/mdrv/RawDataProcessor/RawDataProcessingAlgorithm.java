@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 interface RawDataProcessingAlgorithm
 {
-    public ArrayList<Integer> processData(ArrayList<Byte> dataToProcess);
+    public ArrayList<Byte> processData(ArrayList<Byte> dataToProcess);
 }

@@ -12,9 +12,9 @@ import java.util.*;
  */
 public class PacketAnalysis implements DataPacketListener
 {
-    private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> timedAnalysisResults = new LinkedHashMap<>();
-    private HelperAnalysisMap helperAnalysisMap = new HelperAnalysisMap();
-    private long              dataPacketCounter = 0;
+    private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> timedAnalysisResults = new LinkedHashMap<>();
+    private          HelperAnalysisMap                                                               helperAnalysisMap    = new HelperAnalysisMap();
+    private          long                                                                            dataPacketCounter    = 0;
 
     public boolean isAnalysisOn()
     {
@@ -47,7 +47,7 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return the timed analysis results
      */
-    public LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> getTimedAnalysisResults()
+    public LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> getTimedAnalysisResults()
     {
         return timedAnalysisResults;
     }
@@ -63,12 +63,12 @@ public class PacketAnalysis implements DataPacketListener
                 final long packetCreationTimeMs = dataPacket.getPacketCreationTimeMs();
 
                 //search for last <AnalysisKey> for specific dev
-                HashMap<AnalysisKey, ArrayList<Integer>> prevResultsMap = null;
-                ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> list = new ArrayList<>(
+                HashMap<AnalysisKey, ArrayList<Byte>> prevResultsMap = null;
+                ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> list = new ArrayList<>(
                         timedAnalysisResults.values());
                 for (int i = list.size() - 1; i >= 0; i--)
                 {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> value = list.get(i);
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> value = list.get(i);
                     if (value.containsKey(deviceInfo) &&
                             value.get(deviceInfo).containsKey(AnalysisKey.MAX) &&
                             value.get(deviceInfo).containsKey(AnalysisKey.AVR))
@@ -81,16 +81,16 @@ public class PacketAnalysis implements DataPacketListener
                 /**
                  * generate scheme and put <AnalysisKey> into
                  */
-                HashMap<AnalysisKey, ArrayList<Integer>> hashMapToAdd = new HashMap<>();
+                HashMap<AnalysisKey, ArrayList<Byte>> hashMapToAdd = new HashMap<>();
                 if (prevResultsMap != null)
                 {
                     //MAX
-                    ArrayList<Integer> joinMax = joinMax(dataPacket.getDataPacketValues(),
-                                                         prevResultsMap.get(AnalysisKey.MAX));
+                    ArrayList<Byte> joinMax = joinMax(dataPacket.getDataPacketValues(),
+                                                      prevResultsMap.get(AnalysisKey.MAX));
 
                     //AVR
-                    ArrayList<Integer> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
-                                                         prevResultsMap.get(AnalysisKey.AVR));
+                    ArrayList<Byte> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
+                                                      prevResultsMap.get(AnalysisKey.AVR));
 
                     hashMapToAdd.put(AnalysisKey.MAX, joinMax);
                     hashMapToAdd.put(AnalysisKey.AVR, joinAvr);
@@ -136,14 +136,14 @@ public class PacketAnalysis implements DataPacketListener
                  */
                 if (!timedAnalysisResults.containsKey(packetCreationTimeMs))
                 {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map = new HashMap<>();
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map = new HashMap<>();
                     map.put(deviceInfo, hashMapToAdd);
 
                     timedAnalysisResults.put(packetCreationTimeMs, map);
                 }
                 else
                 {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> map1 = timedAnalysisResults.get(
+                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map1 = timedAnalysisResults.get(
                             packetCreationTimeMs);
 
                     map1.put(deviceInfo, hashMapToAdd);
@@ -159,7 +159,7 @@ public class PacketAnalysis implements DataPacketListener
     {
         setAnalysisOn(false);
 
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysedCollectedData = analyseCollectedData();
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analysedCollectedData = analyseCollectedData();
 
         timedAnalysisResults.put(new Date().getTime(), analysedCollectedData);
         notifyAnalysisPerformedListeners(getTimedAnalysisResults());
@@ -169,16 +169,16 @@ public class PacketAnalysis implements DataPacketListener
         setAnalysisOn(true);
     }
 
-    private void saveAnalysedCollectedData(HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analysedCollectedData)
+    private void saveAnalysedCollectedData(HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analysedCollectedData)
     {
 
     }
 
-    private HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> analyseCollectedData()
+    private HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analyseCollectedData()
     {
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>> finalMap = new HashMap<>();
+        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> finalMap = new HashMap<>();
 
-        HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = new HashMap<>();
 
         Set<Long> timeKeys = timedAnalysisResults.keySet();
         for (Long timeKey : timeKeys)
@@ -186,23 +186,23 @@ public class PacketAnalysis implements DataPacketListener
             Set<DeviceInfo> deviceInfoKeys = timedAnalysisResults.get(timeKey).keySet();
             for (DeviceInfo deviceInfo : deviceInfoKeys)
             {
-                ArrayList<Integer> currentPacketData = timedAnalysisResults.get(timeKey)
-                                                                           .get(deviceInfo)
-                                                                           .get(AnalysisKey.CURRENT);
+                ArrayList<Byte> currentPacketData = timedAnalysisResults.get(timeKey)
+                                                                        .get(deviceInfo)
+                                                                        .get(AnalysisKey.CURRENT);
                 //its null when i add other data except CURRENT -- MEDIAN MODE
                 if (currentPacketData != null)
                 {
                     if (!helperMap.containsKey(deviceInfo))
                     {
-                        ArrayList<HashMap<Integer, Integer>> arrayList = new ArrayList<>();
+                        ArrayList<HashMap<Byte, Integer>> arrayList = new ArrayList<>();
                         currentPacketData.forEach(o -> arrayList.add(new HashMap<>()));
                         helperMap.put(deviceInfo, arrayList);
                     }
-                    ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(deviceInfo);
+                    ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(deviceInfo);
                     for (int i = 0, currentPacketDataSize = currentPacketData.size(); i < currentPacketDataSize; i++)
                     {
-                        Integer currentDataPoint = currentPacketData.get(i);
-                        HashMap<Integer, Integer> helperDataPointMap = pointsHelperArray.get(i);
+                        Byte currentDataPoint = currentPacketData.get(i);
+                        HashMap<Byte, Integer> helperDataPointMap = pointsHelperArray.get(i);
 
                         if (helperDataPointMap.containsKey(currentDataPoint))
                         {
@@ -225,8 +225,8 @@ public class PacketAnalysis implements DataPacketListener
         /**
          * Set up finalMap
          */
-        HashMap<DeviceInfo, ArrayList<Integer>> mode = calculateMode(helperMap);
-        HashMap<DeviceInfo, ArrayList<Integer>> median = calculateMedian(helperMap);
+        HashMap<DeviceInfo, ArrayList<Byte>> mode = calculateMode(helperMap);
+        HashMap<DeviceInfo, ArrayList<Byte>> median = calculateMedian(helperMap);
 
         helperMap.keySet().forEach(deviceInfo -> {
             finalMap.put(deviceInfo, new HashMap<>());
@@ -239,12 +239,12 @@ public class PacketAnalysis implements DataPacketListener
         return finalMap;
     }
 
-    private synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMode(HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap)
+    private synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode(HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap)
     {
         /**
          * MODE postprocessing
          */
-        HashMap<DeviceInfo, ArrayList<Integer>> mode = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<Byte>> mode = new HashMap<>();
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
         for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
@@ -254,14 +254,14 @@ public class PacketAnalysis implements DataPacketListener
                 mode.put(helperMapDeviceKey, new ArrayList<>());
             }
 
-            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
                 int maxRSSICountValue = 0;
-                int maxRSSI = 0;
+                byte maxRSSI = 0;
 
-                Set<Integer> rssiKeys = helperDataPointMap.keySet();
-                for (Integer helperDataPointMapKey : rssiKeys)
+                Set<Byte> rssiKeys = helperDataPointMap.keySet();
+                for (Byte helperDataPointMapKey : rssiKeys)
                 {
                     if (helperDataPointMap.get(helperDataPointMapKey) > maxRSSICountValue || maxRSSICountValue == 0)
                     {
@@ -278,12 +278,12 @@ public class PacketAnalysis implements DataPacketListener
         return mode;
     }
 
-    private synchronized HashMap<DeviceInfo, ArrayList<Integer>> calculateMedian(HashMap<DeviceInfo, ArrayList<HashMap<Integer, Integer>>> helperMap)
+    private synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian(HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap)
     {
         /**
          * MEDIAN postprocessing
          */
-        HashMap<DeviceInfo, ArrayList<Integer>> median = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<Byte>> median = new HashMap<>();
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
         for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
@@ -293,11 +293,11 @@ public class PacketAnalysis implements DataPacketListener
                 median.put(helperMapDeviceKey, new ArrayList<>());
             }
 
-            ArrayList<HashMap<Integer, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Integer, Integer> helperDataPointMap : pointsHelperArray)
+            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
-                TreeMap<Integer, Integer> helperDataPointMapTree = new TreeMap<>(helperDataPointMap);
-                ArrayList<Integer> rssiSortedArray = new ArrayList<>(helperDataPointMapTree.keySet());
+                TreeMap<Byte, Integer> helperDataPointMapTree = new TreeMap<>(helperDataPointMap);
+                ArrayList<Byte> rssiSortedArray = new ArrayList<>(helperDataPointMapTree.keySet());
                 int rssiSortedArraySize = rssiSortedArray.size();
                 median.get(helperMapDeviceKey).add(rssiSortedArray.get(rssiSortedArraySize / 2));
             }
@@ -316,16 +316,16 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return
      */
-    private synchronized ArrayList<Integer> joinMax(ArrayList<Integer> newData, ArrayList<Integer> prevData)
+    private synchronized ArrayList<Byte> joinMax(ArrayList<Byte> newData, ArrayList<Byte> prevData)
     {
         if (newData.size() == prevData.size())
         {
-            ArrayList<Integer> joinedData = new ArrayList<>(prevData);
+            ArrayList<Byte> joinedData = new ArrayList<>(prevData);
 
             for (int i = 0, prevDataSize = prevData.size(); i < prevDataSize; i++)
             {
-                Integer prevNumber = prevData.get(i);
-                Integer newDataNumber = newData.get(i);
+                Byte prevNumber = prevData.get(i);
+                Byte newDataNumber = newData.get(i);
 
                 if (newDataNumber > prevNumber)
                 {
@@ -345,16 +345,16 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
-    private synchronized ArrayList<Integer> joinAvr(ArrayList<Integer> newData, ArrayList<Integer> prevData)
+    private synchronized ArrayList<Byte> joinAvr(ArrayList<Byte> newData, ArrayList<Byte> prevData)
     {
         if (newData.size() == prevData.size())
         {
-            ArrayList<Integer> joinedData = new ArrayList<>(prevData);
+            ArrayList<Byte> joinedData = new ArrayList<>(prevData);
 
             for (int i = 0, prevDataSize = prevData.size(); i < prevDataSize; i++)
             {
-                Integer prevNumber = prevData.get(i);
-                Integer newDataNumber = newData.get(i);
+                Byte prevNumber = prevData.get(i);
+                Byte newDataNumber = newData.get(i);
 
                 if (newDataNumber > prevNumber)
                 {
@@ -397,7 +397,7 @@ public class PacketAnalysis implements DataPacketListener
         analysisPerformedListeners.add(toAdd);
     }
 
-    private void notifyAnalysisPerformedListeners(LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Integer>>>> analysisResultsMap)
+    private void notifyAnalysisPerformedListeners(LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResultsMap)
     {
         for (AnalysisPerformedListener listener : analysisPerformedListeners)
         {
