@@ -96,7 +96,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     }
 
     @Override
-    public void start(Stage stage) throws Exception
+    public void start(Stage primaryStage) throws Exception
     {
         ApplicationLogger.setup();
         ConfigurationLoader.initialize();
@@ -113,7 +113,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         /**
          * On close actions
          */
-        stage.setOnCloseRequest(windowEvent -> {
+        primaryStage.setOnCloseRequest(windowEvent -> {
             //Correctly close file handlers
             ApplicationLogger.closeHandlers();
 
@@ -130,8 +130,8 @@ public class MainWindowController extends Application implements AnalysisPerform
             //            Platform.exit();
         });
 
-        stage.setScene(scene);
-        stage.show();
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
         //init GUI objects
         lineChart = (LineChart<Number, Number>) scene.lookup("#lineChart");

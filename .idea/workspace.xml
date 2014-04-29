@@ -9,11 +9,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" line="67" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add chart Update Delay">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -94,21 +92,21 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69827586" vertical-offset="0" max-vertical-offset="4365">
-              <caret line="73" column="41" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.5540897" vertical-offset="360" max-vertical-offset="5370">
+              <caret line="112" column="11" selection-start-line="112" selection-start-column="11" selection-end-line="112" selection-end-column="11" />
               <folding>
                 <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
                 <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#7886#7972#0" expanded="false" />
-                <element signature="e#9203#9209#0" expanded="false" />
-                <element signature="e#14606#14672#0" expanded="false" />
+                <element signature="e#7936#8022#0" expanded="false" />
+                <element signature="e#9253#9259#0" expanded="false" />
+                <element signature="e#14656#14722#0" expanded="false" />
                 <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
                 <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
                 <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#18712#18802#0" expanded="false" />
-                <element signature="e#19485#19559#0" expanded="false" />
-                <element signature="e#20307#20362#0" expanded="false" />
-                <element signature="e#31941#32005#0" expanded="false" />
+                <element signature="e#18762#18852#0" expanded="false" />
+                <element signature="e#19535#19609#0" expanded="false" />
+                <element signature="e#20357#20412#0" expanded="false" />
+                <element signature="e#31991#32055#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1424,7 +1422,11 @@
       <created>1398712611649</created>
       <updated>1398712611649</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="Add chart Update Delay">
+      <created>1398775256894</created>
+      <updated>1398775256894</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1454,7 +1456,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32388663" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32356688" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2267516" sideWeight="0.552" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2267516" sideWeight="0.552" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4636724" sideWeight="0.30616173" order="11" side_tool="true" content_ui="tabs" />
@@ -1499,7 +1501,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add rawDataProcessor for MetaGeek_WiSpy24x2" />
     <MESSAGE value="fixes in chart legend" />
     <MESSAGE value="Add initialFrequency and channelSpacing to config file.&#10;Improve chart series accurate" />
     <MESSAGE value="Add linux com name, pid, vid search&#10;Now all devices works on linux" />
@@ -1524,7 +1525,8 @@
     <MESSAGE value="Add MODE&#10;Adopt chart update function" />
     <MESSAGE value="Add MEDIAN" />
     <MESSAGE value="REAL TIME MODE AND MEDIAN ALGORITM" />
-    <option name="LAST_COMMIT_MESSAGE" value="REAL TIME MODE AND MEDIAN ALGORITM" />
+    <MESSAGE value="Add chart Update Delay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add chart Update Delay" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1576,16 +1578,16 @@
           <folding>
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7886#7972#0" expanded="false" />
-            <element signature="e#9203#9209#0" expanded="false" />
-            <element signature="e#14606#14672#0" expanded="false" />
+            <element signature="e#7936#8022#0" expanded="false" />
+            <element signature="e#9253#9259#0" expanded="false" />
+            <element signature="e#14656#14722#0" expanded="false" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18712#18802#0" expanded="false" />
-            <element signature="e#19485#19559#0" expanded="false" />
-            <element signature="e#20307#20362#0" expanded="false" />
-            <element signature="e#31941#32005#0" expanded="false" />
+            <element signature="e#18762#18852#0" expanded="false" />
+            <element signature="e#19535#19609#0" expanded="false" />
+            <element signature="e#20357#20412#0" expanded="false" />
+            <element signature="e#31991#32055#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1614,16 +1616,16 @@
           <folding>
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7886#7972#0" expanded="false" />
-            <element signature="e#9203#9209#0" expanded="false" />
-            <element signature="e#14606#14672#0" expanded="false" />
+            <element signature="e#7936#8022#0" expanded="false" />
+            <element signature="e#9253#9259#0" expanded="false" />
+            <element signature="e#14656#14722#0" expanded="false" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18712#18802#0" expanded="false" />
-            <element signature="e#19485#19559#0" expanded="false" />
-            <element signature="e#20307#20362#0" expanded="false" />
-            <element signature="e#31941#32005#0" expanded="false" />
+            <element signature="e#18762#18852#0" expanded="false" />
+            <element signature="e#19535#19609#0" expanded="false" />
+            <element signature="e#20357#20412#0" expanded="false" />
+            <element signature="e#31991#32055#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1635,16 +1637,16 @@
           <folding>
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7886#7972#0" expanded="false" />
-            <element signature="e#9203#9209#0" expanded="false" />
-            <element signature="e#14606#14672#0" expanded="false" />
+            <element signature="e#7936#8022#0" expanded="false" />
+            <element signature="e#9253#9259#0" expanded="false" />
+            <element signature="e#14656#14722#0" expanded="false" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18712#18802#0" expanded="false" />
-            <element signature="e#19485#19559#0" expanded="false" />
-            <element signature="e#20307#20362#0" expanded="false" />
-            <element signature="e#31941#32005#0" expanded="false" />
+            <element signature="e#18762#18852#0" expanded="false" />
+            <element signature="e#19535#19609#0" expanded="false" />
+            <element signature="e#20357#20412#0" expanded="false" />
+            <element signature="e#31991#32055#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1761,14 +1763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5989515" vertical-offset="546" max-vertical-offset="1309">
-          <caret line="139" column="8" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1962,23 +1956,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="313" max-vertical-offset="1305">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="method#equals#0;class#DeviceInfo#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69827586" vertical-offset="0" max-vertical-offset="4365">
-          <caret line="73" column="41" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.5540897" vertical-offset="360" max-vertical-offset="5370">
+          <caret line="112" column="11" selection-start-line="112" selection-start-column="11" selection-end-line="112" selection-end-column="11" />
           <folding>
             <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#7886#7972#0" expanded="false" />
-            <element signature="e#9203#9209#0" expanded="false" />
-            <element signature="e#14606#14672#0" expanded="false" />
+            <element signature="e#7936#8022#0" expanded="false" />
+            <element signature="e#9253#9259#0" expanded="false" />
+            <element signature="e#14656#14722#0" expanded="false" />
             <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
             <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18712#18802#0" expanded="false" />
-            <element signature="e#19485#19559#0" expanded="false" />
-            <element signature="e#20307#20362#0" expanded="false" />
-            <element signature="e#31941#32005#0" expanded="false" />
+            <element signature="e#18762#18852#0" expanded="false" />
+            <element signature="e#19535#19609#0" expanded="false" />
+            <element signature="e#20357#20412#0" expanded="false" />
+            <element signature="e#31991#32055#0" expanded="false" />
           </folding>
         </state>
       </provider>
