@@ -29,7 +29,8 @@ public class DeviceInfo
     public enum DeviceType
     {
         HID,
-        COM
+        COM,
+        WIRELESS_ADAPTER
     }
 
     public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
