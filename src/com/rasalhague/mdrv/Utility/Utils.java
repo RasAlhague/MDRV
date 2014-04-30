@@ -1,4 +1,4 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.Utility;
 
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.collections.ObservableList;
@@ -148,7 +148,7 @@ public class Utils
         return false;
     }
 
-    static class StreamReader extends Thread
+    public static class StreamReader extends Thread
     {
         private final InputStream inputStream;
         private final StringWriter stringWriter = new StringWriter();

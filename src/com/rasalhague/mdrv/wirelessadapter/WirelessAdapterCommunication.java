@@ -1,7 +1,7 @@
 package com.rasalhague.mdrv.wirelessadapter;
 
-import com.rasalhague.mdrv.FXUtilities;
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.FXUtilities;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
@@ -139,7 +139,8 @@ public class WirelessAdapterCommunication implements Runnable
             else
             {
                 ApplicationLogger.LOGGER.info(t + "\n" + out);
-                ApplicationLogger.LOGGER.info("\n");
+
+                switchToMonitorMode(wirelessAdapter);
             }
         });
     }

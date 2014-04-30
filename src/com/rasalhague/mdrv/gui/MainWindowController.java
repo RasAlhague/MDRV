@@ -1,7 +1,7 @@
 package com.rasalhague.mdrv.gui;
 
 import com.rasalhague.mdrv.DeviceInfo;
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;

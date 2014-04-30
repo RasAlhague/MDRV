@@ -1,6 +1,6 @@
 package com.rasalhague.mdrv.logging;
 
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 
 import java.io.File;
 import java.io.IOException;

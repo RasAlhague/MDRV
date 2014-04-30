@@ -3,7 +3,7 @@ package com.rasalhague.mdrv.connectionlistener;
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
 import com.rasalhague.mdrv.DeviceInfo;
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.logging.ApplicationLogger;

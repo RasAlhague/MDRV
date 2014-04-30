@@ -4,7 +4,7 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonWriter;
 import com.rasalhague.mdrv.DataPacket;
 import com.rasalhague.mdrv.DataPacketListener;
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 
 import java.io.File;

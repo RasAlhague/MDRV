@@ -1,6 +1,7 @@
 package com.rasalhague.mdrv;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationHolder;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;

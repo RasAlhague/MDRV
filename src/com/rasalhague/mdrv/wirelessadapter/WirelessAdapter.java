@@ -1,6 +1,6 @@
 package com.rasalhague.mdrv.wirelessadapter;
 
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

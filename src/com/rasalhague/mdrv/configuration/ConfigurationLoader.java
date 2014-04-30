@@ -2,7 +2,7 @@ package com.rasalhague.mdrv.configuration;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.rasalhague.mdrv.Utils;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.io.*;
