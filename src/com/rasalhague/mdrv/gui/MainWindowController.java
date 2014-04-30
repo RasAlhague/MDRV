@@ -56,7 +56,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  CheckBox                  maxCheckBox;
     public                  Button                    refreshChartButton;
     public                  GridPane                  tooltipPane;
-    public                  TitledPane                chartLegendPane;
     public                  VBox                      chartLegendVbox;
     public                  javafx.scene.shape.Line   horizontalLine;
     public                  Line                      verticalLine;
@@ -138,7 +137,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         debugTextArea = (TextArea) scene.lookup("#debugTextArea");
         maxCheckBox = (CheckBox) scene.lookup("#maxCheckBox");
         tooltipPane = (GridPane) scene.lookup("#tooltipPane");
-        chartLegendPane = (TitledPane) scene.lookup("#chartLegendPane");
         chartLegendVbox = (VBox) scene.lookup("#chartLegendVbox");
         horizontalLine = (javafx.scene.shape.Line) scene.lookup("#horizontalLine");
         verticalLine = (javafx.scene.shape.Line) scene.lookup("#verticalLine");
@@ -231,91 +229,13 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     private void initChartLegend(VBox chartLegendVbox, LineChart<Number, Number> lineChart)
     {
-        double selectedOpacity = 1.0;
-        double unSelectedOpacity = 0.7;
-
-        //this
-        //                VBox vBox = (VBox) chartLegendPane.getContent();
-        //or this
-
-        boolean chartLegendPaneTrigger = false;
-        if (chartLegendPane != null && chartLegendPaneTrigger)
-        {
-            /**
-             * TitledPane Behavior OnMouseEntered
-             */
-            chartLegendPane.setOnMouseEntered(mouseEvent -> {
-
-                chartLegendPane.setOpacity(selectedOpacity);
-                chartLegendPane.setExpanded(true);
-            });
-
-            /**
-             * TitledPane Behavior OnMouseExited
-             */
-            chartLegendPane.setOnMouseExited(mouseEvent -> {
-
-                if (chartLegendPane.isCollapsible())
-                {
-                    chartLegendPane.setOpacity(unSelectedOpacity);
-                }
-                chartLegendPane.setExpanded(false);
-            });
-
-            /**
-             * Set Collapsible realization
-             * Click on vBox change chartLegendPane Collapsible state
-             */
-            chartLegendVbox.setOnMouseClicked(mouseEvent -> {
-
-                if (chartLegendPane.isCollapsible())
-                {
-                    chartLegendPane.setOpacity(selectedOpacity);
-                    chartLegendPane.setCollapsible(false);
-                }
-                else
-                {
-                    chartLegendPane.setOpacity(unSelectedOpacity);
-                    chartLegendPane.setCollapsible(true);
-                }
-            });
-
-            /**
-             * TitledPane Auto expand on vBox item added
-             */
-            chartLegendVbox.getChildren().addListener((Observable observable1) -> {
-
-                //Set visible false when nothing to show
-                if (chartLegendVbox.getChildren().size() == 0) { chartLegendPane.setVisible(false); }
-                else { chartLegendPane.setVisible(true); }
-
-                //Expand on item add/remove and shrink until shrinkDelayMs
-                final int shrinkDelayMs = 2000;
-                ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-                scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
-
-                    chartLegendPane.setOpacity(selectedOpacity);
-                    chartLegendPane.setExpanded(true);
-                }), 0, TimeUnit.SECONDS);
-
-                scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
-
-                    if (chartLegendPane.isCollapsible())
-                    {
-                        chartLegendPane.setOpacity(unSelectedOpacity);
-                    }
-                    chartLegendPane.setExpanded(false);
-                }), shrinkDelayMs, TimeUnit.MILLISECONDS);
-            });
-        }
-
         /**
          * Update legend list according to lineChart series
          */
         lineChart.getData().addListener((Observable observable) -> {
 
             /**
-             * Delay needed for TODO Color wont work coz first series return wrong data
+             * Delay needed for _TODO Color wont work coz first series return wrong data
              */
             int updateDelayMs = 50;
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
@@ -342,7 +262,6 @@ public class MainWindowController extends Application implements AnalysisPerform
                 });
             }), updateDelayMs, TimeUnit.MILLISECONDS);
         });
-
     }
 
     private void initReplaySlider(Slider replaySlider)
