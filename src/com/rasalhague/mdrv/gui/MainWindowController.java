@@ -1,12 +1,12 @@
 package com.rasalhague.mdrv.gui;
 
-import com.rasalhague.mdrv.DeviceConnectionListener;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
+import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;

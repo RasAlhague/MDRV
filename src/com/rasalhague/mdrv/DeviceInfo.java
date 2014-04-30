@@ -44,7 +44,7 @@ public class DeviceInfo
         setSomeFieldsFromConfig(productID, vendorID);
     }
 
-    DeviceInfo(String devPortName)
+    public DeviceInfo(String devPortName)
     {
         devicePortName = devPortName;
         deviceType = DeviceType.COM;

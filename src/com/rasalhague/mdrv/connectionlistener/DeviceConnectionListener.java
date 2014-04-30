@@ -1,7 +1,8 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.connectionlistener;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
+import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
@@ -13,17 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-enum DeviceConnectionStateEnum
-{
-    CONNECTED,
-    DISCONNECTED
-}
-
-interface DeviceConnectionListenerI
-{
-    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum);
-}
 
 /**
  * Singleton
