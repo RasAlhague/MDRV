@@ -717,9 +717,13 @@ public class MainWindowController extends Application implements AnalysisPerform
                 String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
                 series.setName(seriesName);
 
-                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
-                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
-                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
+                //                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
+                //                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
+                //                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
+                if ((analysisForDeviceKey == AnalysisKey.MAX) ||
+                        (analysisForDeviceKey == AnalysisKey.MODE) ||
+                        (analysisForDeviceKey == AnalysisKey.MEDIAN) ||
+                        (analysisForDeviceKey == AnalysisKey.CURRENT))
                 {
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
 

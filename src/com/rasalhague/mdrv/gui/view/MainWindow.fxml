@@ -14,7 +14,7 @@
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
-            prefHeight = "556.4999000000025"
+            prefHeight = "606.4999000000025"
             prefWidth = "1057.0"
             xmlns:fx = "http://javafx.com/fxml/1"
             xmlns = "http://javafx.com/javafx/2.2"
@@ -90,7 +90,7 @@
                                 tickLength = "5.0"
                                 tickMarkVisible = "true"
                                 tickUnit = "5.0"
-                                upperBound = "-40.0"/>
+                                upperBound = "-30.0"/>
                 </yAxis>
                 <padding>
                     <Insets fx:id = "x2"/>
@@ -228,9 +228,11 @@
                     text = "Show debug info"
                     VBox.vgrow = "NEVER"/>
             <Button fx:id = "analyseCollectedData"
+                    disable = "true"
                     mnemonicParsing = "false"
                     onAction = "#analyseCollectedDataBntAction"
                     text = "Analyse collected data"
+                    visible = "true"
                     VBox.vgrow = "NEVER">
                 <VBox.margin>
                     <Insets fx:id = "x2"/>
@@ -238,20 +240,26 @@
             </Button>
             <CheckBox fx:id = "maxCheckBox"
                       allowIndeterminate = "false"
+                      disable = "true"
                       indeterminate = "false"
                       mnemonicParsing = "false"
                       selected = "true"
                       text = "Max"
-                      underline = "false"/>
+                      underline = "false"
+                      visible = "true"/>
             <CheckBox fx:id = "modeCheckBox"
+                      disable = "true"
                       mnemonicParsing = "false"
                       selected = "true"
                       text = "Mode"
+                      visible = "true"
                       VBox.vgrow = "SOMETIMES"/>
             <CheckBox fx:id = "medianCheckBox"
+                      disable = "true"
                       mnemonicParsing = "false"
                       selected = "true"
                       text = "Median"
+                      visible = "true"
                       VBox.vgrow = "SOMETIMES"/>
             <CheckBox id = "verticalLineSwitcher"
                       fx:id = "horizontalLineSwitcher"
