@@ -7,6 +7,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -17,14 +18,14 @@ import java.util.regex.Pattern;
  */
 public class DeviceInfo
 {
-    private final String     vendorID;
-    private final String     productID;
-    private final String     name;
-    private final String     devicePortName;
-    private final DeviceType deviceType;
-    private       byte[]     endPacketSequence;
-    private       float      initialFrequency;
-    private       float      channelSpacing;
+    private String     vendorID;
+    private String     productID;
+    private String     name;
+    private String     devicePortName;
+    private DeviceType deviceType;
+    private byte[]     endPacketSequence;
+    private float      initialFrequency;
+    private float      channelSpacing;
 
     public enum DeviceType
     {
@@ -56,6 +57,29 @@ public class DeviceInfo
         vendorID = devInfMap.get("vid").toUpperCase();
 
         setSomeFieldsFromConfig(productID, vendorID);
+    }
+
+    public DeviceInfo(String netName, DeviceType wirelessAdapter)
+    {
+        devicePortName = netName;
+        deviceType = wirelessAdapter;
+
+        ArrayList<String> inxi = Utils.runShellScript("inxi -n -c 0 -Z");
+        Matcher matcher = Pattern.compile(
+                "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
+                                 .matcher(inxi.toString());
+
+        while (matcher.find())
+        {
+            if (matcher.group("netName").equals(netName))
+            {
+                name = matcher.group("netCardName");
+                productID = matcher.group("netCardName").toUpperCase();
+                vendorID = productID;
+
+                break;
+            }
+        }
     }
 
     private void setSomeFieldsFromConfig(String pID, String vID)

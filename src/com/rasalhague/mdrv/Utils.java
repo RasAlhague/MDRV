@@ -3,21 +3,52 @@ package com.rasalhague.mdrv;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils
 {
+    public static Stage prepareStageForDialog()
+    {
+        Stage dialogStage = new Stage();
+        dialogStage.setWidth(400);
+        dialogStage.setHeight(200);
+        dialogStage.setX((Screen.getPrimary().getBounds().getMaxX() / 2) - 400);
+        dialogStage.setY((Screen.getPrimary().getBounds().getMaxY() / 2) - 200);
+
+        return dialogStage;
+    }
+
+    public static ArrayList<String> runShellScript(String command)
+    {
+        ArrayList<String> result = new ArrayList<>();
+        try
+        {
+            String resultExecute;
+            Runtime runtime = Runtime.getRuntime();
+            Process process = runtime.exec(new String[]{"/bin/bash", "-c", command});
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while ((resultExecute = bufferedReader.readLine()) != null)
+            {
+                result.add(resultExecute);
+            }
+            return result;
+        }
+        catch (IOException e)
+        {
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public static String addTimeStampToFileName(String name)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy 'at' HH.mm.ss", Locale.ENGLISH);
@@ -49,7 +80,7 @@ public class Utils
         }
         catch (IOException e)
         {
-            ApplicationLogger.LOGGER.severe(e.getMessage());
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
             e.printStackTrace();
         }
 

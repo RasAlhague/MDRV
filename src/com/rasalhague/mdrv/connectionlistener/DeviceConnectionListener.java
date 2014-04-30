@@ -3,6 +3,7 @@ package com.rasalhague.mdrv.connectionlistener;
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
 import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.Utils;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Singleton
@@ -90,13 +93,17 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     private void scanForDeviceConnections()
     {
-        ArrayList<DeviceInfo> comPortsList = getCOMPortsList();
-        ArrayList<DeviceInfo> hidDevicesList = getHIDDevicesList();
-        ArrayList<DeviceInfo> comHidList = new ArrayList<>();
-        comHidList.addAll(comPortsList);
-        comHidList.addAll(hidDevicesList);
+        ArrayList<DeviceInfo> combinedList = new ArrayList<>();
 
-        updateConnectedDeviceList(comHidList);
+        ArrayList<DeviceInfo> comPortsList = getCOMPortsList();
+        combinedList.addAll(comPortsList);
+        ArrayList<DeviceInfo> hidDevicesList = getHIDDevicesList();
+        combinedList.addAll(hidDevicesList);
+        //DeviceInfo constructor has not finished
+        //        ArrayList<DeviceInfo> wirelessAdaptersList = getWirelessAdaptersList();
+        //        combinedList.addAll(wirelessAdaptersList);
+
+        updateConnectedDeviceList(combinedList);
     }
 
     /**
@@ -145,6 +152,20 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         }
 
         return null;
+    }
+
+    private ArrayList<DeviceInfo> getWirelessAdaptersList()
+    {
+        ArrayList<DeviceInfo> wirelessAdaptersList = new ArrayList<>();
+        ArrayList<String> iwconfig = Utils.runShellScript("iwconfig | cut -c1-10");
+        Matcher matcher = Pattern.compile("(?<netName>\\w+)").matcher(iwconfig.toString());
+
+        while (matcher.find())
+        {
+            wirelessAdaptersList.add(new DeviceInfo(matcher.group("netName"), DeviceInfo.DeviceType.WIRELESS_ADAPTER));
+        }
+
+        return wirelessAdaptersList;
     }
 
     /**

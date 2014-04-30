@@ -11,6 +11,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
 import com.rasalhague.mdrv.replay.Replay;
+import com.rasalhague.mdrv.wirelessadapter.WirelessAdapterCommunication;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.Observable;
@@ -159,6 +160,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
+
+        //Connect WirelessAdapter
+        WirelessAdapterCommunication wirelessAdapterCommunication = new WirelessAdapterCommunication();
+        Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
+        wirelessAdapterCommunicationThread.start();
 
         //fake button press
         DeviceConnectionListener.startListening();

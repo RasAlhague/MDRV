@@ -14,6 +14,7 @@
     <orderEntry type="library" name="commons-lang3-3.2.1" level="project" />
     <orderEntry type="library" name="javahidapi" level="project" />
     <orderEntry type="library" name="commons-collections4-4.0-sources" level="project" />
+    <orderEntry type="library" name="controlsfx-8.0.5" level="project" />
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">
