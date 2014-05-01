@@ -11,6 +11,11 @@ public class RoundVar implements Iterable<Integer>
     private int minValue;
     private int maxValue;
 
+    public int getCurrentValue()
+    {
+        return currentValue;
+    }
+
     /**
      * Instantiates a new Round var.
      *
@@ -24,7 +29,8 @@ public class RoundVar implements Iterable<Integer>
         this.minValue = minValue;
         this.maxValue = maxValue;
 
-        this.currentValue = minValue;
+        //-1 coz need fix first out coz ++currentValue instead of currentValue++
+        this.currentValue = minValue - 1;
     }
 
     /**
@@ -34,7 +40,7 @@ public class RoundVar implements Iterable<Integer>
      */
     public synchronized int nextValue()
     {
-        return currentValue > maxValue ? currentValue = minValue : currentValue++;
+        return currentValue >= maxValue ? currentValue = minValue : ++currentValue;
     }
 
     @Override
