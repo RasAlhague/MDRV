@@ -16,6 +16,16 @@ public class RoundVar implements Iterable<Integer>
         return currentValue;
     }
 
+    public int getMinValue()
+    {
+        return minValue;
+    }
+
+    public int getMaxValue()
+    {
+        return maxValue;
+    }
+
     /**
      * Instantiates a new Round var.
      *
