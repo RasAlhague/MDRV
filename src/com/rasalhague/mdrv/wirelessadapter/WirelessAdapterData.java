@@ -27,4 +27,14 @@ public class WirelessAdapterData
         this.dB = dB;
         this.IV = IV;
     }
+
+    @Override
+    public String toString()
+    {
+        return "WirelessAdapterData{" +
+                "channel=" + channel +
+                ", dB=" + dB +
+                ", IV=" + IV +
+                '}';
+    }
 }
