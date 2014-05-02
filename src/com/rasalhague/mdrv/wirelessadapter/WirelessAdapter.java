@@ -5,6 +5,7 @@ import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,7 @@ public class WirelessAdapter
     private String macAddress;
     private String adapterName;
     private BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
+    private RoundVar channelRoundSwitcher;
 
     public String getNetworkName()
     {
@@ -33,6 +35,11 @@ public class WirelessAdapter
     public BidiMap<Byte, Short> getChannelToFrequencyMap()
     {
         return channelToFrequencyMap;
+    }
+
+    public RoundVar getChannelRoundSwitcher()
+    {
+        return channelRoundSwitcher;
     }
 
     @Override
@@ -61,6 +68,11 @@ public class WirelessAdapter
         }
 
         setUpChannelToFrequencyMap();
+
+        TreeMap<Byte, Short> byteShortTreeMap = new TreeMap<>(getChannelToFrequencyMap());
+        Byte firstKey = byteShortTreeMap.firstKey();
+        Byte lastKey = byteShortTreeMap.lastKey();
+        channelRoundSwitcher = new RoundVar(firstKey, lastKey);
     }
 
     private void setUpChannelToFrequencyMap()
@@ -79,5 +91,17 @@ public class WirelessAdapter
 
             channelToFrequencyMap.put(channelNumber, channelFrequency);
         }
+    }
+
+    public int nextChannel()
+    {
+        String channelSwitchingCommand = "iwconfig " +
+                getNetworkName() +
+                " channel " +
+                channelRoundSwitcher.nextValue();
+
+        Utils.runShellScript(channelSwitchingCommand);
+
+        return channelRoundSwitcher.getCurrentValue();
     }
 }

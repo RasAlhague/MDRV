@@ -20,12 +20,23 @@ import java.util.regex.Pattern;
 /**
  * The type Wireless adapter communication.
  * <p>
+ * Class that switches wireless adapter into monitor mode and starts listening tcpdump!
+ * <p>
  * http://sparebits.wikispaces.com/tcpdump+wireless+filters
  */
 public class WirelessAdapterCommunication implements Runnable
 {
-    private RoundVar channelRoundSwitcher        = new RoundVar(1, 13);
-    private int      channelRoundSwitchingRateMs = 1000;
+    private int channelSwitchingRateMs = 1000;
+
+    public int getChannelSwitchingRateMs()
+    {
+        return channelSwitchingRateMs;
+    }
+
+    public void setChannelSwitchingRateMs(int channelSwitchingRateMs)
+    {
+        this.channelSwitchingRateMs = channelSwitchingRateMs;
+    }
 
     @Override
     public void run()
@@ -63,9 +74,14 @@ public class WirelessAdapterCommunication implements Runnable
 
     private WirelessAdapter chooseWirelessAdapter(ArrayList<WirelessAdapter> wirelessAdapters)
     {
+        WirelessAdapter chosenWirelessAdapter;
+
         if (wirelessAdapters.size() == 1)
         {
-            return wirelessAdapters.get(0);
+            chosenWirelessAdapter = wirelessAdapters.get(0);
+
+            ApplicationLogger.LOGGER.info(chosenWirelessAdapter.getAdapterName() + " has been chosen.");
+            return chosenWirelessAdapter;
         }
         else
         {
@@ -104,7 +120,10 @@ public class WirelessAdapterCommunication implements Runnable
             {
                 if (adapter.toString().equals(chosenElement[0]))
                 {
-                    return adapter;
+                    chosenWirelessAdapter = adapter;
+
+                    ApplicationLogger.LOGGER.info(chosenWirelessAdapter.getAdapterName() + " has been chosen.");
+                    return chosenWirelessAdapter;
                 }
             }
         }
@@ -138,21 +157,24 @@ public class WirelessAdapterCommunication implements Runnable
                 switchToMonitorMode(wirelessAdapter);
             }
         });
+
+        ApplicationLogger.LOGGER.info(wirelessAdapter.getAdapterName() + " has been transferred into monitor mode.");
     }
 
     private void startChannelSwitching(WirelessAdapter wirelessAdapter)
     {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
 
-            String channelSwitchingCommand = "iwconfig " +
-                    wirelessAdapter.getNetworkName() +
-                    " channel " +
-                    channelRoundSwitcher.nextValue();
+            int channel = wirelessAdapter.nextChannel();
+            System.out.println(channel);
 
-            Utils.runShellScript(channelSwitchingCommand);
-            System.out.println(channelRoundSwitcher.getCurrentValue());
+        }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
-        }, 0, channelRoundSwitchingRateMs, TimeUnit.MILLISECONDS);
+        ApplicationLogger.LOGGER.info("Channel switching has been started in " +
+                                              wirelessAdapter.getChannelRoundSwitcher().getMinValue() +
+                                              " - " +
+                                              wirelessAdapter.getChannelRoundSwitcher().getMaxValue() +
+                                              " range.");
     }
 
     private String chooseTcpDumpCommand(WirelessAdapter wirelessAdapter)
@@ -166,8 +188,10 @@ public class WirelessAdapterCommunication implements Runnable
                 Stage dialogStage = Utils.prepareStageForDialog();
 
                 Dialogs dialogs = Dialogs.create()
-                                         .owner(dialogStage).title("Choose TcpDump Command")
-                                         .masthead(null).message(null);
+                                         .owner(dialogStage)
+                                         .title("Choose TcpDump Command")
+                                         .masthead(null)
+                                         .message(null);
 
                 chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
                                                                  wirelessAdapter.getNetworkName() +
@@ -188,13 +212,14 @@ public class WirelessAdapterCommunication implements Runnable
     {
         String resultExecute;
         BufferedReader tcpDumpReader = Utils.runShellScriptBR(tcpDumpCommand);
+        ApplicationLogger.LOGGER.info("Listening has been started on " + wirelessAdapter.getNetworkName());
 
         try
         {
             while ((resultExecute = tcpDumpReader.readLine()) != null)
             {
                 Matcher matcher = Pattern.compile(
-                        "(?<!bad-fcs) (?<frequency>\\d{4}) MHz.*(?<dB>-\\d{2,3})dB.*IV:(?<IV>.*?) ")
+                        "(?<!bad-fcs) (?<frequency>\\d{4}) MHz.*(?<dB>-\\d{2,3})dB.*IV: *(?<IV>.*?) ")
                                          .matcher(resultExecute);
 
                 while (matcher.find())
