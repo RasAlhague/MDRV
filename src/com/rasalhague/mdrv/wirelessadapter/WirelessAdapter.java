@@ -3,6 +3,7 @@ package com.rasalhague.mdrv.wirelessadapter;
 import com.rasalhague.mdrv.Utility.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,7 @@ public class WirelessAdapter
     private String networkName;
     private String macAddress;
     private String adapterName;
+    private HashMap<Byte, Float> channelToFrequencyMap = new HashMap<>();
 
     public String getNetworkName()
     {
@@ -25,6 +27,11 @@ public class WirelessAdapter
     public String getAdapterName()
     {
         return adapterName;
+    }
+
+    public HashMap<Byte, Float> getChannelToFrequencyMap()
+    {
+        return channelToFrequencyMap;
     }
 
     @Override
@@ -50,6 +57,25 @@ public class WirelessAdapter
 
                 break;
             }
+        }
+
+        setUpChannelToFrequencyMap();
+        System.out.println(channelToFrequencyMap);
+    }
+
+    private void setUpChannelToFrequencyMap()
+    {
+        ArrayList<String> iwlistChannelOut = Utils.runShellScript("iwlist " +
+                                                                          networkName +
+                                                                          " channel");
+
+        Matcher matcher = Pattern.compile("Channel (?<channelNumber>\\d{2}) : (?<ChannelFrequency>\\d\\.\\d{3})")
+                                 .matcher(iwlistChannelOut.toString());
+
+        while (matcher.find())
+        {
+            channelToFrequencyMap.put(Byte.valueOf(matcher.group("channelNumber")),
+                                      Float.valueOf(matcher.group("ChannelFrequency")));
         }
     }
 }
