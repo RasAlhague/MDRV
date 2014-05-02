@@ -1,9 +1,10 @@
 package com.rasalhague.mdrv.wirelessadapter;
 
 import com.rasalhague.mdrv.Utility.Utils;
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.TreeBidiMap;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class WirelessAdapter
     private String networkName;
     private String macAddress;
     private String adapterName;
-    private HashMap<Byte, Float> channelToFrequencyMap = new HashMap<>();
+    private BidiMap<Byte, Float> channelToFrequencyMap = new TreeBidiMap<>();
 
     public String getNetworkName()
     {
@@ -29,7 +30,7 @@ public class WirelessAdapter
         return adapterName;
     }
 
-    public HashMap<Byte, Float> getChannelToFrequencyMap()
+    public BidiMap<Byte, Float> getChannelToFrequencyMap()
     {
         return channelToFrequencyMap;
     }
