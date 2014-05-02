@@ -13,7 +13,7 @@ public class WirelessAdapter
     private String networkName;
     private String macAddress;
     private String adapterName;
-    private BidiMap<Byte, Float> channelToFrequencyMap = new TreeBidiMap<>();
+    private BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
 
     public String getNetworkName()
     {
@@ -30,7 +30,7 @@ public class WirelessAdapter
         return adapterName;
     }
 
-    public BidiMap<Byte, Float> getChannelToFrequencyMap()
+    public BidiMap<Byte, Short> getChannelToFrequencyMap()
     {
         return channelToFrequencyMap;
     }
@@ -74,8 +74,10 @@ public class WirelessAdapter
 
         while (matcher.find())
         {
-            channelToFrequencyMap.put(Byte.valueOf(matcher.group("channelNumber")),
-                                      Float.valueOf(matcher.group("ChannelFrequency")));
+            short channelFrequency = (short) (Float.valueOf(matcher.group("ChannelFrequency")) * 1000);
+            byte channelNumber = Byte.valueOf(matcher.group("channelNumber"));
+
+            channelToFrequencyMap.put(channelNumber, channelFrequency);
         }
     }
 }
