@@ -61,7 +61,6 @@ public class WirelessAdapter
         }
 
         setUpChannelToFrequencyMap();
-        System.out.println(channelToFrequencyMap);
     }
 
     private void setUpChannelToFrequencyMap()
