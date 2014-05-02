@@ -19,6 +19,7 @@
           <element id="library" level="project" name="commons-lang3-3.2.1" />
           <element id="library" level="project" name="javahidapi" />
           <element id="library" level="project" name="commons-collections4-4.0-sources" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/ControlsFX/controlsfx-8.0.5.jar" />
         </element>
         <element id="module-output" name="MDRV" />
       </element>

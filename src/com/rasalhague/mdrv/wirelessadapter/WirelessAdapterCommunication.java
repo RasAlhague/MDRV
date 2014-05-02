@@ -6,25 +6,44 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Wireless adapter communication.
+ * <p>
+ * http://sparebits.wikispaces.com/tcpdump+wireless+filters
+ */
 public class WirelessAdapterCommunication implements Runnable
 {
-    WirelessAdapter wirelessAdapter;
+    private RoundVar channelRoundSwitcher        = new RoundVar(1, 13);
+    private int      channelRoundSwitchingRateMs = 1000;
 
     @Override
     public void run()
     {
         ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
-        wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
-        switchToMonitorMode(wirelessAdapter);
-        //        startChannelSwitching(wirelessAdapter);
-        //        startListenning(wirelessAdapter);
+
+        if (wirelessAdapters.size() != 0)
+        {
+            WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
+            switchToMonitorMode(wirelessAdapter);
+            startChannelSwitching(wirelessAdapter);
+            String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
+            startListening(tcpDumpCommand, wirelessAdapter);
+        }
+        else
+        {
+            ApplicationLogger.LOGGER.warning("No adapters have been found.");
+        }
     }
 
     private ArrayList<WirelessAdapter> searchWirelessAdapters()
@@ -52,6 +71,7 @@ public class WirelessAdapterCommunication implements Runnable
         {
             final String[] chosenElement = new String[1];
 
+            //Show Choose Adapter dialog
             try
             {
                 FXUtilities.runAndWait(() -> {
@@ -76,6 +96,7 @@ public class WirelessAdapterCommunication implements Runnable
             catch (InterruptedException | ExecutionException e)
             {
                 ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+                ApplicationLogger.LOGGER.severe(e.getMessage());
                 e.printStackTrace();
             }
 
@@ -88,46 +109,20 @@ public class WirelessAdapterCommunication implements Runnable
             }
         }
 
-        return null;
+        //You Shall Not Pass !!! :[
+        return chooseWirelessAdapter(wirelessAdapters);
     }
 
     private void switchToMonitorMode(WirelessAdapter wirelessAdapter)
     {
-        final String[] pass = {"1"};
-
-        try
-        {
-            FXUtilities.runAndWait(() -> {
-
-                Stage dialogStage = Utils.prepareStageForDialog();
-
-                Dialogs dialogs = Dialogs.create()
-                                         .owner(dialogStage)
-                                         .title("Set root pass")
-                                         .masthead(null)
-                                         .message("Set root pass");
-
-                pass[0] = dialogs.showTextInput();
-            });
-        }
-        catch (InterruptedException | ExecutionException e)
-        {
-            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
-            e.printStackTrace();
-        }
-
         ArrayList<String> monitorModeCommands = new ArrayList<>();
-        monitorModeCommands.add("echo " +
-                                        pass[0] +
-                                        " | sudo -S ifconfig " +
+        monitorModeCommands.add("ifconfig " +
                                         wirelessAdapter.getNetworkName() +
                                         " down");
-        monitorModeCommands.add("echo " +
-                                        pass[0] +
-                                        " | sudo -S iwconfig " +
+        monitorModeCommands.add("iwconfig " +
                                         wirelessAdapter.getNetworkName() +
                                         " mode monitor");
-        monitorModeCommands.add("echo " + pass[0] + " | sudo -S ifconfig " + wirelessAdapter.getNetworkName() + " up");
+        monitorModeCommands.add("ifconfig " + wirelessAdapter.getNetworkName() + " up");
 
         monitorModeCommands.forEach((t) -> {
 
@@ -145,19 +140,102 @@ public class WirelessAdapterCommunication implements Runnable
         });
     }
 
+    private void startChannelSwitching(WirelessAdapter wirelessAdapter)
+    {
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
+
+            String channelSwitchingCommand = "iwconfig " +
+                    wirelessAdapter.getNetworkName() +
+                    " channel " +
+                    channelRoundSwitcher.nextValue();
+
+            Utils.runShellScript(channelSwitchingCommand);
+            System.out.println(channelRoundSwitcher.getCurrentValue());
+
+        }, 0, channelRoundSwitchingRateMs, TimeUnit.MILLISECONDS);
+    }
+
+    private String chooseTcpDumpCommand(WirelessAdapter wirelessAdapter)
+    {
+        final String[] chosenElement = new String[1];
+
+        try
+        {
+            FXUtilities.runAndWait(() -> {
+
+                Stage dialogStage = Utils.prepareStageForDialog();
+
+                Dialogs dialogs = Dialogs.create()
+                                         .owner(dialogStage).title("Choose TcpDump Command")
+                                         .masthead(null).message(null);
+
+                chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
+                                                                 wirelessAdapter.getNetworkName() +
+                                                                 " -s 0 -nne '(type data subtype qos-data)'");
+            });
+        }
+        catch (InterruptedException | ExecutionException e)
+        {
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            ApplicationLogger.LOGGER.severe(e.getMessage());
+            e.printStackTrace();
+        }
+
+        return chosenElement[0];
+    }
+
+    private void startListening(String tcpDumpCommand, WirelessAdapter wirelessAdapter)
+    {
+        String resultExecute;
+        BufferedReader tcpDumpReader = Utils.runShellScriptBR(tcpDumpCommand);
+
+        try
+        {
+            while ((resultExecute = tcpDumpReader.readLine()) != null)
+            {
+                Matcher matcher = Pattern.compile(
+                        "(?<!bad-fcs) (?<frequency>\\d{4}) MHz.*(?<dB>-\\d{2,3})dB.*IV:(?<IV>.*?) ")
+                                         .matcher(resultExecute);
+
+                while (matcher.find())
+                {
+                    byte channel = wirelessAdapter.getChannelToFrequencyMap()
+                                                  .getKey(Short.valueOf(matcher.group("frequency")));
+
+                    byte dB = Byte.valueOf(matcher.group("dB"));
+                    int IV = Integer.parseInt(matcher.group("IV"), 16);
+
+                    WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
+                    System.out.println(wirelessAdapterData);
+
+                    notifyWirelessAdapterDataListeners(wirelessAdapterData);
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Observer
      */
     private final List<WirelessAdapterDataListener> wirelessAdapterDataListeners = new ArrayList<>();
 
+    /**
+     * Add listener.
+     *
+     * @param adapterDataListener
+     *         the adapter data listener
+     */
     public void addListener(WirelessAdapterDataListener adapterDataListener)
     {
         wirelessAdapterDataListeners.add(adapterDataListener);
     }
 
-    private void notifyWirelessAdapterDataListeners(int channel, WirelessAdapterData wirelessAdapterData)
+    private void notifyWirelessAdapterDataListeners(WirelessAdapterData wirelessAdapterData)
     {
-        wirelessAdapterDataListeners.forEach(listener -> listener.wirelessAdapterDataEvent(channel,
-                                                                                           wirelessAdapterData));
+        wirelessAdapterDataListeners.forEach(listener -> listener.wirelessAdapterDataEvent(wirelessAdapterData));
     }
 }
