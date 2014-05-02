@@ -49,6 +49,24 @@ public class Utils
         return result;
     }
 
+    public static BufferedReader runShellScriptBR(String command)
+    {
+        try
+        {
+            Runtime runtime = Runtime.getRuntime();
+            Process process = runtime.exec(new String[]{"/bin/bash", "-c", command});
+
+            return new BufferedReader(new InputStreamReader(process.getInputStream()));
+        }
+        catch (IOException e)
+        {
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public static String addTimeStampToFileName(String name)
     {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy 'at' HH.mm.ss", Locale.ENGLISH);
