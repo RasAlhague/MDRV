@@ -49,6 +49,29 @@ public class Utils
         return result;
     }
 
+    public static boolean checkInxiExist()
+    {
+        ArrayList<String> result = new ArrayList<>();
+        try
+        {
+            String resultExecute;
+            Runtime runtime = Runtime.getRuntime();
+            Process process = runtime.exec(new String[]{"/bin/bash", "-c", "inxi -n -c 0 -Z"});
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while ((resultExecute = bufferedReader.readLine()) != null)
+            {
+                result.add(resultExecute);
+            }
+        }
+        catch (IOException e)
+        {
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            e.printStackTrace();
+        }
+
+        return result.size() != 0;
+    }
+
     public static BufferedReader runShellScriptBR(String command)
     {
         try
