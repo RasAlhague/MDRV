@@ -14,8 +14,8 @@
             maxWidth = "-Infinity"
             minHeight = "300.0"
             minWidth = "600.0"
-            prefHeight = "606.4999000000025"
-            prefWidth = "1057.0"
+            prefHeight = "614.0"
+            prefWidth = "1046.0"
             xmlns:fx = "http://javafx.com/fxml/1"
             xmlns = "http://javafx.com/javafx/2.2"
             fx:controller = "com.rasalhague.mdrv.gui.MainWindowController">
@@ -30,6 +30,349 @@
               AnchorPane.rightAnchor = "0.0"
               AnchorPane.topAnchor = "0.0">
         <children>
+            <GridPane fx:id = "channelsGrid"
+                      gridLinesVisible = "false"
+                      hgap = "0.0"
+                      maxHeight = "-1.0"
+                      maxWidth = "-1.0"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      vgap = "0.0"
+                      GridPane.columnIndex = "0"
+                      GridPane.halignment = "CENTER"
+                      GridPane.hgrow = "ALWAYS"
+                      GridPane.rowIndex = "0"
+                      GridPane.valignment = "CENTER"
+                      GridPane.vgrow = "ALWAYS">
+                <children>
+                    <Pane id = "channelPane1"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane1_6_11"
+                          GridPane.columnIndex = "2"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane6"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane1_6_11"
+                          GridPane.columnIndex = "3"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane11"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane1_6_11"
+                          GridPane.columnIndex = "4"
+                          GridPane.rowIndex = "1"/>
+                </children>
+        <columnConstraints>
+            <ColumnConstraints fillWidth = "true"
+                               halignment = "CENTER"
+                               hgrow = "ALWAYS"
+                               maxWidth = "-1.0"
+                               minWidth = "60.0"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "55.0" minWidth = "55.0" prefWidth = "55.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "250.0" minWidth = "250.0" prefWidth = "250.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "450.0"
+                            minHeight = "10.0"
+                            prefHeight = "396.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "359.0"
+                            minHeight = "10.0"
+                            prefHeight = "142.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "48.0"
+                            minHeight = "48.0"
+                            prefHeight = "48.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
+            </GridPane>
+            <GridPane id = "channelsGrid"
+                      gridLinesVisible = "false"
+                      hgap = "0.0"
+                      maxHeight = "-1.0"
+                      maxWidth = "-1.0"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      vgap = "0.0"
+                      GridPane.columnIndex = "0"
+                      GridPane.halignment = "CENTER"
+                      GridPane.hgrow = "ALWAYS"
+                      GridPane.rowIndex = "0"
+                      GridPane.valignment = "CENTER"
+                      GridPane.vgrow = "ALWAYS">
+                <children>
+                    <Pane id = "channelPane2"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane2_7_12"
+                          GridPane.columnIndex = "2"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane7"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane2_7_12"
+                          GridPane.columnIndex = "3"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane12"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane2_7_12"
+                          GridPane.columnIndex = "4"
+                          GridPane.rowIndex = "1"/>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints fillWidth = "true"
+                                       halignment = "CENTER"
+                                       hgrow = "ALWAYS"
+                                       maxWidth = "-1.0"
+                                       minWidth = "60.0"
+                                       prefWidth = "-1.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "100.0" minWidth = "100.0" prefWidth = "100.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "200.0" minWidth = "200.0" prefWidth = "200.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+                </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "305.0"
+                            minHeight = "10.0"
+                            prefHeight = "275.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "362.0"
+                            minHeight = "10.0"
+                            prefHeight = "149.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "116.0"
+                            minHeight = "48.0"
+                            prefHeight = "114.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+            <RowConstraints maxHeight = "48.0"
+                            minHeight = "48.0"
+                            prefHeight = "48.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
+            </GridPane>
+            <GridPane id = "channelsGrid"
+                      gridLinesVisible = "false"
+                      hgap = "0.0"
+                      maxHeight = "-1.0"
+                      maxWidth = "-1.0"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      vgap = "0.0"
+                      GridPane.columnIndex = "0"
+                      GridPane.halignment = "CENTER"
+                      GridPane.hgrow = "ALWAYS"
+                      GridPane.rowIndex = "0"
+                      GridPane.valignment = "CENTER"
+                      GridPane.vgrow = "ALWAYS">
+                <children>
+                    <Pane id = "channelPane3"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane3_8_13"
+                          GridPane.columnIndex = "2"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane8"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane3_8_13"
+                          GridPane.columnIndex = "3"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane13"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane3_8_13"
+                          GridPane.columnIndex = "4"
+                          GridPane.rowIndex = "1"/>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints fillWidth = "true"
+                                       halignment = "CENTER"
+                                       hgrow = "ALWAYS"
+                                       maxWidth = "-1.0"
+                                       minWidth = "60.0"
+                                       prefWidth = "-1.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "150.0" minWidth = "150.0" prefWidth = "150.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "155.0" minWidth = "155.0" prefWidth = "155.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints maxHeight = "195.0"
+                                    minHeight = "10.0"
+                                    prefHeight = "158.0"
+                                    valignment = "CENTER"
+                                    vgrow = "ALWAYS"/>
+                    <RowConstraints maxHeight = "359.0"
+                                    minHeight = "10.0"
+                                    prefHeight = "148.0"
+                                    valignment = "CENTER"
+                                    vgrow = "ALWAYS"/>
+                    <RowConstraints maxHeight = "238.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "232.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                    <RowConstraints maxHeight = "48.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "48.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                </rowConstraints>
+            </GridPane>
+            <GridPane id = "channelsGrid"
+                      gridLinesVisible = "false"
+                      hgap = "0.0"
+                      maxHeight = "-1.0"
+                      maxWidth = "-1.0"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      vgap = "0.0"
+                      GridPane.columnIndex = "0"
+                      GridPane.halignment = "CENTER"
+                      GridPane.hgrow = "ALWAYS"
+                      GridPane.rowIndex = "0"
+                      GridPane.valignment = "CENTER"
+                      GridPane.vgrow = "ALWAYS">
+                <children>
+                    <Pane id = "channelPane4"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane4_9_14"
+                          GridPane.columnIndex = "2"
+                          GridPane.rowIndex = "1"/>
+                    <Pane id = "channelPane9"
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane4_9_14"
+                          GridPane.columnIndex = "3"
+                          GridPane.rowIndex = "1"/>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints fillWidth = "true"
+                                       halignment = "CENTER"
+                                       hgrow = "ALWAYS"
+                                       maxWidth = "-1.0"
+                                       minWidth = "60.0"
+                                       prefWidth = "-1.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "150.0" minWidth = "200.0" prefWidth = "150.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "340.0" minWidth = "340.0" prefWidth = "340.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints maxHeight = "169.0"
+                                    minHeight = "10.0"
+                                    prefHeight = "69.0"
+                                    valignment = "CENTER"
+                                    vgrow = "ALWAYS"/>
+                    <RowConstraints maxHeight = "441.0"
+                                    minHeight = "10.0"
+                                    prefHeight = "117.0"
+                                    valignment = "CENTER"
+                                    vgrow = "ALWAYS"/>
+                    <RowConstraints maxHeight = "373.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "348.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                    <RowConstraints maxHeight = "48.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "48.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                </rowConstraints>
+            </GridPane>
+            <GridPane id = "channelsGrid"
+                      gridLinesVisible = "false"
+                      hgap = "0.0"
+                      maxHeight = "-1.0"
+                      maxWidth = "-1.0"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      vgap = "0.0"
+                      GridPane.columnIndex = "0"
+                      GridPane.halignment = "CENTER"
+                      GridPane.hgrow = "ALWAYS"
+                      GridPane.rowIndex = "0"
+                      GridPane.valignment = "CENTER"
+                      GridPane.vgrow = "ALWAYS">
+                <children>
+                    <Pane id = ""
+                          prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane5_10"
+                          GridPane.columnIndex = "2"
+                          GridPane.rowIndex = "0"/>
+                    <Pane prefHeight = "200.0"
+                          prefWidth = "200.0"
+                          style = ""
+                          styleClass = "channelPane5_10"
+                          GridPane.columnIndex = "3"
+                          GridPane.rowIndex = "0"/>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints fillWidth = "true"
+                                       halignment = "CENTER"
+                                       hgrow = "ALWAYS"
+                                       maxWidth = "-1.0"
+                                       minWidth = "60.0"
+                                       prefWidth = "-1.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "255.0" minWidth = "255.0" prefWidth = "255.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "290.0" minWidth = "290.0" prefWidth = "290.0"/>
+                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints maxHeight = "489.0"
+                                    minHeight = "10.0"
+                                    prefHeight = "97.0"
+                                    valignment = "CENTER"
+                                    vgrow = "ALWAYS"/>
+                    <RowConstraints maxHeight = "475.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "437.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                    <RowConstraints maxHeight = "48.0"
+                                    minHeight = "48.0"
+                                    prefHeight = "48.0"
+                                    valignment = "CENTER"
+                                    vgrow = "NEVER"/>
+                </rowConstraints>
+            </GridPane>
             <LineChart fx:id = "lineChart"
                        alternativeColumnFillVisible = "false"
                        alternativeRowFillVisible = "false"
@@ -130,7 +473,11 @@
                       GridPane.rowIndex = "2"/>
         </children>
         <columnConstraints>
-            <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "10.0" prefWidth = "-1.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "ALWAYS"
+                               minWidth = "10.0"
+                               percentWidth = "100.0"
+                               prefWidth = "-1.0"/>
         </columnConstraints>
         <padding>
             <Insets fx:id = "x2"/>

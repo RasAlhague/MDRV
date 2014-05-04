@@ -29,10 +29,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -69,6 +66,8 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  CheckBox                  modeCheckBox;
     public                  CheckBox                  medianCheckBox;
     public                  TextField                 chartUpdateDelayTextField;
+    public GridPane channelsGrid;
+    public Pane     channelPane1;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -148,6 +147,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         modeCheckBox = (CheckBox) scene.lookup("#modeCheckBox");
         medianCheckBox = (CheckBox) scene.lookup("#medianCheckBox");
         chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
+        channelsGrid = (GridPane) scene.lookup("#channelsGrid");
+        channelPane1 = (Pane) scene.lookup("#channelPane1");
 
         bindTooltipToLineChart(lineChart, tooltipPane);
         initChartLegend(chartLegendVbox, lineChart);
