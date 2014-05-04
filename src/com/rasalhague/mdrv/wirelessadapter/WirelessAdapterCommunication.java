@@ -41,19 +41,26 @@ public class WirelessAdapterCommunication implements Runnable
     @Override
     public void run()
     {
-        ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
-
-        if (wirelessAdapters.size() != 0)
+        if (Utils.checkInxiExist())
         {
-            WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
-            switchToMonitorMode(wirelessAdapter);
-            startChannelSwitching(wirelessAdapter);
-            String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
-            startListening(tcpDumpCommand, wirelessAdapter);
+            ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
+
+            if (wirelessAdapters.size() != 0)
+            {
+                WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
+                switchToMonitorMode(wirelessAdapter);
+                startChannelSwitching(wirelessAdapter);
+                String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
+                startListening(tcpDumpCommand, wirelessAdapter);
+            }
+            else
+            {
+                ApplicationLogger.LOGGER.warning("No adapters have been found.");
+            }
         }
         else
         {
-            ApplicationLogger.LOGGER.warning("No adapters have been found.");
+            ApplicationLogger.LOGGER.warning("Install Inxi for get able to connect wireless adapter.");
         }
     }
 
