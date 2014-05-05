@@ -62,7 +62,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  Slider                    replaySlider;
     public                  CheckBox                  replayModeSwitcher;
     public                  Button                    openReplayBtn;
-    public                  Button                    analyseCollectedData;
     public                  CheckBox                  modeCheckBox;
     public                  CheckBox                  medianCheckBox;
     public                  TextField                 chartUpdateDelayTextField;
@@ -102,7 +101,6 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
-        //        final String popupMenuPath = "/com/rasalhague/mdrv/gui/view/PopupMenu.fxml";
 
         Parent root = FXMLLoader.load(getClass().getResource(rootPath));
         //        Parent popupMenu = FXMLLoader.load(getClass().getResource(popupMenuPath));
@@ -381,11 +379,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         refreshChart();
         Replay.getInstance().loadReplay();
-    }
-
-    public void analyseCollectedDataBntAction(ActionEvent actionEvent)
-    {
-        PacketAnalysis.getInstance().analyseAndSaveCollectedData();
     }
 
     /**
@@ -730,7 +723,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                 if ((analysisForDeviceKey == AnalysisKey.MAX) ||
                         (analysisForDeviceKey == AnalysisKey.MODE) ||
                         (analysisForDeviceKey == AnalysisKey.MEDIAN) ||
-                        (analysisForDeviceKey == AnalysisKey.CURRENT))
+                        (analysisForDeviceKey == AnalysisKey.CURRENT) ||
+                        (analysisForDeviceKey == AnalysisKey.AVR))
                 {
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
 

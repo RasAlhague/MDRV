@@ -13,8 +13,7 @@ import java.util.*;
 public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> timedAnalysisResults = new LinkedHashMap<>();
-    private          HelperAnalysisMap                                                               helperAnalysisMap    = new HelperAnalysisMap();
-    private          long                                                                            dataPacketCounter    = 0;
+    private HelperAnalysisMaps helperAnalysisMaps = new HelperAnalysisMaps();
 
     public boolean isAnalysisOn()
     {
@@ -90,7 +89,8 @@ public class PacketAnalysis implements DataPacketListener
 
                     //AVR
                     ArrayList<Byte> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
-                                                      prevResultsMap.get(AnalysisKey.AVR));
+                                                      helperAnalysisMaps.getPacketCountForDevice(deviceInfo),
+                                                      helperAnalysisMaps.getRssiSumForDevice(deviceInfo));
 
                     hashMapToAdd.put(AnalysisKey.MAX, joinMax);
                     hashMapToAdd.put(AnalysisKey.AVR, joinAvr);
@@ -110,24 +110,9 @@ public class PacketAnalysis implements DataPacketListener
                 /**
                  * Perform Analysis for MODE and MEDIAN and AVR
                  */
-                //                long startAll = System.nanoTime();
-
-                helperAnalysisMap.updateHelperMap(dataPacket);
-                //                long startMode = System.nanoTime();
-                hashMapToAdd.put(AnalysisKey.MODE, helperAnalysisMap.calculateMode().get(deviceInfo));
-                //                long startMedian = System.nanoTime();
-                hashMapToAdd.put(AnalysisKey.MEDIAN, helperAnalysisMap.calculateMedian().get(deviceInfo));
-
-                //                long endTime = System.nanoTime();
-                //                long durationAll = endTime - startAll;
-                //                long durationMode = endTime - startMode;
-                //                long durationMedian = endTime - startMedian;
-                //                System.out.println("Packet #                        - " + dataPacketCounter);
-                //                System.out.println("Mode                            - " + durationMode);
-                //                System.out.println("Median                          - " + durationMedian);
-                //                System.out.println("updateHelperMap + Mode + Median - " + durationAll);
-                //                System.out.println("-\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-");
-                //                dataPacketCounter++;
+                helperAnalysisMaps.updateHelperMaps(dataPacket);
+                hashMapToAdd.put(AnalysisKey.MODE, calculateMode(helperAnalysisMaps, deviceInfo));
+                hashMapToAdd.put(AnalysisKey.MEDIAN, calculateMedian(helperAnalysisMaps, deviceInfo));
 
                 /**
                  * When we have 2 or > DataPacket in one moment
@@ -155,96 +140,15 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
-    public void analyseAndSaveCollectedData()
-    {
-        setAnalysisOn(false);
-
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analysedCollectedData = analyseCollectedData();
-
-        timedAnalysisResults.put(new Date().getTime(), analysedCollectedData);
-        notifyAnalysisPerformedListeners(getTimedAnalysisResults());
-
-        saveAnalysedCollectedData(analysedCollectedData);
-
-        setAnalysisOn(true);
-    }
-
-    private void saveAnalysedCollectedData(HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analysedCollectedData)
-    {
-
-    }
-
-    private HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> analyseCollectedData()
-    {
-        HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> finalMap = new HashMap<>();
-
-        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = new HashMap<>();
-
-        Set<Long> timeKeys = timedAnalysisResults.keySet();
-        for (Long timeKey : timeKeys)
-        {
-            Set<DeviceInfo> deviceInfoKeys = timedAnalysisResults.get(timeKey).keySet();
-            for (DeviceInfo deviceInfo : deviceInfoKeys)
-            {
-                ArrayList<Byte> currentPacketData = timedAnalysisResults.get(timeKey)
-                                                                        .get(deviceInfo)
-                                                                        .get(AnalysisKey.CURRENT);
-                //its null when i add other data except CURRENT -- MEDIAN MODE
-                if (currentPacketData != null)
-                {
-                    if (!helperMap.containsKey(deviceInfo))
-                    {
-                        ArrayList<HashMap<Byte, Integer>> arrayList = new ArrayList<>();
-                        currentPacketData.forEach(o -> arrayList.add(new HashMap<>()));
-                        helperMap.put(deviceInfo, arrayList);
-                    }
-                    ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(deviceInfo);
-                    for (int i = 0, currentPacketDataSize = currentPacketData.size(); i < currentPacketDataSize; i++)
-                    {
-                        Byte currentDataPoint = currentPacketData.get(i);
-                        HashMap<Byte, Integer> helperDataPointMap = pointsHelperArray.get(i);
-
-                        if (helperDataPointMap.containsKey(currentDataPoint))
-                        {
-                            helperDataPointMap.put(currentDataPoint, helperDataPointMap.get(currentDataPoint) + 1);
-                        }
-                        else
-                        {
-                            helperDataPointMap.put(currentDataPoint, 1);
-                        }
-                    }
-                }
-                else
-                {
-                    ApplicationLogger.LOGGER.info("currentPacketData = null");
-                }
-            }
-        }
-        //        System.out.println(helperMap);
-
-        /**
-         * Set up finalMap
-         */
-        HashMap<DeviceInfo, ArrayList<Byte>> mode = calculateMode(helperMap);
-        HashMap<DeviceInfo, ArrayList<Byte>> median = calculateMedian(helperMap);
-
-        helperMap.keySet().forEach(deviceInfo -> {
-            finalMap.put(deviceInfo, new HashMap<>());
-            finalMap.get(deviceInfo).put(AnalysisKey.MODE, mode.get(deviceInfo));
-            finalMap.get(deviceInfo).put(AnalysisKey.MEDIAN, median.get(deviceInfo));
-        });
-        //        System.out.println();
-        //        System.out.println(finalMap);
-
-        return finalMap;
-    }
-
-    private synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode(HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap)
+    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode(HelperAnalysisMaps helperAnalysisMaps)
     {
         /**
          * MODE postprocessing
          */
         HashMap<DeviceInfo, ArrayList<Byte>> mode = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
+        int maxRSSICountValue;
+        byte maxRSSI;
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
         for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
@@ -257,8 +161,8 @@ public class PacketAnalysis implements DataPacketListener
             ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
             for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
-                int maxRSSICountValue = 0;
-                byte maxRSSI = 0;
+                maxRSSICountValue = 0;
+                maxRSSI = 0;
 
                 Set<Byte> rssiKeys = helperDataPointMap.keySet();
                 for (Byte helperDataPointMapKey : rssiKeys)
@@ -273,17 +177,18 @@ public class PacketAnalysis implements DataPacketListener
                 mode.get(helperMapDeviceKey).add(maxRSSI);
             }
         }
-        //        System.out.println(mode);
 
         return mode;
     }
 
-    private synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian(HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap)
+    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian(HelperAnalysisMaps helperAnalysisMaps)
     {
         /**
          * MEDIAN postprocessing
          */
         HashMap<DeviceInfo, ArrayList<Byte>> median = new HashMap<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
+        int rssiSortedArraySize;
 
         Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
         for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
@@ -296,13 +201,77 @@ public class PacketAnalysis implements DataPacketListener
             ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
             for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
             {
-                TreeMap<Byte, Integer> helperDataPointMapTree = new TreeMap<>(helperDataPointMap);
-                ArrayList<Byte> rssiSortedArray = new ArrayList<>(helperDataPointMapTree.keySet());
-                int rssiSortedArraySize = rssiSortedArray.size();
+                ArrayList<Byte> rssiSortedArray = new ArrayList<>(new TreeMap<>(helperDataPointMap).keySet());
+                rssiSortedArraySize = rssiSortedArray.size();
                 median.get(helperMapDeviceKey).add(rssiSortedArray.get(rssiSortedArraySize / 2));
             }
         }
-        //        System.out.println(median);
+
+        return median;
+    }
+
+    public synchronized ArrayList<Byte> calculateMode(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
+    {
+        /**
+         * MODE postprocessing
+         */
+        ArrayList<Byte> mode = new ArrayList<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
+        int maxRSSICountValue;
+        byte maxRSSI;
+
+        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
+        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
+        {
+            if (helperMapDeviceKey.equals(deviceInfo))
+            {
+                ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+                for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
+                {
+                    maxRSSICountValue = 0;
+                    maxRSSI = 0;
+
+                    Set<Byte> rssiKeys = helperDataPointMap.keySet();
+                    for (Byte helperDataPointMapKey : rssiKeys)
+                    {
+                        if (helperDataPointMap.get(helperDataPointMapKey) > maxRSSICountValue || maxRSSICountValue == 0)
+                        {
+                            maxRSSICountValue = helperDataPointMap.get(helperDataPointMapKey);
+                            maxRSSI = helperDataPointMapKey;
+                        }
+                    }
+
+                    mode.add(maxRSSI);
+                }
+            }
+        }
+
+        return mode;
+    }
+
+    public synchronized ArrayList<Byte> calculateMedian(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
+    {
+        /**
+         * MEDIAN postprocessing
+         */
+        ArrayList<Byte> median = new ArrayList<>();
+        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
+        int rssiSortedArraySize;
+
+        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
+        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
+        {
+            if (helperMapDeviceKey.equals(deviceInfo))
+            {
+                ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
+                for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
+                {
+                    ArrayList<Byte> rssiSortedArray = new ArrayList<>(new TreeMap<>(helperDataPointMap).keySet());
+                    rssiSortedArraySize = rssiSortedArray.size();
+                    median.add(rssiSortedArray.get(rssiSortedArraySize / 2));
+                }
+            }
+        }
 
         return median;
     }
@@ -321,11 +290,13 @@ public class PacketAnalysis implements DataPacketListener
         if (newData.size() == prevData.size())
         {
             ArrayList<Byte> joinedData = new ArrayList<>(prevData);
+            byte prevNumber;
+            byte newDataNumber;
 
             for (int i = 0, prevDataSize = prevData.size(); i < prevDataSize; i++)
             {
-                Byte prevNumber = prevData.get(i);
-                Byte newDataNumber = newData.get(i);
+                prevNumber = prevData.get(i);
+                newDataNumber = newData.get(i);
 
                 if (newDataNumber > prevNumber)
                 {
@@ -345,33 +316,31 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
-    private synchronized ArrayList<Byte> joinAvr(ArrayList<Byte> newData, ArrayList<Byte> prevData)
+    private synchronized ArrayList<Byte> joinAvr(ArrayList<Byte> newData,
+                                                 Integer packetsAmount,
+                                                 ArrayList<Integer> rssiSumForDevice)
     {
-        if (newData.size() == prevData.size())
+        ArrayList<Byte> avrArray = new ArrayList<>();
+        if (newData.size() == rssiSumForDevice.size())
         {
-            ArrayList<Byte> joinedData = new ArrayList<>(prevData);
-
-            for (int i = 0, prevDataSize = prevData.size(); i < prevDataSize; i++)
+            int newRssi;
+            int sumRssi;
+            for (int i = 0, newDataSize = newData.size(); i < newDataSize; i++)
             {
-                Byte prevNumber = prevData.get(i);
-                Byte newDataNumber = newData.get(i);
+                newRssi = newData.get(i);
+                sumRssi = rssiSumForDevice.get(i);
 
-                if (newDataNumber > prevNumber)
-                {
-                    joinedData.set(i, newDataNumber);
-                }
+                avrArray.add((byte) ((sumRssi + newRssi) / (packetsAmount + 1)));
             }
-
-            return joinedData;
         }
         else
         {
             ApplicationLogger.LOGGER.severe("newData.size() != prevData.size(); can not process. Returning prevData");
-            ApplicationLogger.LOGGER.info("prevData" + prevData.size());
-            ApplicationLogger.LOGGER.info("newData" + newData.size());
-
-            return prevData;
+            ApplicationLogger.LOGGER.info("rssiSumForDevice " + rssiSumForDevice.size());
+            ApplicationLogger.LOGGER.info("newData " + newData.size());
         }
+
+        return avrArray;
     }
 
     private static class PacketAnalysisHolder
