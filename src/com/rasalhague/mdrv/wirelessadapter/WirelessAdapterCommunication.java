@@ -238,7 +238,9 @@ public class WirelessAdapterCommunication implements Runnable
                     int IV = Integer.parseInt(matcher.group("IV"), 16);
 
                     //filter from -20dBm to -105dBm
-                    if (dB >= -105 && dB <= -20)
+                    byte lowerLimit = -110;
+                    byte upperLimit = -20;
+                    if (dB >= lowerLimit && dB <= upperLimit)
                     {
                         WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
                         notifyWirelessAdapterDataListeners(wirelessAdapterData);
