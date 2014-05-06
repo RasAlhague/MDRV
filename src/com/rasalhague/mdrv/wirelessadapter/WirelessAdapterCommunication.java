@@ -238,7 +238,6 @@ public class WirelessAdapterCommunication implements Runnable
                     int IV = Integer.parseInt(matcher.group("IV"), 16);
 
                     WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
-                    System.out.println(wirelessAdapterData);
 
                     notifyWirelessAdapterDataListeners(wirelessAdapterData);
                 }

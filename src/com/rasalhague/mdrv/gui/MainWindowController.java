@@ -51,7 +51,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     private static          MainWindowController      instance;
     public                  LineChart<Number, Number> lineChart;
     public                  TextArea                  debugTextArea;
-    public                  CheckBox                  maxCheckBox;
     public                  Button                    refreshChartButton;
     public                  GridPane                  tooltipPane;
     public                  VBox                      chartLegendVbox;
@@ -62,8 +61,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  Slider                    replaySlider;
     public                  CheckBox                  replayModeSwitcher;
     public                  Button                    openReplayBtn;
-    public                  CheckBox                  modeCheckBox;
-    public                  CheckBox                  medianCheckBox;
     public                  TextField                 chartUpdateDelayTextField;
     public GridPane channelsGrid;
     public Pane     channelPane1;
@@ -134,7 +131,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         //init GUI objects
         lineChart = (LineChart<Number, Number>) scene.lookup("#lineChart");
         debugTextArea = (TextArea) scene.lookup("#debugTextArea");
-        maxCheckBox = (CheckBox) scene.lookup("#maxCheckBox");
         tooltipPane = (GridPane) scene.lookup("#tooltipPane");
         chartLegendVbox = (VBox) scene.lookup("#chartLegendVbox");
         horizontalLine = (javafx.scene.shape.Line) scene.lookup("#horizontalLine");
@@ -143,8 +139,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         replaySlider = (Slider) scene.lookup("#replaySlider");
         replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
         openReplayBtn = (Button) scene.lookup("#openReplayBtn");
-        modeCheckBox = (CheckBox) scene.lookup("#modeCheckBox");
-        medianCheckBox = (CheckBox) scene.lookup("#medianCheckBox");
         chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
         channelsGrid = (GridPane) scene.lookup("#channelsGrid");
         channelPane1 = (Pane) scene.lookup("#channelPane1");
@@ -452,13 +446,14 @@ public class MainWindowController extends Application implements AnalysisPerform
                         rowTexts.add(dBmText);
                         rowTexts.add(hz);
                         rowTexts.add(hzText);
-                        if (numberSeries.getNode().isVisible())
+                        Node numberSeriesNode = numberSeries.getNode();
+                        if (numberSeriesNode.isVisible())
                         {
-                            rowsToView.put(rowTexts, numberSeries.getNode().isVisible());
+                            rowsToView.put(rowTexts, numberSeriesNode.isVisible());
                         }
 
                         //Get numberSeries color and set it to text
-                        String numberSeriesString = numberSeries.getNode().toString();
+                        String numberSeriesString = numberSeriesNode.toString();
                         int indexOf = numberSeriesString.indexOf("stroke=");
                         String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
 
@@ -471,7 +466,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                         /**
                          * Highlight selected node
                          */
-                        if (numberSeries.getNode().isVisible())
+                        if (lineChart.getCreateSymbols() && numberSeriesNode.isVisible())
                         {
                             numberData.getNode().setVisible(true);
                             numberData.getNode().setEffect(new DropShadow());
@@ -482,8 +477,11 @@ public class MainWindowController extends Application implements AnalysisPerform
                         /**
                          * Highlight down non selected node
                          */
-                        numberData.getNode().setVisible(false);
-                        numberData.getNode().setEffect(null);
+                        if (lineChart.getCreateSymbols())
+                        {
+                            numberData.getNode().setVisible(false);
+                            numberData.getNode().setEffect(null);
+                        }
                     }
                 }
             }
@@ -721,9 +719,6 @@ public class MainWindowController extends Application implements AnalysisPerform
                 String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
                 series.setName(seriesName);
 
-                //                if ((analysisForDeviceKey == AnalysisKey.MAX && maxCheckBox.isSelected()) ||
-                //                        (analysisForDeviceKey == AnalysisKey.MODE && modeCheckBox.isSelected()) ||
-                //                        (analysisForDeviceKey == AnalysisKey.MEDIAN && medianCheckBox.isSelected()))
                 if ((analysisForDeviceKey == AnalysisKey.MAX) ||
                         (analysisForDeviceKey == AnalysisKey.MODE) ||
                         (analysisForDeviceKey == AnalysisKey.MEDIAN) ||

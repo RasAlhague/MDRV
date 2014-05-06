@@ -6,16 +6,12 @@
     <option name="CUSTOM_SCOPE_NAME" value="Module 'MDRV'" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="AVR">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Move settings menu to right">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/config.cfg" afterPath="$PROJECT_DIR$/cfg/config.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -80,27 +76,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1495" max-vertical-offset="3077">
-              <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.55390334" vertical-offset="7675" max-vertical-offset="13617">
+              <caret line="469" column="25" selection-start-line="469" selection-start-column="25" selection-end-line="469" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3400#3401#0" expanded="true" />
+                <element signature="e#3431#3432#0" expanded="true" />
+                <element signature="e#3481#3482#0" expanded="true" />
+                <element signature="e#3505#3506#0" expanded="true" />
+                <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initPopupMenu#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+                <element signature="e#13970#13971#0" expanded="true" />
+                <element signature="e#14000#14001#0" expanded="true" />
+                <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HelperAnalysisMaps.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMaps.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SettingMenu.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
+      <file leaf-file-name="WirelessAdapterCommunication.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5245009" vertical-offset="0" max-vertical-offset="765">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="475" max-vertical-offset="1411">
+              <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#SettingMenu#0;class#SettingMenu#0" expanded="true" />
-                <element signature="e#472#473#0" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="method#setEvents#0;class#SettingMenu#0" expanded="true" />
+                <element signature="method#setChannelSwitchingRateMs#0;class#WirelessAdapterCommunication#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -109,8 +139,8 @@
       <file leaf-file-name="MainWindow.fxml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2222" max-vertical-offset="3570">
-              <caret line="138" column="15" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1669" max-vertical-offset="3502">
+              <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -169,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/Utils.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" />
@@ -177,9 +206,10 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMaps.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingButton.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
       </list>
     </option>
   </component>
@@ -422,6 +452,28 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="wirelessadapter" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="gui" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -449,72 +501,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev_communication" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1397,7 +1383,11 @@
       <created>1399326221575</created>
       <updated>1399326221575</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="Move settings menu to right">
+      <created>1399373954009</created>
+      <updated>1399373954010</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1430,6 +1420,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4925776" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46153846" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.38038436" order="12" side_tool="true" content_ui="tabs" />
@@ -1450,7 +1441,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49271524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.61895293" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
@@ -1511,7 +1501,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Remove unused checkboxes and button&#10;RSSI axis from -40 to -30" />
     <MESSAGE value="Organize classes" />
     <MESSAGE value="Add WIRELESS_ADAPTER dev type" />
     <MESSAGE value="Realization for: searchWirelessAdapters, chooseWirelessAdapter, switchToMonitorMode" />
@@ -1536,7 +1525,8 @@
     <MESSAGE value="Libs" />
     <MESSAGE value="RSSI min up" />
     <MESSAGE value="AVR" />
-    <option name="LAST_COMMIT_MESSAGE" value="AVR" />
+    <MESSAGE value="Move settings menu to right" />
+    <option name="LAST_COMMIT_MESSAGE" value="Move settings menu to right" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1564,29 +1554,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="13634">
-          <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="6528">
-          <caret line="316" column="5" selection-start-line="316" selection-start-column="5" selection-end-line="316" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1326">
           <caret line="100" column="50" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="50" />
           <folding>
-            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="true" />
-            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="true" />
+            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="false" />
+            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1595,7 +1569,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13634">
           <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3400#3401#0" expanded="true" />
+            <element signature="e#3431#3432#0" expanded="true" />
+            <element signature="e#3481#3482#0" expanded="true" />
+            <element signature="e#3505#3506#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initPopupMenu#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#13970#13971#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1612,8 +1614,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
           <caret line="113" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="true" />
-            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="true" />
+            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="false" />
+            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1622,7 +1624,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13634">
           <caret line="62" column="4" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3400#3401#0" expanded="true" />
+            <element signature="e#3431#3432#0" expanded="true" />
+            <element signature="e#3481#3482#0" expanded="true" />
+            <element signature="e#3505#3506#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initPopupMenu#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#13970#13971#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1639,8 +1669,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="1105">
           <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
           <folding>
-            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="true" />
-            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="true" />
+            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="false" />
+            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1649,7 +1679,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13617">
           <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3400#3401#0" expanded="true" />
+            <element signature="e#3431#3432#0" expanded="true" />
+            <element signature="e#3481#3482#0" expanded="true" />
+            <element signature="e#3505#3506#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initPopupMenu#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#13970#13971#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1911,8 +1969,8 @@
         <state vertical-scroll-proportion="0.68262655" vertical-offset="555" max-vertical-offset="1326">
           <caret line="130" column="17" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
           <folding>
-            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="true" />
-            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="true" />
+            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="false" />
+            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1925,18 +1983,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1495" max-vertical-offset="3077">
-          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
-          <folding />
+        <state vertical-scroll-proportion="0.233672" vertical-offset="26" max-vertical-offset="765">
+          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#SettingMenu#0;class#SettingMenu#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="method#setEvents#0;class#SettingMenu#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2222" max-vertical-offset="3570">
-          <caret line="138" column="15" selection-start-line="138" selection-start-column="15" selection-end-line="138" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1669" max-vertical-offset="3502">
+          <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1944,16 +2008,56 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMaps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5245009" vertical-offset="0" max-vertical-offset="765">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="475" max-vertical-offset="1411">
+          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+          <folding>
+            <element signature="method#setChannelSwitchingRateMs#0;class#WirelessAdapterCommunication#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55390334" vertical-offset="7675" max-vertical-offset="13617">
+          <caret line="469" column="25" selection-start-line="469" selection-start-column="25" selection-end-line="469" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#SettingMenu#0;class#SettingMenu#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="method#setEvents#0;class#SettingMenu#0" expanded="true" />
+            <element signature="e#3400#3401#0" expanded="true" />
+            <element signature="e#3431#3432#0" expanded="true" />
+            <element signature="e#3481#3482#0" expanded="true" />
+            <element signature="e#3505#3506#0" expanded="true" />
+            <element signature="method#getInstance#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartBlockingTimer#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initPopupMenu#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initXYLines#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartLegend#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#13970#13971#0" expanded="true" />
+            <element signature="e#14000#14001#0" expanded="true" />
+            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
           </folding>
         </state>
       </provider>
