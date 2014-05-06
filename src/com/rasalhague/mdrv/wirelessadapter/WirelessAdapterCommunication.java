@@ -237,9 +237,16 @@ public class WirelessAdapterCommunication implements Runnable
                     byte dB = Byte.valueOf(matcher.group("dB"));
                     int IV = Integer.parseInt(matcher.group("IV"), 16);
 
-                    WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
-
-                    notifyWirelessAdapterDataListeners(wirelessAdapterData);
+                    //filter from -20dBm to -105dBm
+                    if (dB >= -105 && dB <= -20)
+                    {
+                        WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
+                        notifyWirelessAdapterDataListeners(wirelessAdapterData);
+                    }
+                    else
+                    {
+                        ApplicationLogger.LOGGER.warning("dB = " + dB);
+                    }
                 }
             }
         }
