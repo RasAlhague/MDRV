@@ -149,7 +149,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         bindTooltipToLineChart(lineChart, tooltipPane);
         initChartLegend(chartLegendVbox, lineChart);
         initXYLines(horizontalLine, verticalLine, lineChart);
-        //        initPopupMenu(controlBntsVBox, scene);
         initReplaySlider(replaySlider);
         initChartUpdateDelayTextField(chartUpdateDelayTextField);
         initChartBlockingTimer();
@@ -181,24 +180,6 @@ public class MainWindowController extends Application implements AnalysisPerform
             chartCanUpdate = true;
 
         }, 0, chartUpdateDelayMs, TimeUnit.MILLISECONDS);
-    }
-
-    private void initPopupMenu(VBox controlBntsVBox, Scene scene)
-    {
-        double width = controlBntsVBox.getWidth();
-        double height = controlBntsVBox.getHeight();
-
-        scene.setOnMouseMoved((MouseEvent mouseEvent) -> {
-
-            if (mouseEvent.getSceneX() < width && mouseEvent.getSceneY() < height)
-            {
-                controlBntsVBox.setVisible(true);
-            }
-            else
-            {
-                controlBntsVBox.setVisible(false);
-            }
-        });
     }
 
     private void initXYLines(Line horizontalLine, Line verticalLine, LineChart<Number, Number> lineChart)
@@ -419,20 +400,17 @@ public class MainWindowController extends Application implements AnalysisPerform
              * Mouse coordinates
              */
             double xAxisValueForDisplay = (double) xAxis.getValueForDisplay(mouseEvent.getX());
-            //            Double yAxisValueForDisplay = (Double) yAxis.getValueForDisplay(mouseEvent.getY());
+            float scanRange = 0.25f;
 
-            ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
-            for (XYChart.Series<Number, Number> numberSeries : lineChartData)
-            {
-                ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
-                for (XYChart.Data<Number, Number> numberData : data)
-                {
+            lineChart.getData().forEach(numberSeries -> {
+
+                numberSeries.getData().forEach(numberData -> {
+
                     float xValue = (float) numberData.getXValue();
                     Number yValue = numberData.getYValue();
-                    float range = 0.25f;
                     ArrayList<Text> rowTexts = new ArrayList<>();
 
-                    if (xValue > xAxisValueForDisplay - range && xValue < xAxisValueForDisplay + range)
+                    if (xValue > xAxisValueForDisplay - scanRange && xValue < xAxisValueForDisplay + scanRange)
                     {
                         /**
                          * Create Text object, configure and add it to row array
@@ -452,11 +430,11 @@ public class MainWindowController extends Application implements AnalysisPerform
                             rowsToView.put(rowTexts, numberSeriesNode.isVisible());
                         }
 
+                        //TODO MEMORY LEAK
                         //Get numberSeries color and set it to text
                         String numberSeriesString = numberSeriesNode.toString();
                         int indexOf = numberSeriesString.indexOf("stroke=");
                         String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
-
                         for (Text text : rowTexts)
                         {
                             text.setFill(Paint.valueOf(substring));
@@ -483,8 +461,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                             numberData.getNode().setEffect(null);
                         }
                     }
-                }
-            }
+
+                });
+            });
 
             /**
              * Add rowsToView with text objects to the tooltipPane
@@ -748,6 +727,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      */
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+                    XYChart.Data<Number, Number> numberData;
 
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
@@ -758,7 +738,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
                                 for (int i = 0; i < data.size(); i++)
                                 {
-                                    XYChart.Data<Number, Number> numberData = data.get(i);
+                                    numberData = data.get(i);
                                     numberData.setYValue(series.getData().get(i).getYValue());
                                 }
 
