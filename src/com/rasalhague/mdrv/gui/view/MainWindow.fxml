@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
@@ -444,7 +444,7 @@
                                 disable = "false"
                                 forceZeroInRange = "false"
                                 label = "RSSI, dBm"
-                                lowerBound = "-110.0"
+                                lowerBound = "-115.0"
                                 minorTickCount = "5"
                                 minorTickVisible = "false"
                                 side = "LEFT"
@@ -453,7 +453,7 @@
                                 tickLength = "5.0"
                                 tickMarkVisible = "true"
                                 tickUnit = "5.0"
-                                upperBound = "-20.0"/>
+                                upperBound = "-30.0"/>
                 </yAxis>
                 <padding>
                     <Insets fx:id = "x2"/>
@@ -567,77 +567,137 @@
                   strokeWidth = "0.8"/>
         </children>
     </Group>
-    <VBox fx:id = "controlBntsVBox"
-          fillWidth = "true"
-          padding = "$x1"
-          prefHeight = "-1.0"
-          prefWidth = "-1.0"
-          spacing = "3.0"
-          visible = "true"
-          AnchorPane.leftAnchor = "0.0"
-          AnchorPane.topAnchor = "0.0">
+    <GridPane gridLinesVisible = "false"
+              hgap = "5.0"
+              mouseTransparent = "false"
+              prefHeight = "-1.0"
+              snapToPixel = "true"
+              vgap = "0.0"
+              AnchorPane.bottomAnchor = "0.0"
+              AnchorPane.rightAnchor = "0.0"
+              AnchorPane.topAnchor = "0.0">
         <children>
-            <Button fx:id = "openReplayBtn"
-                    mnemonicParsing = "false"
-                    onAction = "#openReplayBtnClick"
-                    text = "Open replay"
-                    VBox.vgrow = "NEVER"/>
-            <Button fx:id = "refreshChartButton"
+            <Button fx:id = "settingButton"
                     cancelButton = "false"
                     defaultButton = "false"
+                    maxHeight = "-1.0"
+                    maxWidth = "-1.0"
+                    minHeight = "-Infinity"
+                    minWidth = "-Infinity"
                     mnemonicParsing = "false"
-                    onMouseClicked = "#refreshChartButtonClickEvent"
-                    text = "Refresh chart"
-                    VBox.vgrow = "NEVER"/>
-            <Button fx:id = "showDebugInfoBnt"
-                    mnemonicParsing = "false"
-                    onMouseClicked = "#showDebugInfoBntClick"
-                    text = "Show debug info"
-                    VBox.vgrow = "NEVER"/>
-            <CheckBox fx:id = "maxCheckBox"
-                      allowIndeterminate = "false"
-                      disable = "true"
-                      indeterminate = "false"
-                      mnemonicParsing = "false"
-                      selected = "true"
-                      text = "Max"
-                      underline = "false"
-                      visible = "true"/>
-            <CheckBox fx:id = "modeCheckBox"
-                      disable = "true"
-                      mnemonicParsing = "false"
-                      selected = "true"
-                      text = "Mode"
-                      visible = "true"
-                      VBox.vgrow = "SOMETIMES"/>
-            <CheckBox fx:id = "medianCheckBox"
-                      disable = "true"
-                      mnemonicParsing = "false"
-                      selected = "true"
-                      text = "Median"
-                      visible = "true"
-                      VBox.vgrow = "SOMETIMES"/>
-            <CheckBox id = "verticalLineSwitcher"
-                      fx:id = "horizontalLineSwitcher"
-                      mnemonicParsing = "false"
-                      onAction = "#horizontalLineSwitchEvent"
-                      selected = "false"
-                      text = "Horizontal line"/>
-            <CheckBox fx:id = "verticalLineSwitcher"
-                      mnemonicParsing = "false"
-                      onAction = "#verticalLineSwitchEvent"
-                      selected = "true"
-                      text = "Vertical line"/>
-            <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
-            <HBox alignment = "CENTER" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
+                    mouseTransparent = "false"
+                    prefHeight = "45.0"
+                    prefWidth = "8.0"
+                    text = ""
+                    GridPane.columnIndex = "1"
+                    GridPane.halignment = "CENTER"
+                    GridPane.hgrow = "ALWAYS"
+                    GridPane.rowIndex = "0"
+                    GridPane.valignment = "CENTER"
+                    GridPane.vgrow = "ALWAYS"/>
+            <VBox fx:id = "controlBntsVBox"
+                  fillWidth = "true"
+                  focusTraversable = "false"
+                  maxHeight = "-Infinity"
+                  maxWidth = "-Infinity"
+                  minHeight = "-Infinity"
+                  minWidth = "-Infinity"
+                  prefHeight = "-1.0"
+                  prefWidth = "-1.0"
+                  spacing = "3.0"
+                  visible = "true"
+                  GridPane.columnIndex = "0"
+                  GridPane.halignment = "CENTER"
+                  GridPane.hgrow = "ALWAYS"
+                  GridPane.rowIndex = "0"
+                  GridPane.valignment = "CENTER"
+                  GridPane.vgrow = "NEVER">
                 <children>
-                    <Label text = "Chart update delay"/>
-                    <TextField fx:id = "chartUpdateDelayTextField"
-                               prefWidth = "48.0"
-                               promptText = "Chart update delay"
-                               text = "1000"/>
+                    <Button fx:id = "openReplayBtn"
+                            mnemonicParsing = "false"
+                            onAction = "#openReplayBtnClick"
+                            text = "Open replay"
+                            VBox.vgrow = "NEVER"/>
+                    <Button fx:id = "refreshChartButton"
+                            cancelButton = "false"
+                            defaultButton = "false"
+                            mnemonicParsing = "false"
+                            onMouseClicked = "#refreshChartButtonClickEvent"
+                            text = "Refresh chart"
+                            VBox.vgrow = "NEVER"/>
+                    <Button fx:id = "showDebugInfoBnt"
+                            mnemonicParsing = "false"
+                            onMouseClicked = "#showDebugInfoBntClick"
+                            text = "Show debug info"
+                            VBox.vgrow = "NEVER"/>
+                    <CheckBox fx:id = "maxCheckBox"
+                              allowIndeterminate = "false"
+                              disable = "true"
+                              indeterminate = "false"
+                              mnemonicParsing = "false"
+                              selected = "true"
+                              text = "Max"
+                              underline = "false"
+                              visible = "true"/>
+                    <CheckBox fx:id = "modeCheckBox"
+                              disable = "true"
+                              mnemonicParsing = "false"
+                              selected = "true"
+                              text = "Mode"
+                              visible = "true"
+                              VBox.vgrow = "SOMETIMES"/>
+                    <CheckBox fx:id = "medianCheckBox"
+                              disable = "true"
+                              mnemonicParsing = "false"
+                              selected = "true"
+                              text = "Median"
+                              visible = "true"
+                              VBox.vgrow = "SOMETIMES"/>
+                    <CheckBox id = "verticalLineSwitcher"
+                              fx:id = "horizontalLineSwitcher"
+                              mnemonicParsing = "false"
+                              onAction = "#horizontalLineSwitchEvent"
+                              selected = "false"
+                              text = "Horizontal line"/>
+                    <CheckBox fx:id = "verticalLineSwitcher"
+                              mnemonicParsing = "false"
+                              onAction = "#verticalLineSwitchEvent"
+                              selected = "true"
+                              text = "Vertical line"/>
+                    <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
+                    <HBox alignment = "CENTER" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
+                        <children>
+                            <Label text = "Chart update delay"/>
+                            <TextField fx:id = "chartUpdateDelayTextField"
+                                       prefWidth = "48.0"
+                                       promptText = "Chart update delay"
+                                       text = "1000"/>
+                        </children>
+                    </HBox>
                 </children>
-            </HBox>
+                <padding>
+                    <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
+                </padding>
+            </VBox>
         </children>
-    </VBox>
+        <columnConstraints>
+            <ColumnConstraints fillWidth = "true"
+                               halignment = "CENTER"
+                               hgrow = "ALWAYS"
+                               maxWidth = "-Infinity"
+                               minWidth = "-Infinity"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "-1.0" prefWidth = "-1.0"/>
+        </columnConstraints>
+        <padding>
+            <Insets fx:id = "x2"/>
+        </padding>
+        <rowConstraints>
+            <RowConstraints fillHeight = "true"
+                            minHeight = "-1.0"
+                            prefHeight = "-1.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+        </rowConstraints>
+    </GridPane>
 </AnchorPane>

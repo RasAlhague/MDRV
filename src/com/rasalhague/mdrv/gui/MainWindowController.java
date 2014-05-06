@@ -67,6 +67,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  TextField                 chartUpdateDelayTextField;
     public GridPane channelsGrid;
     public Pane     channelPane1;
+    public Button   settingButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -147,11 +148,14 @@ public class MainWindowController extends Application implements AnalysisPerform
         chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
         channelsGrid = (GridPane) scene.lookup("#channelsGrid");
         channelPane1 = (Pane) scene.lookup("#channelPane1");
+        settingButton = (Button) scene.lookup("#settingButton");
+
+        new SettingMenu(settingButton, controlBntsVBox);
 
         bindTooltipToLineChart(lineChart, tooltipPane);
         initChartLegend(chartLegendVbox, lineChart);
         initXYLines(horizontalLine, verticalLine, lineChart);
-        initPopupMenu(controlBntsVBox, scene);
+        //        initPopupMenu(controlBntsVBox, scene);
         initReplaySlider(replaySlider);
         initChartUpdateDelayTextField(chartUpdateDelayTextField);
         initChartBlockingTimer();
