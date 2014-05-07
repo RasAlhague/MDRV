@@ -691,19 +691,20 @@ public class MainWindowController extends Application implements AnalysisPerform
             Set<AnalysisKey> analysisForDeviceKeys = analysisForDevice.keySet();
             for (AnalysisKey analysisForDeviceKey : analysisForDeviceKeys)
             {
-                /**
-                 * Generate XYChart.Series
-                 */
-                XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
-                series.setName(seriesName);
-
                 if ((analysisForDeviceKey == AnalysisKey.MAX) ||
                         (analysisForDeviceKey == AnalysisKey.MODE) ||
                         (analysisForDeviceKey == AnalysisKey.MEDIAN) ||
                         (analysisForDeviceKey == AnalysisKey.CURRENT) ||
                         (analysisForDeviceKey == AnalysisKey.AVR))
                 {
+
+                    /**
+                     * Generate XYChart.Series
+                     */
+                    XYChart.Series<Number, Number> series = new XYChart.Series<>();
+                    String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
+                    series.setName(seriesName);
+
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
 
                     //get seriesData from XYChart.Series to work with
