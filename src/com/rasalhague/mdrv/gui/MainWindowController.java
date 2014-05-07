@@ -110,7 +110,10 @@ public class MainWindowController extends Application implements AnalysisPerform
             //behavior
             textField.textProperty().addListener((observable, oldValue, newValue) -> {
 
-                connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+                if (Float.valueOf(newValue) >= 100)
+                {
+                    connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+                }
             });
 
             //add container
