@@ -14,6 +14,36 @@ import java.util.regex.Pattern;
 
 public class Utils
 {
+    public static boolean installInxi()
+    {
+        ArrayList<String> result = new ArrayList<>();
+        try
+        {
+            String resultExecute;
+            Runtime runtime = Runtime.getRuntime();
+            Process process = runtime.exec(new String[]{"/bin/bash", "-c", "apt-get install inxi"});
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            while ((resultExecute = bufferedReader.readLine()) != null)
+            {
+                result.add(resultExecute);
+                ApplicationLogger.LOGGER.info(resultExecute);
+            }
+
+            if (result.contains("Setting up inxi"))
+            {
+                return true;
+            }
+        }
+        catch (IOException e)
+        {
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            e.printStackTrace();
+            return false;
+        }
+
+        return false;
+    }
+
     public static Stage prepareStageForDialog()
     {
         Stage dialogStage = new Stage();
