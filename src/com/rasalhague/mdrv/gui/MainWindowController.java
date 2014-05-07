@@ -771,6 +771,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                     /**
                      * Use XYChart.Series
                      * Update series
+                     * TODO it uses around 25% of CPU
                      */
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
@@ -779,6 +780,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                             if (numberSeries.getName().equals(seriesName))
                             {
+                                //TODO it uses around 25% of CPU
                                 XYChart.Data<Number, Number> numberData;
                                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
                                 for (int i = 0; i < data.size(); i++)
@@ -791,6 +793,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                         numberData.setXValue(seriesData.get(i).getXValue());
                                     }
                                 }
+                                //--------
 
                                 //set opacity to non created series
                                 if (analysisForDevice.containsKey(AnalysisKey.NEW_SERIES) &&
