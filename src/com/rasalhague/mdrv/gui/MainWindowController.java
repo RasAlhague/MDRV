@@ -22,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -70,9 +71,9 @@ public class MainWindowController extends Application implements AnalysisPerform
     public Button   settingButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
-    private static int                            chartUpdateDelayMs      = 1000;
-    private static ScheduledExecutorService       chartCanUpdateTimer     = Executors.newSingleThreadScheduledExecutor();
-    private static HashMap<DeviceInfo, TextField> channelSpacingDevToText = new HashMap<>();
+    private static int                       chartUpdateDelayMs  = 1000;
+    private static ScheduledExecutorService  chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
+    private static HashMap<DeviceInfo, Byte> devToRssiShiftMap   = new HashMap<>();
 
     public MainWindowController()
     {
@@ -90,25 +91,45 @@ public class MainWindowController extends Application implements AnalysisPerform
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED &&
                 connectedDevice.getChannelSpacing() != 0)
         {
-            //create container, label, TextField
-            HBox hBox = new HBox();
-            Label label = new Label();
-            TextField textField = new TextField();
+            //create container, labelChannelSpacing, TextField
+            VBox vBoxContainer = new VBox();
+            HBox hBoxChannelSpacing = new HBox();
+            HBox hBoxRssiShift = new HBox();
+            Label labelDeviceName = new Label();
+            Label labelChannelSpacing = new Label();
+            Label labelRssiShift = new Label();
+            TextField textFieldChannelSpacing = new TextField();
+            TextField textFieldRssiShift = new TextField();
 
-            //contain
-            hBox.getChildren().add(label);
-            hBox.getChildren().add(textField);
+            //containing
+            vBoxContainer.getChildren().add(labelDeviceName);
+            vBoxContainer.getChildren().add(hBoxChannelSpacing);
+            vBoxContainer.getChildren().add(hBoxRssiShift);
+
+            hBoxChannelSpacing.getChildren().add(labelChannelSpacing);
+            hBoxChannelSpacing.getChildren().add(textFieldChannelSpacing);
+
+            hBoxRssiShift.getChildren().add(labelRssiShift);
+            hBoxRssiShift.getChildren().add(textFieldRssiShift);
 
             //configure
-            hBox.setAlignment(Pos.CENTER_LEFT);
+            vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
+            vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
 
-            textField.setPrefWidth(75);
-            textField.setText(String.valueOf(connectedDevice.getChannelSpacing()));
+            hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
+            hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
 
-            label.setText(connectedDevice.getName() + " channel spacing");
+            textFieldChannelSpacing.setPrefWidth(75);
+            textFieldRssiShift.setPrefWidth(50);
+            textFieldChannelSpacing.setText(String.valueOf(connectedDevice.getChannelSpacing()));
+            textFieldRssiShift.setText("0");
+
+            labelChannelSpacing.setText("Channel spacing, kHz");
+            labelRssiShift.setText("Rssi shift");
+            labelDeviceName.setText(connectedDevice.getName());
 
             //behavior
-            textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
 
                 if (Float.valueOf(newValue) >= 100)
                 {
@@ -116,13 +137,20 @@ public class MainWindowController extends Application implements AnalysisPerform
                 }
             });
 
+            devToRssiShiftMap.put(connectedDevice, (byte) 0);
+            textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
+
+                if (!newValue.equals(""))
+                {
+                    devToRssiShiftMap.put(connectedDevice, Byte.valueOf(newValue));
+                }
+            });
+
             //add container
             Platform.runLater(() -> {
 
-                controlBntsVBox.getChildren().add(hBox);
+                controlBntsVBox.getChildren().add(vBoxContainer);
             });
-
-            channelSpacingDevToText.put(connectedDevice, textField);
         }
     }
 
@@ -788,7 +816,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                                 for (int i = 0; i < data.size(); i++)
                                 {
                                     numberData = data.get(i);
-                                    numberData.setYValue(seriesData.get(i).getYValue());
+
+                                    numberData.setYValue(seriesData.get(i).getYValue().byteValue() +
+                                                                 devToRssiShiftMap.get(deviceInfo));
 
                                     if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
                                     {

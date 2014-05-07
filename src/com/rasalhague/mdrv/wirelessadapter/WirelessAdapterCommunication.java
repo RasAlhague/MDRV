@@ -180,12 +180,8 @@ public class WirelessAdapterCommunication implements Runnable
 
     private void startChannelSwitching(WirelessAdapter wirelessAdapter)
     {
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-
-            int channel = wirelessAdapter.nextChannel();
-            System.out.println(channel);
-
-        }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
+        Executors.newSingleThreadScheduledExecutor()
+                 .scheduleAtFixedRate(wirelessAdapter::nextChannel, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
         ApplicationLogger.LOGGER.info("Channel switching has been started in " +
                                               wirelessAdapter.getChannelRoundSwitcher().getMinValue() +

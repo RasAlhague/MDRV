@@ -559,6 +559,17 @@
                   strokeWidth = "0.8"/>
         </children>
     </Group>
+    <VBox fx:id = "chartLegendVbox"
+          mouseTransparent = "false"
+          prefHeight = "-1.0"
+          prefWidth = "-1.0"
+          spacing = "3.0"
+          AnchorPane.rightAnchor = "0.0"
+          AnchorPane.topAnchor = "0.0">
+        <padding>
+            <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
+        </padding>
+    </VBox>
     <GridPane gridLinesVisible = "false"
               hgap = "5.0"
               mouseTransparent = "false"
@@ -594,6 +605,7 @@
                   maxWidth = "-Infinity"
                   minHeight = "-Infinity"
                   minWidth = "-Infinity"
+                  padding = "$x1"
                   prefHeight = "-1.0"
                   prefWidth = "-1.0"
                   spacing = "3.0"
@@ -644,9 +656,6 @@
                         </children>
                     </HBox>
                 </children>
-                <padding>
-                    <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
-                </padding>
             </VBox>
         </children>
         <columnConstraints>
@@ -669,12 +678,4 @@
                             vgrow = "ALWAYS"/>
         </rowConstraints>
     </GridPane>
-    <VBox fx:id = "chartLegendVbox"
-          mouseTransparent = "false"
-          padding = "$x1"
-          prefHeight = "-1.0"
-          prefWidth = "-1.0"
-          spacing = "3.0"
-          AnchorPane.rightAnchor = "0.0"
-          AnchorPane.topAnchor = "0.0"/>
 </AnchorPane>
