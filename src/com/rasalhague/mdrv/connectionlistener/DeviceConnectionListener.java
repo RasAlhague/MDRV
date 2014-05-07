@@ -33,24 +33,29 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
     }
 
+    public static DeviceConnectionListener getInstance()
+    {
+        return instance;
+    }
+
     private DeviceConnectionListener()
     {
         addListener(this);
     }
 
-    public static void startListening()
+    public void startListening()
     {
-        instance.runSchedule();
+        runSchedule();
     }
 
-    public static void stopListening()
+    public void stopListening()
     {
-        instance.cancelSchedule();
+        cancelSchedule();
     }
 
-    public static boolean isListening()
+    public boolean isListening()
     {
-        return instance.isListening;
+        return isListening;
     }
 
     private void runSchedule()
@@ -209,7 +214,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     //region Observer implementation
 
-    void addListener(DeviceConnectionListenerI toAdd)
+    public void addListener(DeviceConnectionListenerI toAdd)
     {
         listeners.add(toAdd);
     }

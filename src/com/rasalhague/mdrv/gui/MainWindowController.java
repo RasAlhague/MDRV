@@ -7,6 +7,8 @@ import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
+import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
+import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -20,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,7 +49,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MainWindowController extends Application implements AnalysisPerformedListener
+public class MainWindowController extends Application implements AnalysisPerformedListener, DeviceConnectionListenerI
 {
     private static          MainWindowController      instance;
     public                  LineChart<Number, Number> lineChart;
@@ -67,8 +70,9 @@ public class MainWindowController extends Application implements AnalysisPerform
     public Button   settingButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
-    private static int                      chartUpdateDelayMs  = 1000;
-    private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
+    private static int                            chartUpdateDelayMs      = 1000;
+    private static ScheduledExecutorService       chartCanUpdateTimer     = Executors.newSingleThreadScheduledExecutor();
+    private static HashMap<DeviceInfo, TextField> channelSpacingDevToText = new HashMap<>();
 
     public MainWindowController()
     {
@@ -78,6 +82,45 @@ public class MainWindowController extends Application implements AnalysisPerform
     public static void main(String[] args)
     {
         launch();
+    }
+
+    @Override
+    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
+    {
+        if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED &&
+                connectedDevice.getChannelSpacing() != 0)
+        {
+            //create container, label, TextField
+            HBox hBox = new HBox();
+            Label label = new Label();
+            TextField textField = new TextField();
+
+            //contain
+            hBox.getChildren().add(label);
+            hBox.getChildren().add(textField);
+
+            //configure
+            hBox.setAlignment(Pos.CENTER_LEFT);
+
+            textField.setPrefWidth(75);
+            textField.setText(String.valueOf(connectedDevice.getChannelSpacing()));
+
+            label.setText(connectedDevice.getName() + " channel spacing");
+
+            //behavior
+            textField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+                connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+            });
+
+            //add container
+            Platform.runLater(() -> {
+
+                controlBntsVBox.getChildren().add(hBox);
+            });
+
+            channelSpacingDevToText.put(connectedDevice, textField);
+        }
     }
 
     private static MainWindowController getInstance()
@@ -114,10 +157,11 @@ public class MainWindowController extends Application implements AnalysisPerform
 
             PacketLogger.getInstance().closeWriter();
 
+            DeviceConnectionListener deviceConnectionListener = DeviceConnectionListener.getInstance();
             //Need to stop coz thread prevent exit program
-            if (DeviceConnectionListener.isListening())
+            if (deviceConnectionListener.isListening())
             {
-                DeviceConnectionListener.stopListening();
+                deviceConnectionListener.stopListening();
             }
 
             //TODO correct program closing
@@ -156,6 +200,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
+        DeviceConnectionListener.getInstance().addListener(getInstance());
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = new WirelessAdapterCommunication();
@@ -163,7 +208,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         wirelessAdapterCommunicationThread.start();
 
         //fake button press
-        DeviceConnectionListener.startListening();
+        DeviceConnectionListener.getInstance().startListening();
     }
 
     /**
@@ -728,19 +773,23 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      */
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
-                    XYChart.Data<Number, Number> numberData;
-
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
-                        for (XYChart.Series<Number, Number> numberSeries : lineChartData)
-                        {
+                        lineChartData.forEach(numberSeries -> {
+
                             if (numberSeries.getName().equals(seriesName))
                             {
+                                XYChart.Data<Number, Number> numberData;
                                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
                                 for (int i = 0; i < data.size(); i++)
                                 {
                                     numberData = data.get(i);
-                                    numberData.setYValue(series.getData().get(i).getYValue());
+                                    numberData.setYValue(seriesData.get(i).getYValue());
+
+                                    if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
+                                    {
+                                        numberData.setXValue(seriesData.get(i).getXValue());
+                                    }
                                 }
 
                                 //set opacity to non created series
@@ -759,7 +808,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     }
                                 }
                             }
-                        }
+                        });
                     }
                     //or create if does not exist
                     else

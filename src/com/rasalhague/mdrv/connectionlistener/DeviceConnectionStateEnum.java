@@ -1,6 +1,6 @@
 package com.rasalhague.mdrv.connectionlistener;
 
-enum DeviceConnectionStateEnum
+public enum DeviceConnectionStateEnum
 {
     CONNECTED,
     DISCONNECTED

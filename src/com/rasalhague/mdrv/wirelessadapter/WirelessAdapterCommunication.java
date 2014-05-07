@@ -61,6 +61,16 @@ public class WirelessAdapterCommunication implements Runnable
         else
         {
             ApplicationLogger.LOGGER.warning("Install Inxi for get able to connect wireless adapter.");
+            ApplicationLogger.LOGGER.warning("Trying to install Inxi...");
+
+            if (Utils.installInxi())
+            {
+                run();
+            }
+            else
+            {
+                ApplicationLogger.LOGGER.warning("Can not install Inxi automatically.");
+            }
         }
     }
 
@@ -226,34 +236,74 @@ public class WirelessAdapterCommunication implements Runnable
             while ((resultExecute = tcpDumpReader.readLine()) != null)
             {
                 Matcher matcher = Pattern.compile(
-                        "(?<!bad-fcs) (?<frequency>\\d{4}) MHz.*(?<dB>-\\d{2,3})dB.*IV: *(?<IV>.*?) ")
-                                         .matcher(resultExecute);
+                        "(?<!bad-fcs)( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)" +
+                                "(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?" +
+                                "(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
+                ).matcher(resultExecute);
 
                 while (matcher.find())
                 {
                     byte channel = wirelessAdapter.getChannelToFrequencyMap()
                                                   .getKey(Short.valueOf(matcher.group("frequency")));
 
-                    byte dB = Byte.valueOf(matcher.group("dB"));
-                    int IV = Integer.parseInt(matcher.group("IV"), 16);
+                    try
+                    {
+                        byte dB = Byte.valueOf(matcher.group("dB"));
+                        String bpsFirst = matcher.group("MbFirst");
+                        String bpsSecond = matcher.group("MbSecond");
+                        float frequency = Float.valueOf(matcher.group("frequency"));
+                        String standart = matcher.group("standart");
+                        float bps;
 
-                    //filter from -20dBm to -105dBm
-                    byte lowerLimit = -110;
-                    byte upperLimit = -20;
-                    if (dB >= lowerLimit && dB <= upperLimit)
-                    {
-                        WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel, dB, IV);
-                        notifyWirelessAdapterDataListeners(wirelessAdapterData);
+                        //TODO b/g/n
+                        //if bpsSecond == null that means channle have b or g standart (non n)
+                        if (bpsSecond == null || bpsSecond.isEmpty())
+                        {
+                            bps = Float.parseFloat(bpsFirst);
+                        }
+                        else
+                        {
+                            bps = Float.parseFloat(bpsSecond);
+
+                            if (standart.equals("g"))
+                            {
+                                standart = "n";
+                            }
+                        }
+                        System.out.print(standart);
+
+                        //filter from -20dBm to -105dBm
+                        byte lowerLimit = -110;
+                        byte upperLimit = -20;
+                        if (dB >= lowerLimit && dB <= upperLimit)
+                        {
+                            WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel,
+                                                                                              dB,
+                                                                                              bps,
+                                                                                              frequency,
+                                                                                              standart);
+                            notifyWirelessAdapterDataListeners(wirelessAdapterData);
+                        }
+                        else
+                        {
+                            //ApplicationLogger.LOGGER.warning("dB = " + dB);
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        ApplicationLogger.LOGGER.warning("dB = " + dB);
+                        ApplicationLogger.LOGGER.severe(e.getMessage());
+                        ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+                        ApplicationLogger.LOGGER.severe(resultExecute);
+
+                        e.printStackTrace();
                     }
                 }
             }
         }
         catch (IOException e)
         {
+            ApplicationLogger.LOGGER.severe(e.getMessage());
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
             e.printStackTrace();
         }
     }

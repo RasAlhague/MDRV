@@ -2,9 +2,11 @@ package com.rasalhague.mdrv.wirelessadapter;
 
 public class WirelessAdapterData
 {
-    private byte channel;
-    private byte dB;
-    private int  IV;
+    private byte   channel;
+    private byte   dB;
+    private float  bps;
+    private float  frequency;
+    private String standart;
 
     public byte getChannel()
     {
@@ -16,16 +18,28 @@ public class WirelessAdapterData
         return dB;
     }
 
-    public int getIV()
+    public float getBps()
     {
-        return IV;
+        return bps;
     }
 
-    public WirelessAdapterData(byte channel, byte dB, int IV)
+    public float getFrequency()
+    {
+        return frequency;
+    }
+
+    public String getStandart()
+    {
+        return standart;
+    }
+
+    public WirelessAdapterData(byte channel, byte dB, float bps, float frequency, String standart)
     {
         this.channel = channel;
         this.dB = dB;
-        this.IV = IV;
+        this.bps = bps;
+        this.frequency = frequency;
+        this.standart = standart;
     }
 
     @Override
@@ -34,7 +48,9 @@ public class WirelessAdapterData
         return "WirelessAdapterData{" +
                 "channel=" + channel +
                 ", dB=" + dB +
-                ", IV=" + IV +
+                ", bps=" + bps +
+                ", frequency=" + frequency +
+                ", standart='" + standart + '\'' +
                 '}';
     }
 }

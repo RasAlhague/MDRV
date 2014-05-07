@@ -136,6 +136,11 @@ public class DeviceInfo
         return channelSpacing;
     }
 
+    public void setChannelSpacing(float channelSpacing)
+    {
+        this.channelSpacing = channelSpacing;
+    }
+
     public boolean equalsPidVid(String pId, String vId)
     {
         return pId.equals(productID) && vId.equals(vendorID);
