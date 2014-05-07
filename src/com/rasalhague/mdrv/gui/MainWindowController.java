@@ -702,7 +702,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Generate XYChart.Series
                      */
                     XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                    String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString();
+                    String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString().toLowerCase();
                     series.setName(seriesName);
 
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
