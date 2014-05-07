@@ -229,20 +229,19 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     private void initXYLines(Line horizontalLine, Line verticalLine, LineChart<Number, Number> lineChart)
     {
-        //        Rectangle clip = new Rectangle(lineChart.getWidth(), lineChart.getHeight());
-        //        clip.setLayoutX(lineChart.getLayoutX());
-        //        clip.setLayoutY(lineChart.getLayoutY());
-        //        Rectangle clip2 = new Rectangle(lineChart.getWidth(), lineChart.getHeight());
-        //        clip.setLayoutX(lineChart.getLayoutX());
-        //        clip.setLayoutY(lineChart.getLayoutY());
+        final short verticalShift = 15;
+        final short horizontalShift = 15;
 
         lineChart.setOnMouseMoved((MouseEvent mouseEvent) -> {
 
-            horizontalLine.setLayoutX(lineChart.getLayoutX() + lineChart.getYAxis().getWidth());
-            horizontalLine.setEndX(lineChart.getWidth() - (lineChart.getLayoutX() + lineChart.getYAxis().getWidth()));
+            horizontalLine.setLayoutX(lineChart.getLayoutX() + lineChart.getYAxis().getWidth() + horizontalShift);
+            horizontalLine.setEndX(lineChart.getWidth() - (lineChart.getLayoutX() +
+                    lineChart.getYAxis().getWidth() +
+                    horizontalShift +
+                    3));
 
-            verticalLine.setLayoutY(lineChart.getLayoutY());
-            verticalLine.setEndY(lineChart.getHeight() - lineChart.getXAxis().getHeight());
+            verticalLine.setLayoutY(lineChart.getLayoutY() + verticalShift);
+            verticalLine.setEndY(lineChart.getHeight() - lineChart.getXAxis().getHeight() - verticalShift - 3);
 
             horizontalLine.setLayoutY(mouseEvent.getSceneY());
             verticalLine.setLayoutX(mouseEvent.getSceneX());
