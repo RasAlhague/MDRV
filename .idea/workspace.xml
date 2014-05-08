@@ -6,12 +6,11 @@
     <option name="CUSTOM_SCOPE_NAME" value="Module 'MDRV'" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add channel spacing setting">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Chart legend rework">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -76,49 +75,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9449378" vertical-offset="863" max-vertical-offset="5040">
-              <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="10110">
+              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
               <folding>
-                <element signature="e#14378#14444#0" expanded="false" />
-                <element signature="e#19486#19504#0" expanded="false" />
-                <element signature="e#23185#23249#0" expanded="false" />
+                <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+                <element signature="e#15104#15105#0" expanded="true" />
+                <element signature="e#15134#15135#0" expanded="true" />
+                <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+                <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+                <element signature="e#18078#18096#0" expanded="false" />
+                <element signature="e#21777#21841#0" expanded="false" />
+                <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+                <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
                 <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#27004#27094#0" expanded="false" />
-                <element signature="e#27777#27851#0" expanded="false" />
+                <element signature="e#25596#25686#0" expanded="false" />
+                <element signature="e#26369#26443#0" expanded="false" />
+                <element signature="e#31712#31722#0" expanded="false" />
+                <marker date="1399535750901" expanded="true" signature="4198:6932" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChartStyle.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css">
+      <file leaf-file-name="ChartLegend.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
-              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WirelessAdapterDataVisualizer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeviceInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1140">
-              <caret line="138" column="55" selection-start-line="138" selection-start-column="55" selection-end-line="138" selection-end-column="55" />
-              <folding />
+            <state vertical-scroll-proportion="0.3463588" vertical-offset="0" max-vertical-offset="1485">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+              <folding>
+                <element signature="method#generateChartLegendVBox#0;class#ChartLegend#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,7 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/PopupMenu.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
@@ -187,6 +183,7 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" />
       </list>
     </option>
   </component>
@@ -368,6 +365,80 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="MDRV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sun" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfxrt.jar" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sun" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pisces" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1509,7 +1580,11 @@
       <created>1399478295583</created>
       <updated>1399478295583</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="Add rssi shift setting">
+      <created>1399481055734</created>
+      <updated>1399481055735</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1542,7 +1617,7 @@
       <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21957672" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.38038436" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.30616173" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30828026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1623,7 +1698,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Fixes" />
     <MESSAGE value="Add toString" />
     <MESSAGE value="First Part of wireless adapter integration Complete!!!&#10;Now we have class that switch wireless adapter into monitor mode and starts listening tcpdump!" />
     <MESSAGE value="get min&#10;get max" />
@@ -1648,7 +1722,8 @@
     <MESSAGE value="TODO it uses around 25% of CPU" />
     <MESSAGE value="Fix XYLines length" />
     <MESSAGE value="Add check for channel spacing value" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add check for channel spacing value" />
+    <MESSAGE value="Add rssi shift setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add rssi shift setting" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1668,7 +1743,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="284" />
+      <option name="time" value="295" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1676,29 +1751,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13617">
-          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
-          <folding>
-            <element signature="e#14378#14444#0" expanded="false" />
-            <element signature="e#19486#19504#0" expanded="false" />
-            <element signature="e#23185#23249#0" expanded="false" />
-            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#27004#27094#0" expanded="false" />
-            <element signature="e#27777#27851#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1411">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4879" max-vertical-offset="4981">
@@ -2017,7 +2069,7 @@
         <state vertical-scroll-proportion="0.33333334" vertical-offset="683" max-vertical-offset="1170">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
-            <element signature="method#readDataFromDevice#0;class#HIDDeviceCommunication#0" expanded="true" />
+            <element signature="method#readDataFromDevice#0;class#HIDDeviceCommunication#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2049,13 +2101,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4938271" vertical-offset="36" max-vertical-offset="1215">
+          <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61728394" vertical-offset="0" max-vertical-offset="2640">
-          <caret line="183" column="47" selection-start-line="183" selection-start-column="47" selection-end-line="183" selection-end-column="47" />
+        <state vertical-scroll-proportion="1.632546" vertical-offset="203" max-vertical-offset="2640">
+          <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
           <folding>
             <element signature="method#setChannelSwitchingRateMs#0;class#WirelessAdapterCommunication#0" expanded="false" />
-            <element signature="method#chooseTcpDumpCommand#0;class#WirelessAdapterCommunication#0" expanded="true" />
+            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
             <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
             <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
             <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
@@ -2063,25 +2123,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/com/sun/pisces/PiscesRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1478" max-vertical-offset="2265">
+          <caret line="351" column="24" selection-start-line="351" selection-start-column="24" selection-end-line="351" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9449378" vertical-offset="863" max-vertical-offset="5040">
-          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="10110">
+          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
           <folding>
-            <element signature="e#14378#14444#0" expanded="false" />
-            <element signature="e#19486#19504#0" expanded="false" />
-            <element signature="e#23185#23249#0" expanded="false" />
+            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#15104#15105#0" expanded="true" />
+            <element signature="e#15134#15135#0" expanded="true" />
+            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
+            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
+            <element signature="e#18078#18096#0" expanded="false" />
+            <element signature="e#21777#21841#0" expanded="false" />
+            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
+            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
             <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#27004#27094#0" expanded="false" />
-            <element signature="e#27777#27851#0" expanded="false" />
+            <element signature="e#25596#25686#0" expanded="false" />
+            <element signature="e#26369#26443#0" expanded="false" />
+            <element signature="e#31712#31722#0" expanded="false" />
+            <marker date="1399535750901" expanded="true" signature="4198:6932" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3463588" vertical-offset="0" max-vertical-offset="1485">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="method#generateChartLegendVBox#0;class#ChartLegend#0" expanded="true" />
           </folding>
         </state>
       </provider>

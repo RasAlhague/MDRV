@@ -9,6 +9,7 @@ import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
+import com.rasalhague.mdrv.gui.view.ChartLegend;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -16,7 +17,6 @@ import com.rasalhague.mdrv.replay.Replay;
 import com.rasalhague.mdrv.wirelessadapter.WirelessAdapterCommunication;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -91,66 +91,71 @@ public class MainWindowController extends Application implements AnalysisPerform
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED &&
                 connectedDevice.getChannelSpacing() != 0)
         {
-            //create container, labelChannelSpacing, TextField
-            VBox vBoxContainer = new VBox();
-            HBox hBoxChannelSpacing = new HBox();
-            HBox hBoxRssiShift = new HBox();
-            Label labelDeviceName = new Label();
-            Label labelChannelSpacing = new Label();
-            Label labelRssiShift = new Label();
-            TextField textFieldChannelSpacing = new TextField();
-            TextField textFieldRssiShift = new TextField();
+            /**
+             * Settings
+             */
+            {
+                //create container, labelChannelSpacing, TextField
+                VBox vBoxContainer = new VBox();
+                HBox hBoxChannelSpacing = new HBox();
+                HBox hBoxRssiShift = new HBox();
+                Label labelDeviceName = new Label();
+                Label labelChannelSpacing = new Label();
+                Label labelRssiShift = new Label();
+                TextField textFieldChannelSpacing = new TextField();
+                TextField textFieldRssiShift = new TextField();
 
-            //containing
-            vBoxContainer.getChildren().add(labelDeviceName);
-            vBoxContainer.getChildren().add(hBoxChannelSpacing);
-            vBoxContainer.getChildren().add(hBoxRssiShift);
+                //containing
+                vBoxContainer.getChildren().add(labelDeviceName);
+                vBoxContainer.getChildren().add(hBoxChannelSpacing);
+                vBoxContainer.getChildren().add(hBoxRssiShift);
 
-            hBoxChannelSpacing.getChildren().add(labelChannelSpacing);
-            hBoxChannelSpacing.getChildren().add(textFieldChannelSpacing);
+                hBoxChannelSpacing.getChildren().add(labelChannelSpacing);
+                hBoxChannelSpacing.getChildren().add(textFieldChannelSpacing);
 
-            hBoxRssiShift.getChildren().add(labelRssiShift);
-            hBoxRssiShift.getChildren().add(textFieldRssiShift);
+                hBoxRssiShift.getChildren().add(labelRssiShift);
+                hBoxRssiShift.getChildren().add(textFieldRssiShift);
 
-            //configure
-            vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
-            vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
+                //configure
+                vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
+                vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
 
-            hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
-            hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
+                hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
+                hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
 
-            textFieldChannelSpacing.setPrefWidth(75);
-            textFieldRssiShift.setPrefWidth(50);
-            textFieldChannelSpacing.setText(String.valueOf(connectedDevice.getChannelSpacing()));
-            textFieldRssiShift.setText("0");
+                textFieldChannelSpacing.setPrefWidth(75);
+                textFieldRssiShift.setPrefWidth(50);
+                textFieldChannelSpacing.setText(String.valueOf(connectedDevice.getChannelSpacing()));
+                textFieldRssiShift.setText("0");
 
-            labelChannelSpacing.setText("Channel spacing, kHz");
-            labelRssiShift.setText("Rssi shift");
-            labelDeviceName.setText(connectedDevice.getName());
+                labelChannelSpacing.setText("Channel spacing, kHz");
+                labelRssiShift.setText("Rssi shift");
+                labelDeviceName.setText(connectedDevice.getName());
 
-            //behavior
-            textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
+                //behavior
+                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
 
-                if (Float.valueOf(newValue) >= 100)
-                {
-                    connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                }
-            });
+                    if (Float.valueOf(newValue) >= 100)
+                    {
+                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+                    }
+                });
 
-            devToRssiShiftMap.put(connectedDevice, (byte) 0);
-            textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
+                devToRssiShiftMap.put(connectedDevice, (byte) 0);
+                textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
 
-                if (!newValue.equals(""))
-                {
-                    devToRssiShiftMap.put(connectedDevice, Byte.valueOf(newValue));
-                }
-            });
+                    if (!newValue.equals("") && !newValue.equals("-"))
+                    {
+                        devToRssiShiftMap.put(connectedDevice, Byte.valueOf(newValue));
+                    }
+                });
 
-            //add container
-            Platform.runLater(() -> {
+                //add container
+                Platform.runLater(() -> {
 
-                controlBntsVBox.getChildren().add(vBoxContainer);
-            });
+                    controlBntsVBox.getChildren().add(vBoxContainer);
+                });
+            }
         }
     }
 
@@ -222,7 +227,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         new SettingMenu(settingButton, controlBntsVBox);
 
         bindTooltipToLineChart(lineChart, tooltipPane);
-        initChartLegend(chartLegendVbox, lineChart);
+        ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
         initXYLines(horizontalLine, verticalLine, lineChart);
         initReplaySlider(replaySlider);
         initChartUpdateDelayTextField(chartUpdateDelayTextField);
@@ -279,49 +284,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         });
     }
 
-    /**
-     * ChartLegendPane behavior realization
-     *
-     * @param lineChart
-     *
-     * @throws InterruptedException
-     */
-    private void initChartLegend(VBox chartLegendVbox, LineChart<Number, Number> lineChart)
-    {
-        /**
-         * Update legend list according to lineChart series
-         */
-        lineChart.getData().addListener((Observable observable) -> {
-
-            /**
-             * Delay needed for _TODO Color wont work coz first series return wrong data
-             */
-            int updateDelayMs = 50;
-            ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-            scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
-
-                chartLegendVbox.getChildren().clear();
-                lineChart.getData().forEach(series -> {
-
-                    //Get numberSeries color and set it to text
-                    String numberSeriesString = series.getNode().toString();
-                    int indexOf = numberSeriesString.indexOf("stroke=");
-                    String colorValue = numberSeriesString.substring(indexOf + 7, indexOf + 17);
-
-                    HBox hBox = new HBox();
-                    CheckBox checkBox = new CheckBox();
-                    checkBox.setOnMouseClicked(event -> series.getNode().setVisible(checkBox.isSelected()));
-                    hBox.getChildren().add(checkBox);
-
-                    checkBox.setSelected(true);
-                    checkBox.setText(series.getName());
-                    checkBox.setTextFill(Paint.valueOf(colorValue));
-
-                    chartLegendVbox.getChildren().add(hBox);
-                });
-            }), updateDelayMs, TimeUnit.MILLISECONDS);
-        });
-    }
 
     private void initReplaySlider(Slider replaySlider)
     {
