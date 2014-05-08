@@ -7,8 +7,6 @@ import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
-import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
-import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -21,8 +19,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,7 +28,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -49,7 +48,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MainWindowController extends Application implements AnalysisPerformedListener, DeviceConnectionListenerI
+public class MainWindowController extends Application implements AnalysisPerformedListener
 {
     private static          MainWindowController      instance;
     public                  LineChart<Number, Number> lineChart;
@@ -72,7 +71,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     private static volatile Boolean                   chartCanUpdate;
     private static int                       chartUpdateDelayMs  = 1000;
     private static ScheduledExecutorService  chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
-    private static HashMap<DeviceInfo, Byte> devToRssiShiftMap   = new HashMap<>();
 
     public MainWindowController()
     {
@@ -82,80 +80,6 @@ public class MainWindowController extends Application implements AnalysisPerform
     public static void main(String[] args)
     {
         launch();
-    }
-
-    @Override
-    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
-    {
-        if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED &&
-                connectedDevice.getChannelSpacing() != 0)
-        {
-            /**
-             * Settings
-             */
-            {
-                //create container, labelChannelSpacing, TextField
-                VBox vBoxContainer = new VBox();
-                HBox hBoxChannelSpacing = new HBox();
-                HBox hBoxRssiShift = new HBox();
-                Label labelDeviceName = new Label();
-                Label labelChannelSpacing = new Label();
-                Label labelRssiShift = new Label();
-                TextField textFieldChannelSpacing = new TextField();
-                TextField textFieldRssiShift = new TextField();
-
-                //containing
-                vBoxContainer.getChildren().add(labelDeviceName);
-                vBoxContainer.getChildren().add(hBoxChannelSpacing);
-                vBoxContainer.getChildren().add(hBoxRssiShift);
-
-                hBoxChannelSpacing.getChildren().add(labelChannelSpacing);
-                hBoxChannelSpacing.getChildren().add(textFieldChannelSpacing);
-
-                hBoxRssiShift.getChildren().add(labelRssiShift);
-                hBoxRssiShift.getChildren().add(textFieldRssiShift);
-
-                //configure
-                vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
-                vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
-
-                hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
-                hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
-
-                textFieldChannelSpacing.setPrefWidth(75);
-                textFieldRssiShift.setPrefWidth(50);
-                textFieldChannelSpacing.setText(String.valueOf(connectedDevice.getChannelSpacing()));
-                textFieldRssiShift.setText("0");
-
-                labelChannelSpacing.setText("Channel spacing, kHz");
-                labelRssiShift.setText("Rssi shift");
-                labelDeviceName.setText(connectedDevice.getName());
-
-                //behavior
-                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (Float.valueOf(newValue) >= 100)
-                    {
-                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                    }
-                });
-
-                devToRssiShiftMap.put(connectedDevice, (byte) 0);
-                textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (!newValue.equals("") && !newValue.equals("-"))
-                    {
-                        devToRssiShiftMap.put(connectedDevice, Byte.valueOf(newValue));
-                    }
-                });
-
-                //add container
-                Platform.runLater(() -> {
-
-                    controlBntsVBox.getChildren().add(vBoxContainer);
-                });
-            }
-        }
     }
 
     private static MainWindowController getInstance()
@@ -223,8 +147,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         channelPane1 = (Pane) scene.lookup("#channelPane1");
         settingButton = (Button) scene.lookup("#settingButton");
 
-        new SettingMenu(settingButton, controlBntsVBox);
-
+        //initialization
+        SettingMenu.getInstance().initSettingMenu(settingButton, controlBntsVBox);
         bindTooltipToLineChart(lineChart, tooltipPane);
         ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
         initXYLines(horizontalLine, verticalLine, lineChart);
@@ -235,7 +159,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
-        DeviceConnectionListener.getInstance().addListener(getInstance());
+        DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = new WirelessAdapterCommunication();
@@ -763,6 +687,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      * TODO it uses around 25% of CPU
                      */
+                    HashMap<DeviceInfo, Byte> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
