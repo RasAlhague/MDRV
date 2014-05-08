@@ -9,7 +9,6 @@ import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
-import com.rasalhague.mdrv.gui.view.ChartLegend;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -66,9 +65,9 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  CheckBox                  replayModeSwitcher;
     public                  Button                    openReplayBtn;
     public                  TextField                 chartUpdateDelayTextField;
-    public GridPane channelsGrid;
-    public Pane     channelPane1;
-    public Button   settingButton;
+    public                  GridPane                  channelsGrid;
+    public                  Pane                      channelPane1;
+    public                  Button                    settingButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                       chartUpdateDelayMs  = 1000;
@@ -283,7 +282,6 @@ public class MainWindowController extends Application implements AnalysisPerform
             verticalLine.setLayoutX(mouseEvent.getSceneX());
         });
     }
-
 
     private void initReplaySlider(Slider replaySlider)
     {

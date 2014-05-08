@@ -7,10 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Chart legend rework">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/commons-collections4-4.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/libs/controlsfx-8.0.5.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/artifacts/start.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/README.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/commons-lang3-3.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb-api-1.0.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-javadoc.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-natives.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-no-natives.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/libs/usb4java-1.0.0/lib/usb4java-1.0.0.jar" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/MDRV.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -78,44 +94,42 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="10110">
-              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding>
-                <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
-                <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#15104#15105#0" expanded="true" />
-                <element signature="e#15134#15135#0" expanded="true" />
-                <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
-                <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#18078#18096#0" expanded="false" />
-                <element signature="e#21777#21841#0" expanded="false" />
-                <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-                <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-                <element signature="e#25596#25686#0" expanded="false" />
-                <element signature="e#26369#26443#0" expanded="false" />
-                <element signature="e#31712#31722#0" expanded="false" />
-                <marker date="1399535750901" expanded="true" signature="4198:6932" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="12405">
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChartLegend.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java">
+      <file leaf-file-name="start.sh" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3463588" vertical-offset="0" max-vertical-offset="1485">
+            <state vertical-scroll-proportion="0.082530946" vertical-offset="0" max-vertical-offset="727">
+              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.fxml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="3105">
+              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChartLegend.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="2520">
               <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-              <folding>
-                <element signature="method#generateChartLegendVBox#0;class#ChartLegend#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/replayer/Replay.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/replayer/Replayer.java" />
@@ -177,21 +189,23 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/Utils.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterData.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
+    <option name="x" value="216" />
     <option name="y" value="25" />
-    <option name="width" value="1602" />
-    <option name="height" value="876" />
+    <option name="width" value="1405" />
+    <option name="height" value="874" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="My">
@@ -357,8 +371,8 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -366,80 +380,6 @@
               <option name="myItemId" value="MDRV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jfxrt.jar" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jfxrt.jar" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sun" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 (1) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jfxrt.jar" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sun" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pisces" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -480,168 +420,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wirelessadapter" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dev_communication" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectionlistener" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -658,10 +436,10 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.15607476" />
-    <property name="last_opened_file_path" value="/opt/JavaFXSceneBuilder1.1/JavaFXSceneBuilder1.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -1584,7 +1362,11 @@
       <created>1399481055734</created>
       <updated>1399481055735</updated>
     </task>
-    <option name="localTasksCounter" value="165" />
+    <task id="LOCAL-00165" summary="Chart legend rework">
+      <created>1399536653738</created>
+      <updated>1399536653738</updated>
+    </task>
+    <option name="localTasksCounter" value="166" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1608,24 +1390,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1602" height="876" extended-state="6" />
+    <frame x="216" y="25" width="1405" height="874" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32364598" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32229298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21957672" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2188329" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.30616173" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30828026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30820104" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866243" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20089859" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4920635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22997795" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46031746" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
@@ -1642,6 +1423,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3586819" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4920635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1698,7 +1480,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Add toString" />
     <MESSAGE value="First Part of wireless adapter integration Complete!!!&#10;Now we have class that switch wireless adapter into monitor mode and starts listening tcpdump!" />
     <MESSAGE value="get min&#10;get max" />
     <MESSAGE value="Refactoring" />
@@ -1723,7 +1504,8 @@
     <MESSAGE value="Fix XYLines length" />
     <MESSAGE value="Add check for channel spacing value" />
     <MESSAGE value="Add rssi shift setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add rssi shift setting" />
+    <MESSAGE value="Chart legend rework" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chart legend rework" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1751,14 +1533,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4879" max-vertical-offset="4981">
-          <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/google-gson-2.2.4/gson-2.2.4-sources.jar!/com/google/gson/JsonSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="1377">
@@ -1978,10 +1752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.68262655" vertical-offset="555" max-vertical-offset="1326">
           <caret line="130" column="17" selection-start-line="130" selection-start-column="17" selection-end-line="130" selection-end-column="17" />
-          <folding>
-            <element signature="method#COMDeviceCommunication#0;class#COMDeviceCommunication#0" expanded="false" />
-            <element signature="method#stop#0;class#COMDeviceCommunication#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1989,7 +1759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0" vertical-offset="0" max-vertical-offset="1207">
           <caret line="316" column="5" selection-start-line="316" selection-start-column="5" selection-end-line="316" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2011,7 +1780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5100">
           <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2019,10 +1787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61728394" vertical-offset="0" max-vertical-offset="729">
           <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-          <folding>
-            <element signature="method#WirelessAdapterData#0;class#WirelessAdapterData#0" expanded="true" />
-            <element signature="method#toString#0;class#WirelessAdapterData#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2030,9 +1794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3127572" vertical-offset="252" max-vertical-offset="1545">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="method#checkInxiExist#0;class#Utils#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2040,7 +1801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041152265" vertical-offset="0" max-vertical-offset="729">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2048,11 +1808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.333333" vertical-offset="0" max-vertical-offset="1815">
           <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-          <folding>
-            <element signature="method#getHIDDevicesList#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="method#deviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
-            <element signature="method#performDeviceConnectionEvent#0;class#DeviceConnectionListener#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2068,9 +1823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="683" max-vertical-offset="1170">
           <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="method#readDataFromDevice#0;class#HIDDeviceCommunication#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2078,7 +1830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2086,18 +1837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08230453" vertical-offset="0" max-vertical-offset="729">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15647227" vertical-offset="370" max-vertical-offset="10290">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2105,7 +1844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4938271" vertical-offset="36" max-vertical-offset="1215">
           <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2113,13 +1851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.632546" vertical-offset="203" max-vertical-offset="2640">
           <caret line="208" column="0" selection-start-line="208" selection-start-column="0" selection-end-line="208" selection-end-column="0" />
-          <folding>
-            <element signature="method#setChannelSwitchingRateMs#0;class#WirelessAdapterCommunication#0" expanded="false" />
-            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2127,48 +1858,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="1478" max-vertical-offset="2265">
           <caret line="351" column="24" selection-start-line="351" selection-start-column="24" selection-end-line="351" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="10110">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding>
-            <element signature="method#start#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initReplaySlider#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#initChartUpdateDelayTextField#0;class#MainWindowController#0" expanded="true" />
-            <element signature="docComment;method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#verticalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#horizontalLineSwitchEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#showDebugInfoBntClick#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#15104#15105#0" expanded="true" />
-            <element signature="e#15134#15135#0" expanded="true" />
-            <element signature="method#openReplayBtnClick#0;class#MainWindowController#0" expanded="true" />
-            <element signature="docComment;method#refreshChart#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#refreshChart#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#bindTooltipToLineChart#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#18078#18096#0" expanded="false" />
-            <element signature="e#21777#21841#0" expanded="false" />
-            <element signature="docComment;field#chartInUse#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#analysisPerformedEvent#0;class#MainWindowController#0" expanded="true" />
-            <element signature="method#updateChartSeries#0;class#MainWindowController#0" expanded="true" />
-            <element signature="e#25596#25686#0" expanded="false" />
-            <element signature="e#26369#26443#0" expanded="false" />
-            <element signature="e#31712#31722#0" expanded="false" />
-            <marker date="1399535750901" expanded="true" signature="4198:6932" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="4050">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3463588" vertical-offset="0" max-vertical-offset="1485">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="method#generateChartLegendVBox#0;class#ChartLegend#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-5.769231" vertical-offset="0" max-vertical-offset="3105">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.082530946" vertical-offset="0" max-vertical-offset="727">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2196,7 +1920,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2256,7 +1980,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>controlsfx-8.0.5</last-edited>
+          <last-edited>jssc</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

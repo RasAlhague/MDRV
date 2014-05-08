@@ -17,12 +17,13 @@
           <element id="library" level="project" name="gson-2.2.4" />
           <element id="library" level="project" name="jssc" />
           <element id="library" level="project" name="commons-lang3-3.2.1" />
-          <element id="library" level="project" name="javahidapi" />
           <element id="library" level="project" name="commons-collections4-4.0-sources" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/ControlsFX/controlsfx-8.0.5.jar" />
+          <element id="library" level="project" name="controlsfx-8.0.5" />
+          <element id="library" level="project" name="javahidapi" />
         </element>
         <element id="module-output" name="MDRV" />
       </element>
+      <element id="file-copy" path="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
     </root>
   </artifact>
 </component>

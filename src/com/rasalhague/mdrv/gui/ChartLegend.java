@@ -1,4 +1,4 @@
-package com.rasalhague.mdrv.gui.view;
+package com.rasalhague.mdrv.gui;
 
 import javafx.application.Platform;
 import javafx.beans.Observable;

@@ -71,37 +71,37 @@
                           GridPane.columnIndex = "4"
                           GridPane.rowIndex = "1"/>
                 </children>
-                <columnConstraints>
-                    <ColumnConstraints fillWidth = "true"
-                                       halignment = "CENTER"
-                                       hgrow = "ALWAYS"
-                                       maxWidth = "-1.0"
-                                       minWidth = "60.0"
-                                       prefWidth = "-1.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "55.0" minWidth = "55.0" prefWidth = "55.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "250.0" minWidth = "250.0" prefWidth = "250.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints maxHeight = "450.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "396.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "359.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "142.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "48.0"
-                                    minHeight = "48.0"
-                                    prefHeight = "48.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints fillWidth = "true"
+                               halignment = "CENTER"
+                               hgrow = "ALWAYS"
+                               maxWidth = "-1.0"
+                               minWidth = "60.0"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "55.0" minWidth = "55.0" prefWidth = "55.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "250.0" minWidth = "250.0" prefWidth = "250.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "450.0"
+                            minHeight = "10.0"
+                            prefHeight = "396.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "359.0"
+                            minHeight = "10.0"
+                            prefHeight = "142.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "48.0"
+                            minHeight = "48.0"
+                            prefHeight = "48.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
             </GridPane>
             <GridPane id = "channelsGrid"
                       disable = "true"
@@ -158,28 +158,28 @@
                     <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "200.0" minWidth = "200.0" prefWidth = "200.0"/>
                     <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
                 </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints maxHeight = "305.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "275.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "362.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "149.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "116.0"
-                                    minHeight = "48.0"
-                                    prefHeight = "114.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                    <RowConstraints maxHeight = "48.0"
-                                    minHeight = "48.0"
-                                    prefHeight = "48.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                </rowConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "305.0"
+                            minHeight = "10.0"
+                            prefHeight = "275.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "362.0"
+                            minHeight = "10.0"
+                            prefHeight = "149.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "116.0"
+                            minHeight = "48.0"
+                            prefHeight = "114.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+            <RowConstraints maxHeight = "48.0"
+                            minHeight = "48.0"
+                            prefHeight = "48.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
             </GridPane>
             <GridPane id = "channelsGrid"
                       disable = "true"
@@ -293,41 +293,41 @@
                           GridPane.columnIndex = "3"
                           GridPane.rowIndex = "1"/>
                 </children>
-                <columnConstraints>
-                    <ColumnConstraints fillWidth = "true"
-                                       halignment = "CENTER"
-                                       hgrow = "ALWAYS"
-                                       maxWidth = "-1.0"
-                                       minWidth = "60.0"
-                                       prefWidth = "-1.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "150.0" minWidth = "200.0" prefWidth = "150.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "340.0" minWidth = "340.0" prefWidth = "340.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints maxHeight = "169.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "69.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "441.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "117.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "373.0"
-                                    minHeight = "48.0"
-                                    prefHeight = "348.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                    <RowConstraints maxHeight = "48.0"
-                                    minHeight = "48.0"
-                                    prefHeight = "48.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints fillWidth = "true"
+                               halignment = "CENTER"
+                               hgrow = "ALWAYS"
+                               maxWidth = "-1.0"
+                               minWidth = "60.0"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "150.0" minWidth = "200.0" prefWidth = "150.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "691.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "340.0" minWidth = "340.0" prefWidth = "340.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "20.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "169.0"
+                            minHeight = "10.0"
+                            prefHeight = "69.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "441.0"
+                            minHeight = "10.0"
+                            prefHeight = "117.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "373.0"
+                            minHeight = "48.0"
+                            prefHeight = "348.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+            <RowConstraints maxHeight = "48.0"
+                            minHeight = "48.0"
+                            prefHeight = "48.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
             </GridPane>
             <GridPane id = "channelsGrid"
                       disable = "true"
