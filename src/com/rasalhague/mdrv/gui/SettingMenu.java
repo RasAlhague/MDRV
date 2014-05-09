@@ -20,14 +20,15 @@ public class SettingMenu implements DeviceConnectionListenerI
     private static SettingMenu ourInstance = new SettingMenu();
     private Button settingButton;
     private VBox   controlBntsVBox;
-    private HashMap<DeviceInfo, Byte> devToRssiShiftMap = new HashMap<>();
+    private HashMap<String, Byte>      devToRssiShiftMap               = new HashMap<>();
+    private HashMap<String, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
 
     public static SettingMenu getInstance()
     {
         return ourInstance;
     }
 
-    public HashMap<DeviceInfo, Byte> getDevToRssiShiftMap()
+    public HashMap<String, Byte> getDevToRssiShiftMap()
     {
         return devToRssiShiftMap;
     }
@@ -52,6 +53,7 @@ public class SettingMenu implements DeviceConnectionListenerI
             /**
              * Settings
              */
+            if (!devToRssiShiftMap.containsKey(connectedDevice.getName()))
             {
                 //create container, labelChannelSpacing, TextField
                 VBox vBoxContainer = new VBox();
@@ -87,10 +89,11 @@ public class SettingMenu implements DeviceConnectionListenerI
                 textFieldRssiShift.setText("0");
 
                 labelChannelSpacing.setText("Channel spacing, kHz");
-                labelRssiShift.setText("Rssi shift");
+                labelRssiShift.setText("RSSI shift");
                 labelDeviceName.setText(connectedDevice.getName());
 
                 //behavior
+                devToTextFieldChannelSpacingMap.put(connectedDevice.getName(), textFieldChannelSpacing);
                 textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
 
                     if (Float.valueOf(newValue) >= 100)
@@ -99,12 +102,12 @@ public class SettingMenu implements DeviceConnectionListenerI
                     }
                 });
 
-                devToRssiShiftMap.put(connectedDevice, (byte) 0);
+                devToRssiShiftMap.put(connectedDevice.getName(), (byte) 0);
                 textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
 
                     if (!newValue.equals("") && !newValue.equals("-"))
                     {
-                        devToRssiShiftMap.put(connectedDevice, Byte.valueOf(newValue));
+                        devToRssiShiftMap.put(connectedDevice.getName(), Byte.valueOf(newValue));
                     }
                 });
 
@@ -112,6 +115,18 @@ public class SettingMenu implements DeviceConnectionListenerI
                 Platform.runLater(() -> {
 
                     controlBntsVBox.getChildren().add(vBoxContainer);
+                });
+            }
+            else
+            {
+                //behavior
+                TextField textFieldChannelSpacing = devToTextFieldChannelSpacingMap.get(connectedDevice.getName());
+                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
+
+                    if (Float.valueOf(newValue) >= 100)
+                    {
+                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+                    }
                 });
             }
         }

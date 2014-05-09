@@ -69,8 +69,8 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  Button                    settingButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
-    private static int                       chartUpdateDelayMs  = 1000;
-    private static ScheduledExecutorService  chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
+    private static int                      chartUpdateDelayMs  = 1000;
+    private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
 
     public MainWindowController()
     {
@@ -327,6 +327,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         replaySliderPreviousValue = 0;
         replaySlider.setValue(0);
         PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
+        ChartLegend.getInstance().clearChartLegend();
         lineChart.getData().clear();
     }
 
@@ -687,7 +688,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      * TODO it uses around 25% of CPU
                      */
-                    HashMap<DeviceInfo, Byte> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
+                    HashMap<String, Byte> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
@@ -703,7 +704,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     numberData = data.get(i);
 
                                     numberData.setYValue(seriesData.get(i).getYValue().byteValue() +
-                                                                 devToRssiShiftMap.get(deviceInfo));
+                                                                 devToRssiShiftMap.get(deviceInfo.getName()));
 
                                     if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
                                     {

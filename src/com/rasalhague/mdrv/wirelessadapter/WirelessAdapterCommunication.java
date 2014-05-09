@@ -180,8 +180,12 @@ public class WirelessAdapterCommunication implements Runnable
 
     private void startChannelSwitching(WirelessAdapter wirelessAdapter)
     {
-        Executors.newSingleThreadScheduledExecutor()
-                 .scheduleAtFixedRate(wirelessAdapter::nextChannel, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
+
+            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
+            wirelessAdapter.nextChannel();
+
+        }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
         ApplicationLogger.LOGGER.info("Channel switching has been started in " +
                                               wirelessAdapter.getChannelRoundSwitcher().getMinValue() +
@@ -213,8 +217,9 @@ public class WirelessAdapterCommunication implements Runnable
         }
         catch (InterruptedException | ExecutionException e)
         {
-            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
             ApplicationLogger.LOGGER.severe(e.getMessage());
+            ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()));
+            //            ApplicationLogger.LOGGER.severe(e.toString());
             e.printStackTrace();
         }
 

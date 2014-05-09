@@ -74,6 +74,11 @@ public class ChartLegend
         });
     }
 
+    public void clearChartLegend()
+    {
+        chartLegendVbox.getChildren().clear();
+    }
+
     private void generateChartLegendVBox(XYChart.Series<Number, Number> series, String devName, String type)
     {
         //Get numberSeries color
