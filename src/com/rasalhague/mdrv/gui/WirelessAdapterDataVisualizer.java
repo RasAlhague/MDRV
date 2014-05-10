@@ -182,10 +182,13 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
 
             HashMap<Byte, Polygon> standartPolygons = standartToChannel.get(wirelessAdapterData.getStandart());
 
-            Polygon polygon = standartPolygons.get(wirelessAdapterData.getChannel());
-            if (polygon.getOpacity() <= maxOpacity)
+            if (standartPolygons != null)
             {
-                polygon.setOpacity(polygon.getOpacity() + fadeUpPerPacket);
+                Polygon polygon = standartPolygons.get(wirelessAdapterData.getChannel());
+                if (polygon.getOpacity() <= maxOpacity)
+                {
+                    polygon.setOpacity(polygon.getOpacity() + fadeUpPerPacket);
+                }
             }
         });
     }

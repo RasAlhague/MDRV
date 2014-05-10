@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -27,6 +28,7 @@ import java.util.regex.Pattern;
 public class WirelessAdapterCommunication implements Runnable
 {
     private int channelSwitchingRateMs = 1000;
+    HashMap<Float, String> bpsToStandart = new HashMap<>();
 
     public int getChannelSwitchingRateMs()
     {
@@ -36,6 +38,35 @@ public class WirelessAdapterCommunication implements Runnable
     public void setChannelSwitchingRateMs(int channelSwitchingRateMs)
     {
         this.channelSwitchingRateMs = channelSwitchingRateMs;
+    }
+
+    public WirelessAdapterCommunication()
+    {
+        //xD
+        bpsToStandart.put(1f, "b");
+        bpsToStandart.put(2f, "b");
+        bpsToStandart.put(5.5f, "b");
+        bpsToStandart.put(11f, "b");
+        bpsToStandart.put(6f, "g");
+        bpsToStandart.put(9f, "g");
+        bpsToStandart.put(12f, "g");
+        bpsToStandart.put(18f, "g");
+        bpsToStandart.put(24f, "g");
+        bpsToStandart.put(36f, "g");
+        bpsToStandart.put(48f, "g");
+        bpsToStandart.put(54f, "g");
+        bpsToStandart.put(7f, "n");
+        bpsToStandart.put(13f, "n");
+        bpsToStandart.put(21f, "n");
+        bpsToStandart.put(26f, "n");
+        bpsToStandart.put(39f, "n");
+        bpsToStandart.put(52f, "n");
+        bpsToStandart.put(65f, "n");
+        bpsToStandart.put(72f, "n");
+        bpsToStandart.put(78f, "n");
+        bpsToStandart.put(104f, "n");
+        bpsToStandart.put(117f, "n");
+        bpsToStandart.put(130f, "n");
     }
 
     @Override
@@ -183,7 +214,8 @@ public class WirelessAdapterCommunication implements Runnable
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
 
             System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
-            wirelessAdapter.nextChannel();
+            //            wirelessAdapter.nextChannel();
+            wirelessAdapter.setChannel(10);
 
         }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
@@ -238,55 +270,70 @@ public class WirelessAdapterCommunication implements Runnable
             {
                 Matcher matcher = Pattern.compile(
                         //                        "(?<!bad-fcs)( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
-                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
-                ).matcher(resultExecute);
+                        //                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?")
+                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?")
+                                         .matcher(resultExecute);
 
                 while (matcher.find())
                 {
-                    byte channel = wirelessAdapter.getChannelToFrequencyMap()
-                                                  .getKey(Short.valueOf(matcher.group("frequency")));
-
                     try
                     {
+                        byte channel = wirelessAdapter.getChannelToFrequencyMap()
+                                                      .getKey(Short.valueOf(matcher.group("frequency")));
+
                         byte dB = Byte.valueOf(matcher.group("dB"));
                         String bpsFirst = matcher.group("MbFirst");
                         String bpsSecond = matcher.group("MbSecond");
                         float frequency = Float.valueOf(matcher.group("frequency"));
-                        String standart = matcher.group("standart");
+                        String standart;
                         float bps;
-
-                        //TODO b/g/n
-                        //if bpsSecond == null that means channle have b or g standart (non n)
-                        if (bpsSecond == null || bpsSecond.isEmpty())
-                        {
-                            bps = Float.parseFloat(bpsFirst);
-                        }
-                        else
-                        {
-                            bps = Float.parseFloat(bpsSecond);
-
-                            if (standart.equals("g"))
-                            {
-                                standart = "n";
-                            }
-                        }
-                        System.out.print(standart);
 
                         //filter from -20dBm to -105dBm
                         byte lowerLimit = -110;
                         byte upperLimit = -20;
                         if (dB >= lowerLimit && dB <= upperLimit)
                         {
+                            if (bpsFirst != null)
+                            {
+                                bps = Float.parseFloat(bpsFirst);
+                            }
+                            else if (bpsSecond != null)
+                            {
+                                bps = Float.parseFloat(bpsSecond);
+                            }
+                            else
+                            {
+                                bps = 130f;
+
+                                ApplicationLogger.LOGGER.warning("Without BPS");
+                                ApplicationLogger.LOGGER.warning(resultExecute);
+                            }
+
+                            standart = bpsToStandart.get(bps);
+
+                            if (standart == null)
+                            {
+                                if (bps > 54)
+                                {
+                                    standart = "n";
+                                }
+                                else if (bps > 11)
+                                {
+                                    standart = "g";
+                                }
+                                else
+                                {
+                                    standart = "b";
+                                }
+                            }
+                            System.out.print(standart);
+
                             WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel,
                                                                                               dB,
                                                                                               bps,
                                                                                               frequency,
                                                                                               standart);
                             notifyWirelessAdapterDataListeners(wirelessAdapterData);
-                        }
-                        else
-                        {
-                            //ApplicationLogger.LOGGER.warning("dB = " + dB);
                         }
                     }
                     catch (Exception e)
