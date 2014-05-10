@@ -237,9 +237,8 @@ public class WirelessAdapterCommunication implements Runnable
             while ((resultExecute = tcpDumpReader.readLine()) != null)
             {
                 Matcher matcher = Pattern.compile(
-                        "(?<!bad-fcs)( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)" +
-                                "(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?" +
-                                "(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
+                        //                        "(?<!bad-fcs)( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
+                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
                 ).matcher(resultExecute);
 
                 while (matcher.find())

@@ -26,6 +26,11 @@ public class RoundVar implements Iterable<Integer>
         return maxValue;
     }
 
+    public void setCurrentValue(int currentValue)
+    {
+        this.currentValue = currentValue;
+    }
+
     /**
      * Instantiates a new Round var.
      *

@@ -6,6 +6,7 @@ import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 class HIDDeviceCommunication extends DeviceCommunication
 {
@@ -51,7 +52,8 @@ class HIDDeviceCommunication extends DeviceCommunication
                 {
                     break;
                 }
-                ApplicationLogger.LOGGER.severe(e.getMessage());
+
+                ApplicationLogger.LOGGER.severe(Arrays.toString(e.getStackTrace()).replace(", ", "\n"));
                 e.printStackTrace();
                 //for linux xD
                 break;

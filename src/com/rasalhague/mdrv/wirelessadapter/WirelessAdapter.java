@@ -104,4 +104,19 @@ public class WirelessAdapter
 
         return channelRoundSwitcher.getCurrentValue();
     }
+
+    public void setChannel(int channel)
+    {
+        if (channelRoundSwitcher.getCurrentValue() != channel)
+        {
+            channelRoundSwitcher.setCurrentValue(channel);
+
+            String channelSwitchingCommand = "iwconfig " +
+                    getNetworkName() +
+                    " channel " +
+                    channelRoundSwitcher.getCurrentValue();
+
+            Utils.runShellScript(channelSwitchingCommand);
+        }
+    }
 }

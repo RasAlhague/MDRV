@@ -67,6 +67,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  GridPane                  channelsGrid;
     public                  Pane                      channelPane1;
     public                  Button                    settingButton;
+    public GridPane spectralMasksGridPane;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -101,9 +102,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
-
         Parent root = FXMLLoader.load(getClass().getResource(rootPath));
-        //        Parent popupMenu = FXMLLoader.load(getClass().getResource(popupMenuPath));
         final Scene scene = new Scene(root);
         scene.getStylesheets().add(chartStyleCssPath);
 
@@ -146,8 +145,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         channelsGrid = (GridPane) scene.lookup("#channelsGrid");
         channelPane1 = (Pane) scene.lookup("#channelPane1");
         settingButton = (Button) scene.lookup("#settingButton");
+        spectralMasksGridPane = (GridPane) scene.lookup("#spectralMasksGridPane");
 
         //initialization
+        WirelessAdapterDataVisualizer.getInstance().init(spectralMasksGridPane);
+        WirelessAdapterDataVisualizer.getInstance().setUpSettings(controlBntsVBox);
         SettingMenu.getInstance().initSettingMenu(settingButton, controlBntsVBox);
         bindTooltipToLineChart(lineChart, tooltipPane);
         ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
@@ -163,6 +165,8 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = new WirelessAdapterCommunication();
+        wirelessAdapterCommunication.addListener(WirelessAdapterDataVisualizer.getInstance());
+
         Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
         wirelessAdapterCommunicationThread.start();
 

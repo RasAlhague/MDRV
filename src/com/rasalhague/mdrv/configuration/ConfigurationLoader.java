@@ -32,6 +32,7 @@ public class ConfigurationLoader
                 catch (FileNotFoundException e)
                 {
                     ApplicationLogger.LOGGER.severe("Configuration FileNotFoundException");
+                    e.printStackTrace();
                 }
                 catch (IOException e)
                 {
