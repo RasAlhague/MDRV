@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Polygon?>
+<?import java.lang.*?>
+<Polygon xmlns:fx = "http://javafx.com/fxml/1"
+         xmlns = "http://javafx.com/javafx/2.2"
+         fill = "DODGERBLUE"
+         focusTraversable = "false"
+         opacity = "0.0"
+         rotate = "180.0"
+         scaleX = "8.55"
+         scaleY = "8.55"
+         scaleZ = "1.0"
+         smooth = "true"
+         stroke = "BLACK"
+         strokeDashOffset = "0.0"
+         strokeLineCap = "SQUARE"
+         strokeLineJoin = "MITER"
+         strokeMiterLimit = "10.0"
+         strokeType = "INSIDE"
+         strokeWidth = "0.2"
+         translateX = "0.0"
+         translateY = "-151.0"
+         visible = "true"
+         GridPane.columnIndex = "2"
+         GridPane.halignment = "CENTER"
+         GridPane.hgrow = "ALWAYS"
+         GridPane.rowIndex = "1"
+         GridPane.valignment = "BOTTOM"
+         GridPane.vgrow = "ALWAYS">
+    <points>
+        <Double fx:value = "-30.0"/>
+        <Double fx:value = "0.0"/>
+        <Double fx:value = "-20.0"/>
+        <Double fx:value = "12.0"/>
+        <Double fx:value = "-11.0"/>
+        <Double fx:value = "20.0"/>
+        <Double fx:value = "-9.0"/>
+        <Double fx:value = "40.0"/>
+        <Double fx:value = "9.0"/>
+        <Double fx:value = "40.0"/>
+        <Double fx:value = "11.0"/>
+        <Double fx:value = "20.0"/>
+        <Double fx:value = "20.0"/>
+        <Double fx:value = "12.0"/>
+        <Double fx:value = "30.0"/>
+        <Double fx:value = "0.0"/>
+    </points>
+    <rotationAxis>
+        <Point3D z = "10.0"/>
+    </rotationAxis>
+</Polygon>
