@@ -60,6 +60,9 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         }
 
         standartToChannel.put("g", channelToG);
+        //TODO
+        standartToChannel.put("b", channelToG);
+        standartToChannel.put("n", channelToG);
 
         //        maxOpacity = 1;
         //        fadeOutPerTick = maxOpacity / (Float.valueOf(2) * 1000 / fadeOutFrequencyMs);
