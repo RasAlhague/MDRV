@@ -72,6 +72,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
     private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
+    private static boolean showDebugInfo = false;
 
     public MainWindowController()
     {
@@ -107,7 +108,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         scene.getStylesheets().add(chartStyleCssPath);
 
         /**
-         * On close actions
+         * Stage behavior
          */
         primaryStage.setOnCloseRequest(windowEvent -> {
             //Correctly close file handlers
@@ -126,6 +127,11 @@ public class MainWindowController extends Application implements AnalysisPerform
             System.exit(1);
             //            Platform.exit();
         });
+
+        //        primaryStage.setMaxWidth(1000);
+        //        primaryStage.setMinWidth(500);
+        //        primaryStage.setMinHeight(500);
+        //        primaryStage.setResizable(false);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -308,8 +314,10 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     public void showDebugInfoBntClick()
     {
-        if (debugTextArea.getHeight() != 0) { debugTextArea.setMaxHeight(0); }
-        else { debugTextArea.setMaxHeight(Region.USE_COMPUTED_SIZE); }
+        debugTextArea.setMaxHeight(showDebugInfo ? Region.USE_COMPUTED_SIZE : 0);
+        spectralMasksGridPane.setGridLinesVisible(showDebugInfo);
+
+        showDebugInfo = !showDebugInfo;
     }
 
     public void refreshChartButtonClickEvent(Event event)
