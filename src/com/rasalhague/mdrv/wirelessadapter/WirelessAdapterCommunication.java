@@ -42,11 +42,13 @@ public class WirelessAdapterCommunication implements Runnable
 
     public WirelessAdapterCommunication()
     {
-        //xD
+        //b
         bpsToStandart.put(1f, "b");
         bpsToStandart.put(2f, "b");
         bpsToStandart.put(5.5f, "b");
         bpsToStandart.put(11f, "b");
+
+        //g
         bpsToStandart.put(6f, "g");
         bpsToStandart.put(9f, "g");
         bpsToStandart.put(12f, "g");
@@ -55,6 +57,8 @@ public class WirelessAdapterCommunication implements Runnable
         bpsToStandart.put(36f, "g");
         bpsToStandart.put(48f, "g");
         bpsToStandart.put(54f, "g");
+
+        //n
         bpsToStandart.put(7f, "n");
         bpsToStandart.put(13f, "n");
         bpsToStandart.put(21f, "n");
@@ -67,6 +71,84 @@ public class WirelessAdapterCommunication implements Runnable
         bpsToStandart.put(104f, "n");
         bpsToStandart.put(117f, "n");
         bpsToStandart.put(130f, "n");
+
+        //MIMO 1; 20 MHz
+        bpsToStandart.put(6.5f, "n");
+        bpsToStandart.put(13f, "n");
+        bpsToStandart.put(19.5f, "n");
+        bpsToStandart.put(26f, "n");
+        bpsToStandart.put(39f, "n");
+        bpsToStandart.put(52f, "n");
+        bpsToStandart.put(58.5f, "n");
+        bpsToStandart.put(65f, "n");
+
+        //MIMO 1; 40 MHz
+        bpsToStandart.put(13.5f, "n");
+        bpsToStandart.put(13f, "n");
+        bpsToStandart.put(40.5f, "n");
+        bpsToStandart.put(54f, "n");
+        bpsToStandart.put(81f, "n");
+        bpsToStandart.put(108f, "n");
+        bpsToStandart.put(121.5f, "n");
+        bpsToStandart.put(135f, "n");
+
+        //MIMO 2; 20 MHz
+        bpsToStandart.put(13f, "n");
+        bpsToStandart.put(26f, "n");
+        bpsToStandart.put(39f, "n");
+        bpsToStandart.put(52f, "n");
+        bpsToStandart.put(78f, "n");
+        bpsToStandart.put(104f, "n");
+        bpsToStandart.put(117f, "n");
+        bpsToStandart.put(130f, "n");
+
+        //MIMO 2; 40 MHz
+        bpsToStandart.put(27f, "n");
+        bpsToStandart.put(54f, "n");
+        bpsToStandart.put(81f, "n");
+        bpsToStandart.put(108f, "n");
+        bpsToStandart.put(162f, "n");
+        bpsToStandart.put(216f, "n");
+        bpsToStandart.put(243f, "n");
+        bpsToStandart.put(270f, "n");
+
+        //MIMO 3; 20 MHz
+        bpsToStandart.put(19.5f, "n");
+        bpsToStandart.put(39f, "n");
+        bpsToStandart.put(58.5f, "n");
+        bpsToStandart.put(78f, "n");
+        bpsToStandart.put(117f, "n");
+        bpsToStandart.put(156f, "n");
+        bpsToStandart.put(175.5f, "n");
+        bpsToStandart.put(195f, "n");
+
+        //MIMO 3; 40 MHz
+        bpsToStandart.put(40.5f, "n");
+        bpsToStandart.put(81f, "n");
+        bpsToStandart.put(121.5f, "n");
+        bpsToStandart.put(162f, "n");
+        bpsToStandart.put(243f, "n");
+        bpsToStandart.put(324f, "n");
+        bpsToStandart.put(364.5f, "n");
+        bpsToStandart.put(405.0f, "n");
+
+        bpsToStandart.put(39f, "n");
+        bpsToStandart.put(52f, "n");
+        bpsToStandart.put(43.3f, "n");
+        bpsToStandart.put(7.2f, "n");
+        bpsToStandart.put(15f, "n");
+        bpsToStandart.put(14.4f, "n");
+        bpsToStandart.put(30f, "n");
+        bpsToStandart.put(45f, "n");
+        bpsToStandart.put(43.3f, "n");
+        bpsToStandart.put(57.8f, "n");
+        bpsToStandart.put(28.9f, "n");
+        bpsToStandart.put(43.3f, "n");
+        bpsToStandart.put(21.7f, "n");
+        bpsToStandart.put(43.3f, "n");
+        bpsToStandart.put(28.9f, "n");
+        bpsToStandart.put(26f, "n");
+        bpsToStandart.put(52f, "n");
     }
 
     @Override
