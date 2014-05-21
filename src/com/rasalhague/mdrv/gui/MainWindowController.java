@@ -700,7 +700,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      * TODO it uses around 25% of CPU
                      */
-                    HashMap<String, Byte> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
+                    HashMap<String, Float> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
