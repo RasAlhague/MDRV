@@ -6,8 +6,22 @@
     <option name="CUSTOM_SCOPE_NAME" value="Module 'MDRV'" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Fix">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add n standart value from http://mcsindex.com/">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.html" afterPath="$PROJECT_DIR$/artifacts/MDRV.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -72,58 +86,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <file leaf-file-name="DeviceInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2888" max-vertical-offset="4005">
-              <caret line="700" column="53" selection-start-line="700" selection-start-column="53" selection-end-line="700" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SettingMenu.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="1815">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WirelessAdapterCommunication.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.4691534" vertical-offset="424" max-vertical-offset="7005">
-              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1860">
+              <caret line="196" column="40" selection-start-line="196" selection-start-column="40" selection-end-line="196" selection-end-column="40" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1085#1086#0" expanded="true" />
-                <element signature="method#run#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#searchWirelessAdapters#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#chooseWirelessAdapter#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#switchToMonitorMode#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#chooseTcpDumpCommand#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="method#notifyWirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
+                <element signature="method#DeviceInfo#1;class#DeviceInfo#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WirelessAdapterDataVisualizer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
+      <file leaf-file-name="RxRawDataReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="3060">
-              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="681" max-vertical-offset="1695">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding>
+                <element signature="method#saveRawDataPacket#0;class#RxRawDataReceiver#0" expanded="true" />
+                <element signature="method#receiveRawData#0;class#RxRawDataReceiver#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ez430RF2500.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33737025" vertical-offset="225" max-vertical-offset="990">
+              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceConnectionListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1395">
+              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/TextAreaHandler.java" />
@@ -154,13 +158,9 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/replay/Replay.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/DefaultDataProcessingAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/MetaGeekWiSpy24x2ProcessingAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceConnectionListener.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterDataEvent.java" />
@@ -172,33 +172,38 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMap.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperMapKey.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMaps.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingButton.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/Utils.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterData.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChartLegend.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/Spectral_Mask_g.fxml" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="123" />
+    <option name="x" value="58" />
     <option name="y" value="25" />
-    <option name="width" value="1477" />
+    <option name="width" value="1542" />
     <option name="height" value="875" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -365,7 +370,7 @@
       <sortByType ProjectPane="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -434,7 +439,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wirelessadapter" />
+              <option name="myItemId" value="RawDataProcessor" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -478,11 +483,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="dev_communication" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,17 +505,13 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="connectionlistener" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -551,21 +548,6 @@
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\configuration" />
-      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\resources" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.rasalhague.mdrv.constants" />
-      <recent name="com.rasalhague.mdrv.RawDataProcessor" />
-      <recent name="com.RasAlhague.MDRV" />
-    </key>
-    <key name="MoveMembersDialog.RECENTS_KEY">
-      <recent name="com.rasalhague.mdrv.RawDataProcessor.RawDataProcessor" />
-      <recent name="com.rasalhague.mdrv.USBITry" />
-      <recent name="com.rasalhague.mdrv.Utils" />
-      <recent name="com.RasAlhague.MDRV.Utils" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.rasalhague.mdrv.RawDataProcessor" />
       <recent name="com.rasalhague.mdrv.dev_communication" />
@@ -573,10 +555,25 @@
       <recent name="com.rasalhague.mdrv.temp" />
       <recent name="com.rasalhague.mdrv" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\configuration" />
+      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\resources" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="com.rasalhague.mdrv.RawDataProcessor.RawDataProcessor" />
+      <recent name="com.rasalhague.mdrv.USBITry" />
+      <recent name="com.rasalhague.mdrv.Utils" />
+      <recent name="com.RasAlhague.MDRV.Utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\view" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\model" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.rasalhague.mdrv.constants" />
+      <recent name="com.rasalhague.mdrv.RawDataProcessor" />
+      <recent name="com.RasAlhague.MDRV" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainWindowController">
@@ -1496,7 +1493,11 @@
       <created>1400694533437</created>
       <updated>1400694533437</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="Add n standart value from http://mcsindex.com/">
+      <created>1400699481404</created>
+      <updated>1400699481404</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1520,13 +1521,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="123" y="25" width="1477" height="875" extended-state="0" />
+    <frame x="58" y="25" width="1542" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32253712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32229298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3211876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21204188" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20811519" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32936507" sideWeight="0.30616173" order="12" side_tool="true" content_ui="tabs" />
@@ -1536,11 +1537,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866243" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23759608" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21390374" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.51963353" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19363058" sideWeight="0.5013089" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42931938" sideWeight="0.69383824" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19298245" sideWeight="0.5013089" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.61895293" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1553,7 +1554,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3586819" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49074075" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3360324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1610,7 +1611,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Switch off chart symbols" />
     <MESSAGE value="Filter from -20dBm to -105dBm" />
     <MESSAGE value="lowerLimit to -110" />
     <MESSAGE value="memory leak has been found&#10;little opt" />
@@ -1635,7 +1635,8 @@
     <MESSAGE value="Debug grid switcher" />
     <MESSAGE value="Change Byte to Float" />
     <MESSAGE value="Fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix" />
+    <MESSAGE value="Add n standart value from http://mcsindex.com/" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add n standart value from http://mcsindex.com/" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1657,7 +1658,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="302" />
+      <option name="time" value="319" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1665,35 +1666,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="6528">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="method#run#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#searchWirelessAdapters#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseWirelessAdapter#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#switchToMonitorMode#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseTcpDumpCommand#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#notifyWirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1190">
           <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1701,7 +1677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2329" max-vertical-offset="12852">
           <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1709,23 +1684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="6528">
           <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="method#run#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#searchWirelessAdapters#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseWirelessAdapter#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#switchToMonitorMode#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseTcpDumpCommand#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#notifyWirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1733,7 +1691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1190">
           <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1741,7 +1698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
           <caret line="132" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1756,13 +1712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1140">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1794,34 +1743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23255815" vertical-offset="0" max-vertical-offset="731">
-          <caret line="10" column="117" selection-start-line="10" selection-start-column="117" selection-end-line="10" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="833">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8073654" vertical-offset="140" max-vertical-offset="901">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23255815" vertical-offset="0" max-vertical-offset="867">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Thumbs.db">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="718">
@@ -1843,13 +1764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33153638" vertical-offset="477" max-vertical-offset="1320">
-          <caret line="89" column="46" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2176781" vertical-offset="0" max-vertical-offset="758">
@@ -1867,13 +1781,6 @@
     <entry file="file://$PROJECT_DIR$/PacketData 29-04-14 at 19.22.06.log">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="660">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java">
@@ -1897,24 +1804,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="0" max-vertical-offset="1207">
-          <caret line="316" column="5" selection-start-line="316" selection-start-column="5" selection-end-line="316" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/HelperAnalysisMaps.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.095104896" vertical-offset="0" max-vertical-offset="715">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterDataListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.047419805" vertical-offset="0" max-vertical-offset="717">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1939,20 +1832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4074073" vertical-offset="421" max-vertical-offset="1245">
-          <caret line="47" column="30" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="2010">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="293" max-vertical-offset="3630">
@@ -1967,24 +1846,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="1995">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
           <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15841584" vertical-offset="398" max-vertical-offset="1515">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1995,13 +1860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10623229" vertical-offset="0" max-vertical-offset="706">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20604396" vertical-offset="0" max-vertical-offset="728">
@@ -2009,77 +1867,177 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20604396" vertical-offset="0" max-vertical-offset="960">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/Spectral_Mask_b.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4122682" vertical-offset="221" max-vertical-offset="7480">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="3060">
           <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="2025">
+          <caret line="54" column="77" selection-start-line="54" selection-start-column="77" selection-end-line="54" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterDataListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11888112" vertical-offset="0" max-vertical-offset="715">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1632">
+          <caret line="14" column="118" selection-start-line="14" selection-start-column="118" selection-end-line="14" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="182" max-vertical-offset="1105">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="918">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="184" max-vertical-offset="1635">
+          <caret line="157" column="35" selection-start-line="157" selection-start-column="12" selection-end-line="157" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/MetaGeek_WiSpy24x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.40306833" vertical-offset="476" max-vertical-offset="1292">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18967922" vertical-offset="0" max-vertical-offset="867">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding>
+            <element signature="method#openPort#0;class#COMDeviceCommunication#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="6600">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisPerformedListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14529915" vertical-offset="0" max-vertical-offset="702">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="1428">
+          <caret line="76" column="59" selection-start-line="76" selection-start-column="59" selection-end-line="76" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9075" max-vertical-offset="11700">
+          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="1815">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1091" max-vertical-offset="1830">
+          <caret line="122" column="26" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/UnigenISMSnifferProcessingAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2888" max-vertical-offset="4005">
-          <caret line="700" column="53" selection-start-line="700" selection-start-column="53" selection-end-line="700" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="765">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="101" max-vertical-offset="867">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4691534" vertical-offset="424" max-vertical-offset="7005">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1395">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="method#run#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#searchWirelessAdapters#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseWirelessAdapter#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#switchToMonitorMode#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#chooseTcpDumpCommand#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;field#wirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="docComment;method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#addListener#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="method#notifyWirelessAdapterDataListeners#0;class#WirelessAdapterCommunication#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1860">
+          <caret line="196" column="40" selection-start-line="196" selection-start-column="40" selection-end-line="196" selection-end-column="40" />
+          <folding>
+            <element signature="method#DeviceInfo#1;class#DeviceInfo#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="681" max-vertical-offset="1695">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding>
+            <element signature="method#saveRawDataPacket#0;class#RxRawDataReceiver#0" expanded="true" />
+            <element signature="method#receiveRawData#0;class#RxRawDataReceiver#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/ez430RF2500.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33737025" vertical-offset="225" max-vertical-offset="990">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

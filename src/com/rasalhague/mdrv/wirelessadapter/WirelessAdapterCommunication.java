@@ -4,6 +4,7 @@ import com.rasalhague.mdrv.Utility.FXUtilities;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
+import org.apache.commons.lang3.SystemUtils;
 import org.controlsfx.dialog.Dialogs;
 
 import java.io.BufferedReader;
@@ -154,36 +155,43 @@ public class WirelessAdapterCommunication implements Runnable
     @Override
     public void run()
     {
-        if (Utils.checkInxiExist())
+        if (SystemUtils.IS_OS_LINUX)
         {
-            ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
-
-            if (wirelessAdapters.size() != 0)
+            if (Utils.checkInxiExist())
             {
-                WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
-                switchToMonitorMode(wirelessAdapter);
-                startChannelSwitching(wirelessAdapter);
-                String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
-                startListening(tcpDumpCommand, wirelessAdapter);
+                ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
+
+                if (wirelessAdapters.size() != 0)
+                {
+                    WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
+                    switchToMonitorMode(wirelessAdapter);
+                    startChannelSwitching(wirelessAdapter);
+                    String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
+                    startListening(tcpDumpCommand, wirelessAdapter);
+                }
+                else
+                {
+                    ApplicationLogger.LOGGER.warning("No adapters have been found.");
+                }
             }
             else
             {
-                ApplicationLogger.LOGGER.warning("No adapters have been found.");
+                ApplicationLogger.LOGGER.warning("Install Inxi for get able to connect wireless adapter.");
+                ApplicationLogger.LOGGER.warning("Trying to install Inxi...");
+
+                if (Utils.installInxi())
+                {
+                    run();
+                }
+                else
+                {
+                    ApplicationLogger.LOGGER.warning("Can not install Inxi automatically.");
+                }
             }
         }
         else
         {
-            ApplicationLogger.LOGGER.warning("Install Inxi for get able to connect wireless adapter.");
-            ApplicationLogger.LOGGER.warning("Trying to install Inxi...");
-
-            if (Utils.installInxi())
-            {
-                run();
-            }
-            else
-            {
-                ApplicationLogger.LOGGER.warning("Can not install Inxi automatically.");
-            }
+            ApplicationLogger.LOGGER.warning("Only linux based OS can work with WirelessAdapter");
         }
     }
 
@@ -266,12 +274,12 @@ public class WirelessAdapterCommunication implements Runnable
     {
         ArrayList<String> monitorModeCommands = new ArrayList<>();
         monitorModeCommands.add("ifconfig " +
-                                        wirelessAdapter.getNetworkName() +
+                                        wirelessAdapter.getAssociatedName() +
                                         " down");
         monitorModeCommands.add("iwconfig " +
-                                        wirelessAdapter.getNetworkName() +
+                                        wirelessAdapter.getAssociatedName() +
                                         " mode monitor");
-        monitorModeCommands.add("ifconfig " + wirelessAdapter.getNetworkName() + " up");
+        monitorModeCommands.add("ifconfig " + wirelessAdapter.getAssociatedName() + " up");
 
         monitorModeCommands.forEach((t) -> {
 
@@ -325,7 +333,7 @@ public class WirelessAdapterCommunication implements Runnable
                                          .message(null);
 
                 chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
-                                                                 wirelessAdapter.getNetworkName() +
+                                                                 wirelessAdapter.getAssociatedName() +
                                                                  " -s 0 -nne '(type data subtype qos-data)'");
             });
         }
@@ -344,7 +352,7 @@ public class WirelessAdapterCommunication implements Runnable
     {
         String resultExecute;
         BufferedReader tcpDumpReader = Utils.runShellScriptBR(tcpDumpCommand);
-        ApplicationLogger.LOGGER.info("Listening has been started on " + wirelessAdapter.getNetworkName());
+        ApplicationLogger.LOGGER.info("Listening has been started on " + wirelessAdapter.getAssociatedName());
 
         try
         {

@@ -11,15 +11,15 @@ import java.util.regex.Pattern;
 
 public class WirelessAdapter
 {
-    private String networkName;
+    private String associatedName;
     private String macAddress;
     private String adapterName;
     private BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
     private RoundVar channelRoundSwitcher;
 
-    public String getNetworkName()
+    public String getAssociatedName()
     {
-        return networkName;
+        return associatedName;
     }
 
     public String getMacAddress()
@@ -45,7 +45,7 @@ public class WirelessAdapter
     @Override
     public String toString()
     {
-        return networkName + " - " + adapterName;
+        return associatedName + " - " + adapterName;
     }
 
     public WirelessAdapter(String netName)
@@ -59,13 +59,30 @@ public class WirelessAdapter
         {
             if (inxiMatcher.group("netName").equals(netName))
             {
-                networkName = netName;
+                associatedName = netName;
                 macAddress = inxiMatcher.group("netCardMac");
                 adapterName = inxiMatcher.group("netCardName");
 
                 break;
             }
         }
+
+        //        ArrayList<String> ifconfigResult = Utils.runShellScript("ifconfig -a");
+        //        Matcher matcher = Pattern.compile(
+        //                "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
+        //                                     .matcher(ifconfigResult.toString());
+        //
+        //        while (matcher.find())
+        //        {
+        //            if (matcher.group("netName").equals(netName))
+        //            {
+        //                associatedName = netName;
+        //                macAddress = matcher.group("netCardMac");
+        //                adapterName = matcher.group("netCardName");
+        //
+        //                break;
+        //            }
+        //        }
 
         setUpChannelToFrequencyMap();
 
@@ -78,7 +95,7 @@ public class WirelessAdapter
     private void setUpChannelToFrequencyMap()
     {
         ArrayList<String> iwlistChannelOut = Utils.runShellScript("iwlist " +
-                                                                          networkName +
+                                                                          associatedName +
                                                                           " channel");
 
         Matcher matcher = Pattern.compile("Channel (?<channelNumber>\\d{2}) : (?<ChannelFrequency>\\d\\.\\d{3})")
@@ -96,7 +113,7 @@ public class WirelessAdapter
     public int nextChannel()
     {
         String channelSwitchingCommand = "iwconfig " +
-                getNetworkName() +
+                getAssociatedName() +
                 " channel " +
                 channelRoundSwitcher.nextValue();
 
@@ -112,7 +129,7 @@ public class WirelessAdapter
             channelRoundSwitcher.setCurrentValue(channel);
 
             String channelSwitchingCommand = "iwconfig " +
-                    getNetworkName() +
+                    getAssociatedName() +
                     " channel " +
                     channelRoundSwitcher.getCurrentValue();
 

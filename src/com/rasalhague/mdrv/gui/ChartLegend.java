@@ -147,8 +147,7 @@ public class ChartLegend
 
         hBox.getChildren().add(checkBox);
 
-        ArrayList<CheckBox> checkBoxes = devNameToCheckBoxMap.get(devName);
-        checkBoxes.add(checkBox);
+        devNameToCheckBoxMap.get(devName).add(checkBox);
     }
 
     private int findGeneralCheckbox(String devName)

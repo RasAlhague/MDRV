@@ -13,13 +13,24 @@ import java.util.*;
 public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> timedAnalysisResults = new LinkedHashMap<>();
-    private HelperAnalysisMaps helperAnalysisMaps = new HelperAnalysisMaps();
+    private          HelperAnalysisMaps                                                              helperAnalysisMaps   = new HelperAnalysisMaps();
 
+    /**
+     * Is analysis on.
+     *
+     * @return the boolean
+     */
     public boolean isAnalysisOn()
     {
         return isAnalysisOn;
     }
 
+    /**
+     * Sets analysis on.
+     *
+     * @param isAnalysisOn
+     *         the is analysis on
+     */
     public void setAnalysisOn(boolean isAnalysisOn)
     {
         this.isAnalysisOn = isAnalysisOn;
@@ -140,6 +151,14 @@ public class PacketAnalysis implements DataPacketListener
         }
     }
 
+    /**
+     * Calculate mode.
+     *
+     * @param helperAnalysisMaps
+     *         the helper analysis maps
+     *
+     * @return the hash map
+     */
     public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode(HelperAnalysisMaps helperAnalysisMaps)
     {
         /**
@@ -181,6 +200,14 @@ public class PacketAnalysis implements DataPacketListener
         return mode;
     }
 
+    /**
+     * Calculate median.
+     *
+     * @param helperAnalysisMaps
+     *         the helper analysis maps
+     *
+     * @return the hash map
+     */
     public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian(HelperAnalysisMaps helperAnalysisMaps)
     {
         /**
@@ -210,6 +237,18 @@ public class PacketAnalysis implements DataPacketListener
         return median;
     }
 
+    /**
+     * Calculate mode.
+     * <p>
+     * For concrete device
+     *
+     * @param helperAnalysisMaps
+     *         the helper analysis maps
+     * @param deviceInfo
+     *         the device info
+     *
+     * @return the array list
+     */
     public synchronized ArrayList<Byte> calculateMode(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
     {
         /**
@@ -249,6 +288,18 @@ public class PacketAnalysis implements DataPacketListener
         return mode;
     }
 
+    /**
+     * Calculate median.
+     * <p>
+     * For concrete device
+     *
+     * @param helperAnalysisMaps
+     *         the helper analysis maps
+     * @param deviceInfo
+     *         the device info
+     *
+     * @return the array list
+     */
     public synchronized ArrayList<Byte> calculateMedian(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
     {
         /**

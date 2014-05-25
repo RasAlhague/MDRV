@@ -1012,7 +1012,7 @@
             <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "-1.0" prefWidth = "-1.0"/>
         </columnConstraints>
         <padding>
-            <Insets fx:id = "x2"/>
+            <Insets bottom = "25.0"/>
         </padding>
         <rowConstraints>
             <RowConstraints fillHeight = "true"

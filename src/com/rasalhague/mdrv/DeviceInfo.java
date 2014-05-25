@@ -7,7 +7,6 @@ import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -191,19 +190,11 @@ public class DeviceInfo
         {
             String[] request = new String[]{"dmesg", "grep -i usb"};
             String output = "";
-            try
+
+            ArrayList<String> strings = Utils.runShellScript("dmesg | grep -i usb");
+            for (String string : strings)
             {
-                Process process = Runtime.getRuntime().exec(request);
-                Utils.StreamReader reader = new Utils.StreamReader(process.getInputStream());
-                reader.start();
-                process.waitFor();
-                reader.join();
-                output = reader.getResult();
-            }
-            catch (IOException | InterruptedException e)
-            {
-                ApplicationLogger.LOGGER.severe(e.getMessage());
-                e.printStackTrace();
+                output += string + "\n";
             }
 
             Pattern pattern = Pattern.compile(

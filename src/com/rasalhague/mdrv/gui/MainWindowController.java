@@ -67,12 +67,12 @@ public class MainWindowController extends Application implements AnalysisPerform
     public                  GridPane                  channelsGrid;
     public                  Pane                      channelPane1;
     public                  Button                    settingButton;
-    public GridPane spectralMasksGridPane;
+    public                  GridPane                  spectralMasksGridPane;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
     private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
-    private static boolean showDebugInfo = false;
+    private static boolean                  showDebugInfo       = false;
 
     public MainWindowController()
     {
@@ -228,7 +228,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                 replayModeSwitcher.setSelected(false);
             }
 
-            if (replayModeSwitcher.isSelected() && !chartInUse)
+            if (replayModeSwitcher.isSelected()/* && !chartInUse*/)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
                 analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
@@ -244,7 +244,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                 replayModeSwitcher.setSelected(false);
             }
 
-            if (replayModeSwitcher.isSelected() && !chartInUse)
+            if (replayModeSwitcher.isSelected() /*&& !chartInUse*/)
             {
                 PacketAnalysis packetAnalysis = PacketAnalysis.getInstance();
                 analysisPerformedEvent(packetAnalysis.getTimedAnalysisResults());
@@ -446,8 +446,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                 tooltipPane.getChildren().clear();
                 ArrayList<ArrayList<Text>> rowsToViewKeySet = new ArrayList<>(rowsToView.keySet());
                 //sorting in 1 line xD
-                rowsToViewKeySet.sort((o1, o2) -> Byte.compare(Byte.parseByte(o1.get(0).getText()),
-                                                               Byte.parseByte(o2.get(0).getText())));
+                rowsToViewKeySet.sort((o1, o2) -> Float.compare(Float.parseFloat(o1.get(0).getText()),
+                                                                Float.parseFloat(o2.get(0).getText())));
 
                 for (int row = 0; row < rowsToViewKeySet.size(); row++)
                 {
@@ -553,35 +553,51 @@ public class MainWindowController extends Application implements AnalysisPerform
      * GUI UPDATE SECTION
      */
 
-    boolean chartInUse = false;
-
     @Override
     public synchronized void analysisPerformedEvent(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
+        updateChartIfCan(analysisResult);
+    }
+
+    public void updateChartIfCan(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    {
         if (chartCanUpdate)
         {
-            chartInUse = true;
-            chartCanUpdate = false;
-
-            Platform.runLater(() -> {
-
-                /**
-                 * replaySlider behavior
-                 */
-                replaySlider.setMax(analysisResult.size() - 1);
-                if (!replayModeSwitcher.isSelected())
-                {
-                    replaySlider.setValue(replaySlider.getMax());
-                }
-
-                updateChartSeries(analysisResult);
-
-                //update replaySliderPreviousValue in the end
-                replaySliderPreviousValue = (int) replaySlider.getValue();
-
-                chartInUse = false;
-            });
+            updateChart(analysisResult);
         }
+    }
+
+    public static void forceUpdateChart()
+    {
+        getInstance().updateChart(PacketAnalysis.getInstance().getTimedAnalysisResults());
+    }
+
+    public static void forceUpdateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    {
+        getInstance().updateChart(analysisResult);
+    }
+
+    private void updateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    {
+        //turn true in the timer
+        chartCanUpdate = false;
+
+        Platform.runLater(() -> {
+
+            /**
+             * replaySlider behavior
+             */
+            replaySlider.setMax(analysisResult.size() - 1);
+            if (!replayModeSwitcher.isSelected())
+            {
+                replaySlider.setValue(replaySlider.getMax());
+            }
+
+            updateChartSeries(analysisResult);
+
+            //update replaySliderPreviousValue in the end
+            replaySliderPreviousValue = (int) replaySlider.getValue();
+        });
     }
 
     private synchronized void updateChartSeries(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)

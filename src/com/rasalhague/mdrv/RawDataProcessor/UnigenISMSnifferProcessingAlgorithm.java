@@ -13,6 +13,8 @@ public class UnigenISMSnifferProcessingAlgorithm implements RawDataProcessingAlg
         {
             if (dataToProcess.get(i) == byteCounter)
             {
+                //                System.out.println(dataToProcess.size());
+                //                System.out.println(dataToProcess.size());
                 if (dataToProcess.get(i + 1) == byteCounter)
                 {
                     arrayList.add(dataToProcess.get(i + 2));

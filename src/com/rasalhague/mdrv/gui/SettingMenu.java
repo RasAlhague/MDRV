@@ -20,7 +20,7 @@ public class SettingMenu implements DeviceConnectionListenerI
     private static SettingMenu ourInstance = new SettingMenu();
     private Button settingButton;
     private VBox   controlBntsVBox;
-    private HashMap<String, Float> devToRssiShiftMap = new HashMap<>();
+    private HashMap<String, Float>     devToRssiShiftMap               = new HashMap<>();
     private HashMap<String, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
 
     public static SettingMenu getInstance()
@@ -108,6 +108,7 @@ public class SettingMenu implements DeviceConnectionListenerI
                     if (!newValue.equals("") && !newValue.equals("-"))
                     {
                         devToRssiShiftMap.put(connectedDevice.getName(), Float.valueOf(newValue));
+                        MainWindowController.forceUpdateChart();
                     }
                 });
 
