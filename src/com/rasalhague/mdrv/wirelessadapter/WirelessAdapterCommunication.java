@@ -2,6 +2,7 @@ package com.rasalhague.mdrv.wirelessadapter;
 
 import com.rasalhague.mdrv.Utility.FXUtilities;
 import com.rasalhague.mdrv.Utility.Utils;
+import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.SystemUtils;
@@ -198,13 +199,32 @@ public class WirelessAdapterCommunication implements Runnable
     private ArrayList<WirelessAdapter> searchWirelessAdapters()
     {
         ArrayList<WirelessAdapter> wirelessAdaptersList = new ArrayList<>();
-        ArrayList<String> iwconfig = Utils.runShellScript("iwconfig | cut -c1-10");
 
-        Matcher iwconfigMatcher = Pattern.compile("(?<netName>\\w+)").matcher(iwconfig.toString());
+        String toolForSearchWirelessAdapters = ConfigurationLoader.getConfiguration()
+                                                                  .getApplicationConfiguration()
+                                                                  .getToolForSearchWirelessAdapters();
 
-        while (iwconfigMatcher.find())
+        if (toolForSearchWirelessAdapters.equals("iwconfig"))
         {
-            wirelessAdaptersList.add(new WirelessAdapter(iwconfigMatcher.group("netName")));
+            //via iwconfig
+            ArrayList<String> iwconfig = Utils.runShellScript("iwconfig | cut -c1-10");
+            Matcher matcher = Pattern.compile("(?<netName>\\w+)").matcher(iwconfig.toString());
+
+            while (matcher.find())
+            {
+                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
+            }
+        }
+        else if (toolForSearchWirelessAdapters.equals("iw dev"))
+        {
+            //via iw
+            ArrayList<String> iwdev = Utils.runShellScript("iw dev");
+            Matcher matcher = Pattern.compile("(Interface (?<netName>\\w+))").matcher(iwdev.toString());
+
+            while (matcher.find())
+            {
+                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
+            }
         }
 
         return wirelessAdaptersList;

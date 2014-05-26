@@ -33,10 +33,16 @@ public class ConfigurationHolder
     public class ApplicationConfigsHolder
     {
         List<String> excludedFieldsList;
+        String toolForSearchWirelessAdapters;
 
         public List<String> getExcludedFieldsList()
         {
             return excludedFieldsList;
+        }
+
+        public String getToolForSearchWirelessAdapters()
+        {
+            return toolForSearchWirelessAdapters;
         }
     }
 
