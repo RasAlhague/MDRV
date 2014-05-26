@@ -84,7 +84,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         launch();
     }
 
-    private static MainWindowController getInstance()
+    public static MainWindowController getInstance()
     {
         if (instance == null)
         {
@@ -275,6 +275,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                 }
                 else
                 {
+                    chartUpdateDelayTextField.setText("100");
                     ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
                 }
             }
@@ -559,7 +560,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         updateChartIfCan(analysisResult);
     }
 
-    public void updateChartIfCan(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    public synchronized void updateChartIfCan(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
         if (chartCanUpdate)
         {
@@ -567,7 +568,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         }
     }
 
-    public static void forceUpdateChart()
+    public synchronized static void forceUpdateChart()
     {
         getInstance().updateChart(PacketAnalysis.getInstance().getTimedAnalysisResults());
     }
