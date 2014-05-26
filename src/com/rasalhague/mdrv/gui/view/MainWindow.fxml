@@ -738,70 +738,70 @@
                         </rotationAxis>
                     </Polygon>
                 </children>
-                <columnConstraints>
-                    <ColumnConstraints fillWidth = "true"
-                                       halignment = "CENTER"
-                                       hgrow = "NEVER"
-                                       maxWidth = "-1.0"
-                                       minWidth = "50.0"
-                                       prefWidth = "-1.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "129.0" minWidth = "129.0" prefWidth = "129.0"/>
-                    <ColumnConstraints halignment = "CENTER"
-                                       hgrow = "SOMETIMES"
-                                       maxWidth = "880.0"
-                                       minWidth = "10.0"
-                                       prefWidth = "124.0"/>
-                    <ColumnConstraints halignment = "CENTER"
-                                       hgrow = "SOMETIMES"
-                                       maxWidth = "880.0"
-                                       minWidth = "10.0"
-                                       prefWidth = "124.0"/>
-                    <ColumnConstraints halignment = "CENTER"
-                                       hgrow = "SOMETIMES"
-                                       maxWidth = "880.0"
-                                       minWidth = "10.0"
-                                       prefWidth = "125.0"/>
-                    <ColumnConstraints halignment = "CENTER"
-                                       hgrow = "SOMETIMES"
-                                       maxWidth = "880.0"
-                                       minWidth = "10.0"
-                                       prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-                    <ColumnConstraints halignment = "CENTER"
-                                       hgrow = "NEVER"
-                                       maxWidth = "-1.0"
-                                       minWidth = "75.0"
-                                       prefWidth = "-1.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "20.0" minWidth = "20.0" prefWidth = "20.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "130.0" minWidth = "130.0" prefWidth = "130.0"/>
-                    <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "10.0"/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints maxHeight = "10.0"
-                                    minHeight = "10.0"
-                                    prefHeight = "10.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                    <RowConstraints fillHeight = "true"
-                                    maxHeight = "-1.0"
-                                    minHeight = "-1.0"
-                                    prefHeight = "-1.0"
-                                    valignment = "CENTER"
-                                    vgrow = "ALWAYS"/>
-                    <RowConstraints maxHeight = "43.0"
-                                    minHeight = "43.0"
-                                    prefHeight = "43.0"
-                                    valignment = "CENTER"
-                                    vgrow = "NEVER"/>
-                </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints fillWidth = "true"
+                               halignment = "CENTER"
+                               hgrow = "NEVER"
+                               maxWidth = "-1.0"
+                               minWidth = "50.0"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "129.0" minWidth = "129.0" prefWidth = "129.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "SOMETIMES"
+                               maxWidth = "880.0"
+                               minWidth = "10.0"
+                               prefWidth = "124.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "SOMETIMES"
+                               maxWidth = "880.0"
+                               minWidth = "10.0"
+                               prefWidth = "124.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "SOMETIMES"
+                               maxWidth = "880.0"
+                               minWidth = "10.0"
+                               prefWidth = "125.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "SOMETIMES"
+                               maxWidth = "880.0"
+                               minWidth = "10.0"
+                               prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
+            <ColumnConstraints halignment = "CENTER"
+                               hgrow = "NEVER"
+                               maxWidth = "-1.0"
+                               minWidth = "75.0"
+                               prefWidth = "-1.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "20.0" minWidth = "20.0" prefWidth = "20.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "130.0" minWidth = "130.0" prefWidth = "130.0"/>
+            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "10.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight = "10.0"
+                            minHeight = "10.0"
+                            prefHeight = "10.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+            <RowConstraints fillHeight = "true"
+                            maxHeight = "-1.0"
+                            minHeight = "-1.0"
+                            prefHeight = "-1.0"
+                            valignment = "CENTER"
+                            vgrow = "ALWAYS"/>
+            <RowConstraints maxHeight = "43.0"
+                            minHeight = "43.0"
+                            prefHeight = "43.0"
+                            valignment = "CENTER"
+                            vgrow = "NEVER"/>
+        </rowConstraints>
             </GridPane>
             <Slider fx:id = "replaySlider"
                     blockIncrement = "10.0"
@@ -920,9 +920,9 @@
               prefHeight = "-1.0"
               snapToPixel = "true"
               vgap = "0.0"
-              AnchorPane.bottomAnchor = "0.0"
-              AnchorPane.rightAnchor = "0.0"
-              AnchorPane.topAnchor = "0.0">
+              AnchorPane.bottomAnchor = "25.0"
+              AnchorPane.rightAnchor = "5.0"
+              AnchorPane.topAnchor = "5.0">
         <children>
             <Button fx:id = "settingButton"
                     cancelButton = "false"
@@ -1012,7 +1012,7 @@
             <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "-1.0" prefWidth = "-1.0"/>
         </columnConstraints>
         <padding>
-            <Insets bottom = "25.0"/>
+            <Insets fx:id = "x3"/>
         </padding>
         <rowConstraints>
             <RowConstraints fillHeight = "true"
