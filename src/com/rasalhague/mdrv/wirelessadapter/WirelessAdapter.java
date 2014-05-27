@@ -148,24 +148,35 @@ class WirelessAdapter
 
         if (channelsToScan != null)
         {
-            Matcher matcher = Pattern.compile("(?<channelMin>\\d+)(-(?<channelMax>\\d+))?").matcher(channelsToScan);
+            Matcher matcher = Pattern.compile("(?<channelStart>\\d+)(-(?<channelEnd>\\d+))?").matcher(channelsToScan);
             while (matcher.find())
             {
-                int channelMinInt = Integer.parseInt(matcher.group("channelMin"));
-                String channelMax = matcher.group("channelMax");
+                int channelStartInt = Integer.parseInt(matcher.group("channelStart"));
+                String channelEnd = matcher.group("channelEnd");
 
-                if (channelMax != null)
+                if (channelEnd != null)
                 {
-                    int channelMaxInt = Integer.parseInt(matcher.group("channelMax"));
+                    int channelEndInt = Integer.parseInt(channelEnd);
 
-                    for (int i = channelMinInt; i <= channelMaxInt; i++)
+                    //else - when user put 14-1 unless 1-14
+                    if (channelStartInt <= channelEndInt)
                     {
-                        arrayToRound.add(i);
+                        for (int i = channelStartInt; i <= channelEndInt; i++)
+                        {
+                            arrayToRound.add(i);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = channelStartInt; i >= channelEndInt; i--)
+                        {
+                            arrayToRound.add(i);
+                        }
                     }
                 }
                 else
                 {
-                    arrayToRound.add(channelMinInt);
+                    arrayToRound.add(channelStartInt);
                 }
             }
         }

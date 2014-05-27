@@ -315,8 +315,8 @@ public class WirelessAdapterCommunication implements Runnable
     {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
 
-            //            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
             wirelessAdapter.nextChannel();
+            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
 
         }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
@@ -468,7 +468,8 @@ public class WirelessAdapterCommunication implements Runnable
     /**
      * Add listener.
      *
-     * @param adapterDataListener          the adapter data listener
+     * @param adapterDataListener
+     *         the adapter data listener
      */
     public void addListener(WirelessAdapterDataListener adapterDataListener)
     {

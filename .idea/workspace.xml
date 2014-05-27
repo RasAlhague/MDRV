@@ -9,13 +9,10 @@
     <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="New feature: set channels to scan via config file&#10;Fix: change inxi to lspci">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV.jnlp" afterPath="$PROJECT_DIR$/artifacts/MDRV.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterData.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cfg/config.cfg" afterPath="$PROJECT_DIR$/cfg/config.cfg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/root.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/root.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
@@ -84,17 +81,7 @@
         <entry file="file://$PROJECT_DIR$/cfg/config.cfg">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.cfg" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -103,24 +90,44 @@
       <file leaf-file-name="WirelessAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="2520">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1932" max-vertical-offset="2670">
+              <caret line="152" column="4" selection-start-line="152" selection-start-column="4" selection-end-line="152" selection-end-column="4" />
               <folding>
-                <element signature="method#generateArrayToRound#0;class#WirelessAdapter#0" expanded="true" />
+                <element signature="method#WirelessAdapter#0;class#WirelessAdapter#0" expanded="true" />
                 <element signature="method#nextChannel#0;class#WirelessAdapter#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WirelessAdapterCommunication.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="WirelessAdapterCommunication.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.111111" vertical-offset="2805" max-vertical-offset="3840">
-              <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.027777778" vertical-offset="1725" max-vertical-offset="4035">
+              <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
               <folding>
-                <element signature="method#WirelessAdapterCommunication#0;class#WirelessAdapterCommunication#0" expanded="true" />
-                <element signature="e#13483#13710#0" expanded="false" />
+                <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
+                <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
+                <element signature="e#13489#13716#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoundVar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="1095">
+              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#RoundVar#0" expanded="true" />
+                <element signature="docComment;method#getCurrentValue#0;class#RoundVar#0" expanded="true" />
+                <element signature="docComment;method#getMinValue#0;class#RoundVar#0" expanded="true" />
+                <element signature="docComment;method#getMaxValue#0;class#RoundVar#0" expanded="true" />
+                <element signature="docComment;method#RoundVar#0;class#RoundVar#0" expanded="true" />
+                <element signature="method#RoundVar#0;class#RoundVar#0" expanded="true" />
+                <element signature="method#nextValue#0;class#RoundVar#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/javax.usb.properties" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Test.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/AirView2.java" />
@@ -187,9 +193,10 @@
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" />
+        <option value="$PROJECT_DIR$/cfg/config.cfg" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
-        <option value="$PROJECT_DIR$/cfg/config.cfg" />
       </list>
     </option>
   </component>
@@ -662,6 +669,7 @@
       <recent name="com.rasalhague.mdrv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cfg" />
       <recent name="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\configuration" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\resources" />
@@ -1628,7 +1636,11 @@
       <created>1401219828858</created>
       <updated>1401219828858</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="New feature: set channels to scan via config file&#10;Fix: change inxi to lspci">
+      <created>1401220045212</created>
+      <updated>1401220045212</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1653,7 +1665,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="184" y="25" width="1416" height="876" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32253712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3211876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1742,7 +1754,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="toLowerCase in series name" />
     <MESSAGE value="clean up" />
     <MESSAGE value="Add channel spacing setting" />
     <MESSAGE value="TODO it uses around 25% of CPU" />
@@ -1767,7 +1778,8 @@
     <MESSAGE value="Change access level for getInstance and add synchronized to updateChartIfCan and forceUpdateChart" />
     <MESSAGE value="Cumulative push" />
     <MESSAGE value="JavaDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="JavaDoc" />
+    <MESSAGE value="New feature: set channels to scan via config file&#10;Fix: change inxi to lspci" />
+    <option name="LAST_COMMIT_MESSAGE" value="New feature: set channels to scan via config file&#10;Fix: change inxi to lspci" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -2163,25 +2175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69512194" vertical-offset="147" max-vertical-offset="885">
-          <caret line="68" column="39" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getDeviceConfiguration#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getApplicationConfiguration#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getVendorID#0;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getProductID#0;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getEndPacketSequence#0;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getInitialFrequency#0;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-            <element signature="docComment;method#getChannelSpacing#0;class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2420" max-vertical-offset="6315">
@@ -2244,23 +2237,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6680217" vertical-offset="137" max-vertical-offset="1170">
-          <caret line="51" column="45" selection-start-line="51" selection-start-column="45" selection-end-line="51" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#RoundVar#0" expanded="true" />
-            <element signature="docComment;method#getCurrentValue#0;class#RoundVar#0" expanded="true" />
-            <element signature="docComment;method#getMinValue#0;class#RoundVar#0" expanded="true" />
-            <element signature="docComment;method#getMaxValue#0;class#RoundVar#0" expanded="true" />
-            <element signature="method#RoundVar#0;class#RoundVar#0" expanded="true" />
-            <element signature="docComment;method#nextValue#0;class#RoundVar#0" expanded="true" />
-            <element signature="method#nextValue#0;class#RoundVar#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="840">
@@ -2282,41 +2258,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5487805" vertical-offset="0" max-vertical-offset="738">
+          <caret line="68" column="39" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="39" />
+          <folding>
+            <element signature="class#DeviceConfigurationHolder#0;class#ConfigurationHolder#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14227642" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfg/config.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="2520">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1932" max-vertical-offset="2670">
+          <caret line="152" column="4" selection-start-line="152" selection-start-column="4" selection-end-line="152" selection-end-column="4" />
           <folding>
-            <element signature="method#generateArrayToRound#0;class#WirelessAdapter#0" expanded="true" />
+            <element signature="method#WirelessAdapter#0;class#WirelessAdapter#0" expanded="true" />
             <element signature="method#nextChannel#0;class#WirelessAdapter#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="1095">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#RoundVar#0" expanded="true" />
+            <element signature="docComment;method#getCurrentValue#0;class#RoundVar#0" expanded="true" />
+            <element signature="docComment;method#getMinValue#0;class#RoundVar#0" expanded="true" />
+            <element signature="docComment;method#getMaxValue#0;class#RoundVar#0" expanded="true" />
+            <element signature="docComment;method#RoundVar#0;class#RoundVar#0" expanded="true" />
+            <element signature="method#RoundVar#0;class#RoundVar#0" expanded="true" />
+            <element signature="method#nextValue#0;class#RoundVar#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.111111" vertical-offset="2805" max-vertical-offset="3840">
-          <caret line="420" column="0" selection-start-line="420" selection-start-column="0" selection-end-line="420" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.027777778" vertical-offset="1725" max-vertical-offset="4035">
+          <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
           <folding>
-            <element signature="method#WirelessAdapterCommunication#0;class#WirelessAdapterCommunication#0" expanded="true" />
-            <element signature="e#13483#13710#0" expanded="false" />
+            <element signature="method#startChannelSwitching#0;class#WirelessAdapterCommunication#0" expanded="true" />
+            <element signature="method#startListening#0;class#WirelessAdapterCommunication#0" expanded="true" />
+            <element signature="e#13489#13716#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cfg/config.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1350">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
