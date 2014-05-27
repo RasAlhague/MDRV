@@ -2,11 +2,11 @@ package com.rasalhague.mdrv.wirelessadapter;
 
 public class WirelessAdapterData
 {
-    private byte   channel;
-    private byte   dB;
-    private float  bps;
-    private float  frequency;
-    private String standart;
+    private final byte   channel;
+    private final byte   dB;
+    private final float  bps;
+    private final float  frequency;
+    private final String standart;
 
     public byte getChannel()
     {

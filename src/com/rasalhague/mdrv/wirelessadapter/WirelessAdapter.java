@@ -1,6 +1,7 @@
 package com.rasalhague.mdrv.wirelessadapter;
 
 import com.rasalhague.mdrv.Utility.Utils;
+import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 
@@ -9,13 +10,14 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class WirelessAdapter
+class WirelessAdapter
 {
     private String associatedName;
     private String macAddress;
+    private String busAddress;
     private String adapterName;
-    private BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
-    private RoundVar channelRoundSwitcher;
+    private final BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
+    private final RoundVar channelRoundSwitcher;
 
     public String getAssociatedName()
     {
@@ -30,6 +32,11 @@ public class WirelessAdapter
     public String getAdapterName()
     {
         return adapterName;
+    }
+
+    public String getBusAddress()
+    {
+        return busAddress;
     }
 
     public BidiMap<Byte, Short> getChannelToFrequencyMap()
@@ -50,46 +57,67 @@ public class WirelessAdapter
 
     public WirelessAdapter(String netName)
     {
-        ArrayList<String> inxi = Utils.runShellScript("inxi -n -c 0 -Z");
-        Matcher inxiMatcher = Pattern.compile(
-                "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
-                                     .matcher(inxi.toString());
-
-        while (inxiMatcher.find())
-        {
-            if (inxiMatcher.group("netName").equals(netName))
-            {
-                associatedName = netName;
-                macAddress = inxiMatcher.group("netCardMac");
-                adapterName = inxiMatcher.group("netCardName");
-
-                break;
-            }
-        }
-
-        //        ArrayList<String> ifconfigResult = Utils.runShellScript("ifconfig -a");
-        //        Matcher matcher = Pattern.compile(
+        //        ArrayList<String> inxi = Utils.runShellScript("inxi -n -c 0 -Z");
+        //        Matcher inxiMatcher = Pattern.compile(
         //                "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
-        //                                     .matcher(ifconfigResult.toString());
+        //                                     .matcher(inxi.toString());
         //
-        //        while (matcher.find())
+        //        while (inxiMatcher.find())
         //        {
-        //            if (matcher.group("netName").equals(netName))
+        //            if (inxiMatcher.group("netName").equals(netName))
         //            {
         //                associatedName = netName;
-        //                macAddress = matcher.group("netCardMac");
-        //                adapterName = matcher.group("netCardName");
+        //                macAddress = inxiMatcher.group("netCardMac");
+        //                adapterName = inxiMatcher.group("netCardName");
         //
         //                break;
         //            }
         //        }
 
+        associatedName = netName;
+
+        ArrayList<String> lsOut = Utils.runShellScript("ls -l /sys/class/net/ | grep " + netName);
+        //lrwxrwxrwx 1 root root 0 тра 27 19:09 wlan0 -> ../../devices/pci0000:00/0000:00:1c.6/0000:07:00.0/net/wlan0
+
+        Matcher matcher = Pattern.compile("(?<devBus>(\\d){1,5}:(\\d){1,5}:(\\d){1,5}.(\\d){1,5})")
+                                 .matcher(lsOut.toString());
+        String devBus = null;
+        boolean isUsb = lsOut.toString().contains("usb");
+
+        while (matcher.find())
+        {
+            devBus = matcher.group("devBus");
+        }
+
+        if (devBus != null)
+        {
+            //TODO Usb wireless adapter
+            ArrayList<String> out = new ArrayList<>();
+            if (isUsb)
+            {
+                //                out = Utils.runShellScript("lsusb -s " + devBus);
+
+                adapterName = "USB that was connected on " + devBus;
+            }
+            else
+            {
+                out = Utils.runShellScript("lspci -s " + devBus);
+                //07:00.0 Network controller: Qualcomm Atheros AR9485 Wireless Network Adapter (rev 01)
+
+                matcher = Pattern.compile("(.*: (?<netCardName>.*))").matcher(out.toString());
+
+                while (matcher.find())
+                {
+                    adapterName = matcher.group("netCardName");
+                }
+            }
+
+            busAddress = devBus;
+        }
+
         setUpChannelToFrequencyMap();
 
-        TreeMap<Byte, Short> byteShortTreeMap = new TreeMap<>(getChannelToFrequencyMap());
-        Byte firstKey = byteShortTreeMap.firstKey();
-        Byte lastKey = byteShortTreeMap.lastKey();
-        channelRoundSwitcher = new RoundVar(firstKey, lastKey);
+        channelRoundSwitcher = new RoundVar(generateArrayToRound());
     }
 
     private void setUpChannelToFrequencyMap()
@@ -110,6 +138,58 @@ public class WirelessAdapter
         }
     }
 
+    private ArrayList<Integer> generateArrayToRound()
+    {
+        ArrayList<Integer> arrayToRound = new ArrayList<>();
+
+        String channelsToScan = ConfigurationLoader.getConfiguration()
+                                                   .getApplicationConfiguration()
+                                                   .getChannelsToScan();
+
+        if (channelsToScan != null)
+        {
+            Matcher matcher = Pattern.compile("(?<channelMin>\\d+)(-(?<channelMax>\\d+))?").matcher(channelsToScan);
+            while (matcher.find())
+            {
+                int channelMinInt = Integer.parseInt(matcher.group("channelMin"));
+                String channelMax = matcher.group("channelMax");
+
+                if (channelMax != null)
+                {
+                    int channelMaxInt = Integer.parseInt(matcher.group("channelMax"));
+
+                    for (int i = channelMinInt; i <= channelMaxInt; i++)
+                    {
+                        arrayToRound.add(i);
+                    }
+                }
+                else
+                {
+                    arrayToRound.add(channelMinInt);
+                }
+            }
+        }
+
+        //secure
+        if (channelsToScan == null || arrayToRound.isEmpty())
+        {
+            //new for ordering
+            TreeMap<Byte, Short> byteShortTreeMap = new TreeMap<>(getChannelToFrequencyMap());
+            Byte firstKey = byteShortTreeMap.firstKey();
+            Byte lastKey = byteShortTreeMap.lastKey();
+
+            if (arrayToRound.isEmpty())
+            {
+                for (int i = firstKey; i <= lastKey; i++)
+                {
+                    arrayToRound.add(i);
+                }
+            }
+        }
+
+        return arrayToRound;
+    }
+
     public int nextChannel()
     {
         String channelSwitchingCommand = "iwconfig " +
@@ -122,18 +202,4 @@ public class WirelessAdapter
         return channelRoundSwitcher.getCurrentValue();
     }
 
-    public void setChannel(int channel)
-    {
-        if (channelRoundSwitcher.getCurrentValue() != channel)
-        {
-            channelRoundSwitcher.setCurrentValue(channel);
-
-            String channelSwitchingCommand = "iwconfig " +
-                    getAssociatedName() +
-                    " channel " +
-                    channelRoundSwitcher.getCurrentValue();
-
-            Utils.runShellScript(channelSwitchingCommand);
-        }
-    }
 }

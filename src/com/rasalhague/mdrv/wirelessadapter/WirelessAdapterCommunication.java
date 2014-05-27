@@ -29,19 +29,12 @@ import java.util.regex.Pattern;
  */
 public class WirelessAdapterCommunication implements Runnable
 {
-    private int channelSwitchingRateMs = 1000;
-    HashMap<Float, String> bpsToStandart = new HashMap<>();
+    private       int                    channelSwitchingRateMs = 1000;
+    private final HashMap<Float, String> bpsToStandart          = new HashMap<>();
 
-    public int getChannelSwitchingRateMs()
-    {
-        return channelSwitchingRateMs;
-    }
-
-    public void setChannelSwitchingRateMs(int channelSwitchingRateMs)
-    {
-        this.channelSwitchingRateMs = channelSwitchingRateMs;
-    }
-
+    /**
+     * Instantiates a new Wireless adapter communication.
+     */
     public WirelessAdapterCommunication()
     {
         //b
@@ -88,7 +81,7 @@ public class WirelessAdapterCommunication implements Runnable
         bpsToStandart.put(13.5f, "n");
         bpsToStandart.put(13f, "n");
         bpsToStandart.put(40.5f, "n");
-        bpsToStandart.put(54f, "n");
+        //        bpsToStandart.put(54f, "n");
         bpsToStandart.put(81f, "n");
         bpsToStandart.put(108f, "n");
         bpsToStandart.put(121.5f, "n");
@@ -106,7 +99,6 @@ public class WirelessAdapterCommunication implements Runnable
 
         //MIMO 2; 40 MHz
         bpsToStandart.put(27f, "n");
-        bpsToStandart.put(54f, "n");
         bpsToStandart.put(81f, "n");
         bpsToStandart.put(108f, "n");
         bpsToStandart.put(162f, "n");
@@ -323,9 +315,8 @@ public class WirelessAdapterCommunication implements Runnable
     {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
 
-            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
-            //            wirelessAdapter.nextChannel();
-            wirelessAdapter.setChannel(10);
+            //            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
+            wirelessAdapter.nextChannel();
 
         }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
@@ -419,15 +410,19 @@ public class WirelessAdapterCommunication implements Runnable
                                 ApplicationLogger.LOGGER.warning(resultExecute);
                             }
 
-                            standart = bpsToStandart.get(bps);
+                            if (bps > 54)
+                            {
+                                standart = "n";
+                            }
+                            else
+                            {
+                                standart = bpsToStandart.get(bps);
+                            }
 
                             if (standart == null)
                             {
-                                if (bps > 54)
-                                {
-                                    standart = "n";
-                                }
-                                else if (bps > 11)
+
+                                if (bps > 11)
                                 {
                                     standart = "g";
                                 }
@@ -436,7 +431,7 @@ public class WirelessAdapterCommunication implements Runnable
                                     standart = "b";
                                 }
                             }
-                            System.out.print(standart);
+                            System.out.print(bps + " " + standart + "; ");
 
                             WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel,
                                                                                               dB,
@@ -473,8 +468,7 @@ public class WirelessAdapterCommunication implements Runnable
     /**
      * Add listener.
      *
-     * @param adapterDataListener
-     *         the adapter data listener
+     * @param adapterDataListener          the adapter data listener
      */
     public void addListener(WirelessAdapterDataListener adapterDataListener)
     {
