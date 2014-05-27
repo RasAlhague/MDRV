@@ -21,12 +21,20 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class that control chart legend generation
+ */
 public class ChartLegend
 {
-    private static ChartLegend ourInstance = new ChartLegend();
+    private static final ChartLegend ourInstance = new ChartLegend();
     private VBox chartLegendVbox;
-    private HashMap<String, ArrayList<CheckBox>> devNameToCheckBoxMap = new HashMap<>();
+    private final HashMap<String, ArrayList<CheckBox>> devNameToCheckBoxMap = new HashMap<>();
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ChartLegend getInstance()
     {
         return ourInstance;
@@ -36,6 +44,14 @@ public class ChartLegend
     {
     }
 
+    /**
+     * Init chart legend.
+     *
+     * @param chartLegendVbox
+     *         the chart legend vbox
+     * @param lineChart
+     *         the line chart
+     */
     public void initChartLegend(VBox chartLegendVbox, LineChart<Number, Number> lineChart)
     {
         this.chartLegendVbox = chartLegendVbox;
@@ -74,6 +90,9 @@ public class ChartLegend
         });
     }
 
+    /**
+     * Clear chart legend.
+     */
     public void clearChartLegend()
     {
         chartLegendVbox.getChildren().clear();

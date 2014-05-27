@@ -8,8 +8,16 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * The type HID device communication.
+ * <p>
+ * Class realizes HID communication layer
+ */
 class HIDDeviceCommunication extends DeviceCommunication
 {
+    /**
+     * The Hid device.
+     */
     HIDDevice hidDevice;
 
     static
@@ -17,6 +25,12 @@ class HIDDeviceCommunication extends DeviceCommunication
         com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
     }
 
+    /**
+     * Instantiates a new HID device communication.
+     *
+     * @param devInfo
+     *         the dev info
+     */
     HIDDeviceCommunication(DeviceInfo devInfo)
     {
         super(devInfo);

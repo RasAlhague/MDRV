@@ -15,19 +15,32 @@ import javafx.scene.layout.VBox;
 
 import java.util.HashMap;
 
+/**
+ * Class that generates setting menu
+ */
 public class SettingMenu implements DeviceConnectionListenerI
 {
-    private static SettingMenu ourInstance = new SettingMenu();
+    private static final SettingMenu ourInstance = new SettingMenu();
     private Button settingButton;
     private VBox   controlBntsVBox;
-    private HashMap<String, Float>     devToRssiShiftMap               = new HashMap<>();
-    private HashMap<String, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
+    private final HashMap<String, Float>     devToRssiShiftMap               = new HashMap<>();
+    private final HashMap<String, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static SettingMenu getInstance()
     {
         return ourInstance;
     }
 
+    /**
+     * Gets dev to rssi shift map.
+     *
+     * @return the dev to rssi shift map
+     */
     public HashMap<String, Float> getDevToRssiShiftMap()
     {
         return devToRssiShiftMap;
@@ -36,6 +49,14 @@ public class SettingMenu implements DeviceConnectionListenerI
     private SettingMenu()
     {}
 
+    /**
+     * Init setting menu.
+     *
+     * @param settingButton
+     *         the setting button
+     * @param controlBntsVBox
+     *         the control bnts v box
+     */
     public void initSettingMenu(Button settingButton, VBox controlBntsVBox)
     {
         this.settingButton = settingButton;

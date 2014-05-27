@@ -13,30 +13,9 @@ import java.util.*;
 public class PacketAnalysis implements DataPacketListener
 {
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> timedAnalysisResults = new LinkedHashMap<>();
-    private          HelperAnalysisMaps                                                              helperAnalysisMaps   = new HelperAnalysisMaps();
+    private final    HelperAnalysisMaps                                                              helperAnalysisMaps   = new HelperAnalysisMaps();
 
-    /**
-     * Is analysis on.
-     *
-     * @return the boolean
-     */
-    public boolean isAnalysisOn()
-    {
-        return isAnalysisOn;
-    }
-
-    /**
-     * Sets analysis on.
-     *
-     * @param isAnalysisOn
-     *         the is analysis on
-     */
-    public void setAnalysisOn(boolean isAnalysisOn)
-    {
-        this.isAnalysisOn = isAnalysisOn;
-    }
-
-    private boolean isAnalysisOn = true;
+    private final boolean isAnalysisOn = true;
 
     /**
      * Gets instance.
@@ -153,92 +132,6 @@ public class PacketAnalysis implements DataPacketListener
 
     /**
      * Calculate mode.
-     *
-     * @param helperAnalysisMaps
-     *         the helper analysis maps
-     *
-     * @return the hash map
-     */
-    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMode(HelperAnalysisMaps helperAnalysisMaps)
-    {
-        /**
-         * MODE postprocessing
-         */
-        HashMap<DeviceInfo, ArrayList<Byte>> mode = new HashMap<>();
-        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
-        int maxRSSICountValue;
-        byte maxRSSI;
-
-        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
-        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
-        {
-            if (!mode.containsKey(helperMapDeviceKey))
-            {
-                mode.put(helperMapDeviceKey, new ArrayList<>());
-            }
-
-            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
-            {
-                maxRSSICountValue = 0;
-                maxRSSI = 0;
-
-                Set<Byte> rssiKeys = helperDataPointMap.keySet();
-                for (Byte helperDataPointMapKey : rssiKeys)
-                {
-                    if (helperDataPointMap.get(helperDataPointMapKey) > maxRSSICountValue || maxRSSICountValue == 0)
-                    {
-                        maxRSSICountValue = helperDataPointMap.get(helperDataPointMapKey);
-                        maxRSSI = helperDataPointMapKey;
-                    }
-                }
-
-                mode.get(helperMapDeviceKey).add(maxRSSI);
-            }
-        }
-
-        return mode;
-    }
-
-    /**
-     * Calculate median.
-     *
-     * @param helperAnalysisMaps
-     *         the helper analysis maps
-     *
-     * @return the hash map
-     */
-    public synchronized HashMap<DeviceInfo, ArrayList<Byte>> calculateMedian(HelperAnalysisMaps helperAnalysisMaps)
-    {
-        /**
-         * MEDIAN postprocessing
-         */
-        HashMap<DeviceInfo, ArrayList<Byte>> median = new HashMap<>();
-        HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> helperMap = helperAnalysisMaps.getModeMedianHelperMap();
-        int rssiSortedArraySize;
-
-        Set<DeviceInfo> helperMapDeviceKeys = helperMap.keySet();
-        for (DeviceInfo helperMapDeviceKey : helperMapDeviceKeys)
-        {
-            if (!median.containsKey(helperMapDeviceKey))
-            {
-                median.put(helperMapDeviceKey, new ArrayList<>());
-            }
-
-            ArrayList<HashMap<Byte, Integer>> pointsHelperArray = helperMap.get(helperMapDeviceKey);
-            for (HashMap<Byte, Integer> helperDataPointMap : pointsHelperArray)
-            {
-                ArrayList<Byte> rssiSortedArray = new ArrayList<>(new TreeMap<>(helperDataPointMap).keySet());
-                rssiSortedArraySize = rssiSortedArray.size();
-                median.get(helperMapDeviceKey).add(rssiSortedArray.get(rssiSortedArraySize / 2));
-            }
-        }
-
-        return median;
-    }
-
-    /**
-     * Calculate mode.
      * <p>
      * For concrete device
      *
@@ -249,7 +142,7 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return the array list
      */
-    public synchronized ArrayList<Byte> calculateMode(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
+    synchronized ArrayList<Byte> calculateMode(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
     {
         /**
          * MODE postprocessing
@@ -300,7 +193,7 @@ public class PacketAnalysis implements DataPacketListener
      *
      * @return the array list
      */
-    public synchronized ArrayList<Byte> calculateMedian(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
+    synchronized ArrayList<Byte> calculateMedian(HelperAnalysisMaps helperAnalysisMaps, DeviceInfo deviceInfo)
     {
         /**
          * MEDIAN postprocessing

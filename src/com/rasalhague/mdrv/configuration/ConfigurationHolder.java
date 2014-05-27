@@ -2,11 +2,26 @@ package com.rasalhague.mdrv.configuration;
 
 import java.util.List;
 
+/**
+ * The type Configuration holder.
+ * <p>
+ * Used for serialize and deserialize configuration from/to config.cfg
+ */
 public class ConfigurationHolder
 {
     private List<DeviceConfigurationHolder> devicesConfiguration;
     private ApplicationConfigsHolder        applicationConfiguration;
 
+    /**
+     * Gets device configuration.
+     *
+     * @param productID
+     *         the product iD
+     * @param vendorID
+     *         the vendor iD
+     *
+     * @return the device configuration
+     */
     public DeviceConfigurationHolder getDeviceConfiguration(String productID, String vendorID)
     {
         for (DeviceConfigurationHolder devConfiguration : devicesConfiguration)
@@ -25,6 +40,11 @@ public class ConfigurationHolder
         return new DeviceConfigurationHolder();
     }
 
+    /**
+     * Gets application configuration.
+     *
+     * @return the application configuration
+     */
     public ApplicationConfigsHolder getApplicationConfiguration()
     {
         return applicationConfiguration;
@@ -33,7 +53,8 @@ public class ConfigurationHolder
     public class ApplicationConfigsHolder
     {
         List<String> excludedFieldsList;
-        String toolForSearchWirelessAdapters;
+        String       toolForSearchWirelessAdapters;
+        String       channelsToScan;
 
         public List<String> getExcludedFieldsList()
         {
@@ -43,6 +64,11 @@ public class ConfigurationHolder
         public String getToolForSearchWirelessAdapters()
         {
             return toolForSearchWirelessAdapters;
+        }
+
+        public String getChannelsToScan()
+        {
+            return channelsToScan;
         }
     }
 
@@ -57,26 +83,51 @@ public class ConfigurationHolder
         private float  initialFrequency;
         private float  channelSpacing;
 
+        /**
+         * Gets vendor iD.
+         *
+         * @return the vendor iD
+         */
         public String getVendorID()
         {
             return vendorID;
         }
 
+        /**
+         * Gets product iD.
+         *
+         * @return the product iD
+         */
         public String getProductID()
         {
             return productID;
         }
 
+        /**
+         * Get end packet sequence.
+         *
+         * @return the byte [ ]
+         */
         public byte[] getEndPacketSequence()
         {
             return endPacketSequence;
         }
 
+        /**
+         * Gets initial frequency.
+         *
+         * @return the initial frequency
+         */
         public float getInitialFrequency()
         {
             return initialFrequency;
         }
 
+        /**
+         * Gets channel spacing.
+         *
+         * @return the channel spacing
+         */
         public float getChannelSpacing()
         {
             return channelSpacing;

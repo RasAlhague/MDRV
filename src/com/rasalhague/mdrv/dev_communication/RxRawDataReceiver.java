@@ -15,16 +15,46 @@ public class RxRawDataReceiver
 {
     private final ArrayList<DataPacket> rawDataPackets;
     private final ArrayList<Byte> rawDataBuffer = new ArrayList<>();
-
-    private Boolean firstPacketTrigger = true;
     private final DeviceInfo deviceInfo;
+    private final List<DataPacketListener> dataPacketListeners = new ArrayList<>();
+    private       Boolean                  firstPacketTrigger  = true;
+    private       int                      packetCounter       = 0;
 
-    private int packetCounter = 0;
-
+    /**
+     * Instantiates a new Rx raw data receiver.
+     *
+     * @param deviceInfo
+     *         the device info
+     */
     public RxRawDataReceiver(DeviceInfo deviceInfo)
     {
         this.deviceInfo = deviceInfo;
         rawDataPackets = new ArrayList<>();
+    }
+
+    /**
+     * RawData entry point. Works like a buffer. Sends data char by char to processReceivedByte(char receivedChar);
+     *
+     * @param rawData
+     *         string from device
+     */
+    public void receiveRawData(byte[] rawData)
+    {
+        for (byte byteProcess : rawData)
+        {
+            processReceivedByte(byteProcess);
+        }
+    }
+
+    /**
+     * Add listener.
+     *
+     * @param toAdd
+     *         the to add
+     */
+    public void addListener(DataPacketListener toAdd)
+    {
+        dataPacketListeners.add(toAdd);
     }
 
     private void saveRawDataPacket()
@@ -66,20 +96,6 @@ public class RxRawDataReceiver
         rawDataBuffer.clear();
     }
 
-    /**
-     * RawData entry point. Works like a buffer. Sends data char by char to processReceivedByte(char receivedChar);
-     *
-     * @param rawData
-     *         string from device
-     */
-    public void receiveRawData(byte[] rawData)
-    {
-        for (byte byteProcess : rawData)
-        {
-            processReceivedByte(byteProcess);
-        }
-    }
-
     private void processReceivedByte(byte receivedByte)
     {
         addDataToRawDataPacketBuffer(receivedByte);
@@ -118,15 +134,6 @@ public class RxRawDataReceiver
         }
     }
 
-    //region Observer implementation (DataPacketListener)
-
-    private final List<DataPacketListener> dataPacketListeners = new ArrayList<>();
-
-    public void addListener(DataPacketListener toAdd)
-    {
-        dataPacketListeners.add(toAdd);
-    }
-
     private void notifyDataPacketListeners(DataPacket dataPacket, ArrayList<DataPacket> rawDataPackets)
     {
         for (DataPacketListener listener : dataPacketListeners)
@@ -134,6 +141,4 @@ public class RxRawDataReceiver
             listener.dataPacketEvent(dataPacket);
         }
     }
-
-    //endregion
 }

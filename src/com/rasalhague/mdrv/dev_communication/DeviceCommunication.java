@@ -9,15 +9,32 @@ import jssc.SerialPortException;
  */
 public abstract class DeviceCommunication implements Runnable
 {
+    /**
+     * The Device info.
+     */
     final DeviceInfo        deviceInfo;
+    /**
+     * The Rx raw data receiver.
+     */
     final RxRawDataReceiver rxRawDataReceiver;
 
+    /**
+     * Instantiates a new Device communication.
+     *
+     * @param devInfo
+     *         the dev info
+     */
     DeviceCommunication(DeviceInfo devInfo)
     {
         deviceInfo = devInfo;
         rxRawDataReceiver = new RxRawDataReceiver(deviceInfo);
     }
 
+    /**
+     * Gets rx raw data receiver.
+     *
+     * @return the rx raw data receiver
+     */
     public RxRawDataReceiver getRxRawDataReceiver()
     {
         return rxRawDataReceiver;
@@ -25,6 +42,11 @@ public abstract class DeviceCommunication implements Runnable
 
     /**
      * Factory method. Choose device.
+     *
+     * @param deviceInfo
+     *         the device info
+     *
+     * @return the instance
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
     {
@@ -76,5 +98,11 @@ public abstract class DeviceCommunication implements Runnable
         return null;
     }
 
+    /**
+     * Initialize device.
+     *
+     * @throws SerialPortException
+     *         the serial port exception
+     */
     abstract void initializeDevice() throws SerialPortException;
 }

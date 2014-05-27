@@ -7,6 +7,11 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.io.*;
 
+/**
+ * The type Configuration loader.
+ * <p>
+ * Load nad deserialize configuration from config.cfg
+ */
 public class ConfigurationLoader
 {
     private static final String CONFIG_FILE_PATH          = "cfg" + File.separator + "config.cfg";
@@ -15,6 +20,9 @@ public class ConfigurationLoader
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    /**
+     * Initialize void.
+     */
     public static void initialize()
     {
         if (configurationHolder == null)
@@ -89,6 +97,11 @@ public class ConfigurationLoader
         }
     }
 
+    /**
+     * Gets loaded configuration.
+     *
+     * @return the configuration
+     */
     public static ConfigurationHolder getConfiguration()
     {
         return configurationHolder;

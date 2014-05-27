@@ -36,8 +36,8 @@ final class ez430RF2500 extends COMDeviceCommunication
 
                     try
                     {
-                        String s = serialPort.readString(1, initRetryingDelay);
-                        //                    System.out.println(s);
+                        serialPort.readString(1, initRetryingDelay);
+
                         break;
                     }
                     catch (SerialPortTimeoutException ignored)

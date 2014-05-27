@@ -29,7 +29,6 @@ import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -48,25 +47,71 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * App entry point. Contains GUI control code..
+ */
 public class MainWindowController extends Application implements AnalysisPerformedListener
 {
     private static          MainWindowController      instance;
+    /**
+     * The Line chart.
+     */
     public                  LineChart<Number, Number> lineChart;
+    /**
+     * The Debug text area.
+     */
     public                  TextArea                  debugTextArea;
+    /**
+     * The Refresh chart button.
+     */
     public                  Button                    refreshChartButton;
+    /**
+     * The Tooltip pane.
+     */
     public                  GridPane                  tooltipPane;
+    /**
+     * The Chart legend vbox.
+     */
     public                  VBox                      chartLegendVbox;
+    /**
+     * The Horizontal line.
+     */
     public                  javafx.scene.shape.Line   horizontalLine;
+    /**
+     * The Vertical line.
+     */
     public                  Line                      verticalLine;
+    /**
+     * The Show debug info bnt.
+     */
     public                  Button                    showDebugInfoBnt;
+    /**
+     * The Control bnts v box.
+     */
     public                  VBox                      controlBntsVBox;
+    /**
+     * The Replay slider.
+     */
     public                  Slider                    replaySlider;
+    /**
+     * The Replay mode switcher.
+     */
     public                  CheckBox                  replayModeSwitcher;
+    /**
+     * The Open replay btn.
+     */
     public                  Button                    openReplayBtn;
+    /**
+     * The Chart update delay text field.
+     */
     public                  TextField                 chartUpdateDelayTextField;
-    public                  GridPane                  channelsGrid;
-    public                  Pane                      channelPane1;
+    /**
+     * The Setting button.
+     */
     public                  Button                    settingButton;
+    /**
+     * The Spectral masks grid pane.
+     */
     public                  GridPane                  spectralMasksGridPane;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
@@ -74,17 +119,26 @@ public class MainWindowController extends Application implements AnalysisPerform
     private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
     private static boolean                  showDebugInfo       = false;
 
+    /**
+     * Instantiates a new Main window controller.
+     */
     public MainWindowController()
     {
         instance = this;
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args
+     *         the input arguments
+     */
     public static void main(String[] args)
     {
         launch();
     }
 
-    public static MainWindowController getInstance()
+    private static MainWindowController getInstance()
     {
         if (instance == null)
         {
@@ -99,6 +153,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     public void start(Stage primaryStage) throws Exception
     {
         ApplicationLogger.setup();
+        //        com.rasalhague.mdrv.logging.LogOutputStream.setup();
         ConfigurationLoader.initialize();
 
         final String chartStyleCssPath = "/ChartStyle.css";
@@ -148,8 +203,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
         openReplayBtn = (Button) scene.lookup("#openReplayBtn");
         chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
-        channelsGrid = (GridPane) scene.lookup("#channelsGrid");
-        channelPane1 = (Pane) scene.lookup("#channelPane1");
         settingButton = (Button) scene.lookup("#settingButton");
         spectralMasksGridPane = (GridPane) scene.lookup("#spectralMasksGridPane");
 
@@ -305,6 +358,12 @@ public class MainWindowController extends Application implements AnalysisPerform
         checkBox.setSelected(verticalLine.isVisible());
     }
 
+    /**
+     * Horizontal line switch event.
+     *
+     * @param event
+     *         the event
+     */
     public void horizontalLineSwitchEvent(ActionEvent event)
     {
         horizontalLine.setVisible(!horizontalLine.isVisible());
@@ -313,6 +372,9 @@ public class MainWindowController extends Application implements AnalysisPerform
         checkBox.setSelected(horizontalLine.isVisible());
     }
 
+    /**
+     * Show debug info.
+     */
     public void showDebugInfoBntClick()
     {
         debugTextArea.setMaxHeight(showDebugInfo ? Region.USE_COMPUTED_SIZE : 0);
@@ -321,11 +383,23 @@ public class MainWindowController extends Application implements AnalysisPerform
         showDebugInfo = !showDebugInfo;
     }
 
+    /**
+     * Refresh chart button click event.
+     *
+     * @param event
+     *         the event
+     */
     public void refreshChartButtonClickEvent(Event event)
     {
         refreshChart();
     }
 
+    /**
+     * Open replay btn click.
+     *
+     * @param actionEvent
+     *         the action event
+     */
     public void openReplayBtnClick(ActionEvent actionEvent)
     {
         refreshChart();
@@ -560,7 +634,13 @@ public class MainWindowController extends Application implements AnalysisPerform
         updateChartIfCan(analysisResult);
     }
 
-    public synchronized void updateChartIfCan(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
+    /**
+     * Update chart if can.
+     *
+     * @param analysisResult
+     *         the analysis result
+     */
+    synchronized void updateChartIfCan(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
         if (chartCanUpdate)
         {
@@ -568,11 +648,20 @@ public class MainWindowController extends Application implements AnalysisPerform
         }
     }
 
+    /**
+     * Force update chart.
+     */
     public synchronized static void forceUpdateChart()
     {
         getInstance().updateChart(PacketAnalysis.getInstance().getTimedAnalysisResults());
     }
 
+    /**
+     * Force update chart.
+     *
+     * @param analysisResult
+     *         the analysis result
+     */
     public static void forceUpdateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
         getInstance().updateChart(analysisResult);

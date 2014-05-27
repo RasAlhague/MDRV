@@ -10,10 +10,24 @@ import jssc.SerialPortException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The type COM device communication.
+ * <p>
+ * Class sor communicating with COM devices
+ */
 class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
 {
+    /**
+     * The Serial port.
+     */
     final SerialPort serialPort;
 
+    /**
+     * Instantiates a new COM device communication.
+     *
+     * @param deviceInfo
+     *         the device info
+     */
     COMDeviceCommunication(DeviceInfo deviceInfo)
     {
         super(deviceInfo);

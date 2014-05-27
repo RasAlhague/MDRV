@@ -16,13 +16,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Singleton
+ * The type Device connection listener.
+ * <p>
+ * Singleton. Listen for a new devices connections.
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
     private final ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
     private final List<DeviceConnectionListenerI> listeners           = new ArrayList<>();
-    private       long                            scanTimerPeriodMs   = 1000;
+    private final long                            scanTimerPeriodMs   = 1000;
     private       boolean                         isListening         = false;
     private Timer timer;
 
@@ -33,6 +35,11 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static DeviceConnectionListener getInstance()
     {
         return instance;
@@ -43,16 +50,27 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         addListener(this);
     }
 
+    /**
+     * Start listening.
+     */
     public void startListening()
     {
         runSchedule();
     }
 
+    /**
+     * Stop listening.
+     */
     public void stopListening()
     {
         cancelSchedule();
     }
 
+    /**
+     * Check for listening.
+     *
+     * @return the boolean
+     */
     public boolean isListening()
     {
         return isListening;
@@ -214,6 +232,12 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
 
     //region Observer implementation
 
+    /**
+     * Add listener.
+     *
+     * @param toAdd
+     *         the to add
+     */
     public void addListener(DeviceConnectionListenerI toAdd)
     {
         listeners.add(toAdd);

@@ -6,17 +6,42 @@ import com.rasalhague.mdrv.DeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HelperAnalysisMaps
+/**
+ * Used to generate helpers that used for generate mode and median in real-time
+ */
+class HelperAnalysisMaps
 {
-    HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> modeMedianHelperMap     = new HashMap<>();
-    HashMap<DeviceInfo, ArrayList<Integer>>                avrRssiSumHelperMap     = new HashMap<>();
-    HashMap<DeviceInfo, Integer>                           avrPacketCountHelperMap = new HashMap<>();
+    /**
+     * The Mode median helper map.
+     */
+    private final HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> modeMedianHelperMap     = new HashMap<>();
+    /**
+     * The Avr rssi sum helper map.
+     */
+    private final HashMap<DeviceInfo, ArrayList<Integer>>                avrRssiSumHelperMap     = new HashMap<>();
+    /**
+     * The Avr packet count helper map.
+     */
+    private final HashMap<DeviceInfo, Integer>                           avrPacketCountHelperMap = new HashMap<>();
 
+    /**
+     * Gets mode median helper map.
+     *
+     * @return the mode median helper map
+     */
     public HashMap<DeviceInfo, ArrayList<HashMap<Byte, Integer>>> getModeMedianHelperMap()
     {
         return modeMedianHelperMap;
     }
 
+    /**
+     * Update helper maps.
+     * <p>
+     * Generates and update helpers.
+     *
+     * @param dataPacket
+     *         the data packet
+     */
     public synchronized void updateHelperMaps(DataPacket dataPacket)
     {
         updateHelperMap(dataPacket);
@@ -99,11 +124,27 @@ public class HelperAnalysisMaps
         }
     }
 
+    /**
+     * Gets rssi sum for specific device.
+     *
+     * @param deviceInfo
+     *         the device info
+     *
+     * @return the rssi sum for device
+     */
     public ArrayList<Integer> getRssiSumForDevice(DeviceInfo deviceInfo)
     {
         return avrRssiSumHelperMap.get(deviceInfo);
     }
 
+    /**
+     * Gets packet count for specific device.
+     *
+     * @param deviceInfo
+     *         the device info
+     *
+     * @return the packet count for device
+     */
     public int getPacketCountForDevice(DeviceInfo deviceInfo)
     {
         return avrPacketCountHelperMap.get(deviceInfo);

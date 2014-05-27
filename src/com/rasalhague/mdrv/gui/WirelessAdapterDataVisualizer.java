@@ -18,16 +18,24 @@ import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Class that receive wirelessAdapterDataEvent and visualize it data
+ */
 public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListener
 {
-    private static WirelessAdapterDataVisualizer           ourInstance        = new WirelessAdapterDataVisualizer();
-    private        HashMap<Byte, Polygon>                  channelToG         = new HashMap<>();
-    private        HashMap<String, HashMap<Byte, Polygon>> standartToChannel  = new HashMap<>();
-    private        double                                  fadeOutPerTick     = 0.01;
-    private        double                                  fadeUpPerPacket    = 0.0005;
-    private        double                                  maxOpacity         = 0.6;
-    private        int                                     fadeOutFrequencyMs = 100;
+    private static final WirelessAdapterDataVisualizer           ourInstance        = new WirelessAdapterDataVisualizer();
+    private final        HashMap<Byte, Polygon>                  channelToG         = new HashMap<>();
+    private final        HashMap<String, HashMap<Byte, Polygon>> standartToChannel  = new HashMap<>();
+    private              double                                  fadeOutPerTick     = 0.01;
+    private              double                                  fadeUpPerPacket    = 0.0005;
+    private              double                                  maxOpacity         = 0.6;
+    private final        int                                     fadeOutFrequencyMs = 100;
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static WirelessAdapterDataVisualizer getInstance()
     {
         return ourInstance;
@@ -37,6 +45,15 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
     {
     }
 
+    /**
+     * Init void.
+     *
+     * @param spectralMasksGridPane
+     *         the spectral masks grid pane
+     *
+     * @throws IOException
+     *         the iO exception
+     */
     public void init(GridPane spectralMasksGridPane) throws IOException
     {
         String spectralMaskG = "/com/rasalhague/mdrv/gui/view/Spectral_Mask_g.fxml";
@@ -87,6 +104,12 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         }, 0, fadeOutFrequencyMs, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * Create buttons and labels
+     *
+     * @param controlBntsVBox
+     *         the control bnts v box
+     */
     public void setUpSettings(VBox controlBntsVBox)
     {
         //containers

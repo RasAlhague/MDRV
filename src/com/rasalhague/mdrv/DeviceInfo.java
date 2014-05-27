@@ -188,7 +188,6 @@ public class DeviceInfo
         }
         else if (SystemUtils.IS_OS_LINUX)
         {
-            String[] request = new String[]{"dmesg", "grep -i usb"};
             String output = "";
 
             ArrayList<String> strings = Utils.runShellScript("dmesg | grep -i usb");
