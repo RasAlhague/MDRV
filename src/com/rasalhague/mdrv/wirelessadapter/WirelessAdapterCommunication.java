@@ -150,36 +150,19 @@ public class WirelessAdapterCommunication implements Runnable
     {
         if (SystemUtils.IS_OS_LINUX)
         {
-            if (Utils.checkInxiExist())
-            {
-                ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
+            ArrayList<WirelessAdapter> wirelessAdapters = searchWirelessAdapters();
 
-                if (wirelessAdapters.size() != 0)
-                {
-                    WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
-                    switchToMonitorMode(wirelessAdapter);
-                    startChannelSwitching(wirelessAdapter);
-                    String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
-                    startListening(tcpDumpCommand, wirelessAdapter);
-                }
-                else
-                {
-                    ApplicationLogger.LOGGER.warning("No adapters have been found.");
-                }
+            if (wirelessAdapters.size() != 0)
+            {
+                WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
+                switchToMonitorMode(wirelessAdapter);
+                startChannelSwitching(wirelessAdapter);
+                String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
+                startListening(tcpDumpCommand, wirelessAdapter);
             }
             else
             {
-                ApplicationLogger.LOGGER.warning("Install Inxi for get able to connect wireless adapter.");
-                ApplicationLogger.LOGGER.warning("Trying to install Inxi...");
-
-                if (Utils.installInxi())
-                {
-                    run();
-                }
-                else
-                {
-                    ApplicationLogger.LOGGER.warning("Can not install Inxi automatically.");
-                }
+                ApplicationLogger.LOGGER.warning("No adapters have been found.");
             }
         }
         else
