@@ -80,6 +80,7 @@
     <inspection_tool class="AndroidLintIconXmlAndPng" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintIllegalResourceRef" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintInOrMmUsage" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AndroidLintIncludeLayoutParam" enabled="false" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="AndroidLintInconsistentArrays" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintInconsistentLayout" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AndroidLintInefficientWeight" enabled="true" level="WARNING" enabled_by_default="true" />
@@ -1445,6 +1446,7 @@
     <inspection_tool class="RequiredAttributes" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myAdditionalRequiredHtmlAttributes" value="" />
     </inspection_tool>
+    <inspection_tool class="ResourceType" enabled="false" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="ResultOfObjectAllocationIgnored" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ResultSetIndexZero" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ReturnFromFinallyBlock" enabled="true" level="WARNING" enabled_by_default="true" />
