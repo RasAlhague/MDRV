@@ -39,10 +39,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -737,19 +734,30 @@ public class MainWindowController extends Application implements AnalysisPerform
             {
                 HashMap<AnalysisKey, ArrayList<Byte>> myHM = new HashMap<>();
                 Set<AnalysisKey> analysisKeys = analysisResult.get(timeKey).get(deviceInfo).keySet();
+                //sort for fix chart legend unsorted out bug
+                List<AnalysisKey> sortedAnalysisKeys = Utils.asSortedList(analysisKeys);
+
                 if (combinedAnalysisResult.containsKey(deviceInfo))
                 {
-                    analysisKeys.forEach(analysisKey -> {
-
+                    for (AnalysisKey analysisKey : sortedAnalysisKeys)
+                    {
                         combinedAnalysisResult.get(deviceInfo).remove(analysisKey);
                         combinedAnalysisResult.get(deviceInfo)
                                               .put(analysisKey,
                                                    analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
-                    });
+                    }
+
+                    //                    analysisKeys.forEach(analysisKey -> {
+                    //
+                    //                        combinedAnalysisResult.get(deviceInfo).remove(analysisKey);
+                    //                        combinedAnalysisResult.get(deviceInfo)
+                    //                                              .put(analysisKey,
+                    //                                                   analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
+                    //                    });
                 }
                 else
                 {
-                    analysisKeys.forEach(analysisKey -> {
+                    sortedAnalysisKeys.forEach(analysisKey -> {
 
                         myHM.put(analysisKey, analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
                     });

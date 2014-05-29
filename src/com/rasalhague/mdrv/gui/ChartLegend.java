@@ -1,5 +1,6 @@
 package com.rasalhague.mdrv.gui;
 
+import com.rasalhague.mdrv.analysis.AnalysisKey;
 import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
@@ -9,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -164,7 +166,15 @@ public class ChartLegend
             series.getNode().setVisible(checkBox.isSelected());
         });
 
-        hBox.getChildren().add(checkBox);
+        //need  replace it with checkBox
+        if (hBox.getChildren().size() == 0)
+        {
+            for (int i = 0; i < 6; i++)
+                hBox.getChildren().add(new Label());
+        }
+
+        AnalysisKey analysisKey = AnalysisKey.valueOf(type.toUpperCase());
+        hBox.getChildren().set(analysisKey.ordinal(), checkBox);
 
         devNameToCheckBoxMap.get(devName).add(checkBox);
     }
