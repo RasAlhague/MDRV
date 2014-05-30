@@ -120,10 +120,10 @@
                     <Insets fx:id = "x4"/>
                 </GridPane.margin>
             </LineChart>
-            <GridPane fx:id = "spectralMasksGridPane"
+            <GridPane id = "spectralMasksGridPane"
                       disable = "true"
                       focusTraversable = "true"
-                      gridLinesVisible = "true"
+                      gridLinesVisible = "false"
                       hgap = "0.0"
                       maxHeight = "-1.0"
                       maxWidth = "-1.0"

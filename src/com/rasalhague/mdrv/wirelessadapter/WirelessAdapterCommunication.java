@@ -3,6 +3,7 @@ package com.rasalhague.mdrv.wirelessadapter;
 import com.rasalhague.mdrv.Utility.FXUtilities;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
+import com.rasalhague.mdrv.gui.SettingMenu;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
 import org.apache.commons.lang3.SystemUtils;
@@ -31,6 +32,16 @@ public class WirelessAdapterCommunication implements Runnable
 {
     private       int                    channelSwitchingRateMs = 1000;
     private final HashMap<Float, String> bpsToStandart          = new HashMap<>();
+    private static WirelessAdapterCommunication instance;
+
+    public static WirelessAdapterCommunication getInstance()
+    {
+        if (instance == null)
+        {
+            return new WirelessAdapterCommunication();
+        }
+        return instance;
+    }
 
     /**
      * Instantiates a new Wireless adapter communication.
@@ -157,6 +168,9 @@ public class WirelessAdapterCommunication implements Runnable
                 WirelessAdapter wirelessAdapter = chooseWirelessAdapter(wirelessAdapters);
                 switchToMonitorMode(wirelessAdapter);
                 startChannelSwitching(wirelessAdapter);
+
+                SettingMenu.getInstance().generateFieldFowChSw(wirelessAdapter);
+
                 String tcpDumpCommand = chooseTcpDumpCommand(wirelessAdapter);
                 startListening(tcpDumpCommand, wirelessAdapter);
             }
@@ -187,21 +201,25 @@ public class WirelessAdapterCommunication implements Runnable
 
             while (matcher.find())
             {
-                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
+                //                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
             }
         }
         else if (toolForSearchWirelessAdapters.equals("iw dev"))
         {
             //via iw
             ArrayList<String> iwdev = Utils.runShellScript("iw dev");
-            Matcher matcher = Pattern.compile("(Interface (?<netName>\\w+))").matcher(iwdev.toString());
+            Matcher matcher = Pattern.compile("(.*?(?<phy>phy.\\d))(.*?Interface (?<netName>\\w+))")
+                                     .matcher(iwdev.toString());
 
             while (matcher.find())
             {
-                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
+                String phy = matcher.group("phy");
+                ApplicationLogger.LOGGER.warning(phy);
+                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName"), phy));
             }
         }
 
+        System.out.println(wirelessAdaptersList);
         return wirelessAdaptersList;
     }
 
@@ -268,12 +286,13 @@ public class WirelessAdapterCommunication implements Runnable
     private void switchToMonitorMode(WirelessAdapter wirelessAdapter)
     {
         ArrayList<String> monitorModeCommands = new ArrayList<>();
+        monitorModeCommands.add("/etc/init.d/NetworkManager stop");
         monitorModeCommands.add("ifconfig " +
                                         wirelessAdapter.getAssociatedName() +
                                         " down");
-        monitorModeCommands.add("iwconfig " +
+        monitorModeCommands.add("iw dev " +
                                         wirelessAdapter.getAssociatedName() +
-                                        " mode monitor");
+                                        " set type monitor");
         monitorModeCommands.add("ifconfig " + wirelessAdapter.getAssociatedName() + " up");
 
         monitorModeCommands.forEach((t) -> {

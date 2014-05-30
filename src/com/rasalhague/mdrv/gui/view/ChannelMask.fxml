@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import java.lang.*?>
+<Polygon xmlns:fx = "http://javafx.com/fxml/1"
+         xmlns = "http://javafx.com/javafx/2.2"
+
+         fill = "DODGERBLUE"
+         focusTraversable = "false"
+         opacity = "0.0"
+         rotate = "0.0"
+         scaleX = "9.7"
+         scaleY = "12.8"
+         scaleZ = "1.0"
+         smooth = "true"
+         stroke = "BLACK"
+         strokeDashOffset = "0.0"
+         strokeLineCap = "SQUARE"
+         strokeLineJoin = "MITER"
+         strokeMiterLimit = "10.0"
+         strokeType = "INSIDE"
+         strokeWidth = "0.2"
+         translateX = "0.0"
+         translateY = "0.0"
+         visible = "true"
+         GridPane.valignment = "CENTER"
+        >
+    <points>
+        <Double fx:value = "-10.0"/>
+        <Double fx:value = "40.0"/>
+        <Double fx:value = "10.0"/>
+        <Double fx:value = "40.0"/>
+        <Double fx:value = "10.0"/>
+        <Double fx:value = "0.0"/>
+        <Double fx:value = "-10.0"/>
+        <Double fx:value = "0.0"/>
+    </points>
+    <rotationAxis>
+        <Point3D/>
+    </rotationAxis>
+</Polygon>

@@ -25,11 +25,13 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
 {
     private static final WirelessAdapterDataVisualizer           ourInstance        = new WirelessAdapterDataVisualizer();
     private final        HashMap<Byte, Polygon>                  channelToG         = new HashMap<>();
+    private final HashMap<Byte, Polygon> channelMasks    = new HashMap<>();
     private final        HashMap<String, HashMap<Byte, Polygon>> standartToChannel  = new HashMap<>();
-    private              double                                  fadeOutPerTick     = 0.01;
-    private              double                                  fadeUpPerPacket    = 0.0005;
-    private              double                                  maxOpacity         = 0.6;
+    private       float                  fadeOutPerTick  = 0.01f;
+    private       float                  fadeUpPerPacket = 0.0006f;
+    private       float                  maxOpacity      = 0.6f;
     private final        int                                     fadeOutFrequencyMs = 100;
+    private       int                    fullFadeAfter   = 20;
 
     /**
      * Gets instance.
@@ -56,30 +58,32 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
      */
     public void init(GridPane spectralMasksGridPane) throws IOException
     {
-        String spectralMaskG = "/com/rasalhague/mdrv/gui/view/Spectral_Mask_g.fxml";
-        Polygon spectralMaskGPolygon;
+        //        String spectralMaskG = "/com/rasalhague/mdrv/gui/view/Spectral_Mask_g.fxml";
+        String channelMask = "/com/rasalhague/mdrv/gui/view/ChannelMask.fxml";
+        Polygon spectralMaskPolygon;
 
         for (byte b = 1; b <= 14; b++)
         {
-            spectralMaskGPolygon = FXMLLoader.load(getClass().getResource(spectralMaskG));
-            spectralMaskGPolygon.setOpacity(0.5);
+            spectralMaskPolygon = FXMLLoader.load(getClass().getResource(channelMask));
+            spectralMaskPolygon.setOpacity(0.5);
+            spectralMaskPolygon.setVisible(true);
 
             if (b != 14)
             {
-                spectralMasksGridPane.add(spectralMaskGPolygon, b + 1, 1);
+                spectralMasksGridPane.add(spectralMaskPolygon, b + 1, 1);
             }
             else
             {
-                spectralMasksGridPane.add(spectralMaskGPolygon, 16, 1);
+                spectralMasksGridPane.add(spectralMaskPolygon, 16, 1);
             }
 
-            channelToG.put(b, spectralMaskGPolygon);
+            //            channelToG.put(b, spectralMaskPolygon);
+            channelMasks.put(b, spectralMaskPolygon);
         }
 
-        standartToChannel.put("g", channelToG);
-        //TODO
-        standartToChannel.put("b", channelToG);
-        standartToChannel.put("n", channelToG);
+        standartToChannel.put("g", channelMasks);
+        standartToChannel.put("b", channelMasks);
+        standartToChannel.put("n", channelMasks);
 
         //        maxOpacity = 1;
         //        fadeOutPerTick = maxOpacity / (Float.valueOf(2) * 1000 / fadeOutFrequencyMs);
@@ -91,7 +95,7 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
 
             Platform.runLater(() -> {
-                channelToG.values().forEach(polygon -> {
+                channelMasks.values().forEach(polygon -> {
 
                     double polygonOpacity = polygon.getOpacity();
                     if (polygonOpacity >= 0)
@@ -157,11 +161,11 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         fadeUpOpacityHBox.setSpacing(3);
 
         freqTextField.setPrefWidth(50);
-        freqTextField.setText("5");
+        freqTextField.setText(String.valueOf(fullFadeAfter));
         maxOpacityTextField.setPrefWidth(50);
-        maxOpacityTextField.setText("0.6");
+        maxOpacityTextField.setText(String.valueOf(maxOpacity));
         fadeUpOpacityTextField.setPrefWidth(100);
-        fadeUpOpacityTextField.setText("0.0005");
+        fadeUpOpacityTextField.setText("0.0006");
 
         freqTextField.textProperty().addListener((observable, oldValue, newValue) -> {
 

@@ -1,8 +1,11 @@
 package com.rasalhague.mdrv.gui;
 
 import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
+import com.rasalhague.mdrv.wirelessadapter.RoundVar;
+import com.rasalhague.mdrv.wirelessadapter.WirelessAdapter;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -152,6 +155,26 @@ public class SettingMenu implements DeviceConnectionListenerI
                 });
             }
         }
+    }
+
+    public void generateFieldFowChSw(WirelessAdapter wirelessAdapter)
+    {
+        TextField textFieldFowChSw = new TextField();
+        textFieldFowChSw.setPrefWidth(50);
+        textFieldFowChSw.setText("1-14");
+
+        textFieldFowChSw.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (textFieldFowChSw.getText().matches("(?<channelStart>\\d+)(-(?<channelEnd>\\d+))?"))
+            {
+                wirelessAdapter.setChannelRoundSwitcher(new RoundVar(Utils.generateArrayToRound(textFieldFowChSw.getText())));
+            }
+        });
+
+        Platform.runLater(() -> {
+
+            controlBntsVBox.getChildren().add(textFieldFowChSw);
+        });
     }
 
     private void setUpBehavior()

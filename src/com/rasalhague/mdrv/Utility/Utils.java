@@ -14,6 +14,52 @@ import java.util.regex.Pattern;
 
 public class Utils
 {
+    public static ArrayList<Integer> generateArrayToRound(String channelsToScan)
+    {
+        ArrayList<Integer> arrayToRound = new ArrayList<>();
+
+        if (channelsToScan == null)
+        {
+            channelsToScan = "1-14";
+
+            ApplicationLogger.LOGGER.warning("channelsToScan == null, channelsToScan = \"1-14\"");
+        }
+
+        Matcher matcher = Pattern.compile("(?<channelStart>\\d+)(-(?<channelEnd>\\d+))?").matcher(channelsToScan);
+        while (matcher.find())
+        {
+            int channelStartInt = Integer.parseInt(matcher.group("channelStart"));
+            String channelEnd = matcher.group("channelEnd");
+
+            if (channelEnd != null)
+            {
+                int channelEndInt = Integer.parseInt(channelEnd);
+
+                //else - when user put 14-1 unless 1-14
+                if (channelStartInt <= channelEndInt)
+                {
+                    for (int i = channelStartInt; i <= channelEndInt; i++)
+                    {
+                        arrayToRound.add(i);
+                    }
+                }
+                else
+                {
+                    for (int i = channelStartInt; i >= channelEndInt; i--)
+                    {
+                        arrayToRound.add(i);
+                    }
+                }
+            }
+            else
+            {
+                arrayToRound.add(channelStartInt);
+            }
+        }
+
+        return arrayToRound;
+    }
+
     public static <T extends Comparable<? super T>> List<T> asSortedList(Collection<T> c)
     {
         List<T> list = new ArrayList<T>(c);

@@ -220,7 +220,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
-        WirelessAdapterCommunication wirelessAdapterCommunication = new WirelessAdapterCommunication();
+        WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
         wirelessAdapterCommunication.addListener(WirelessAdapterDataVisualizer.getInstance());
 
         Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
