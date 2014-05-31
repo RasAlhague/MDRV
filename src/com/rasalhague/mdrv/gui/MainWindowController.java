@@ -217,7 +217,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
-        DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
+        PacketAnalysis.getInstance().addListener(SettingMenu.getInstance());
+        //        DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
@@ -642,6 +643,9 @@ public class MainWindowController extends Application implements AnalysisPerform
         if (chartCanUpdate)
         {
             updateChart(analysisResult);
+
+            //turn true in the timer
+            chartCanUpdate = false;
         }
     }
 
@@ -653,22 +657,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         getInstance().updateChart(PacketAnalysis.getInstance().getTimedAnalysisResults());
     }
 
-    /**
-     * Force update chart.
-     *
-     * @param analysisResult
-     *         the analysis result
-     */
-    public static void forceUpdateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
-    {
-        getInstance().updateChart(analysisResult);
-    }
-
     private void updateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
     {
-        //turn true in the timer
-        chartCanUpdate = false;
-
         Platform.runLater(() -> {
 
             /**

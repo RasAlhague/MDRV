@@ -2,11 +2,13 @@
   <dictionary name="root">
     <words>
       <w>brandwish</w>
+      <w>bssid</w>
       <w>inxi</w>
       <w>lspci</w>
       <w>lsusb</w>
       <w>rssi</w>
       <w>standart</w>
+      <w>tcpdump</w>
     </words>
   </dictionary>
 </component>
