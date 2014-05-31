@@ -15,6 +15,11 @@ public class ApplicationLogger extends Logger
     //    public final static Logger GLOBAL_LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public final static  Logger LOGGER      = new ApplicationLogger();
 
+    public static Logger getLogger()
+    {
+        return LOGGER;
+    }
+
     /**
      * Protected method to construct a logger for a named subsystem.
      * <p>

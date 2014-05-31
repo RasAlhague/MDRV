@@ -53,17 +53,11 @@ public class ConfigurationHolder
     public class ApplicationConfigsHolder
     {
         List<String> excludedFieldsList;
-        String       toolForSearchWirelessAdapters;
         String       channelsToScan;
 
         public List<String> getExcludedFieldsList()
         {
             return excludedFieldsList;
-        }
-
-        public String getToolForSearchWirelessAdapters()
-        {
-            return toolForSearchWirelessAdapters;
         }
 
         public String getChannelsToScan()

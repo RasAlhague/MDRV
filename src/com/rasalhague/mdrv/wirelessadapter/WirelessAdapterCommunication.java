@@ -2,7 +2,6 @@ package com.rasalhague.mdrv.wirelessadapter;
 
 import com.rasalhague.mdrv.Utility.FXUtilities;
 import com.rasalhague.mdrv.Utility.Utils;
-import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.gui.SettingMenu;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import javafx.stage.Stage;
@@ -20,6 +19,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.rasalhague.mdrv.logging.ApplicationLogger.getLogger;
 
 /**
  * The type Wireless adapter communication.
@@ -189,37 +190,21 @@ public class WirelessAdapterCommunication implements Runnable
     {
         ArrayList<WirelessAdapter> wirelessAdaptersList = new ArrayList<>();
 
-        String toolForSearchWirelessAdapters = ConfigurationLoader.getConfiguration()
-                                                                  .getApplicationConfiguration()
-                                                                  .getToolForSearchWirelessAdapters();
+        //via iw
+        ArrayList<String> iwdev = Utils.runShellScript("iw dev");
+        Matcher matcher = Pattern.compile("(.*?(?<phy>phy.\\d))(.*?Interface (?<netName>\\w+))")
+                                 .matcher(iwdev.toString());
 
-        if (toolForSearchWirelessAdapters.equals("iwconfig"))
+        while (matcher.find())
         {
-            //via iwconfig
-            ArrayList<String> iwconfig = Utils.runShellScript("iwconfig | cut -c1-10");
-            Matcher matcher = Pattern.compile("(?<netName>\\w+)").matcher(iwconfig.toString());
+            String phy = matcher.group("phy");
 
-            while (matcher.find())
-            {
-                //                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName")));
-            }
-        }
-        else if (toolForSearchWirelessAdapters.equals("iw dev"))
-        {
-            //via iw
-            ArrayList<String> iwdev = Utils.runShellScript("iw dev");
-            Matcher matcher = Pattern.compile("(.*?(?<phy>phy.\\d))(.*?Interface (?<netName>\\w+))")
-                                     .matcher(iwdev.toString());
+            getLogger().warning(phy);
 
-            while (matcher.find())
-            {
-                String phy = matcher.group("phy");
-                ApplicationLogger.LOGGER.warning(phy);
-                wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName"), phy));
-            }
+            wirelessAdaptersList.add(new WirelessAdapter(matcher.group("netName"), phy));
         }
 
-        System.out.println(wirelessAdaptersList);
+        getLogger().warning("wirelessAdaptersList\t " + wirelessAdaptersList);
         return wirelessAdaptersList;
     }
 

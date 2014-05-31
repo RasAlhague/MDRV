@@ -129,14 +129,11 @@ public class WirelessAdapter
 
     private void setUpChannelToFrequencyMap()
     {
-        ArrayList<String> iwlistChannelOut = Utils.runShellScript("iw " +
-                                                                          phy +
-                                                                          " info");
+        ArrayList<String> iwlistChannelOut = Utils.runShellScript("iw " + phy + " info");
 
         String iwlistChannelOutString = "";
         for (String s : iwlistChannelOut)
         {
-
             iwlistChannelOutString += s + "\n";
         }
         ApplicationLogger.LOGGER.warning(iwlistChannelOutString);
