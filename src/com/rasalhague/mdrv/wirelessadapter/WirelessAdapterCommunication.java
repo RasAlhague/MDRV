@@ -303,7 +303,7 @@ public class WirelessAdapterCommunication implements Runnable
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
 
             wirelessAdapter.nextChannel();
-            System.out.print(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
+            ApplicationLogger.LOGGER.info(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
 
         }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
 
@@ -357,9 +357,7 @@ public class WirelessAdapterCommunication implements Runnable
             while ((resultExecute = tcpDumpReader.readLine()) != null)
             {
                 Matcher matcher = Pattern.compile(
-                        //                        "(?<!bad-fcs)( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?"
-                        //                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(11(?<standart>.))(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?(.*?IV: *?(?<IV>(\\d|\\w){1,4}))?")
-                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(.*?(?<dB>-\\d{2,3})dB)(.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?")
+                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(.*?(?<dB>-\\d{2,3})dB)((.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?)(.*?BSSID:(?<BSSID>(((\\w|\\d){2}):?){6}))")
                                          .matcher(resultExecute);
 
                 while (matcher.find())
@@ -373,6 +371,8 @@ public class WirelessAdapterCommunication implements Runnable
                         String bpsFirst = matcher.group("MbFirst");
                         String bpsSecond = matcher.group("MbSecond");
                         float frequency = Float.valueOf(matcher.group("frequency"));
+                        String BSSID = matcher.group("BSSID");
+
                         String standart;
                         float bps;
 
@@ -418,13 +418,16 @@ public class WirelessAdapterCommunication implements Runnable
                                     standart = "b";
                                 }
                             }
-                            System.out.print(bps + " " + standart + "; ");
 
                             WirelessAdapterData wirelessAdapterData = new WirelessAdapterData(channel,
                                                                                               dB,
                                                                                               bps,
                                                                                               frequency,
-                                                                                              standart);
+                                                                                              standart,
+                                                                                              BSSID);
+
+                            System.out.println(wirelessAdapterData);
+
                             notifyWirelessAdapterDataListeners(wirelessAdapterData);
                         }
                     }

@@ -167,11 +167,14 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         fadeUpOpacityTextField.setPrefWidth(100);
         fadeUpOpacityTextField.setText("0.0006");
 
+        fadeOutPerTick = maxOpacity / (Float.valueOf(freqTextField.getText()) * 1000 / fadeOutFrequencyMs);
+
         freqTextField.textProperty().addListener((observable, oldValue, newValue) -> {
 
             if (!newValue.equals(""))
             {
                 fadeOutPerTick = maxOpacity / (Float.valueOf(newValue) * 1000 / fadeOutFrequencyMs);
+                System.out.println(fadeOutPerTick);
             }
         });
 

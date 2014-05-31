@@ -204,11 +204,6 @@ public class WirelessAdapter
 
     public int nextChannel()
     {
-        //        String channelSwitchingCommand = "iwconfig " +
-        //                getAssociatedName() +
-        //                " channel " +
-        //                channelRoundSwitcher.nextValue();
-
         String channelSwitchingCommand = "iw " +
                 getAssociatedName() +
                 " set channel " +
