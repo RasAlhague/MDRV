@@ -3,7 +3,6 @@ package com.rasalhague.mdrv.dev_communication;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import jssc.SerialPortException;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -27,6 +26,12 @@ public class DummyDeviceCommunication extends DeviceCommunication
     @Override
     public void run()
     {
+        initializeDevice();
+        startGeneratingRSSI();
+    }
+
+    private void startGeneratingRSSI()
+    {
         ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(() -> {
 
@@ -49,7 +54,7 @@ public class DummyDeviceCommunication extends DeviceCommunication
     }
 
     @Override
-    void initializeDevice() throws SerialPortException
+    void initializeDevice()
     {
         ApplicationLogger.LOGGER.warning(deviceInfo.getName() + " has initialized.");
     }

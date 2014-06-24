@@ -36,7 +36,7 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
     }
 
     @Override
-    void initializeDevice() throws SerialPortException
+    void initializeDevice()
     {
         ApplicationLogger.LOGGER.warning(
                 "Device not specified. Can not choose right init sequence. Initialization ignored.");

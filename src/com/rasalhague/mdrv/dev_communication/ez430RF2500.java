@@ -16,7 +16,7 @@ final class ez430RF2500 extends COMDeviceCommunication
     }
 
     @Override
-    void initializeDevice() throws SerialPortException
+    void initializeDevice()
     {
         if (SystemUtils.IS_OS_WINDOWS)
         {
@@ -60,8 +60,7 @@ final class ez430RF2500 extends COMDeviceCommunication
 
             Utils.runShellScript(
                     "stty 9600 -icrnl -opost -onlcr -isig -icanon -iexten -echo -crterase -echok -echoctl -echoke -F " +
-                            deviceInfo.getDevicePortName()
-            );
+                            deviceInfo.getDevicePortName());
         }
 
         ApplicationLogger.LOGGER.info("ez430RF2500 has initialized");

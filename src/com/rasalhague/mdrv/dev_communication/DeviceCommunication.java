@@ -2,7 +2,6 @@ package com.rasalhague.mdrv.dev_communication;
 
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import jssc.SerialPortException;
 
 /**
  * Result of the run method must be call to RxRawDataReceiver
@@ -105,9 +104,6 @@ public abstract class DeviceCommunication implements Runnable
 
     /**
      * Initialize device.
-     *
-     * @throws SerialPortException
-     *         the serial port exception
      */
-    abstract void initializeDevice() throws SerialPortException;
+    abstract void initializeDevice();
 }
