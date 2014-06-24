@@ -58,6 +58,11 @@ public abstract class DeviceCommunication implements Runnable
 
         String devPid = deviceInfo.getProductID();
 
+        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.DUMMY)
+        {
+            return new DummyDeviceCommunication(deviceInfo);
+        }
+
         if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.COM)
         {
             //AirView2 -- USB\VID_1F9B&PID_0241&REV_8888

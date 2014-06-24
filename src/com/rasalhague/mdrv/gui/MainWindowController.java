@@ -229,6 +229,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //fake button press
         DeviceConnectionListener.getInstance().startListening();
+        DeviceConnectionListener.getInstance().addDummyDevice();
     }
 
     /**

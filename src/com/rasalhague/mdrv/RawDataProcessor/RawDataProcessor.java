@@ -36,6 +36,12 @@ public class RawDataProcessor
             return rawDataProcessingAlgorithm.processData(dataToProcess);
         }
 
+        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.DUMMY)
+        {
+            rawDataProcessingAlgorithm = new DummyDataProcessingAlgorithm();
+            return rawDataProcessingAlgorithm.processData(dataToProcess);
+        }
+
         //        ApplicationLogger.LOGGER.warning(
         //                "Can not processData because device not registered, trying to use default regex.");
         //        return rawDataProcessingAlgorithm.processData(dataToProcess);

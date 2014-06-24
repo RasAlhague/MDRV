@@ -31,7 +31,8 @@ public class DeviceInfo
     {
         HID,
         COM,
-        WIRELESS_ADAPTER
+        WIRELESS_ADAPTER,
+        DUMMY
     }
 
     public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
@@ -80,6 +81,25 @@ public class DeviceInfo
                 break;
             }
         }
+    }
+
+    public DeviceInfo(String vendorID,
+                      String productID,
+                      String name,
+                      String devicePortName,
+                      DeviceType deviceType,
+                      byte[] endPacketSequence,
+                      float initialFrequency,
+                      float channelSpacing)
+    {
+        this.vendorID = vendorID;
+        this.productID = productID;
+        this.name = name;
+        this.devicePortName = devicePortName;
+        this.deviceType = deviceType;
+        this.endPacketSequence = endPacketSequence;
+        this.initialFrequency = initialFrequency;
+        this.channelSpacing = channelSpacing;
     }
 
     private void setSomeFieldsFromConfig(String pID, String vID)

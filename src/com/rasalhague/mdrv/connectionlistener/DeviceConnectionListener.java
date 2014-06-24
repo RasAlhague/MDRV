@@ -10,10 +10,7 @@ import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * The type Device connection listener.
@@ -22,6 +19,7 @@ import java.util.TimerTask;
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
+    private final ArrayList<DeviceInfo>           dummyDeviceList     = new ArrayList<>();
     private final ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
     private final List<DeviceConnectionListenerI> listeners           = new ArrayList<>();
     private final long                            scanTimerPeriodMs   = 1000;
@@ -64,6 +62,32 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     public void stopListening()
     {
         cancelSchedule();
+    }
+
+    /**
+     * Add dummy device.
+     * <p>
+     * DummyDevice name must be "DummyDevice [SeqNumb]"
+     */
+    public void addDummyDevice()
+    {
+        Random random = new Random();
+
+        short dummyDeviceLastNumber = 0;
+        if (dummyDeviceList.size() > 0)
+        {
+            String[] split = dummyDeviceList.get(dummyDeviceList.size() - 1).getName().split(" ");
+            dummyDeviceLastNumber = Short.parseShort(split[split.length]);
+        }
+
+        dummyDeviceList.add(new DeviceInfo(String.valueOf(Integer.valueOf(String.valueOf(random.nextInt(65535)), 16)),
+                                           String.valueOf(Integer.valueOf(String.valueOf(random.nextInt(65535)), 16)),
+                                           "DummyDevice " + ++dummyDeviceLastNumber,
+                                           "DummyPort",
+                                           DeviceInfo.DeviceType.DUMMY,
+                                           new byte[]{10},
+                                           2399,
+                                           500));
     }
 
     /**
@@ -115,10 +139,9 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     {
         ArrayList<DeviceInfo> combinedList = new ArrayList<>();
 
-        ArrayList<DeviceInfo> comPortsList = getCOMPortsList();
-        combinedList.addAll(comPortsList);
-        ArrayList<DeviceInfo> hidDevicesList = getHIDDevicesList();
-        combinedList.addAll(hidDevicesList);
+        combinedList.addAll(getCOMPortsList());
+        combinedList.addAll(getHIDDevicesList());
+        combinedList.addAll(getDummyDeviceList());
 
         updateConnectedDeviceList(combinedList);
     }
@@ -169,6 +192,11 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         }
 
         return null;
+    }
+
+    private ArrayList<DeviceInfo> getDummyDeviceList()
+    {
+        return this.dummyDeviceList;
     }
 
     /**
