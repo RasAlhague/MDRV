@@ -110,6 +110,7 @@ public class MainWindowController extends Application implements AnalysisPerform
      * The Spectral masks grid pane.
      */
     public                  GridPane                  spectralMasksGridPane;
+    public Button addDummyButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -202,6 +203,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         chartUpdateDelayTextField = (TextField) scene.lookup("#chartUpdateDelayTextField");
         settingButton = (Button) scene.lookup("#settingButton");
         spectralMasksGridPane = (GridPane) scene.lookup("#spectralMasksGridPane");
+        addDummyButton = (Button) scene.lookup("#addDummyButton");
 
         //initialization
         WirelessAdapterDataVisualizer.getInstance().init(spectralMasksGridPane);
@@ -229,7 +231,6 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //fake button press
         DeviceConnectionListener.getInstance().startListening();
-        DeviceConnectionListener.getInstance().addDummyDevice();
     }
 
     /**
@@ -403,6 +404,11 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         refreshChart();
         Replay.getInstance().loadReplay();
+    }
+
+    public void addDummyButtonOnAction(ActionEvent actionEvent)
+    {
+        DeviceConnectionListener.getInstance().addDummyDevice();
     }
 
     /**

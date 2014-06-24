@@ -976,6 +976,11 @@
                             onMouseClicked = "#showDebugInfoBntClick"
                             text = "Show debug info"
                             VBox.vgrow = "NEVER"/>
+                    <Button id = "a"
+                            fx:id = "addDummyButton"
+                            mnemonicParsing = "false"
+                            onAction = "#addDummyButtonOnAction"
+                            text = "Add Dummy"/>
                     <CheckBox id = "verticalLineSwitcher"
                               fx:id = "horizontalLineSwitcher"
                               mnemonicParsing = "false"
