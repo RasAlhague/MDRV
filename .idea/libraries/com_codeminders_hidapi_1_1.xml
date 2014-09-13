@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.codeminders:hidapi:1.1" type="repository">
+    <properties maven-id="com.codeminders:hidapi:1.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hidapi-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/hidapi-1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

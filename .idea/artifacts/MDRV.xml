@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="javafx" build-on-make="true" name="MDRV">
-    <output-path>$PROJECT_DIR$/artifacts/</output-path>
+    <output-path>$PROJECT_DIR$/artifacts</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="com.rasalhague.mdrv.gui.MainWindowController" />
@@ -13,17 +13,18 @@
     </properties>
     <root id="root">
       <element id="archive" name="MDRV.jar">
-        <element id="directory" name="libs">
-          <element id="library" level="project" name="gson-2.2.4" />
-          <element id="library" level="project" name="jssc" />
-          <element id="library" level="project" name="commons-lang3-3.2.1" />
-          <element id="library" level="project" name="commons-collections4-4.0-sources" />
-          <element id="library" level="project" name="controlsfx-8.0.5" />
-          <element id="library" level="project" name="javahidapi" />
-        </element>
         <element id="module-output" name="MDRV" />
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh" />
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="org.reflections:reflections:0.9.9-RC2" />
+        <element id="library" level="project" name="org.scream3r:jssc:2.8.0" />
+        <element id="library" level="project" name="com.google.code.gson:gson:2.3" />
+        <element id="library" level="project" name="com.codeminders:hidapi:1.1" />
+        <element id="library" level="project" name="org.apache.commons:commons-lang3:3.3.2" />
+        <element id="library" level="project" name="org.apache.commons:commons-collections4:4.0" />
+        <element id="library" level="project" name="org.controlsfx:controlsfx:8.0.5" />
+      </element>
     </root>
   </artifact>
 </component>
