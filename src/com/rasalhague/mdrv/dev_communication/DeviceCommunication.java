@@ -67,6 +67,6 @@ public abstract class DeviceCommunication implements Runnable
     {
         deviceInfo.getDevice().initializeDevice();
 
-        ApplicationLogger.LOGGER.warning(deviceInfo.getName() + " has initialized.");
+        ApplicationLogger.LOGGER.info(deviceInfo.getName() + " has initialized.");
     }
 }
