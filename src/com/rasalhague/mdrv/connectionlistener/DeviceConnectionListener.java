@@ -6,6 +6,7 @@ import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
 
 import java.io.IOException;
@@ -242,7 +243,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             //filter known devices
             if (device != null)
             {
-                //                device.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
+                device.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
                 device.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(device.getDeviceCommunication());
