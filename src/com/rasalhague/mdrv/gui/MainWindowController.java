@@ -7,6 +7,7 @@ import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
+import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -815,7 +816,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      * TODO it uses around 25% of CPU
                      */
-                    HashMap<String, Float> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
+                    HashMap<Device, Float> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
@@ -831,7 +832,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     numberData = data.get(i);
 
                                     numberData.setYValue(seriesData.get(i).getYValue().byteValue() +
-                                                                 devToRssiShiftMap.get(deviceInfo.getName()));
+                                                                 devToRssiShiftMap.get(deviceInfo.getDevice()));
 
                                     if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
                                     {
