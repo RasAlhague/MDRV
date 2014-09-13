@@ -29,7 +29,8 @@ public class DeviceInfo
     private float      initialFrequency;
     private float      channelSpacing;
 
-    private Device device;
+    //transient for avoid logger Deadlock with Device class
+    private transient Device device;
 
     public enum DeviceType
     {
