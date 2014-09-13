@@ -11,7 +11,6 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
 import com.rasalhague.mdrv.replay.Replay;
-import com.rasalhague.mdrv.wirelessadapter.WirelessAdapterCommunication;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -223,11 +222,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         //        DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
-        WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
-        wirelessAdapterCommunication.addListener(WirelessAdapterDataVisualizer.getInstance());
-
-        Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
-        wirelessAdapterCommunicationThread.start();
+        //        WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
+        //        wirelessAdapterCommunication.addListener(WirelessAdapterDataVisualizer.getInstance());
+        //
+        //        Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
+        //        wirelessAdapterCommunicationThread.start();
 
         //fake button press
         DeviceConnectionListener.getInstance().startListening();
@@ -785,7 +784,11 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Generate XYChart.Series
                      */
                     XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                    String seriesName = deviceInfo.getName() + " " + analysisForDeviceKey.toString().toLowerCase();
+                    String seriesName = deviceInfo.getFriendlyName() +
+                            " on " +
+                            deviceInfo.getPortName() +
+                            " " +
+                            analysisForDeviceKey.toString().toLowerCase();
                     series.setName(seriesName);
 
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));

@@ -4,9 +4,8 @@ import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
-import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
+import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import com.rasalhague.mdrv.logging.PacketLogger;
 import jssc.SerialPortList;
 
 import java.io.IOException;
@@ -238,21 +237,21 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
             //Call Factory method
-            DeviceCommunication deviceCommunication = DeviceCommunication.getInstance(connectedDevice);
+            Device device = Device.getConcreteDevice(connectedDevice);
 
             //filter known devices
-            if (deviceCommunication != null)
+            if (device != null)
             {
-                deviceCommunication.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
-                deviceCommunication.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
+                //                device.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
+                device.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
-                Thread thread = new Thread(deviceCommunication);
+                Thread thread = new Thread(device.getDeviceCommunication());
                 thread.setDaemon(true);
                 thread.start();
             }
             else
             {
-                ApplicationLogger.LOGGER.info(connectedDevice.getName() + " " + "ignored.");
+                ApplicationLogger.LOGGER.info(connectedDevice.getName() + " ignored.");
             }
 
         }

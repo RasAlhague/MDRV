@@ -56,11 +56,11 @@ final class ez430RF2500 extends COMDeviceCommunication
         {
             ApplicationLogger.LOGGER.info("Executing \n" +
                                                   "stty 9600 -icrnl -opost -onlcr -isig -icanon -iexten -echo -crterase -echok -echoctl -echoke -F " +
-                                                  deviceInfo.getDevicePortName());
+                                                  deviceInfo.getPortName());
 
             Utils.runShellScript(
                     "stty 9600 -icrnl -opost -onlcr -isig -icanon -iexten -echo -crterase -echok -echoctl -echoke -F " +
-                            deviceInfo.getDevicePortName());
+                            deviceInfo.getPortName());
         }
 
         ApplicationLogger.LOGGER.info("ez430RF2500 has initialized");

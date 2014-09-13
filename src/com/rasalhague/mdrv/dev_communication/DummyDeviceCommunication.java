@@ -2,7 +2,6 @@ package com.rasalhague.mdrv.dev_communication;
 
 import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
-import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -51,11 +50,5 @@ public class DummyDeviceCommunication extends DeviceCommunication
             }
 
         }, 0, 10, TimeUnit.MILLISECONDS);
-    }
-
-    @Override
-    void initializeDevice()
-    {
-        ApplicationLogger.LOGGER.warning(deviceInfo.getName() + " has initialized.");
     }
 }

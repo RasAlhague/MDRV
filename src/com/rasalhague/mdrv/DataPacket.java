@@ -1,7 +1,5 @@
 package com.rasalhague.mdrv;
 
-import com.rasalhague.mdrv.RawDataProcessor.RawDataProcessor;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -42,8 +40,9 @@ public class DataPacket
     {
         this.rawDataPacket = rawData.toString();
         this.deviceInfo = deviceInfo;
+        //TODO new Date()
         this.packetCreationTimeMs = new Date().getTime();
-        this.dataPacketValues = RawDataProcessor.processData(rawData, deviceInfo);
+        this.dataPacketValues = deviceInfo.getDevice().parse(rawData);
         if (dataPacketValues != null)
         {
             this.pointsAmount = dataPacketValues.size();

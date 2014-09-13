@@ -4,6 +4,7 @@ import com.codeminders.hidapi.HIDDeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationHolder;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
+import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -18,14 +19,17 @@ import java.util.regex.Pattern;
  */
 public class DeviceInfo
 {
+    private String friendlyName;
     private String     vendorID;
     private String     productID;
     private String     name;
-    private String     devicePortName;
+    private String portName;
     private DeviceType deviceType;
     private byte[]     endPacketSequence;
     private float      initialFrequency;
     private float      channelSpacing;
+
+    private Device device;
 
     public enum DeviceType
     {
@@ -37,34 +41,35 @@ public class DeviceInfo
 
     public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
     {
-        devicePortName = hidDeviceInfo.getPath();
+        portName = hidDeviceInfo.getPath();
         deviceType = DeviceType.HID;
 
         name = hidDeviceInfo.getProduct_string();
         productID = Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase();
         vendorID = Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase();
 
-        setSomeFieldsFromConfig(productID, vendorID);
+        //        setSomeFieldsFromConfig(productID, vendorID);
     }
 
     public DeviceInfo(String devPortName)
     {
-        devicePortName = devPortName;
+        portName = devPortName;
         deviceType = DeviceType.COM;
 
-        HashMap<String, String> devInfMap = takeCOMDeviceInformation(devicePortName);
+        HashMap<String, String> devInfMap = takeCOMDeviceInformation(portName);
         name = devInfMap.get("devName");
         productID = devInfMap.get("pid").toUpperCase();
         vendorID = devInfMap.get("vid").toUpperCase();
 
-        setSomeFieldsFromConfig(productID, vendorID);
+        //        setSomeFieldsFromConfig(productID, vendorID);
     }
 
     public DeviceInfo(String netName, DeviceType wirelessAdapter)
     {
-        devicePortName = netName;
+        portName = netName;
         deviceType = wirelessAdapter;
 
+        //TODO del inxi
         ArrayList<String> inxi = Utils.runShellScript("inxi -n -c 0 -Z");
         Matcher matcher = Pattern.compile(
                 "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
@@ -85,8 +90,7 @@ public class DeviceInfo
 
     public DeviceInfo(String vendorID,
                       String productID,
-                      String name,
-                      String devicePortName,
+                      String name, String portName,
                       DeviceType deviceType,
                       byte[] endPacketSequence,
                       float initialFrequency,
@@ -95,13 +99,27 @@ public class DeviceInfo
         this.vendorID = vendorID;
         this.productID = productID;
         this.name = name;
-        this.devicePortName = devicePortName;
+        this.portName = portName;
         this.deviceType = deviceType;
         this.endPacketSequence = endPacketSequence;
         this.initialFrequency = initialFrequency;
         this.channelSpacing = channelSpacing;
     }
 
+    public void setSomeFields(String friendlyName,
+                              byte[] endPacketSequence,
+                              float initialFrequency,
+                              float channelSpacing,
+                              Device device)
+    {
+        this.friendlyName = friendlyName;
+        this.endPacketSequence = endPacketSequence;
+        this.initialFrequency = initialFrequency;
+        this.channelSpacing = channelSpacing;
+        this.device = device;
+    }
+
+    //TODO Dedicated
     private void setSomeFieldsFromConfig(String pID, String vID)
     {
         ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
@@ -130,9 +148,9 @@ public class DeviceInfo
         return name;
     }
 
-    public String getDevicePortName()
+    public String getPortName()
     {
-        return devicePortName;
+        return portName;
     }
 
     public DeviceType getDeviceType()
@@ -155,6 +173,16 @@ public class DeviceInfo
         return channelSpacing;
     }
 
+    public String getFriendlyName()
+    {
+        return friendlyName;
+    }
+
+    public Device getDevice()
+    {
+        return device;
+    }
+
     public void setChannelSpacing(float channelSpacing)
     {
         this.channelSpacing = channelSpacing;
@@ -169,12 +197,15 @@ public class DeviceInfo
     public String toString()
     {
         return "DeviceInfo{" +
-                "vendorID='" + vendorID + '\'' +
+                "friendlyName='" + friendlyName + '\'' +
+                ", vendorID='" + vendorID + '\'' +
                 ", productID='" + productID + '\'' +
                 ", name='" + name + '\'' +
-                ", devicePortName='" + devicePortName + '\'' +
+                ", portName='" + portName + '\'' +
                 ", deviceType=" + deviceType +
                 ", endPacketSequence=" + Arrays.toString(endPacketSequence) +
+                ", initialFrequency=" + initialFrequency +
+                ", channelSpacing=" + channelSpacing +
                 '}';
     }
 
@@ -186,6 +217,7 @@ public class DeviceInfo
 
         DeviceInfo that = (DeviceInfo) o;
 
+        if (!portName.equals(that.portName)) return false;
         if (!productID.equals(that.productID)) return false;
         if (!vendorID.equals(that.vendorID)) return false;
 
@@ -197,6 +229,7 @@ public class DeviceInfo
     {
         int result = vendorID.hashCode();
         result = 31 * result + productID.hashCode();
+        result = 31 * result + portName.hashCode();
         return result;
     }
 

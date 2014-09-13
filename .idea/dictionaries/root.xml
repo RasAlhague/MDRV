@@ -3,12 +3,16 @@
     <words>
       <w>brandwish</w>
       <w>bssid</w>
+      <w>initializable</w>
       <w>inxi</w>
       <w>lspci</w>
       <w>lsusb</w>
+      <w>parsable</w>
+      <w>pololu</w>
       <w>rssi</w>
       <w>standart</w>
       <w>tcpdump</w>
+      <w>wixel</w>
     </words>
   </dictionary>
 </component>

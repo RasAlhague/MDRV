@@ -96,10 +96,4 @@ class HIDDeviceCommunication extends DeviceCommunication
         }
     }
 
-    @Override
-    void initializeDevice()
-    {
-        ApplicationLogger.LOGGER.warning(
-                "Device not specified. Can not choose right init sequence. Initialization ignored.");
-    }
 }

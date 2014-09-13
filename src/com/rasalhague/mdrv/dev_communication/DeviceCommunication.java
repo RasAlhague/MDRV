@@ -8,13 +8,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
  */
 public abstract class DeviceCommunication implements Runnable
 {
-    /**
-     * The Device info.
-     */
     final DeviceInfo        deviceInfo;
-    /**
-     * The Rx raw data receiver.
-     */
     final RxRawDataReceiver rxRawDataReceiver;
 
     /**
@@ -45,58 +39,22 @@ public abstract class DeviceCommunication implements Runnable
      * @param deviceInfo
      *         the device info
      *
-     * @return the instance
+     * @param initializationMethod
+     *@param parseMethod @return the instance
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
     {
-        //TODO Hardcoded
-        String AirView2PID = "0241";
-        String eZ430PID = "F432";
-        String ISMSnifferPID = "2001";
-        String MetaGeek_WiSpy24x2PID = "2410";
-
-        String devPid = deviceInfo.getProductID();
-
+        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.COM)
+        {
+            return new COMDeviceCommunication(deviceInfo);
+        }
+        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.HID)
+        {
+            return new HIDDeviceCommunication(deviceInfo);
+        }
         if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.DUMMY)
         {
             return new DummyDeviceCommunication(deviceInfo);
-        }
-
-        if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.COM)
-        {
-            //AirView2 -- USB\VID_1F9B&PID_0241&REV_8888
-            if (devPid.equals(AirView2PID))
-            {
-                return new AirView2(deviceInfo);
-            }
-
-            //eZ430 -- USB\VID_0451&PID_F432&MI_00
-            if (devPid.equals(eZ430PID))
-            {
-                return new ez430RF2500(deviceInfo);
-            }
-
-            ApplicationLogger.LOGGER.warning(
-                    "Device not specified. Getting COMDeviceCommunication to try to work with COM device.");
-
-            return new COMDeviceCommunication(deviceInfo);
-        }
-        else if (deviceInfo.getDeviceType() == DeviceInfo.DeviceType.HID)
-        {
-            if (devPid.equals(ISMSnifferPID))
-            {
-                return new ISMSniffer(deviceInfo);
-            }
-
-            if (devPid.equals(MetaGeek_WiSpy24x2PID))
-            {
-                return new MetaGeek_WiSpy24x2(deviceInfo);
-            }
-
-            //            ApplicationLogger.LOGGER.warning(
-            //                    "Device not specified. Getting HIDDeviceCommunication to try to work with HID device.");
-            //
-            //            return new HIDDeviceCommunication(deviceInfo);
         }
 
         return null;
@@ -105,5 +63,10 @@ public abstract class DeviceCommunication implements Runnable
     /**
      * Initialize device.
      */
-    abstract void initializeDevice();
+    void initializeDevice()
+    {
+        deviceInfo.getDevice().initializeDevice();
+
+        ApplicationLogger.LOGGER.warning(deviceInfo.getName() + " has initialized.");
+    }
 }

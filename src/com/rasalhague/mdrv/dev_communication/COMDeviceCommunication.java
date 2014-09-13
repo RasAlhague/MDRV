@@ -32,14 +32,7 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
     {
         super(deviceInfo);
 
-        serialPort = new SerialPort(deviceInfo.getDevicePortName());
-    }
-
-    @Override
-    void initializeDevice()
-    {
-        ApplicationLogger.LOGGER.warning(
-                "Device not specified. Can not choose right init sequence. Initialization ignored.");
+        serialPort = new SerialPort(deviceInfo.getPortName());
     }
 
     @Override
@@ -53,8 +46,8 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
                 //                rawData = serialPort.readString(serialPortEvent.getEventValue());
                 //                rxRawDataReceiver.receiveRawData(rawData);
 
-                //                rawData = serialPort.readHexStringArray(serialPortEvent.getEventValue());
-                //                System.out.println(Byte.parseByte(rawData[0], 16));
+                //                String[] strings = serialPort.readHexStringArray(serialPortEvent.getEventValue());
+                //                System.out.println(Byte.parseByte(strings[0], 16));
                 //                rxRawDataReceiver.receiveRawData(rawData);
 
                 rawData = serialPort.readBytes(serialPortEvent.getEventValue());
@@ -89,11 +82,11 @@ class COMDeviceCommunication extends DeviceCommunication implements SerialPortEv
 
     private void openPort() throws SerialPortException
     {
-        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getDevicePortName());
+        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getPortName());
 
         serialPort.openPort();
 
-        ApplicationLogger.LOGGER.info(deviceInfo.getDevicePortName() + " " + "has been opened!");
+        ApplicationLogger.LOGGER.info(deviceInfo.getPortName() + " " + "has been opened!");
 
         //        serialPort.purgePort(SerialPort.PURGE_RXCLEAR | SerialPort.PURGE_TXCLEAR);
     }

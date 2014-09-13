@@ -25,7 +25,7 @@
 //        {
 //            try
 //            {
-//                throw new LibUsbException("Unable to initialize libusb.", initResult);
+//                throw new LibUsbException("Unable to initializeDevice libusb.", initResult);
 //            }
 //            catch (LibUsbException e)
 //            {
