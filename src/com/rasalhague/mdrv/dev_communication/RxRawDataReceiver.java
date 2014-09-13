@@ -76,7 +76,7 @@ public class RxRawDataReceiver
         }
         else
         {
-            ApplicationLogger.LOGGER.warning("Different packets length detected!");
+            ApplicationLogger.LOGGER.warning("Different packets length detected and ignored!");
         }
         packetCounter++;
 
