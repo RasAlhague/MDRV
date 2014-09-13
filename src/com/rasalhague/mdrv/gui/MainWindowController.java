@@ -114,7 +114,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
     private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
-    private static boolean                  showDebugInfo       = false;
+    private static boolean showDebugInfo = true;
 
     /**
      * Instantiates a new Main window controller.
@@ -378,6 +378,7 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         debugTextArea.setMaxHeight(showDebugInfo ? Region.USE_COMPUTED_SIZE : 0);
         spectralMasksGridPane.setGridLinesVisible(showDebugInfo);
+        debugTextArea.setVisible(showDebugInfo);
 
         showDebugInfo = !showDebugInfo;
     }

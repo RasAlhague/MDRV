@@ -18,1013 +18,1048 @@
             minWidth = "600.0"
             prefHeight = "600.0"
             prefWidth = "1000.0"
+            xmlns = "http://javafx.com/javafx/8"
             xmlns:fx = "http://javafx.com/fxml/1"
-            xmlns = "http://javafx.com/javafx/2.2"
             fx:controller = "com.rasalhague.mdrv.gui.MainWindowController">
     <padding>
         <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x1"/>
     </padding>
-    <GridPane hgap = "0.0"
-              vgap = "5.0"
-              visible = "true"
-              AnchorPane.bottomAnchor = "0.0"
-              AnchorPane.leftAnchor = "0.0"
-              AnchorPane.rightAnchor = "0.0"
-              AnchorPane.topAnchor = "0.0">
-        <children>
-            <LineChart fx:id = "lineChart"
-                       alternativeColumnFillVisible = "false"
-                       alternativeRowFillVisible = "false"
-                       animated = "true"
-                       createSymbols = "false"
-                       depthTest = "INHERIT"
-                       disable = "false"
-                       focusTraversable = "false"
-                       horizontalGridLinesVisible = "true"
-                       horizontalZeroLineVisible = "true"
-                       legendSide = "BOTTOM"
-                       legendVisible = "false"
-                       maxHeight = "1.7976931348623157E308"
-                       maxWidth = "1.7976931348623157E308"
-                       minHeight = "-Infinity"
-                       minWidth = "-Infinity"
-                       mouseTransparent = "false"
-                       prefHeight = "-1.0"
-                       prefWidth = "-1.0"
-                       style = ""
-                       verticalGridLinesVisible = "true"
-                       verticalZeroLineVisible = "true"
-                       GridPane.columnIndex = "0"
-                       GridPane.halignment = "CENTER"
-                       GridPane.hgrow = "ALWAYS"
-                       GridPane.rowIndex = "0"
-                       GridPane.valignment = "CENTER"
-                       GridPane.vgrow = "ALWAYS">
-                <xAxis>
-                    <NumberAxis animated = "false"
-                                autoRanging = "false"
-                                disable = "false"
-                                focusTraversable = "false"
-                                forceZeroInRange = "false"
-                                label = "Frequency, MHz"
-                                lowerBound = "2395.0"
-                                maxHeight = "-Infinity"
-                                maxWidth = "-1.0"
-                                minorTickCount = "5"
-                                minorTickLength = "5.0"
-                                minorTickVisible = "true"
-                                prefHeight = "33.0"
-                                side = "BOTTOM"
-                                tickLabelRotation = "0.0"
-                                tickLabelsVisible = "true"
-                                tickLength = "5.0"
-                                tickMarkVisible = "true"
-                                tickUnit = "5.0"
-                                upperBound = "2500.0">
-                        <tickLabelFont>
-                            <Font size = "9.0" fx:id = "x2"/>
-                        </tickLabelFont>
-                    </NumberAxis>
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id = "YAxis"
-                                animated = "false"
-                                autoRanging = "false"
-                                disable = "false"
-                                forceZeroInRange = "false"
-                                label = "RSSI, dBm"
-                                lowerBound = "-105.0"
-                                maxHeight = "-Infinity"
-                                maxWidth = "-Infinity"
-                                minorTickCount = "5"
-                                minorTickVisible = "false"
-                                pickOnBounds = "true"
-                                prefWidth = "40.0"
-                                scaleX = "1.0"
-                                scaleY = "1.0"
-                                side = "LEFT"
-                                snapToPixel = "true"
-                                tickLabelFont = "$x2"
-                                tickLabelGap = "3.0"
-                                tickLabelRotation = "0.0"
-                                tickLabelsVisible = "true"
-                                tickLength = "5.0"
-                                tickMarkVisible = "true"
-                                tickUnit = "5.0"
-                                upperBound = "-30.0"/>
-                </yAxis>
-                <padding>
-                    <Insets fx:id = "x3"/>
-                </padding>
-                <GridPane.margin>
-                    <Insets fx:id = "x4"/>
-                </GridPane.margin>
-            </LineChart>
-            <GridPane fx:id = "spectralMasksGridPane"
-                      disable = "true"
-                      focusTraversable = "true"
-                      gridLinesVisible = "false"
-                      hgap = "0.0"
-                      maxHeight = "-1.0"
-                      maxWidth = "-1.0"
+    <children>
+        <GridPane hgap = "0.0"
+                  vgap = "5.0"
+                  visible = "true"
+                  AnchorPane.bottomAnchor = "0.0"
+                  AnchorPane.leftAnchor = "0.0"
+                  AnchorPane.rightAnchor = "0.0"
+                  AnchorPane.topAnchor = "0.0">
+            <children>
+                <LineChart fx:id = "lineChart"
+                           alternativeColumnFillVisible = "false"
+                           alternativeRowFillVisible = "false"
+                           animated = "true"
+                           createSymbols = "false"
+                           depthTest = "INHERIT"
+                           disable = "false"
+                           focusTraversable = "false"
+                           horizontalGridLinesVisible = "true"
+                           horizontalZeroLineVisible = "true"
+                           legendSide = "BOTTOM"
+                           legendVisible = "false"
+                           maxHeight = "1.7976931348623157E308"
+                           maxWidth = "1.7976931348623157E308"
+                           minHeight = "-Infinity"
+                           minWidth = "-Infinity"
+                           mouseTransparent = "false"
+                           prefHeight = "-1.0"
+                           prefWidth = "-1.0"
+                           style = ""
+                           verticalGridLinesVisible = "true"
+                           verticalZeroLineVisible = "true"
+                           GridPane.columnIndex = "0"
+                           GridPane.halignment = "CENTER"
+                           GridPane.hgrow = "ALWAYS"
+                           GridPane.rowIndex = "0"
+                           GridPane.valignment = "CENTER"
+                           GridPane.vgrow = "ALWAYS">
+                    <xAxis>
+                        <NumberAxis animated = "false"
+                                    autoRanging = "false"
+                                    disable = "false"
+                                    focusTraversable = "false"
+                                    forceZeroInRange = "false"
+                                    label = "Frequency, MHz"
+                                    lowerBound = "2395.0"
+                                    maxHeight = "-Infinity"
+                                    maxWidth = "-1.0"
+                                    minorTickCount = "5"
+                                    minorTickLength = "5.0"
+                                    minorTickVisible = "true"
+                                    prefHeight = "33.0"
+                                    side = "BOTTOM"
+                                    tickLabelRotation = "0.0"
+                                    tickLabelsVisible = "true"
+                                    tickLength = "5.0"
+                                    tickMarkVisible = "true"
+                                    tickUnit = "5.0"
+                                    upperBound = "2500.0">
+                            <tickLabelFont>
+                                <Font size = "9.0" fx:id = "x2"/>
+                            </tickLabelFont>
+                        </NumberAxis>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id = "YAxis"
+                                    animated = "false"
+                                    autoRanging = "false"
+                                    disable = "false"
+                                    forceZeroInRange = "false"
+                                    label = "RSSI, dBm"
+                                    lowerBound = "-105.0"
+                                    maxHeight = "-Infinity"
+                                    maxWidth = "-Infinity"
+                                    minorTickCount = "5"
+                                    minorTickVisible = "false"
+                                    pickOnBounds = "true"
+                                    prefWidth = "40.0"
+                                    scaleX = "1.0"
+                                    scaleY = "1.0"
+                                    side = "LEFT"
+                                    snapToPixel = "true"
+                                    tickLabelFont = "$x2"
+                                    tickLabelGap = "3.0"
+                                    tickLabelRotation = "0.0"
+                                    tickLabelsVisible = "true"
+                                    tickLength = "5.0"
+                                    tickMarkVisible = "true"
+                                    tickUnit = "5.0"
+                                    upperBound = "-30.0"/>
+                    </yAxis>
+                    <padding>
+                        <Insets fx:id = "x3"/>
+                    </padding>
+                    <GridPane.margin>
+                        <Insets fx:id = "x4"/>
+                    </GridPane.margin>
+                </LineChart>
+                <GridPane fx:id = "spectralMasksGridPane"
+                          disable = "true"
+                          focusTraversable = "true"
+                          gridLinesVisible = "false"
+                          hgap = "0.0"
+                          maxHeight = "-1.0"
+                          maxWidth = "-1.0"
+                          mouseTransparent = "true"
+                          prefHeight = "-1.0"
+                          prefWidth = "-1.0"
+                          vgap = "0.0"
+                          visible = "true"
+                          GridPane.columnIndex = "0"
+                          GridPane.halignment = "CENTER"
+                          GridPane.hgrow = "ALWAYS"
+                          GridPane.rowIndex = "0"
+                          GridPane.valignment = "BOTTOM"
+                          GridPane.vgrow = "ALWAYS">
+                    <children>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "2"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "3"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "4"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "5"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "6"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "7"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "8"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "9"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "10"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "11"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "12"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "13"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                        <Polygon fill = "DODGERBLUE"
+                                 focusTraversable = "false"
+                                 opacity = "0.1"
+                                 rotate = "180.0"
+                                 scaleX = "8.55"
+                                 scaleY = "8.55"
+                                 scaleZ = "1.0"
+                                 smooth = "true"
+                                 stroke = "BLACK"
+                                 strokeDashOffset = "0.0"
+                                 strokeLineCap = "SQUARE"
+                                 strokeLineJoin = "MITER"
+                                 strokeMiterLimit = "10.0"
+                                 strokeType = "INSIDE"
+                                 strokeWidth = "0.2"
+                                 translateX = "0.0"
+                                 translateY = "-151.0"
+                                 visible = "false"
+                                 GridPane.columnIndex = "13"
+                                 GridPane.halignment = "CENTER"
+                                 GridPane.hgrow = "ALWAYS"
+                                 GridPane.rowIndex = "1"
+                                 GridPane.valignment = "BOTTOM"
+                                 GridPane.vgrow = "ALWAYS">
+                            <points>
+                                <Double fx:value = "-30.0"/>
+                                <Double fx:value = "0.0"/>
+                                <Double fx:value = "-20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "-11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "-9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "9.0"/>
+                                <Double fx:value = "40.0"/>
+                                <Double fx:value = "11.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "20.0"/>
+                                <Double fx:value = "12.0"/>
+                                <Double fx:value = "30.0"/>
+                                <Double fx:value = "0.0"/>
+                            </points>
+                            <rotationAxis>
+                                <Point3D z = "10.0"/>
+                            </rotationAxis>
+                        </Polygon>
+                    </children>
+                    <columnConstraints>
+                        <ColumnConstraints fillWidth = "true"
+                                           halignment = "CENTER"
+                                           hgrow = "NEVER"
+                                           maxWidth = "-1.0"
+                                           minWidth = "50.0"
+                                           prefWidth = "-1.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "129.0"
+                                           minWidth = "129.0"
+                                           prefWidth = "129.0"/>
+                        <ColumnConstraints halignment = "CENTER"
+                                           hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "124.0"/>
+                        <ColumnConstraints halignment = "CENTER"
+                                           hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "124.0"/>
+                        <ColumnConstraints halignment = "CENTER"
+                                           hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints halignment = "CENTER"
+                                           hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "880.0"
+                                           minWidth = "10.0"
+                                           prefWidth = "125.0"/>
+                        <ColumnConstraints halignment = "CENTER"
+                                           hgrow = "NEVER"
+                                           maxWidth = "-1.0"
+                                           minWidth = "75.0"
+                                           prefWidth = "-1.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "20.0" minWidth = "20.0" prefWidth = "20.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES"
+                                           maxWidth = "130.0"
+                                           minWidth = "130.0"
+                                           prefWidth = "130.0"/>
+                        <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "10.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight = "10.0"
+                                        minHeight = "10.0"
+                                        prefHeight = "10.0"
+                                        valignment = "CENTER"
+                                        vgrow = "NEVER"/>
+                        <RowConstraints fillHeight = "true"
+                                        maxHeight = "-1.0"
+                                        minHeight = "-1.0"
+                                        prefHeight = "-1.0"
+                                        valignment = "CENTER"
+                                        vgrow = "ALWAYS"/>
+                        <RowConstraints maxHeight = "43.0"
+                                        minHeight = "43.0"
+                                        prefHeight = "43.0"
+                                        valignment = "CENTER"
+                                        vgrow = "NEVER"/>
+                    </rowConstraints>
+                </GridPane>
+                <Slider fx:id = "replaySlider"
+                        blockIncrement = "10.0"
+                        focusTraversable = "true"
+                        majorTickUnit = "1.0"
+                        max = "1.0"
+                        minorTickCount = "0"
+                        showTickLabels = "false"
+                        showTickMarks = "false"
+                        snapToTicks = "true"
+                        value = "0.0"
+                        visible = "true"
+                        GridPane.columnIndex = "0"
+                        GridPane.halignment = "CENTER"
+                        GridPane.hgrow = "ALWAYS"
+                        GridPane.rowIndex = "1"
+                        GridPane.valignment = "CENTER"
+                        GridPane.vgrow = "SOMETIMES"/>
+                <TextArea fx:id = "debugTextArea"
+                          disable = "false"
+                          editable = "false"
+                          maxHeight = "0.0"
+                          maxWidth = "-1.0"
+                          minHeight = "0.0"
+                          minWidth = "0.0"
+                          prefHeight = "135.0"
+                          prefWidth = "-1.0"
+                          text = ""
+                          visible = "false"
+                          wrapText = "true"
+                          GridPane.columnIndex = "0"
+                          GridPane.hgrow = "NEVER"
+                          GridPane.rowIndex = "2"/>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints halignment = "CENTER"
+                                   hgrow = "ALWAYS"
+                                   minWidth = "10.0"
+                                   percentWidth = "100.0"
+                                   prefWidth = "-1.0"/>
+            </columnConstraints>
+            <padding>
+                <Insets fx:id = "x5"/>
+            </padding>
+            <rowConstraints>
+                <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "ALWAYS"/>
+                <RowConstraints fillHeight = "true"
+                                minHeight = "0.0"
+                                prefHeight = "-1.0"
+                                valignment = "CENTER"
+                                vgrow = "NEVER"/>
+                <RowConstraints minHeight = "0.0" valignment = "CENTER" vgrow = "NEVER"/>
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id = "tooltipPane"
+                  alignment = "CENTER"
+                  gridLinesVisible = "false"
+                  layoutX = "496.0"
+                  layoutY = "271.0"
+                  mouseTransparent = "true"
+                  visible = "true">
+            <columnConstraints>
+                <ColumnConstraints fillWidth = "true" hgrow = "SOMETIMES" minWidth = "-1.0" prefWidth = "-1.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "SOMETIMES"/>
+            </rowConstraints>
+        </GridPane>
+        <Group id = "Group" layoutX = "0.0" layoutY = "0.0">
+            <children>
+                <Line fx:id = "horizontalLine"
+                      endX = "100.0"
+                      endY = "0.0"
+                      layoutX = "0.0"
+                      layoutY = "100.0"
                       mouseTransparent = "true"
-                      prefHeight = "-1.0"
-                      prefWidth = "-1.0"
-                      vgap = "0.0"
-                      visible = "true"
-                      GridPane.columnIndex = "0"
-                      GridPane.halignment = "CENTER"
-                      GridPane.hgrow = "ALWAYS"
-                      GridPane.rowIndex = "0"
-                      GridPane.valignment = "BOTTOM"
-                      GridPane.vgrow = "ALWAYS">
-                <children>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "2"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "3"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "4"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "5"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "6"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "7"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "8"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "9"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "10"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "11"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "12"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "13"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                    <Polygon fill = "DODGERBLUE"
-                             focusTraversable = "false"
-                             opacity = "0.1"
-                             rotate = "180.0"
-                             scaleX = "8.55"
-                             scaleY = "8.55"
-                             scaleZ = "1.0"
-                             smooth = "true"
-                             stroke = "BLACK"
-                             strokeDashOffset = "0.0"
-                             strokeLineCap = "SQUARE"
-                             strokeLineJoin = "MITER"
-                             strokeMiterLimit = "10.0"
-                             strokeType = "INSIDE"
-                             strokeWidth = "0.2"
-                             translateX = "0.0"
-                             translateY = "-151.0"
-                             visible = "false"
-                             GridPane.columnIndex = "13"
-                             GridPane.halignment = "CENTER"
-                             GridPane.hgrow = "ALWAYS"
-                             GridPane.rowIndex = "1"
-                             GridPane.valignment = "BOTTOM"
-                             GridPane.vgrow = "ALWAYS">
-                        <points>
-                            <Double fx:value = "-30.0"/>
-                            <Double fx:value = "0.0"/>
-                            <Double fx:value = "-20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "-11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "-9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "9.0"/>
-                            <Double fx:value = "40.0"/>
-                            <Double fx:value = "11.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "20.0"/>
-                            <Double fx:value = "12.0"/>
-                            <Double fx:value = "30.0"/>
-                            <Double fx:value = "0.0"/>
-                        </points>
-                        <rotationAxis>
-                            <Point3D z = "10.0"/>
-                        </rotationAxis>
-                    </Polygon>
-                </children>
-        <columnConstraints>
-            <ColumnConstraints fillWidth = "true"
-                               halignment = "CENTER"
-                               hgrow = "NEVER"
-                               maxWidth = "-1.0"
-                               minWidth = "50.0"
-                               prefWidth = "-1.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "129.0" minWidth = "129.0" prefWidth = "129.0"/>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "SOMETIMES"
-                               maxWidth = "880.0"
-                               minWidth = "10.0"
-                               prefWidth = "124.0"/>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "SOMETIMES"
-                               maxWidth = "880.0"
-                               minWidth = "10.0"
-                               prefWidth = "124.0"/>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "SOMETIMES"
-                               maxWidth = "880.0"
-                               minWidth = "10.0"
-                               prefWidth = "125.0"/>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "SOMETIMES"
-                               maxWidth = "880.0"
-                               minWidth = "10.0"
-                               prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "125.0"/>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "NEVER"
-                               maxWidth = "-1.0"
-                               minWidth = "75.0"
-                               prefWidth = "-1.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "20.0" minWidth = "20.0" prefWidth = "20.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "130.0" minWidth = "130.0" prefWidth = "130.0"/>
-            <ColumnConstraints hgrow = "SOMETIMES" maxWidth = "880.0" minWidth = "10.0" prefWidth = "10.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight = "10.0"
-                            minHeight = "10.0"
-                            prefHeight = "10.0"
-                            valignment = "CENTER"
-                            vgrow = "NEVER"/>
-            <RowConstraints fillHeight = "true"
-                            maxHeight = "-1.0"
-                            minHeight = "-1.0"
-                            prefHeight = "-1.0"
-                            valignment = "CENTER"
-                            vgrow = "ALWAYS"/>
-            <RowConstraints maxHeight = "43.0"
-                            minHeight = "43.0"
-                            prefHeight = "43.0"
-                            valignment = "CENTER"
-                            vgrow = "NEVER"/>
-        </rowConstraints>
-            </GridPane>
-            <Slider fx:id = "replaySlider"
-                    blockIncrement = "10.0"
-                    focusTraversable = "true"
-                    majorTickUnit = "1.0"
-                    max = "1.0"
-                    minorTickCount = "0"
-                    showTickLabels = "false"
-                    showTickMarks = "false"
-                    snapToTicks = "true"
-                    value = "0.0"
-                    visible = "true"
-                    GridPane.columnIndex = "0"
-                    GridPane.halignment = "CENTER"
-                    GridPane.hgrow = "ALWAYS"
-                    GridPane.rowIndex = "1"
-                    GridPane.valignment = "CENTER"
-                    GridPane.vgrow = "SOMETIMES"/>
-            <TextArea fx:id = "debugTextArea"
-                      disable = "false"
-                      editable = "false"
-                      maxHeight = "0.0"
-                      maxWidth = "-1.0"
-                      minHeight = "0.0"
-                      minWidth = "0.0"
-                      prefHeight = "130.0"
-                      prefWidth = "-1.0"
-                      text = ""
-                      visible = "true"
-                      wrapText = "true"
-                      GridPane.columnIndex = "0"
-                      GridPane.hgrow = "NEVER"
-                      GridPane.rowIndex = "2"/>
-        </children>
-        <columnConstraints>
-            <ColumnConstraints halignment = "CENTER"
-                               hgrow = "ALWAYS"
-                               minWidth = "10.0"
-                               percentWidth = "100.0"
-                               prefWidth = "-1.0"/>
-        </columnConstraints>
-        <padding>
-            <Insets fx:id = "x5"/>
-        </padding>
-        <rowConstraints>
-            <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "ALWAYS"/>
-            <RowConstraints fillHeight = "true"
-                            minHeight = "0.0"
-                            prefHeight = "-1.0"
-                            valignment = "CENTER"
-                            vgrow = "NEVER"/>
-            <RowConstraints minHeight = "0.0" valignment = "CENTER" vgrow = "NEVER"/>
-        </rowConstraints>
-    </GridPane>
-    <GridPane fx:id = "tooltipPane"
-              alignment = "CENTER"
-              gridLinesVisible = "false"
-              layoutX = "496.0"
-              layoutY = "271.0"
-              mouseTransparent = "true"
-              visible = "true">
-        <columnConstraints>
-            <ColumnConstraints fillWidth = "true" hgrow = "SOMETIMES" minWidth = "-1.0" prefWidth = "-1.0"/>
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "SOMETIMES"/>
-        </rowConstraints>
-    </GridPane>
-    <Group id = "Group" layoutX = "0.0" layoutY = "0.0">
-        <children>
-            <Line fx:id = "horizontalLine"
-                  endX = "100.0"
-                  endY = "0.0"
-                  layoutX = "0.0"
-                  layoutY = "100.0"
-                  mouseTransparent = "true"
-                  scaleY = "1.0"
-                  startX = "0.0"
-                  translateY = "0.0"
-                  visible = "false"/>
-            <Line fx:id = "verticalLine"
-                  cache = "false"
-                  endX = "0.0"
-                  endY = "100.0"
-                  fill = "BLACK"
-                  focusTraversable = "false"
-                  layoutX = "500.0"
-                  layoutY = "0.0"
-                  mouseTransparent = "true"
-                  opacity = "1.0"
-                  smooth = "true"
-                  startX = "0.0"
-                  startY = "0.0"
-                  strokeDashOffset = "1.0"
-                  strokeLineCap = "ROUND"
-                  strokeLineJoin = "MITER"
-                  strokeMiterLimit = "1.0"
-                  strokeType = "CENTERED"
-                  strokeWidth = "0.8"/>
-        </children>
-    </Group>
-    <VBox fx:id = "chartLegendVbox"
-          mouseTransparent = "false"
-          prefHeight = "-1.0"
-          prefWidth = "-1.0"
-          spacing = "3.0"
-          AnchorPane.rightAnchor = "0.0"
-          AnchorPane.topAnchor = "0.0">
-        <padding>
-            <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x6"/>
-        </padding>
-    </VBox>
-    <GridPane gridLinesVisible = "false"
-              hgap = "5.0"
-              maxHeight = "1.7976931348623157E308"
-              maxWidth = "-1.0"
+                      scaleY = "1.0"
+                      startX = "0.0"
+                      translateY = "0.0"
+                      visible = "false"/>
+                <Line fx:id = "verticalLine"
+                      cache = "false"
+                      endX = "0.0"
+                      endY = "100.0"
+                      fill = "BLACK"
+                      focusTraversable = "false"
+                      layoutX = "500.0"
+                      layoutY = "0.0"
+                      mouseTransparent = "true"
+                      opacity = "1.0"
+                      smooth = "true"
+                      startX = "0.0"
+                      startY = "0.0"
+                      strokeDashOffset = "1.0"
+                      strokeLineCap = "ROUND"
+                      strokeLineJoin = "MITER"
+                      strokeMiterLimit = "1.0"
+                      strokeType = "CENTERED"
+                      strokeWidth = "0.8"/>
+            </children>
+        </Group>
+        <VBox fx:id = "chartLegendVbox"
               mouseTransparent = "false"
               prefHeight = "-1.0"
-              snapToPixel = "true"
-              vgap = "0.0"
-              AnchorPane.bottomAnchor = "25.0"
-              AnchorPane.rightAnchor = "5.0"
-              AnchorPane.topAnchor = "5.0">
-        <children>
-            <Button fx:id = "settingButton"
-                    cancelButton = "false"
-                    defaultButton = "false"
-                    maxHeight = "-1.0"
-                    maxWidth = "-1.0"
-                    minHeight = "-Infinity"
-                    minWidth = "-Infinity"
-                    mnemonicParsing = "false"
-                    mouseTransparent = "false"
-                    prefHeight = "45.0"
-                    prefWidth = "8.0"
-                    text = ""
-                    GridPane.columnIndex = "1"
-                    GridPane.halignment = "CENTER"
-                    GridPane.hgrow = "ALWAYS"
-                    GridPane.rowIndex = "0"
-                    GridPane.valignment = "CENTER"
-                    GridPane.vgrow = "ALWAYS"/>
-            <VBox fx:id = "controlBntsVBox"
-                  fillWidth = "true"
-                  focusTraversable = "false"
-                  maxHeight = "-Infinity"
-                  maxWidth = "-Infinity"
-                  minHeight = "-Infinity"
-                  minWidth = "-Infinity"
-                  padding = "$x1"
+              prefWidth = "-1.0"
+              spacing = "3.0"
+              AnchorPane.rightAnchor = "0.0"
+              AnchorPane.topAnchor = "0.0">
+            <padding>
+                <Insets bottom = "5.0" left = "5.0" right = "5.0" top = "5.0" fx:id = "x6"/>
+            </padding>
+        </VBox>
+        <GridPane gridLinesVisible = "false"
+                  hgap = "5.0"
+                  maxHeight = "1.7976931348623157E308"
+                  maxWidth = "-1.0"
+                  mouseTransparent = "false"
                   prefHeight = "-1.0"
-                  prefWidth = "-1.0"
-                  spacing = "3.0"
-                  visible = "true"
-                  GridPane.columnIndex = "0"
-                  GridPane.rowIndex = "0">
-                <children>
-                    <Button fx:id = "openReplayBtn"
-                            mnemonicParsing = "false"
-                            onAction = "#openReplayBtnClick"
-                            text = "Open replay"
-                            VBox.vgrow = "NEVER"/>
-                    <Button fx:id = "refreshChartButton"
-                            cancelButton = "false"
-                            defaultButton = "false"
-                            mnemonicParsing = "false"
-                            onMouseClicked = "#refreshChartButtonClickEvent"
-                            text = "Refresh chart"
-                            VBox.vgrow = "NEVER"/>
-                    <Button fx:id = "showDebugInfoBnt"
-                            mnemonicParsing = "false"
-                            onMouseClicked = "#showDebugInfoBntClick"
-                            text = "Show debug info"
-                            VBox.vgrow = "NEVER"/>
-                    <Button id = "a"
-                            fx:id = "addDummyButton"
-                            mnemonicParsing = "false"
-                            onAction = "#addDummyButtonOnAction"
-                            text = "Add Dummy"/>
-                    <CheckBox id = "verticalLineSwitcher"
-                              fx:id = "horizontalLineSwitcher"
-                              mnemonicParsing = "false"
-                              onAction = "#horizontalLineSwitchEvent"
-                              selected = "false"
-                              text = "Horizontal line"/>
-                    <CheckBox fx:id = "verticalLineSwitcher"
-                              mnemonicParsing = "false"
-                              onAction = "#verticalLineSwitchEvent"
-                              selected = "true"
-                              text = "Vertical line"/>
-                    <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
-                    <HBox alignment = "CENTER_LEFT" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
-                        <children>
-                            <Label text = "Chart update delay"/>
-                            <TextField fx:id = "chartUpdateDelayTextField"
-                                       prefWidth = "50.0"
-                                       promptText = "Chart update delay"
-                                       text = "1000"/>
-                        </children>
-                    </HBox>
-                </children>
-            </VBox>
-        </children>
-        <columnConstraints>
-            <ColumnConstraints fillWidth = "true"
-                               halignment = "CENTER"
-                               hgrow = "ALWAYS"
-                               maxWidth = "-1.0"
-                               minWidth = "-1.0"
-                               prefWidth = "-1.0"/>
-            <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "-1.0" prefWidth = "-1.0"/>
-        </columnConstraints>
-        <padding>
-            <Insets fx:id = "x3"/>
-        </padding>
-        <rowConstraints>
-            <RowConstraints fillHeight = "false"
-                            maxHeight = "1.7976931348623157E308"
-                            minHeight = "-1.0"
-                            percentHeight = "100.0"
-                            prefHeight = "-1.0"
-                            valignment = "CENTER"
-                            vgrow = "NEVER"/>
-        </rowConstraints>
-    </GridPane>
+                  snapToPixel = "true"
+                  vgap = "0.0"
+                  AnchorPane.bottomAnchor = "25.0"
+                  AnchorPane.rightAnchor = "5.0"
+                  AnchorPane.topAnchor = "5.0">
+            <children>
+                <Button fx:id = "settingButton"
+                        cancelButton = "false"
+                        defaultButton = "false"
+                        maxHeight = "-1.0"
+                        maxWidth = "-1.0"
+                        minHeight = "-Infinity"
+                        minWidth = "-Infinity"
+                        mnemonicParsing = "false"
+                        mouseTransparent = "false"
+                        prefHeight = "45.0"
+                        prefWidth = "8.0"
+                        text = ""
+                        GridPane.columnIndex = "1"
+                        GridPane.halignment = "CENTER"
+                        GridPane.hgrow = "ALWAYS"
+                        GridPane.rowIndex = "0"
+                        GridPane.valignment = "CENTER"
+                        GridPane.vgrow = "ALWAYS"/>
+                <VBox fx:id = "controlBntsVBox"
+                      fillWidth = "true"
+                      focusTraversable = "false"
+                      maxHeight = "-Infinity"
+                      maxWidth = "-Infinity"
+                      minHeight = "-Infinity"
+                      minWidth = "-Infinity"
+                      padding = "$x1"
+                      prefHeight = "-1.0"
+                      prefWidth = "-1.0"
+                      spacing = "3.0"
+                      visible = "true"
+                      GridPane.columnIndex = "0"
+                      GridPane.rowIndex = "0">
+                    <children>
+                        <Button fx:id = "openReplayBtn"
+                                mnemonicParsing = "false"
+                                onAction = "#openReplayBtnClick"
+                                text = "Open replay"
+                                VBox.vgrow = "NEVER"/>
+                        <Button fx:id = "refreshChartButton"
+                                cancelButton = "false"
+                                defaultButton = "false"
+                                mnemonicParsing = "false"
+                                onMouseClicked = "#refreshChartButtonClickEvent"
+                                text = "Refresh chart"
+                                VBox.vgrow = "NEVER"/>
+                        <Button fx:id = "showDebugInfoBnt"
+                                mnemonicParsing = "false"
+                                onMouseClicked = "#showDebugInfoBntClick"
+                                text = "Show debug info"
+                                VBox.vgrow = "NEVER"/>
+                        <Button id = "a"
+                                fx:id = "addDummyButton"
+                                mnemonicParsing = "false"
+                                onAction = "#addDummyButtonOnAction"
+                                text = "Add Dummy"/>
+                        <CheckBox id = "verticalLineSwitcher"
+                                  fx:id = "horizontalLineSwitcher"
+                                  mnemonicParsing = "false"
+                                  onAction = "#horizontalLineSwitchEvent"
+                                  selected = "false"
+                                  text = "Horizontal line"/>
+                        <CheckBox fx:id = "verticalLineSwitcher"
+                                  mnemonicParsing = "false"
+                                  onAction = "#verticalLineSwitchEvent"
+                                  selected = "true"
+                                  text = "Vertical line"/>
+                        <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
+                        <HBox alignment = "CENTER_LEFT" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
+                            <children>
+                                <Label text = "Chart update delay"/>
+                                <TextField fx:id = "chartUpdateDelayTextField"
+                                           prefWidth = "50.0"
+                                           promptText = "Chart update delay"
+                                           text = "1000"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints fillWidth = "true"
+                                   halignment = "CENTER"
+                                   hgrow = "ALWAYS"
+                                   maxWidth = "-1.0"
+                                   minWidth = "-1.0"
+                                   prefWidth = "-1.0"/>
+                <ColumnConstraints halignment = "CENTER" hgrow = "ALWAYS" minWidth = "-1.0" prefWidth = "-1.0"/>
+            </columnConstraints>
+            <padding>
+                <Insets fx:id = "x3"/>
+            </padding>
+            <rowConstraints>
+                <RowConstraints fillHeight = "false"
+                                maxHeight = "1.7976931348623157E308"
+                                minHeight = "-1.0"
+                                percentHeight = "100.0"
+                                prefHeight = "-1.0"
+                                valignment = "CENTER"
+                                vgrow = "NEVER"/>
+            </rowConstraints>
+        </GridPane>
+    </children>
 </AnchorPane>
