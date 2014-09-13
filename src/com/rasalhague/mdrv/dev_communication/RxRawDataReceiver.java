@@ -3,8 +3,11 @@ package com.rasalhague.mdrv.dev_communication;
 import com.rasalhague.mdrv.DataPacket;
 import com.rasalhague.mdrv.DataPacketListener;
 import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,8 +20,9 @@ public class RxRawDataReceiver
     private final ArrayList<Byte> rawDataBuffer = new ArrayList<>();
     private final DeviceInfo deviceInfo;
     private final List<DataPacketListener> dataPacketListeners = new ArrayList<>();
-    private       Boolean                  firstPacketTrigger  = true;
     private       int                      packetCounter       = 0;
+
+    private HashMap<Integer, Integer> filterHelper = new HashMap<>();
 
     /**
      * Instantiates a new Rx raw data receiver.
@@ -59,25 +63,59 @@ public class RxRawDataReceiver
 
     private void saveRawDataPacket()
     {
-        //skip first packet coz it can be not full
-        if (firstPacketTrigger)
+        if (filter())
         {
-            firstPacketTrigger = false;
-        }
-        else
-        {
-            if (packetCounter > 10)
+            //skip first packets coz it can be not full
+            if (packetCounter > 5)
             {
                 DataPacket dataPacket = new DataPacket(rawDataBuffer, deviceInfo);
                 rawDataPackets.add(dataPacket);
 
                 notifySubscribers(dataPacket, rawDataPackets);
             }
-            packetCounter++;
-            //            System.out.println(rawDataPackets);
         }
+        else
+        {
+            ApplicationLogger.LOGGER.warning("Different packets length detected!");
+        }
+        packetCounter++;
 
         wipeRawDataPacketBuffer();
+    }
+
+    private boolean filter()
+    {
+        int rawDataBufferSize = rawDataBuffer.size();
+
+        if (filterHelper.containsKey(rawDataBufferSize))
+        {
+            filterHelper.put(rawDataBufferSize, filterHelper.get(rawDataBufferSize) + 1);
+        }
+        else
+        {
+            filterHelper.put(rawDataBufferSize, 1);
+        }
+
+        ArrayList<Integer> packetsCounts = new ArrayList<>(filterHelper.values());
+        //        System.out.println(packetsCounts);
+        Collections.sort(packetsCounts);
+        //        System.out.println(packetsCounts);
+
+        Integer biggestPacketCount = packetsCounts.get(packetsCounts.size() - 1);
+        int biggestPacketKey = 0;
+        for (Integer packetSize : filterHelper.keySet())
+        {
+            if (filterHelper.get(packetSize).equals(biggestPacketCount))
+            {
+                biggestPacketKey = packetSize;
+            }
+        }
+        //        System.out.println(filterHelper);
+        //        System.out.println(biggestPacketKey);
+        //        System.out.println(rawDataBufferSize);
+        //        System.out.println(filterHelper.get(biggestPacketKey));
+
+        return biggestPacketKey == rawDataBufferSize;
     }
 
     private void notifySubscribers(DataPacket dataPacket, ArrayList<DataPacket> rawDataPackets)
