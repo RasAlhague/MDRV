@@ -121,7 +121,9 @@ public class SettingMenu implements DeviceConnectionListenerI, AnalysisPerformed
 
                 labelChannelSpacing.setText("Channel spacing, kHz");
                 labelRssiShift.setText("RSSI shift");
-                labelDeviceName.setText(connectedDevice.getFriendlyName());
+                labelDeviceName.setText(connectedDevice.getFriendlyNameWithId() +
+                                                " on " +
+                                                connectedDevice.getPortName());
 
                 //behavior
                 devToTextFieldChannelSpacingMap.put(connectedDevice.getDevice(), textFieldChannelSpacing);
@@ -208,7 +210,9 @@ public class SettingMenu implements DeviceConnectionListenerI, AnalysisPerformed
 
                 labelChannelSpacing.setText("Channel spacing, kHz");
                 labelRssiShift.setText("RSSI shift");
-                labelDeviceName.setText(connectedDevice.getFriendlyName());
+                labelDeviceName.setText(connectedDevice.getFriendlyNameWithId() +
+                                                " on " +
+                                                connectedDevice.getPortName());
 
                 //behavior
                 devToTextFieldChannelSpacingMap.put(connectedDevice.getDevice(), textFieldChannelSpacing);

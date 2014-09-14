@@ -23,7 +23,6 @@
         <element id="library" level="project" name="com.codeminders:hidapi:1.1" />
         <element id="library" level="project" name="org.apache.commons:commons-lang3:3.3.2" />
         <element id="library" level="project" name="org.apache.commons:commons-collections4:4.0" />
-        <element id="library" level="project" name="org.controlsfx:controlsfx:8.0.5" />
       </element>
     </root>
   </artifact>

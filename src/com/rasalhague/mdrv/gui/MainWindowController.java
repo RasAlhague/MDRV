@@ -786,7 +786,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Generate XYChart.Series
                      */
                     XYChart.Series<Number, Number> series = new XYChart.Series<>();
-                    String seriesName = deviceInfo.getFriendlyName() +
+                    String seriesName = deviceInfo.getFriendlyNameWithId() +
                             " on " +
                             deviceInfo.getPortName() +
                             " " +

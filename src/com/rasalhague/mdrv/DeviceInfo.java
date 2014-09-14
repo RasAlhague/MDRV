@@ -28,6 +28,7 @@ public class DeviceInfo
     private byte[]     endPacketSequence;
     private float      initialFrequency;
     private float      channelSpacing;
+    private int id = 0;
 
     //transient for avoid logger Deadlock with Device class
     private transient Device device;
@@ -90,8 +91,7 @@ public class DeviceInfo
     }
 
     public DeviceInfo(String vendorID,
-                      String productID,
-                      String name, String portName,
+                      String productID, String name, String portName,
                       DeviceType deviceType,
                       byte[] endPacketSequence,
                       float initialFrequency,
@@ -132,6 +132,11 @@ public class DeviceInfo
         channelSpacing = deviceConfiguration.getChannelSpacing();
 
         //        System.out.println(pID + "\t" + initialFrequency + "\t" + channelSpacing);
+    }
+
+    public void incrementID()
+    {
+        this.id++;
     }
 
     public String getVendorID()
@@ -179,6 +184,23 @@ public class DeviceInfo
         return friendlyName;
     }
 
+    public String getFriendlyNameWithId()
+    {
+        if (this.id == 0)
+        {
+            return friendlyName;
+        }
+        else
+        {
+            return friendlyName + " #" + this.id;
+        }
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
     public Device getDevice()
     {
         return device;
@@ -189,9 +211,40 @@ public class DeviceInfo
         this.channelSpacing = channelSpacing;
     }
 
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
     public boolean equalsPidVid(String pId, String vId)
     {
         return pId.equals(productID) && vId.equals(vendorID);
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DeviceInfo that = (DeviceInfo) o;
+
+        if (id != that.id) return false;
+        if (!portName.equals(that.portName)) return false;
+        if (!productID.equals(that.productID)) return false;
+        if (!vendorID.equals(that.vendorID)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = vendorID.hashCode();
+        result = 31 * result + productID.hashCode();
+        result = 31 * result + portName.hashCode();
+        result = 31 * result + id;
+        return result;
     }
 
     @Override
@@ -208,30 +261,6 @@ public class DeviceInfo
                 ", initialFrequency=" + initialFrequency +
                 ", channelSpacing=" + channelSpacing +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DeviceInfo that = (DeviceInfo) o;
-
-        if (!portName.equals(that.portName)) return false;
-        if (!productID.equals(that.productID)) return false;
-        if (!vendorID.equals(that.vendorID)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result = vendorID.hashCode();
-        result = 31 * result + productID.hashCode();
-        result = 31 * result + portName.hashCode();
-        return result;
     }
 
     private HashMap<String, String> takeCOMDeviceInformation(String devicePortName)

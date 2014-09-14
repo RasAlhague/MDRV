@@ -242,7 +242,8 @@ public class WirelessAdapterCommunication implements Runnable
                                              .masthead(null)
                                              .message("Choose Adapter:");
 
-                    chosenElement[0] = dialogs.showChoices(wirelessAdaptersNames);
+                    //TODO ControlFX
+                    //                    chosenElement[0] = dialogs.showChoices(wirelessAdaptersNames);
                 });
             }
             catch (InterruptedException | ExecutionException e)
@@ -330,9 +331,10 @@ public class WirelessAdapterCommunication implements Runnable
                                          .masthead(null)
                                          .message(null);
 
-                chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
-                                                                 wirelessAdapter.getAssociatedName() +
-                                                                 " -s 0 -nne '(type data subtype qos-data)'");
+                //TODO ControlFX
+                //                chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
+                //                                                                 wirelessAdapter.getAssociatedName() +
+                //                                                                 " -s 0 -nne '(type data subtype qos-data)'");
             });
         }
         catch (InterruptedException | ExecutionException e)

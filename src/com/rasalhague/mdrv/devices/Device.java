@@ -22,10 +22,14 @@ public abstract class Device implements Initializable, Parsable
     private DeviceCommunication deviceCommunication;
     private DeviceInfo          deviceInfo;
 
+    private static DeviceHistory deviceHistory = new DeviceHistory();
+
     public void initializeObject(DeviceInfo deviceInfo)
     {
         this.deviceInfo = deviceInfo;
         this.deviceCommunication = DeviceCommunication.getInstance(deviceInfo);
+
+        deviceHistory.checkForCollision(this.deviceInfo);
     }
 
     public static Device getConcreteDevice(DeviceInfo deviceInfo)
@@ -48,9 +52,8 @@ public abstract class Device implements Initializable, Parsable
                 if (deviceInfo.getProductID().equals(productId) && deviceInfo.getVendorID().equals(vendorId))
                 {
                     Device device = concreteDeviceClass.newInstance();
-                    device.initializeObject(deviceInfo);
-
                     deviceInfo.setSomeFields(friendlyName, endPacketSequence, initialFrequency, channelSpacing, device);
+                    device.initializeObject(deviceInfo);
 
                     return device;
                 }
@@ -92,5 +95,10 @@ public abstract class Device implements Initializable, Parsable
     public RxRawDataReceiver getRxRawDataReceiver()
     {
         return deviceCommunication.getRxRawDataReceiver();
+    }
+
+    public DeviceInfo getDeviceInfo()
+    {
+        return deviceInfo;
     }
 }

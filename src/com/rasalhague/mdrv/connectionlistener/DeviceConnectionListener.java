@@ -7,6 +7,7 @@ import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
+import com.rits.cloning.Cloner;
 import jssc.SerialPortList;
 
 import java.io.IOException;
@@ -233,12 +234,14 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     @Override
     public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
     {
-        ApplicationLogger.LOGGER.info(connectedDevice.getName() + " " + deviceConnectionStateEnum);
+        DeviceInfo deviceInfoClone = new Cloner().deepClone(connectedDevice);
+
+        ApplicationLogger.LOGGER.info(deviceInfoClone.getName() + " " + deviceConnectionStateEnum);
 
         if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
         {
             //Call Factory method
-            Device device = Device.getConcreteDevice(connectedDevice);
+            Device device = Device.getConcreteDevice(deviceInfoClone);
 
             //filter known devices
             if (device != null)
@@ -252,7 +255,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             }
             else
             {
-                ApplicationLogger.LOGGER.info(connectedDevice.getName() + " ignored.");
+                ApplicationLogger.LOGGER.info(deviceInfoClone.getName() + " ignored.");
             }
 
         }
