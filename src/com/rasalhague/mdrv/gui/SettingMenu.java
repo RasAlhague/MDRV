@@ -1,12 +1,12 @@
 package com.rasalhague.mdrv.gui;
 
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
-import com.rasalhague.mdrv.devices.Device;
+import com.rasalhague.mdrv.device.core.Device;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.wirelessadapter.RoundVar;
 import com.rasalhague.mdrv.wirelessadapter.WirelessAdapter;
 import javafx.application.Platform;

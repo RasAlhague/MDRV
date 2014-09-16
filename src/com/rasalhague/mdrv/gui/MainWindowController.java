@@ -1,13 +1,13 @@
 package com.rasalhague.mdrv.gui;
 
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
-import com.rasalhague.mdrv.devices.Device;
+import com.rasalhague.mdrv.device.core.Device;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
@@ -110,12 +110,12 @@ public class MainWindowController extends Application implements AnalysisPerform
      * The Spectral masks grid pane.
      */
     public                  GridPane                  spectralMasksGridPane;
-    public Button addDummyButton;
+    public                  Button                    addDummyButton;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
     private static ScheduledExecutorService chartCanUpdateTimer = Executors.newSingleThreadScheduledExecutor();
-    private static boolean showDebugInfo = true;
+    private static boolean                  showDebugInfo       = true;
 
     /**
      * Instantiates a new Main window controller.

@@ -14,6 +14,20 @@ import java.util.regex.Pattern;
 
 public class Utils
 {
+    public static String normalizePidVidToLength(String str)
+    {
+        String result = "";
+
+        for (int i = 0; i < 4 - str.length(); i++)
+        {
+            result += "0";
+        }
+
+        result += str;
+
+        return result;
+    }
+
     /**
      * Returns a pseudo-random number between min and max, inclusive. The difference between min and max can be at most
      * <code>Integer.MAX_VALUE - 1</code>.

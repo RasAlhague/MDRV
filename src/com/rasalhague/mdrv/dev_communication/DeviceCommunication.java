@@ -1,15 +1,19 @@
 package com.rasalhague.mdrv.dev_communication;
 
-import com.rasalhague.mdrv.DeviceInfo;
+import com.codeminders.hidapi.HIDDevice;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
+import jssc.SerialPort;
 
 /**
  * Result of the run method must be call to RxRawDataReceiver
  */
 public abstract class DeviceCommunication implements Runnable
 {
-    final DeviceInfo        deviceInfo;
-    final RxRawDataReceiver rxRawDataReceiver;
+    final  DeviceInfo        deviceInfo;
+    final  RxRawDataReceiver rxRawDataReceiver;
+    public HIDDevice         hidDevice;
+    public SerialPort        serialPort;
 
     /**
      * Instantiates a new Device communication.
@@ -38,9 +42,10 @@ public abstract class DeviceCommunication implements Runnable
      *
      * @param deviceInfo
      *         the device info
-     *
      * @param initializationMethod
-     *@param parseMethod @return the instance
+     * @param parseMethod
+     *
+     * @return the instance
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
     {

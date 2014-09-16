@@ -1,7 +1,7 @@
-package com.rasalhague.mdrv.devices;
+package com.rasalhague.mdrv.device;
 
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.FXUtilities;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
@@ -47,23 +47,6 @@ public class DeviceHistory
                 " was connected earlier.\n" +
                 "Ok - connect as new.\n" +
                 "No - merge with previous.";
-
-        //        Platform.runLater(() -> {
-        //
-        //            Action response = Dialogs.create()
-        //                                     .owner(null)
-        //                                     .title("Device collision detected")
-        //                                     .masthead(null)
-        //                                     .message(message)
-        //                                     .lightweight()
-        //                                     .actions(Dialog.Actions.OK, Dialog.Actions.NO)
-        //                                     .showConfirm();
-        //
-        //            if (response == Dialog.Actions.OK)
-        //            {
-        //                device.getDeviceInfo().incrementID();
-        //            }
-        //        });
 
         try
         {

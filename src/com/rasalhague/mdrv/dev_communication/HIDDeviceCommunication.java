@@ -1,8 +1,7 @@
 package com.rasalhague.mdrv.dev_communication;
 
-import com.codeminders.hidapi.HIDDevice;
 import com.codeminders.hidapi.HIDManager;
-import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ class HIDDeviceCommunication extends DeviceCommunication
     /**
      * The Hid device.
      */
-    HIDDevice hidDevice;
+    //    HIDDevice hidDevice;
 
     static
     {

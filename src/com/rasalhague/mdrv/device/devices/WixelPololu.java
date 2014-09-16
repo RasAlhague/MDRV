@@ -1,5 +1,6 @@
-package com.rasalhague.mdrv.devices;
+package com.rasalhague.mdrv.device.devices;
 
+import com.rasalhague.mdrv.device.core.Device;
 import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;

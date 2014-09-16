@@ -1,8 +1,8 @@
-package com.rasalhague.mdrv.devices;
+package com.rasalhague.mdrv.device.core;
 
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.dev_communication.DeviceCommunication;
 import com.rasalhague.mdrv.dev_communication.RxRawDataReceiver;
+import com.rasalhague.mdrv.device.DeviceHistory;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.reflections.Reflections;
 
@@ -17,10 +17,10 @@ public abstract class Device implements Initializable, Parsable
     private static final String END_PACKET_SEQUENCE_FIELD_NAME = "END_PACKET_SEQUENCE";
     private static final String INITIAL_FREQUENCY_FIELD_NAME   = "INITIAL_FREQUENCY";
 
-    private static final String REFLECTION_INIT_PATH = "com.rasalhague.mdrv.devices";
+    private static final String REFLECTION_INIT_PATH = "com.rasalhague.mdrv.device";
 
-    private DeviceCommunication deviceCommunication;
-    private DeviceInfo          deviceInfo;
+    protected DeviceCommunication deviceCommunication;
+    protected DeviceInfo          deviceInfo;
 
     private static DeviceHistory deviceHistory = new DeviceHistory();
 

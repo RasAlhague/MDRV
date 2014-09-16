@@ -1,5 +1,7 @@
 package com.rasalhague.mdrv;
 
+import com.rasalhague.mdrv.device.core.DeviceInfo;
+
 import java.util.ArrayList;
 import java.util.Date;
 

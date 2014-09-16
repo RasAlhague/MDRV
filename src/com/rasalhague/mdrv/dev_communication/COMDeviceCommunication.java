@@ -1,6 +1,6 @@
 package com.rasalhague.mdrv.dev_communication;
 
-import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
@@ -13,15 +13,10 @@ import java.util.TimerTask;
 /**
  * The type COM device communication.
  * <p>
- * Class sor communicating with COM devices
+ * Class sor communicating with COM device
  */
 class COMDeviceCommunication extends DeviceCommunication implements SerialPortEventListener
 {
-    /**
-     * The Serial port.
-     */
-    final SerialPort serialPort;
-
     /**
      * Instantiates a new COM device communication.
      *

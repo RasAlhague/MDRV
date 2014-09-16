@@ -1,7 +1,7 @@
 package com.rasalhague.mdrv.analysis;
 
 import com.rasalhague.mdrv.DataPacket;
-import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.rasalhague.mdrv.connectionlistener;
 
-import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 
 /**
  * The interface Device connection listener.

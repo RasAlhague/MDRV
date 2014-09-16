@@ -2,7 +2,7 @@ package com.rasalhague.mdrv.dev_communication;
 
 import com.rasalhague.mdrv.DataPacket;
 import com.rasalhague.mdrv.DataPacketListener;
-import com.rasalhague.mdrv.DeviceInfo;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 
 import java.util.ArrayList;

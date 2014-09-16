@@ -1,10 +1,9 @@
-package com.rasalhague.mdrv;
+package com.rasalhague.mdrv.device.core;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.configuration.ConfigurationHolder;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
-import com.rasalhague.mdrv.devices.Device;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -19,11 +18,11 @@ import java.util.regex.Pattern;
  */
 public class DeviceInfo
 {
-    private String friendlyName;
+    private String     friendlyName;
     private String     vendorID;
     private String     productID;
     private String     name;
-    private String portName;
+    private String     portName;
     private DeviceType deviceType;
     private byte[]     endPacketSequence;
     private float      initialFrequency;
@@ -47,8 +46,8 @@ public class DeviceInfo
         deviceType = DeviceType.HID;
 
         name = hidDeviceInfo.getProduct_string();
-        productID = Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase();
-        vendorID = Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase();
+        productID = Utils.normalizePidVidToLength(Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase());
+        vendorID = Utils.normalizePidVidToLength(Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase());
 
         //        setSomeFieldsFromConfig(productID, vendorID);
     }
@@ -91,7 +90,9 @@ public class DeviceInfo
     }
 
     public DeviceInfo(String vendorID,
-                      String productID, String name, String portName,
+                      String productID,
+                      String name,
+                      String portName,
                       DeviceType deviceType,
                       byte[] endPacketSequence,
                       float initialFrequency,
@@ -132,11 +133,6 @@ public class DeviceInfo
         channelSpacing = deviceConfiguration.getChannelSpacing();
 
         //        System.out.println(pID + "\t" + initialFrequency + "\t" + channelSpacing);
-    }
-
-    public void incrementID()
-    {
-        this.id++;
     }
 
     public String getVendorID()

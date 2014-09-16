@@ -1,4 +1,4 @@
-package com.rasalhague.mdrv.devices;
+package com.rasalhague.mdrv.device.core;
 
 public interface Initializable
 {

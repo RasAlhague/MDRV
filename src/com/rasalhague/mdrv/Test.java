@@ -96,7 +96,7 @@
 //
 //        try
 //        {
-//            // Iterate over all devices and scan for the right one
+//            // Iterate over all device and scan for the right one
 //            for (Device device : list)
 //            {
 //                DeviceDescriptor descriptor = new DeviceDescriptor();
@@ -189,7 +189,7 @@
 //
 //        System.out.println();
 //
-//        // Dump child devices if device is a hub
+//        // Dump child device if device is a hub
 //        if (device.isUsbHub())
 //        {
 //            final UsbHub hub = (UsbHub) device;

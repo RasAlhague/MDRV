@@ -1,7 +1,7 @@
 package com.rasalhague.mdrv.dev_communication;
 
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

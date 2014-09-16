@@ -84,7 +84,7 @@ public class WirelessAdapter
         this.phy = phy;
 
         ArrayList<String> lsOut = Utils.runShellScript("ls -l /sys/class/net/ | grep " + netName);
-        //lrwxrwxrwx 1 root root 0 тра 27 19:09 wlan0 -> ../../devices/pci0000:00/0000:00:1c.6/0000:07:00.0/net/wlan0
+        //lrwxrwxrwx 1 root root 0 тра 27 19:09 wlan0 -> ../../device/pci0000:00/0000:00:1c.6/0000:07:00.0/net/wlan0
 
         Matcher matcher = Pattern.compile("(?<devBus>(\\d){1,5}:(\\d){1,5}:(\\d){1,5}.(\\d){1,5})")
                                  .matcher(lsOut.toString());

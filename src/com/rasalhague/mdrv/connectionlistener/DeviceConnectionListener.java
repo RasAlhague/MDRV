@@ -2,9 +2,9 @@ package com.rasalhague.mdrv.connectionlistener;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
-import com.rasalhague.mdrv.DeviceInfo;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
-import com.rasalhague.mdrv.devices.Device;
+import com.rasalhague.mdrv.device.core.Device;
+import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rits.cloning.Cloner;
@@ -16,7 +16,7 @@ import java.util.*;
 /**
  * The type Device connection listener.
  * <p>
- * Singleton. Listen for a new devices connections.
+ * Singleton. Listen for a new device connections.
  */
 public class DeviceConnectionListener implements DeviceConnectionListenerI
 {
@@ -243,7 +243,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
             //Call Factory method
             Device device = Device.getConcreteDevice(deviceInfoClone);
 
-            //filter known devices
+            //filter known device
             if (device != null)
             {
                 device.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
