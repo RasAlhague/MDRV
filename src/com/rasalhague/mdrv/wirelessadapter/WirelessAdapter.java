@@ -136,7 +136,7 @@ public class WirelessAdapter
         {
             iwlistChannelOutString += s + "\n";
         }
-        ApplicationLogger.LOGGER.warning(iwlistChannelOutString);
+        //        ApplicationLogger.LOGGER.info(iwlistChannelOutString);
 
         Matcher matcher = Pattern.compile(
                 "( (?<ChannelFrequency>\\d{4}) MHz)(.*\\[(?<channelNumber>\\d{1,2})\\](?! \\(d))")
@@ -149,7 +149,7 @@ public class WirelessAdapter
 
             channelToFrequencyMap.put(channelNumber, channelFrequency);
         }
-        ApplicationLogger.LOGGER.warning(String.valueOf(channelToFrequencyMap));
+        ApplicationLogger.LOGGER.info("channelToFrequencyMap: " + String.valueOf(channelToFrequencyMap));
     }
 
     private ArrayList<Integer> generateArrayToRound()

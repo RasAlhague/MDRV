@@ -4,16 +4,14 @@ import com.rasalhague.mdrv.Utility.FXUtilities;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.gui.SettingMenu;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import javafx.stage.Stage;
 import org.apache.commons.lang3.SystemUtils;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.DialogStyle;
 import org.controlsfx.dialog.Dialogs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -234,16 +232,17 @@ public class WirelessAdapterCommunication implements Runnable
                         wirelessAdaptersNames.add(adapter.toString());
                     }
 
-                    Stage dialogStage = Utils.prepareStageForDialog();
-
                     Dialogs dialogs = Dialogs.create()
-                                             .owner(dialogStage)
-                                             .title("Choose Adapter")
+                                             .owner(null)
+                                             .style(DialogStyle.UNDECORATED)
+                                             .lightweight()
+                                             .title(null)
                                              .masthead(null)
-                                             .message("Choose Adapter:");
+                                             .message("Choose Adapter:")
+                                             .actions(Dialog.Actions.OK);
 
-                    //TODO ControlFX
-                    //                    chosenElement[0] = dialogs.showChoices(wirelessAdaptersNames);
+                    Optional optional = dialogs.showChoices(wirelessAdaptersNames);
+                    chosenElement[0] = (String) optional.get();
                 });
             }
             catch (InterruptedException | ExecutionException e)
@@ -321,20 +320,17 @@ public class WirelessAdapterCommunication implements Runnable
 
         try
         {
+
             FXUtilities.runAndWait(() -> {
 
-                Stage dialogStage = Utils.prepareStageForDialog();
+                Dialogs dialogs = Dialogs.create().owner(null).style(DialogStyle.UNDECORATED).lightweight().title(null)
+                                         .masthead(null).message("Choose TcpDump Command").actions(Dialog.Actions.OK);
 
-                Dialogs dialogs = Dialogs.create()
-                                         .owner(dialogStage)
-                                         .title("Choose TcpDump Command")
-                                         .masthead(null)
-                                         .message(null);
+                Optional<String> stringOptional = dialogs.showTextInput("tcpdump -i " +
+                                                                                wirelessAdapter.getAssociatedName() +
+                                                                                " -s 0 -nne '(type data subtype qos-data)'");
 
-                //TODO ControlFX
-                //                chosenElement[0] = dialogs.showTextInput("tcpdump -i " +
-                //                                                                 wirelessAdapter.getAssociatedName() +
-                //                                                                 " -s 0 -nne '(type data subtype qos-data)'");
+                chosenElement[0] = stringOptional.get();
             });
         }
         catch (InterruptedException | ExecutionException e)

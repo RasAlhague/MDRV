@@ -36,7 +36,6 @@ public class DeviceInfo
     {
         HID,
         COM,
-        WIRELESS_ADAPTER,
         DUMMY
     }
 
@@ -63,30 +62,6 @@ public class DeviceInfo
         vendorID = devInfMap.get("vid").toUpperCase();
 
         //        setSomeFieldsFromConfig(productID, vendorID);
-    }
-
-    public DeviceInfo(String netName, DeviceType wirelessAdapter)
-    {
-        portName = netName;
-        deviceType = wirelessAdapter;
-
-        //TODO del inxi
-        ArrayList<String> inxi = Utils.runShellScript("inxi -n -c 0 -Z");
-        Matcher matcher = Pattern.compile(
-                "Card-\\d: (?<netCardName>.*?) d.*?IF: (?<netName>.*?) s.*?mac: (?<netCardMac>(..:?){6})")
-                                 .matcher(inxi.toString());
-
-        while (matcher.find())
-        {
-            if (matcher.group("netName").equals(netName))
-            {
-                name = matcher.group("netCardName");
-                productID = matcher.group("netCardName").toUpperCase();
-                vendorID = productID;
-
-                break;
-            }
-        }
     }
 
     public DeviceInfo(String vendorID,
