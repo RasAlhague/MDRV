@@ -15,8 +15,6 @@ public class PacketAnalysis implements DataPacketListener
     private volatile LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> timedAnalysisResults = new LinkedHashMap<>();
     private final    HelperAnalysisMaps                                                              helperAnalysisMaps   = new HelperAnalysisMaps();
 
-    private final boolean isAnalysisOn = true;
-
     /**
      * Gets instance.
      * <p>
@@ -44,89 +42,86 @@ public class PacketAnalysis implements DataPacketListener
     @Override
     public synchronized void dataPacketEvent(DataPacket dataPacket)
     {
-        if (isAnalysisOn)
+        if (dataPacket.isAnalyzable())
         {
-            if (dataPacket.isAnalyzable())
+            final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
+            final long packetCreationTimeMs = dataPacket.getPacketCreationTimeMs();
+
+            //search for last <AnalysisKey> for specific dev
+            HashMap<AnalysisKey, ArrayList<Byte>> prevResultsMap = null;
+            ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> list = new ArrayList<>(
+                    timedAnalysisResults.values());
+            for (int i = list.size() - 1; i >= 0; i--)
             {
-                final DeviceInfo deviceInfo = dataPacket.getDeviceInfo();
-                final long packetCreationTimeMs = dataPacket.getPacketCreationTimeMs();
-
-                //search for last <AnalysisKey> for specific dev
-                HashMap<AnalysisKey, ArrayList<Byte>> prevResultsMap = null;
-                ArrayList<HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> list = new ArrayList<>(
-                        timedAnalysisResults.values());
-                for (int i = list.size() - 1; i >= 0; i--)
+                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> value = list.get(i);
+                if (value.containsKey(deviceInfo) &&
+                        value.get(deviceInfo).containsKey(AnalysisKey.MAX) &&
+                        value.get(deviceInfo).containsKey(AnalysisKey.AVR))
                 {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> value = list.get(i);
-                    if (value.containsKey(deviceInfo) &&
-                            value.get(deviceInfo).containsKey(AnalysisKey.MAX) &&
-                            value.get(deviceInfo).containsKey(AnalysisKey.AVR))
-                    {
-                        prevResultsMap = value.get(deviceInfo);
-                        break;
-                    }
+                    prevResultsMap = value.get(deviceInfo);
+                    break;
                 }
-
-                /**
-                 * generate scheme and put <AnalysisKey> into
-                 */
-                HashMap<AnalysisKey, ArrayList<Byte>> hashMapToAdd = new HashMap<>();
-                if (prevResultsMap != null)
-                {
-                    //MAX
-                    ArrayList<Byte> joinMax = joinMax(dataPacket.getDataPacketValues(),
-                                                      prevResultsMap.get(AnalysisKey.MAX));
-
-                    //AVR
-                    ArrayList<Byte> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
-                                                      helperAnalysisMaps.getPacketCountForDevice(deviceInfo),
-                                                      helperAnalysisMaps.getRssiSumForDevice(deviceInfo));
-
-                    hashMapToAdd.put(AnalysisKey.MAX, joinMax);
-                    hashMapToAdd.put(AnalysisKey.AVR, joinAvr);
-                }
-                else
-                {
-                    hashMapToAdd.put(AnalysisKey.MAX, dataPacket.getDataPacketValues());
-                    hashMapToAdd.put(AnalysisKey.AVR, dataPacket.getDataPacketValues());
-                    hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
-                }
-
-                /**
-                 * CURRENT
-                 */
-                hashMapToAdd.put(AnalysisKey.CURRENT, dataPacket.getDataPacketValues());
-
-                /**
-                 * Perform Analysis for MODE and MEDIAN and AVR
-                 */
-                helperAnalysisMaps.updateHelperMaps(dataPacket);
-                hashMapToAdd.put(AnalysisKey.MODE, calculateMode(helperAnalysisMaps, deviceInfo));
-                hashMapToAdd.put(AnalysisKey.MEDIAN, calculateMedian(helperAnalysisMaps, deviceInfo));
-
-                /**
-                 * When we have 2 or > DataPacket in one moment
-                 * if packetCreationTimeMs does not exist, timedAnalysisResults will created
-                 * else - it will be just updated
-                 */
-                if (!timedAnalysisResults.containsKey(packetCreationTimeMs))
-                {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map = new HashMap<>();
-                    map.put(deviceInfo, hashMapToAdd);
-
-                    timedAnalysisResults.put(packetCreationTimeMs, map);
-                }
-                else
-                {
-                    HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map1 = timedAnalysisResults.get(
-                            packetCreationTimeMs);
-
-                    map1.put(deviceInfo, hashMapToAdd);
-                }
-
-                //            System.out.println(timedAnalysisResults);
-                notifyAnalysisPerformedListeners(getTimedAnalysisResults());
             }
+
+            /**
+             * generate scheme and put <AnalysisKey> into
+             */
+            HashMap<AnalysisKey, ArrayList<Byte>> hashMapToAdd = new HashMap<>();
+            if (prevResultsMap != null)
+            {
+                //MAX
+                ArrayList<Byte> joinMax = joinMax(dataPacket.getDataPacketValues(),
+                                                  prevResultsMap.get(AnalysisKey.MAX));
+
+                //AVR
+                ArrayList<Byte> joinAvr = joinAvr(dataPacket.getDataPacketValues(),
+                                                  helperAnalysisMaps.getPacketCountForDevice(deviceInfo),
+                                                  helperAnalysisMaps.getRssiSumForDevice(deviceInfo));
+
+                hashMapToAdd.put(AnalysisKey.MAX, joinMax);
+                hashMapToAdd.put(AnalysisKey.AVR, joinAvr);
+            }
+            else
+            {
+                hashMapToAdd.put(AnalysisKey.MAX, dataPacket.getDataPacketValues());
+                hashMapToAdd.put(AnalysisKey.AVR, dataPacket.getDataPacketValues());
+                hashMapToAdd.put(AnalysisKey.NEW_SERIES, null);
+            }
+
+            /**
+             * CURRENT
+             */
+            hashMapToAdd.put(AnalysisKey.CURRENT, dataPacket.getDataPacketValues());
+
+            /**
+             * Perform Analysis for MODE and MEDIAN and AVR
+             */
+            helperAnalysisMaps.updateHelperMaps(dataPacket);
+            hashMapToAdd.put(AnalysisKey.MODE, calculateMode(helperAnalysisMaps, deviceInfo));
+            hashMapToAdd.put(AnalysisKey.MEDIAN, calculateMedian(helperAnalysisMaps, deviceInfo));
+
+            /**
+             * When we have 2 or > DataPacket in one moment
+             * if packetCreationTimeMs does not exist, timedAnalysisResults will created
+             * else - it will be just updated
+             */
+            if (!timedAnalysisResults.containsKey(packetCreationTimeMs))
+            {
+                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map = new HashMap<>();
+                map.put(deviceInfo, hashMapToAdd);
+
+                timedAnalysisResults.put(packetCreationTimeMs, map);
+            }
+            else
+            {
+                HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>> map1 = timedAnalysisResults.get(
+                        packetCreationTimeMs);
+
+                map1.put(deviceInfo, hashMapToAdd);
+            }
+
+            //            System.out.println(timedAnalysisResults);
+            notifyAnalysisPerformedListeners(getTimedAnalysisResults());
         }
     }
 
