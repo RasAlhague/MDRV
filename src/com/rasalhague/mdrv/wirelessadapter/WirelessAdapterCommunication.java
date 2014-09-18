@@ -37,7 +37,7 @@ public class WirelessAdapterCommunication implements Runnable
     {
         if (instance == null)
         {
-            return new WirelessAdapterCommunication();
+            instance = new WirelessAdapterCommunication();
         }
         return instance;
     }
@@ -45,7 +45,7 @@ public class WirelessAdapterCommunication implements Runnable
     /**
      * Instantiates a new Wireless adapter communication.
      */
-    public WirelessAdapterCommunication()
+    private WirelessAdapterCommunication()
     {
         //b
         bpsToStandart.put(1f, "b");
