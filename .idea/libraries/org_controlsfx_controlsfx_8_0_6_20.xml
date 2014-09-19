@@ -7,6 +7,8 @@
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/controlsfx-8.0.6_20-javadoc.jar!/" />
     </JAVADOC>
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/controlsfx-8.0.6_20-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

@@ -14,9 +14,10 @@
     <orderEntry type="library" exported="" name="com.codeminders:hidapi:1.1" level="project" />
     <orderEntry type="library" exported="" name="org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" exported="" name="org.apache.commons:commons-collections4:4.0" level="project" />
-    <orderEntry type="library" name="org.controlsfx:controlsfx:8.0.6_20" level="project" />
-    <orderEntry type="library" name="uk.com.robust-it:cloning:1.9.0" level="project" />
-    <orderEntry type="library" name="org.usb4java:usb4java-javax:1.2.0" level="project" />
+    <orderEntry type="library" exported="" name="uk.com.robust-it:cloning:1.9.0" level="project" />
+    <orderEntry type="library" exported="" name="org.usb4java:usb4java-javax:1.2.0" level="project" />
+    <orderEntry type="library" exported="" name="org.controlsfx:controlsfx:8.0.6_20" level="project" />
+    <orderEntry type="library" exported="" name="org.controlsfx:controlsfx:8.0.6" level="project" />
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">

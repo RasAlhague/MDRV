@@ -7,6 +7,9 @@ import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.TreeBidiMap;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,6 +22,7 @@ public class WirelessAdapter
     private String adapterName;
     private final BidiMap<Byte, Short> channelToFrequencyMap = new TreeBidiMap<>();
     private volatile RoundVar channelRoundSwitcher;
+    private int channelSwitchingRateMs = 1000;
 
     public String getAssociatedName()
     {
@@ -48,6 +52,11 @@ public class WirelessAdapter
     public RoundVar getChannelRoundSwitcher()
     {
         return channelRoundSwitcher;
+    }
+
+    public int getChannelSwitchingRateMs()
+    {
+        return channelSwitchingRateMs;
     }
 
     public void setChannelRoundSwitcher(RoundVar channelRoundSwitcher)
@@ -167,7 +176,8 @@ public class WirelessAdapter
             ApplicationLogger.LOGGER.warning("channelsToScan == null, channelsToScan = \"1-14\"");
         }
 
-        Matcher matcher = Pattern.compile("(?<channelStart>\\d+)(-(?<channelEnd>\\d+))?").matcher(channelsToScan);
+        Matcher matcher = Pattern.compile("(?<channelStart>\\d{1,2}[^15-99]*?)(-(?<channelEnd>\\d{1,2}[^15-99]))?")
+                                 .matcher(channelsToScan);
         while (matcher.find())
         {
             int channelStartInt = Integer.parseInt(matcher.group("channelStart"));
@@ -202,7 +212,18 @@ public class WirelessAdapter
         return arrayToRound;
     }
 
-    public int nextChannel()
+    public void startChannelSwitching()
+    {
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
+
+            int channel = nextChannel();
+            notifyChannelSwitchingListeners(channel);
+            //            System.out.println(channel);
+
+        }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
+    }
+
+    private int nextChannel()
     {
         String channelSwitchingCommand = "iw " +
                 getAssociatedName() +
@@ -214,4 +235,15 @@ public class WirelessAdapter
         return channelRoundSwitcher.getCurrentValue();
     }
 
+    private final List<WirelessAdapterChanelListener> wirelessAdapterChanelListeners = new ArrayList<>();
+
+    public void addChannelSwitchingListener(WirelessAdapterChanelListener listener)
+    {
+        wirelessAdapterChanelListeners.add(listener);
+    }
+
+    private void notifyChannelSwitchingListeners(int channelNumber)
+    {
+        wirelessAdapterChanelListeners.forEach(listener -> listener.wirelessAdapterChanelSwitched(channelNumber));
+    }
 }

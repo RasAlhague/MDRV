@@ -13,8 +13,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,8 +27,7 @@ import static com.rasalhague.mdrv.logging.ApplicationLogger.getLogger;
  */
 public class WirelessAdapterCommunication implements Runnable
 {
-    private       int                    channelSwitchingRateMs = 1000;
-    private final HashMap<Float, String> bpsToStandart          = new HashMap<>();
+    private final HashMap<Float, String> bpsToStandart = new HashMap<>();
     private static WirelessAdapterCommunication instance;
 
     public static WirelessAdapterCommunication getInstance()
@@ -300,12 +297,7 @@ public class WirelessAdapterCommunication implements Runnable
 
     private void startChannelSwitching(WirelessAdapter wirelessAdapter)
     {
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate((Runnable) () -> {
-
-            wirelessAdapter.nextChannel();
-            ApplicationLogger.LOGGER.info(wirelessAdapter.getChannelRoundSwitcher().getCurrentValue() + " ");
-
-        }, 0, channelSwitchingRateMs, TimeUnit.MILLISECONDS);
+        wirelessAdapter.startChannelSwitching();
 
         ApplicationLogger.LOGGER.info("Channel switching has been started in " +
                                               wirelessAdapter.getChannelRoundSwitcher().getMinValue() +
@@ -323,8 +315,14 @@ public class WirelessAdapterCommunication implements Runnable
 
             FXUtilities.runAndWait(() -> {
 
-                Dialogs dialogs = Dialogs.create().owner(null).style(DialogStyle.UNDECORATED).lightweight().title(null)
-                                         .masthead(null).message("Choose TcpDump Command").actions(Dialog.Actions.OK);
+                Dialogs dialogs = Dialogs.create()
+                                         .owner(null)
+                                         .style(DialogStyle.UNDECORATED)
+                                         .lightweight()
+                                         .title(null)
+                                         .masthead(null)
+                                         .message("Choose TcpDump Command")
+                                         .actions(Dialog.Actions.OK);
 
                 Optional<String> stringOptional = dialogs.showTextInput("tcpdump -i " +
                                                                                 wirelessAdapter.getAssociatedName() +

@@ -3,13 +3,14 @@ package com.rasalhague.mdrv.gui;
 import com.rasalhague.mdrv.Utility.Utils;
 import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
-import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListenerI;
-import com.rasalhague.mdrv.connectionlistener.DeviceConnectionStateEnum;
+import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.device.core.Device;
 import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.wirelessadapter.RoundVar;
 import com.rasalhague.mdrv.wirelessadapter.WirelessAdapter;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -26,13 +27,15 @@ import java.util.LinkedHashMap;
 /**
  * Class that generates setting menu
  */
-public class SettingMenu implements DeviceConnectionListenerI, AnalysisPerformedListener
+public class SettingMenu implements AnalysisPerformedListener
 {
     private static final SettingMenu ourInstance = new SettingMenu();
     private Button settingButton;
     private VBox   controlBntsVBox;
     private final HashMap<Device, Float>     devToRssiShiftMap               = new HashMap<>();
     private final HashMap<Device, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
+    private final double                     spacing                         = 5;
+    private final double                     padding                         = 3;
 
     /**
      * Gets instance.
@@ -109,10 +112,13 @@ public class SettingMenu implements DeviceConnectionListenerI, AnalysisPerformed
 
                 //configure
                 vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
-                vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
+                vBoxContainer.setPadding(new Insets(padding, padding, padding, padding));
+                vBoxContainer.setSpacing(spacing);
 
                 hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
+                hBoxChannelSpacing.setSpacing(spacing);
                 hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
+                hBoxRssiShift.setSpacing(spacing);
 
                 textFieldChannelSpacing.setPrefWidth(75);
                 textFieldRssiShift.setPrefWidth(50);
@@ -127,146 +133,92 @@ public class SettingMenu implements DeviceConnectionListenerI, AnalysisPerformed
 
                 //behavior
                 devToTextFieldChannelSpacingMap.put(connectedDevice.getDevice(), textFieldChannelSpacing);
-                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
+                textFieldChannelSpacing.textProperty().addListener(new ChangeListener<String>()
+                {
+                    String defaultChannelSpacing;
 
-                    if (Float.valueOf(newValue) >= 100)
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
                     {
-                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                        MainWindowController.forceUpdateChart();
+                        if (defaultChannelSpacing == null) defaultChannelSpacing = oldValue;
+
+                        if (newValue.matches("((\\d){2,4}.?(\\d){0,4})"))
+                        //                    if (Float.valueOf(newValue) >= 100)
+                        {
+                            connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
+                            MainWindowController.forceUpdateChart();
+                        }
+                        if (newValue.matches("( *)"))
+                        {
+                            //recursive execute this listener with correct value
+                            textFieldChannelSpacing.setText(defaultChannelSpacing);
+                        }
                     }
                 });
 
                 devToRssiShiftMap.put(connectedDevice.getDevice(), 0f);
                 textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
 
-                    if (!newValue.equals("") && !newValue.equals("-"))
+                    if (newValue.matches("(-?\\d{1,2})"))
                     {
                         devToRssiShiftMap.put(connectedDevice.getDevice(), Float.valueOf(newValue));
                         MainWindowController.forceUpdateChart();
+                    }
+                    if (newValue.matches("( *)"))
+                    {
+                        //recursive execute this listener with correct value
+                        textFieldRssiShift.setText("0");
                     }
                 });
 
                 //add container
                 Platform.runLater(() -> controlBntsVBox.getChildren().add(vBoxContainer));
-            }
-            else
-            {
-                //behavior
-                TextField textFieldChannelSpacing = devToTextFieldChannelSpacingMap.get(connectedDevice.getDevice());
-                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (Float.valueOf(newValue) >= 100)
-                    {
-                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                    }
-                });
-            }
-        }
-    }
-
-    @Override
-    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
-    {
-        if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED &&
-                connectedDevice.getChannelSpacing() != 0)
-        {
-            /**
-             * Settings
-             */
-            if (!devToRssiShiftMap.containsKey(connectedDevice.getDevice()))
-            {
-                //create container, labelChannelSpacing, TextField
-                VBox vBoxContainer = new VBox();
-                HBox hBoxChannelSpacing = new HBox();
-                HBox hBoxRssiShift = new HBox();
-                Label labelDeviceName = new Label();
-                Label labelChannelSpacing = new Label();
-                Label labelRssiShift = new Label();
-                TextField textFieldChannelSpacing = new TextField();
-                TextField textFieldRssiShift = new TextField();
-
-                //containing
-                vBoxContainer.getChildren().add(labelDeviceName);
-                vBoxContainer.getChildren().add(hBoxChannelSpacing);
-                vBoxContainer.getChildren().add(hBoxRssiShift);
-
-                hBoxChannelSpacing.getChildren().add(labelChannelSpacing);
-                hBoxChannelSpacing.getChildren().add(textFieldChannelSpacing);
-
-                hBoxRssiShift.getChildren().add(labelRssiShift);
-                hBoxRssiShift.getChildren().add(textFieldRssiShift);
-
-                //configure
-                vBoxContainer.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
-                vBoxContainer.setPadding(new Insets(3, 3, 3, 3));
-
-                hBoxChannelSpacing.setAlignment(Pos.CENTER_LEFT);
-                hBoxRssiShift.setAlignment(Pos.CENTER_LEFT);
-
-                textFieldChannelSpacing.setPrefWidth(75);
-                textFieldRssiShift.setPrefWidth(50);
-                textFieldChannelSpacing.setText(String.valueOf(connectedDevice.getChannelSpacing()));
-                textFieldRssiShift.setText("0");
-
-                labelChannelSpacing.setText("Channel spacing, kHz");
-                labelRssiShift.setText("RSSI shift");
-                labelDeviceName.setText(connectedDevice.getFriendlyNameWithId() +
-                                                " on " +
-                                                connectedDevice.getPortName());
-
-                //behavior
-                devToTextFieldChannelSpacingMap.put(connectedDevice.getDevice(), textFieldChannelSpacing);
-                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (Float.valueOf(newValue) >= 100)
-                    {
-                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                    }
-                });
-
-                devToRssiShiftMap.put(connectedDevice.getDevice(), 0f);
-                textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (!newValue.equals("") && !newValue.equals("-"))
-                    {
-                        devToRssiShiftMap.put(connectedDevice.getDevice(), Float.valueOf(newValue));
-                        MainWindowController.forceUpdateChart();
-                    }
-                });
-
-                //add container
-                Platform.runLater(() -> controlBntsVBox.getChildren().add(vBoxContainer));
-            }
-            else
-            {
-                //behavior
-                TextField textFieldChannelSpacing = devToTextFieldChannelSpacingMap.get(connectedDevice.getDevice());
-                textFieldChannelSpacing.textProperty().addListener((observable, oldValue, newValue) -> {
-
-                    if (Float.valueOf(newValue) >= 100)
-                    {
-                        connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
-                    }
-                });
             }
         }
     }
 
     public void generateFieldFowChSw(WirelessAdapter wirelessAdapter)
     {
+        String channelDefaultValue = ConfigurationLoader.getConfiguration()
+                                                        .getApplicationConfiguration()
+                                                        .getChannelsToScan();
+
+        HBox container = new HBox();
+        container.setStyle("-fx-border-color: rgba(200, 200, 200, 1);" + "-fx-border-width: 1;");
+        container.setPadding(new Insets(padding, padding, padding, padding));
+        container.setSpacing(spacing);
+        container.setAlignment(Pos.CENTER_LEFT);
+
         TextField textFieldFowChSw = new TextField();
         textFieldFowChSw.setPrefWidth(50);
-        textFieldFowChSw.setText("1-14");
+        textFieldFowChSw.setText(channelDefaultValue);
+
+        Label currentChanelNumberLabel = new Label();
+
+        container.getChildren().add(textFieldFowChSw);
+        container.getChildren().add(currentChanelNumberLabel);
+
+        wirelessAdapter.addChannelSwitchingListener(channelNumber -> {
+            Platform.runLater(() -> {
+                currentChanelNumberLabel.setText(String.valueOf(channelNumber));
+            });
+        });
 
         textFieldFowChSw.textProperty().addListener((observable, oldValue, newValue) -> {
 
-            if (textFieldFowChSw.getText().matches("(?<channelStart>\\d+)(-(?<channelEnd>\\d+))?"))
+            if (textFieldFowChSw.getText()
+                                .matches("(?<channelStart>\\d{1,2}[^15-99]*?)(-(?<channelEnd>\\d{1,2}[^15-99]))?"))
             {
                 wirelessAdapter.setChannelRoundSwitcher(new RoundVar(Utils.generateArrayToRound(textFieldFowChSw.getText())));
             }
+            if (newValue.matches("( *)"))
+            {
+                //recursive execute this listener with correct value
+                textFieldFowChSw.setText(channelDefaultValue);
+            }
         });
 
-        Platform.runLater(() -> controlBntsVBox.getChildren().add(textFieldFowChSw));
+        Platform.runLater(() -> controlBntsVBox.getChildren().add(container));
     }
 
     private void setUpBehavior()
