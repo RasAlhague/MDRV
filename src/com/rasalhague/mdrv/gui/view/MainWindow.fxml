@@ -1027,7 +1027,15 @@
                                   selected = "true"
                                   text = "Vertical line"/>
                         <CheckBox fx:id = "replayModeSwitcher" mnemonicParsing = "false" text = "Manual replay mode"/>
-                        <HBox alignment = "CENTER_LEFT" prefHeight = "-1.0" prefWidth = "-1.0" VBox.vgrow = "NEVER">
+                        <CheckBox fx:id = "enableAnimationChBx"
+                                  mnemonicParsing = "false"
+                                  onAction = "#animationChBxOnAction"
+                                  text = "Animation"/>
+                        <HBox alignment = "CENTER_LEFT"
+                              prefHeight = "-1.0"
+                              prefWidth = "-1.0"
+                              spacing = "5.0"
+                              VBox.vgrow = "NEVER">
                             <children>
                                 <Label text = "Chart update delay"/>
                                 <TextField fx:id = "chartUpdateDelayTextField"
@@ -1035,6 +1043,9 @@
                                            promptText = "Chart update delay"
                                            text = "1000"/>
                             </children>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
                         </HBox>
                     </children>
                 </VBox>

@@ -112,6 +112,7 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public                  GridPane                  spectralMasksGridPane;
     public                  Button                    addDummyButton;
+    public CheckBox enableAnimationChBx;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -333,6 +334,11 @@ public class MainWindowController extends Application implements AnalysisPerform
             }
 
         });
+    }
+
+    public void animationChBxOnAction(ActionEvent actionEvent)
+    {
+        lineChart.setAnimated(enableAnimationChBx.isSelected());
     }
 
     /**
@@ -833,7 +839,6 @@ public class MainWindowController extends Application implements AnalysisPerform
                     /**
                      * Use XYChart.Series
                      * Update series
-                     * TODO it uses around 25% of CPU
                      */
                     HashMap<Device, Integer> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
@@ -843,15 +848,16 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                             if (numberSeries.getName().equals(seriesName))
                             {
-                                //TODO it uses around 25% of CPU
                                 XYChart.Data<Number, Number> numberData;
                                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
                                 for (int i = 0; i < data.size(); i++)
                                 {
                                     numberData = data.get(i);
 
+                                    //TODO it uses around 25% of CPU
                                     numberData.setYValue(seriesData.get(i).getYValue().byteValue() +
                                                                  devToRssiShiftMap.get(deviceInfo.getDevice()));
+                                    //---
 
                                     if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
                                     {
@@ -884,7 +890,10 @@ public class MainWindowController extends Application implements AnalysisPerform
                         //disable stupid series creating animation
                         lineChart.setAnimated(false);
                         lineChartData.add(series);
-                        lineChart.setAnimated(true);
+                        if (enableAnimationChBx.isSelected())
+                        {
+                            lineChart.setAnimated(true);
+                        }
                     }
                 }
             }
