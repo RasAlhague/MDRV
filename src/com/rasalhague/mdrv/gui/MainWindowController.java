@@ -137,14 +137,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         launch();
     }
 
-    private static MainWindowController getInstance()
+    public static MainWindowController getInstance()
     {
-        if (instance == null)
-        {
-            //            return instance = new MainWindowController();
-            return null;
-        }
-
         return instance;
     }
 
@@ -658,6 +652,30 @@ public class MainWindowController extends Application implements AnalysisPerform
         }
     }
 
+    public synchronized void updateDeviceRSSI(DeviceInfo deviceInfo, Integer newValueF, Integer oldValueF)
+    {
+        ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
+        for (XYChart.Series<Number, Number> series : lineChartData)
+        {
+            String regex = "(" +
+                    deviceInfo.getFriendlyNameWithId() +
+                    ").*(" +
+                    deviceInfo.getPortName() +
+                    ").*";
+
+            regex = regex.replace("/", "\\/");
+
+            if (series.getName().matches(regex))
+            {
+                ObservableList<XYChart.Data<Number, Number>> seriesDatas = series.getData();
+                for (XYChart.Data<Number, Number> seriesData : seriesDatas)
+                {
+                    seriesData.setYValue(seriesData.getYValue().floatValue() - oldValueF + newValueF);
+                }
+            }
+        }
+    }
+
     /**
      * Force update chart.
      */
@@ -817,7 +835,7 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Update series
                      * TODO it uses around 25% of CPU
                      */
-                    HashMap<Device, Float> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
+                    HashMap<Device, Integer> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {

@@ -324,11 +324,15 @@ public class WirelessAdapterCommunication implements Runnable
                                          .message("Choose TcpDump Command")
                                          .actions(Dialog.Actions.OK);
 
-                Optional<String> stringOptional = dialogs.showTextInput("tcpdump -i " +
-                                                                                wirelessAdapter.getAssociatedName() +
-                                                                                " -s 0 -nne '(type data subtype qos-data)'");
+                String command = new StringBuilder().append("tcpdump -i ")
+                                                    .append(wirelessAdapter.getAssociatedName())
+                                                    .append(" -s 0 -nne '(type data subtype qos-data)'")
+                                                    .toString();
 
-                chosenElement[0] = stringOptional.get();
+                //                Optional<String> stringOptional = dialogs.showTextInput(command);
+                //                chosenElement[0] = stringOptional.get();
+
+                chosenElement[0] = command;
             });
         }
         catch (InterruptedException | ExecutionException e)

@@ -23,6 +23,8 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Class that generates setting menu
@@ -32,7 +34,7 @@ public class SettingMenu implements AnalysisPerformedListener
     private static final SettingMenu ourInstance = new SettingMenu();
     private Button settingButton;
     private VBox   controlBntsVBox;
-    private final HashMap<Device, Float>     devToRssiShiftMap               = new HashMap<>();
+    private final HashMap<Device, Integer> devToRssiShiftMap = new HashMap<>();
     private final HashMap<Device, TextField> devToTextFieldChannelSpacingMap = new HashMap<>();
     private final double                     spacing                         = 5;
     private final double                     padding                         = 3;
@@ -52,7 +54,7 @@ public class SettingMenu implements AnalysisPerformedListener
      *
      * @return the dev to rssi shift map
      */
-    public HashMap<Device, Float> getDevToRssiShiftMap()
+    public HashMap<Device, Integer> getDevToRssiShiftMap()
     {
         return devToRssiShiftMap;
     }
@@ -131,7 +133,9 @@ public class SettingMenu implements AnalysisPerformedListener
                                                 " on " +
                                                 connectedDevice.getPortName());
 
-                //behavior
+                /**
+                 * Channel  Spacing Event
+                 */
                 devToTextFieldChannelSpacingMap.put(connectedDevice.getDevice(), textFieldChannelSpacing);
                 textFieldChannelSpacing.textProperty().addListener(new ChangeListener<String>()
                 {
@@ -143,7 +147,6 @@ public class SettingMenu implements AnalysisPerformedListener
                         if (defaultChannelSpacing == null) defaultChannelSpacing = oldValue;
 
                         if (newValue.matches("((\\d){2,4}.?(\\d){0,4})"))
-                        //                    if (Float.valueOf(newValue) >= 100)
                         {
                             connectedDevice.setChannelSpacing(Float.parseFloat(newValue));
                             MainWindowController.forceUpdateChart();
@@ -156,18 +159,36 @@ public class SettingMenu implements AnalysisPerformedListener
                     }
                 });
 
-                devToRssiShiftMap.put(connectedDevice.getDevice(), 0f);
-                textFieldRssiShift.textProperty().addListener((observable, oldValue, newValue) -> {
+                /**
+                 * RSSI Shift Event
+                 */
+                devToRssiShiftMap.put(connectedDevice.getDevice(), 0);
+                textFieldRssiShift.textProperty().addListener(new ChangeListener<String>()
+                {
+                    String correctOldValue = "0";
 
-                    if (newValue.matches("(-?\\d{1,2})"))
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
                     {
-                        devToRssiShiftMap.put(connectedDevice.getDevice(), Float.valueOf(newValue));
-                        MainWindowController.forceUpdateChart();
-                    }
-                    if (newValue.matches("( *)"))
-                    {
-                        //recursive execute this listener with correct value
-                        textFieldRssiShift.setText("0");
+
+                        Matcher newValMatcher = Pattern.compile("(?<int>-?\\d{1,2})").matcher(newValue);
+
+                        if (newValMatcher.find() && !newValue.matches("( *)"))
+                        {
+                            String newIntMatch = newValMatcher.group("int");
+
+                            Integer newValueI = Integer.valueOf(newIntMatch);
+                            Integer oldValueI = Integer.valueOf(correctOldValue);
+                            devToRssiShiftMap.put(connectedDevice.getDevice(), newValueI);
+                            MainWindowController.getInstance().updateDeviceRSSI(connectedDevice, newValueI, oldValueI);
+
+                            correctOldValue = newIntMatch;
+                        }
+                        else
+                        {
+                            //recursive execute this listener with correct value
+                            textFieldRssiShift.setText("0");
+                        }
                     }
                 });
 
