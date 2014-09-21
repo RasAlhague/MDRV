@@ -112,7 +112,7 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public                  GridPane                  spectralMasksGridPane;
     public                  Button                    addDummyButton;
-    public CheckBox enableAnimationChBx;
+    public                  CheckBox                  enableAnimationChBx;
     private                 int                       replaySliderPreviousValue;
     private static volatile Boolean                   chartCanUpdate;
     private static int                      chartUpdateDelayMs  = 1000;
@@ -190,8 +190,6 @@ public class MainWindowController extends Application implements AnalysisPerform
         debugTextArea = (TextArea) scene.lookup("#debugTextArea");
         tooltipPane = (GridPane) scene.lookup("#tooltipPane");
         chartLegendVbox = (VBox) scene.lookup("#chartLegendVbox");
-        horizontalLine = (javafx.scene.shape.Line) scene.lookup("#horizontalLine");
-        verticalLine = (javafx.scene.shape.Line) scene.lookup("#verticalLine");
         controlBntsVBox = (VBox) scene.lookup("#controlBntsVBox");
         replaySlider = (Slider) scene.lookup("#replaySlider");
         replayModeSwitcher = (CheckBox) scene.lookup("#replayModeSwitcher");
@@ -207,7 +205,7 @@ public class MainWindowController extends Application implements AnalysisPerform
         SettingMenu.getInstance().initSettingMenu(settingButton, controlBntsVBox);
         bindTooltipToLineChart(lineChart, tooltipPane);
         ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
-        initXYLines(horizontalLine, verticalLine, lineChart);
+        initXYLines(lineChart);
         initReplaySlider(replaySlider);
         initChartUpdateDelayTextField(chartUpdateDelayTextField);
         initChartBlockingTimer();
@@ -216,12 +214,10 @@ public class MainWindowController extends Application implements AnalysisPerform
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
         PacketAnalysis.getInstance().addListener(getInstance());
         PacketAnalysis.getInstance().addListener(SettingMenu.getInstance());
-        //        DeviceConnectionListener.getInstance().addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
         wirelessAdapterCommunication.addListener(WirelessAdapterDataVisualizer.getInstance());
-
         Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
         wirelessAdapterCommunicationThread.start();
 
@@ -245,25 +241,9 @@ public class MainWindowController extends Application implements AnalysisPerform
         }, 0, chartUpdateDelayMs, TimeUnit.MILLISECONDS);
     }
 
-    private void initXYLines(Line horizontalLine, Line verticalLine, LineChart<Number, Number> lineChart)
+    private void initXYLines(LineChart<Number, Number> lineChart)
     {
-        final short verticalShift = 15;
-        final short horizontalShift = 15;
-
-        lineChart.setOnMouseMoved((MouseEvent mouseEvent) -> {
-
-            horizontalLine.setLayoutX(lineChart.getLayoutX() + lineChart.getYAxis().getWidth() + horizontalShift);
-            horizontalLine.setEndX(lineChart.getWidth() - (lineChart.getLayoutX() +
-                    lineChart.getYAxis().getWidth() +
-                    horizontalShift +
-                    3));
-
-            verticalLine.setLayoutY(lineChart.getLayoutY() + verticalShift);
-            verticalLine.setEndY(lineChart.getHeight() - lineChart.getXAxis().getHeight() - verticalShift - 3);
-
-            horizontalLine.setLayoutY(mouseEvent.getSceneY());
-            verticalLine.setLayoutX(mouseEvent.getSceneX());
-        });
+        new ChartValueMarker(lineChart);
     }
 
     private void initReplaySlider(Slider replaySlider)
@@ -336,14 +316,14 @@ public class MainWindowController extends Application implements AnalysisPerform
         });
     }
 
+    /**
+     * EVENTS SECTION
+     */
+
     public void animationChBxOnAction(ActionEvent actionEvent)
     {
         lineChart.setAnimated(enableAnimationChBx.isSelected());
     }
-
-    /**
-     * EVENTS SECTION
-     */
 
     /**
      * Vertical line switch event.

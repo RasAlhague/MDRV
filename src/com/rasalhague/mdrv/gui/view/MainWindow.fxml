@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.Font?>
@@ -904,39 +903,6 @@
                 <RowConstraints minHeight = "10.0" prefHeight = "-1.0" valignment = "CENTER" vgrow = "SOMETIMES"/>
             </rowConstraints>
         </GridPane>
-        <Group id = "Group" layoutX = "0.0" layoutY = "0.0">
-            <children>
-                <Line fx:id = "horizontalLine"
-                      endX = "100.0"
-                      endY = "0.0"
-                      layoutX = "0.0"
-                      layoutY = "100.0"
-                      mouseTransparent = "true"
-                      scaleY = "1.0"
-                      startX = "0.0"
-                      translateY = "0.0"
-                      visible = "false"/>
-                <Line fx:id = "verticalLine"
-                      cache = "false"
-                      endX = "0.0"
-                      endY = "100.0"
-                      fill = "BLACK"
-                      focusTraversable = "false"
-                      layoutX = "500.0"
-                      layoutY = "0.0"
-                      mouseTransparent = "true"
-                      opacity = "1.0"
-                      smooth = "true"
-                      startX = "0.0"
-                      startY = "0.0"
-                      strokeDashOffset = "1.0"
-                      strokeLineCap = "ROUND"
-                      strokeLineJoin = "MITER"
-                      strokeMiterLimit = "1.0"
-                      strokeType = "CENTERED"
-                      strokeWidth = "0.8"/>
-            </children>
-        </Group>
         <VBox fx:id = "chartLegendVbox"
               mouseTransparent = "false"
               prefHeight = "-1.0"
