@@ -18,12 +18,46 @@ import javafx.scene.shape.Line;
 
 public class ChartValueMarker
 {
-    private LineChart<Number, Number> lineChart;
+    private static ChartValueMarker          instance;
+    private        LineChart<Number, Number> lineChart;
     private Line xMarker = new Line();
     private Line yMarker = new Line();
     private double xMarkerShift;
     private double yMarkerShift;
     private Pane   pane;
+
+    private ChartValueMarker()
+    { }
+
+    public static ChartValueMarker getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new ChartValueMarker();
+        }
+
+        return instance;
+    }
+
+    public void init(LineChart<Number, Number> lineChart)
+    {
+        this.lineChart = lineChart;
+        this.pane = getPane();
+
+        configureMarkers();
+        addMarkersToChart();
+        setUpMarkersBehavior();
+    }
+
+    public void setXMarkerVisibility(boolean visibility)
+    {
+        xMarker.setVisible(visibility);
+    }
+
+    public void setYMarkerVisibility(boolean visibility)
+    {
+        yMarker.setVisible(visibility);
+    }
 
     private class SizeListener implements ChangeListener
     {
@@ -44,16 +78,6 @@ public class ChartValueMarker
                 });
             }).start();
         }
-    }
-
-    public ChartValueMarker(LineChart<Number, Number> lineChart)
-    {
-        this.lineChart = lineChart;
-        this.pane = getPane();
-
-        configureMarkers();
-        addMarkersToChart();
-        setUpMarkersBehavior();
     }
 
     private Pane getPane()
@@ -121,15 +145,21 @@ public class ChartValueMarker
                     {
                         if (shiftedMouseSceneX == xAxis.getDisplayPosition(point.getXValue()))
                         {
-                            //TODO JavaFX uses CPU - 10%
-                            xMarker.setStartX(mouseSceneX);
-                            xMarker.setEndX(mouseSceneX);
+                            if (xMarker.isVisible())
+                            {
+                                //TODO JavaFX uses CPU - 10%
+                                xMarker.setStartX(mouseSceneX);
+                                xMarker.setEndX(mouseSceneX);
+                            }
                         }
                         if (shiftedMouseSceneY == yAxis.getDisplayPosition(point.getYValue()))
                         {
-                            //TODO JavaFX uses CPU - 10%
-                            yMarker.setStartY(mouseSceneY);
-                            yMarker.setEndY(mouseSceneY);
+                            if (yMarker.isVisible())
+                            {
+                                //TODO JavaFX uses CPU - 10%
+                                yMarker.setStartY(mouseSceneY);
+                                yMarker.setEndY(mouseSceneY);
+                            }
                         }
                     }
                 }

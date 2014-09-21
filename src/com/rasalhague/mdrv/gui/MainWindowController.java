@@ -243,7 +243,7 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     private void initXYLines(LineChart<Number, Number> lineChart)
     {
-        new ChartValueMarker(lineChart);
+        ChartValueMarker.getInstance().init(lineChart);
     }
 
     private void initReplaySlider(Slider replaySlider)
@@ -333,10 +333,7 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public void verticalLineSwitchEvent(ActionEvent event)
     {
-        verticalLine.setVisible(!verticalLine.isVisible());
-
-        CheckBox checkBox = (CheckBox) event.getSource();
-        checkBox.setSelected(verticalLine.isVisible());
+        ChartValueMarker.getInstance().setXMarkerVisibility(((CheckBox) event.getSource()).isSelected());
     }
 
     /**
@@ -347,10 +344,7 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public void horizontalLineSwitchEvent(ActionEvent event)
     {
-        horizontalLine.setVisible(!horizontalLine.isVisible());
-
-        CheckBox checkBox = (CheckBox) event.getSource();
-        checkBox.setSelected(horizontalLine.isVisible());
+        ChartValueMarker.getInstance().setYMarkerVisibility(((CheckBox) event.getSource()).isSelected());
     }
 
     /**
