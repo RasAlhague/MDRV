@@ -985,7 +985,7 @@
                                   fx:id = "horizontalLineSwitcher"
                                   mnemonicParsing = "false"
                                   onAction = "#horizontalLineSwitchEvent"
-                                  selected = "false"
+                                  selected = "true"
                                   text = "Horizontal line"/>
                         <CheckBox fx:id = "verticalLineSwitcher"
                                   mnemonicParsing = "false"

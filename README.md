@@ -7,4 +7,4 @@ Web site: http://wi-fi-analyzer.pp.ua/doku.php
 
 Latest release: https://github.com/RasAlhague/MDRV/releases
 
-Development in dev branch.
+Development in dev branch: https://github.com/RasAlhague/MDRV/tree/dev

@@ -33,7 +33,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -71,14 +70,6 @@ public class MainWindowController extends Application implements AnalysisPerform
      * The Chart legend vbox.
      */
     public                  VBox                      chartLegendVbox;
-    /**
-     * The Horizontal line.
-     */
-    public                  javafx.scene.shape.Line   horizontalLine;
-    /**
-     * The Vertical line.
-     */
-    public                  Line                      verticalLine;
     /**
      * The Show debug info bnt.
      */
@@ -203,7 +194,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         WirelessAdapterDataVisualizer.getInstance().init(spectralMasksGridPane);
         WirelessAdapterDataVisualizer.getInstance().setUpSettings(controlBntsVBox);
         SettingMenu.getInstance().initSettingMenu(settingButton, controlBntsVBox);
-        bindTooltipToLineChart(lineChart, tooltipPane);
+
+        LineChartMouseTrigger.addChartToListen(lineChart);
+        //        bindTooltipToLineChart(lineChart, tooltipPane);
+        ChartTooltip.getInstance().init(lineChart);
+
         ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
         initXYLines(lineChart);
         initReplaySlider(replaySlider);
@@ -819,6 +814,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
                         lineChartData.forEach(numberSeries -> {
+
+                            //TODO i can check here for series visibility, but it will cause lose data if disconnect device before visible on
 
                             if (numberSeries.getName().equals(seriesName))
                             {
