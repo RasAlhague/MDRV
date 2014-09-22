@@ -329,8 +329,8 @@ public class WirelessAdapterCommunication implements Runnable
                                                     .append(" -s 0 -nne '(type data subtype qos-data)'")
                                                     .toString();
 
-                //                Optional<String> stringOptional = dialogs.showTextInput(command);
-                //                chosenElement[0] = stringOptional.get();
+                Optional<String> stringOptional = dialogs.showTextInput(command);
+                chosenElement[0] = stringOptional.get();
 
                 chosenElement[0] = command;
             });
