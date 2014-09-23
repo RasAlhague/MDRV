@@ -325,8 +325,7 @@ public class WirelessAdapterCommunication implements Runnable
                                          .actions(Dialog.Actions.OK);
 
                 String command = new StringBuilder().append("tcpdump -i ")
-                                                    .append(wirelessAdapter.getAssociatedName())
-                                                    .append(" -s 0 -nne '(type data subtype qos-data)'")
+                                                    .append(wirelessAdapter.getAssociatedName()).append(" -s 0 -nne'")
                                                     .toString();
 
                 Optional<String> stringOptional = dialogs.showTextInput(command);
