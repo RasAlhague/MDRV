@@ -41,12 +41,8 @@ public class DeviceHistory
 
     private void solveCollision(DeviceInfo deviceInfo)
     {
-        String message = "Device collision detected\n" +
-                "Device with name " +
-                deviceInfo.getFriendlyNameWithId() + " on " + deviceInfo.getPortName() +
-                " was connected earlier.\n" +
-                "Ok - connect as new.\n" +
-                "No - merge with previous.";
+        String message = "Continue for " +
+                deviceInfo.getFriendlyNameWithId() + " on " + deviceInfo.getPortName() + " ?";
 
         try
         {

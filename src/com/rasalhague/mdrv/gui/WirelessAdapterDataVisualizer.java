@@ -28,10 +28,10 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
     private final HashMap<Byte, Polygon> channelMasks    = new HashMap<>();
     private final        HashMap<String, HashMap<Byte, Polygon>> standartToChannel  = new HashMap<>();
     private       float                  fadeOutPerTick  = 0.01f;
-    private       float                  fadeUpPerPacket = 0.0006f;
+    private float fadeUpPerPacket = 0.008f;
     private       float                  maxOpacity      = 0.6f;
     private final        int                                     fadeOutFrequencyMs = 100;
-    private       int                    fullFadeAfter   = 20;
+    private int   fullFadeAfter   = 30;
 
     /**
      * Gets instance.
@@ -165,7 +165,7 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         maxOpacityTextField.setPrefWidth(50);
         maxOpacityTextField.setText(String.valueOf(maxOpacity));
         fadeUpOpacityTextField.setPrefWidth(100);
-        fadeUpOpacityTextField.setText("0.0006");
+        fadeUpOpacityTextField.setText(String.valueOf(fadeUpPerPacket));
 
         fadeOutPerTick = maxOpacity / (Float.valueOf(freqTextField.getText()) * 1000 / fadeOutFrequencyMs);
 

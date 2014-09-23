@@ -325,13 +325,13 @@ public class WirelessAdapterCommunication implements Runnable
                                          .actions(Dialog.Actions.OK);
 
                 String command = new StringBuilder().append("tcpdump -i ")
-                                                    .append(wirelessAdapter.getAssociatedName())
-                                                    .append(" -s 0 -nne")
+                                                    .append(wirelessAdapter.getAssociatedName()).append(" -nte")
                                                     .toString();
 
-                Optional<String> stringOptional = dialogs.showTextInput(command);
-                chosenElement[0] = stringOptional.get();
+                //                Optional<String> stringOptional = dialogs.showTextInput(command);
+                //                chosenElement[0] = stringOptional.get();
 
+                //CAREFUL
                 chosenElement[0] = command;
             });
         }
@@ -357,7 +357,7 @@ public class WirelessAdapterCommunication implements Runnable
             while ((resultExecute = tcpDumpReader.readLine()) != null)
             {
                 Matcher matcher = Pattern.compile(
-                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(.*?(?<dB>-\\d{2,3})dB)((.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?)(.*?BSSID:(?<BSSID>(((\\w|\\d){2}):?){6}))")
+                        "( (?<MbFirst>\\d{1,3}\\.\\d{1,3}) Mb\\/s )?((?<frequency>\\d{4}) MHz.*?)(.*?(?<dB>-\\d{2,3})dB)((.*?(?<MbSecond>\\d{1,2}\\.\\d) Mb\\/s )?)(.*?BSSID:(?<BSSID>(((\\w|\\d){2}):?){6})?)")
                                          .matcher(resultExecute);
 
                 while (matcher.find())
