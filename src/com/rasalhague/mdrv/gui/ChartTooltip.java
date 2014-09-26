@@ -3,6 +3,8 @@ package com.rasalhague.mdrv.gui;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -20,6 +22,7 @@ public class ChartTooltip implements LineChartMousePointsListener
     private static ChartTooltip ourInstance = new ChartTooltip();
     private TableView                 chartTooltip;
     private LineChart<Number, Number> lineChart;
+    private Bounds chartAreaBounds;
     private double chartTooltipXShift = 30;
     private double chartTooltipYShift = -30;
 
@@ -39,6 +42,10 @@ public class ChartTooltip implements LineChartMousePointsListener
     public void init(LineChart<Number, Number> lineChart)
     {
         this.lineChart = lineChart;
+
+        // find chart area Node
+        Node chartArea = lineChart.lookup(".chart-plot-background");
+        chartAreaBounds = chartArea.localToScene(chartArea.getBoundsInLocal());
 
         LineChartMouseTrigger.addLineChartMousePointsListener(this);
 
@@ -85,8 +92,19 @@ public class ChartTooltip implements LineChartMousePointsListener
     {
         if (axis == Axis.X)
         {
-            chartTooltip.setLayoutX(mouseEvent.getSceneX() + chartTooltipXShift);
-            chartTooltip.setLayoutY(mouseEvent.getSceneY() + chartTooltipYShift);
+            if (!chartTooltip.isVisible()) chartTooltip.setVisible(true);
+
+            double xBound = mouseEvent.getSceneX() + chartTooltipXShift + chartTooltip.getWidth();
+            double yBound = mouseEvent.getSceneY() + chartTooltipYShift + chartTooltip.getHeight();
+
+            if (xBound < chartAreaBounds.getMaxX())
+            {
+                chartTooltip.setLayoutX(mouseEvent.getSceneX() + chartTooltipXShift);
+            }
+            if (yBound < chartAreaBounds.getMaxY())
+            {
+                chartTooltip.setLayoutY(mouseEvent.getSceneY() + chartTooltipYShift);
+            }
 
             ArrayList<Point> pointArrayList = new ArrayList<>();
             for (XYChart.Data<Number, Number> point : points)
@@ -104,15 +122,17 @@ public class ChartTooltip implements LineChartMousePointsListener
     {
         chartTooltip = new TableView();
         chartTooltip.setMouseTransparent(true);
+        chartTooltip.setVisible(false);
         chartTooltip.setPrefHeight(150);
-        chartTooltip.setPrefWidth(180);
+        chartTooltip.setPrefWidth(190);
         chartTooltip.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        chartTooltip.setStyle("-fx-background-color: rgba(255, 255, 255, 0.6);\n" + "    -fx-background-radius: 5;");
 
         TableColumn firstColumn = new TableColumn("RSSI, dBm");
         TableColumn secondColumn = new TableColumn("F, kHz");
 
-        firstColumn.setCellValueFactory(new PropertyValueFactory<Point, Double>("x"));
-        secondColumn.setCellValueFactory(new PropertyValueFactory<Point, Double>("y"));
+        firstColumn.setCellValueFactory(new PropertyValueFactory<Point, Double>("y"));
+        secondColumn.setCellValueFactory(new PropertyValueFactory<Point, Double>("x"));
 
         chartTooltip.getColumns().addAll(firstColumn, secondColumn);
 

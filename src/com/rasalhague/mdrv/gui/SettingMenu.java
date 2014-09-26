@@ -252,6 +252,7 @@ public class SettingMenu implements AnalysisPerformedListener
         settingButton.setOnMouseEntered(mouseEvent -> {
 
             controlBntsVBox.setVisible(true);
+            controlBntsVBox.getParent().toFront();
             controlBntsVBox.setPrefWidth(Region.USE_COMPUTED_SIZE);
         });
 

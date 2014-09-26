@@ -43,8 +43,7 @@ public class ChartLegend
     }
 
     private ChartLegend()
-    {
-    }
+    { }
 
     /**
      * Init chart legend.
@@ -68,7 +67,7 @@ public class ChartLegend
             /**
              * Delay needed for _TODO Color wont work coz first series return wrong data
              */
-            int updateDelayMs = 50;
+            int updateDelayMs = 100;
             ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             scheduledExecutorService.schedule(() -> Platform.runLater(() -> {
 
