@@ -93,6 +93,7 @@ public class ChartTooltip implements LineChartMousePointsListener
         if (axis == Axis.X)
         {
             if (!chartTooltip.isVisible()) chartTooltip.setVisible(true);
+            chartTooltip.setPrefHeight((points.size() * 23) + 30);
 
             double xBound = mouseEvent.getSceneX() + chartTooltipXShift + chartTooltip.getWidth();
             double yBound = mouseEvent.getSceneY() + chartTooltipYShift + chartTooltip.getHeight();
@@ -126,9 +127,9 @@ public class ChartTooltip implements LineChartMousePointsListener
         chartTooltip.setPrefHeight(150);
         chartTooltip.setPrefWidth(190);
         chartTooltip.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        chartTooltip.setStyle("-fx-background-color: rgba(255, 255, 255, 0.6);\n" + "    -fx-background-radius: 5;");
+        chartTooltip.setId("tooltipPane");
 
-        TableColumn firstColumn = new TableColumn("RSSI, dBm");
+        TableColumn firstColumn = new TableColumn("RSSI");
         TableColumn secondColumn = new TableColumn("F, kHz");
 
         firstColumn.setCellValueFactory(new PropertyValueFactory<Point, Double>("y"));

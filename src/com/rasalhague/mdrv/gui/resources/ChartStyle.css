@@ -1,7 +1,33 @@
+/*
 #tooltipPane{
+{
     -fx-background-color: rgba(255, 255, 255, 0.6);
     -fx-background-radius: 5;
+}*/
+
+.table-view {
+    //-fx-base: #1d1d1d;
+    -fx-control-inner-background: rgba(255, 255, 255, 0.3);
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-table-cell-border-color: rgba(255, 255, 255, 0.3);
+    -fx-table-header-border-color: transparent;
+    //-fx-padding: 5;
+    -fx-background-radius: 5;
+
+
 }
+
+.table-view .column-header-background, .table-view .column-header {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+}
+/*
+.table-view:row-selection .column-header-background .nested-column-header .table-column:last-visible {
+    -fx-border-color:
+            rgba(0, 0, 0, 0.0)
+            transparent
+            rgba(0, 0, 0, 0.6)
+            rgba(0, 0, 0, 0.6);
+}*/
 
 #chartLegendVbox{
     -fx-background-color: rgba(255, 255, 255, 0.6);
@@ -17,6 +43,7 @@
     -fx-stroke-width: 2px;
     -fx-opacity: 0.9;
 }
+
 .chart-line-symbol {
     visibility: hidden;
     -fx-scale-x: 0.8;
