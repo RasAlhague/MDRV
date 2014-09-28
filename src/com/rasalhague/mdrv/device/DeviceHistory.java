@@ -57,30 +57,35 @@ public class DeviceHistory
                                                   .actions(Dialog.Actions.OK, Dialog.Actions.NO)
                                                   .showConfirm();
 
-                if (collisionResponse == Dialog.Actions.OK)
+                if (collisionResponse == Dialog.Actions.NO)
                 {
                     connectedDeviceHistory.put(deviceInfo, connectedDeviceHistory.get(deviceInfo) + 1);
                     deviceInfo.setId(connectedDeviceHistory.get(deviceInfo));
                 }
-                if (collisionResponse == Dialog.Actions.NO)
+                if (collisionResponse == Dialog.Actions.OK)
                 {
                     ArrayList<String> choices = new ArrayList<>();
+                    int chosenId = 0;
 
-                    for (int i = 0; i <= connectedDeviceHistory.get(deviceInfo); i++)
+                    if (connectedDeviceHistory.get(deviceInfo) > 0)
                     {
-                        choices.add(String.valueOf(i));
+                        for (int i = 0; i <= connectedDeviceHistory.get(deviceInfo); i++)
+                        {
+                            choices.add(String.valueOf(i));
+                        }
+
+                        Optional chooseResponse = Dialogs.create()
+                                                         .owner(null)
+                                                         .masthead(null)
+                                                         .message("Choose device flow to connect to")
+                                                         .lightweight()
+                                                         .style(DialogStyle.UNDECORATED)
+                                                         .actions(Dialog.Actions.OK)
+                                                         .showChoices(choices);
+
+                        chosenId = Integer.parseInt(chooseResponse.get().toString());
                     }
 
-                    Optional chooseResponse = Dialogs.create()
-                                                     .owner(null)
-                                                     .masthead(null)
-                                                     .message("Choose device flow to connect to")
-                                                     .lightweight()
-                                                     .style(DialogStyle.UNDECORATED)
-                                                     .actions(Dialog.Actions.OK)
-                                                     .showChoices(choices);
-
-                    int chosenId = Integer.parseInt(chooseResponse.get().toString());
                     deviceInfo.setId(chosenId);
                 }
             });

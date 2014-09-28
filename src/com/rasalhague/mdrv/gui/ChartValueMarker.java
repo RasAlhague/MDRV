@@ -17,7 +17,7 @@ public class ChartValueMarker implements LineChartMouseListener
     private        LineChart<Number, Number> lineChart;
     private Line xMarker = new Line();
     private Line yMarker = new Line();
-    private Pane   pane;
+    private Pane pane;
 
     private ChartValueMarker()
     { }
