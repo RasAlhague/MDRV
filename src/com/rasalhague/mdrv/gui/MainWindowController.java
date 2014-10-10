@@ -12,6 +12,7 @@ import com.rasalhague.mdrv.logging.ApplicationLogger;
 import com.rasalhague.mdrv.logging.PacketLogger;
 import com.rasalhague.mdrv.logging.TextAreaHandler;
 import com.rasalhague.mdrv.replay.Replay;
+import com.rasalhague.mdrv.updater.UpdateChecker;
 import com.rasalhague.mdrv.wirelessadapter.WirelessAdapterCommunication;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -140,12 +141,14 @@ public class MainWindowController extends Application implements AnalysisPerform
         ApplicationLogger.setup();
         //        com.rasalhague.mdrv.logging.LogOutputStream.setup();
         ConfigurationLoader.initialize();
+        UpdateChecker.initialize();
 
         final String chartStyleCssPath = "/ChartStyle.css";
         final String rootPath = "/com/rasalhague/mdrv/gui/view/MainWindow.fxml";
         Parent root = FXMLLoader.load(getClass().getResource(rootPath));
         final Scene scene = new Scene(root);
-        scene.getStylesheets().add(chartStyleCssPath);
+        scene.getStylesheets()
+             .add(chartStyleCssPath);
 
         /**
          * Stage behavior
@@ -154,7 +157,8 @@ public class MainWindowController extends Application implements AnalysisPerform
             //Correctly close file handlers
             ApplicationLogger.closeHandlers();
 
-            PacketLogger.getInstance().closeWriter();
+            PacketLogger.getInstance()
+                        .closeWriter();
 
             DeviceConnectionListener deviceConnectionListener = DeviceConnectionListener.getInstance();
             //Need to stop coz thread prevent exit program
@@ -191,15 +195,20 @@ public class MainWindowController extends Application implements AnalysisPerform
         addDummyButton = (Button) scene.lookup("#addDummyButton");
 
         //initialization
-        WirelessAdapterDataVisualizer.getInstance().init(spectralMasksGridPane);
-        WirelessAdapterDataVisualizer.getInstance().setUpSettings(controlBntsVBox);
-        SettingMenu.getInstance().initSettingMenu(settingButton, controlBntsVBox);
+        WirelessAdapterDataVisualizer.getInstance()
+                                     .init(spectralMasksGridPane);
+        WirelessAdapterDataVisualizer.getInstance()
+                                     .setUpSettings(controlBntsVBox);
+        SettingMenu.getInstance()
+                   .initSettingMenu(settingButton, controlBntsVBox);
 
         LineChartMouseTrigger.addChartToListen(lineChart);
         //        bindTooltipToLineChart(lineChart, tooltipPane);
-        ChartTooltip.getInstance().init(lineChart);
+        ChartTooltip.getInstance()
+                    .init(lineChart);
 
-        ChartLegend.getInstance().initChartLegend(chartLegendVbox, lineChart);
+        ChartLegend.getInstance()
+                   .initChartLegend(chartLegendVbox, lineChart);
         initXYLines(lineChart);
         initReplaySlider(replaySlider);
         initChartUpdateDelayTextField(chartUpdateDelayTextField);
@@ -207,8 +216,10 @@ public class MainWindowController extends Application implements AnalysisPerform
 
         //Add listeners and handlers
         ApplicationLogger.addCustomHandler(new TextAreaHandler(debugTextArea));
-        PacketAnalysis.getInstance().addListener(getInstance());
-        PacketAnalysis.getInstance().addListener(SettingMenu.getInstance());
+        PacketAnalysis.getInstance()
+                      .addListener(getInstance());
+        PacketAnalysis.getInstance()
+                      .addListener(SettingMenu.getInstance());
 
         //Connect WirelessAdapter
         WirelessAdapterCommunication wirelessAdapterCommunication = WirelessAdapterCommunication.getInstance();
@@ -217,7 +228,8 @@ public class MainWindowController extends Application implements AnalysisPerform
         wirelessAdapterCommunicationThread.start();
 
         //fake button press
-        DeviceConnectionListener.getInstance().startListening();
+        DeviceConnectionListener.getInstance()
+                                .startListening();
     }
 
     /**
@@ -238,7 +250,8 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     private void initXYLines(LineChart<Number, Number> lineChart)
     {
-        ChartValueMarker.getInstance().init(lineChart);
+        ChartValueMarker.getInstance()
+                        .init(lineChart);
     }
 
     private void initReplaySlider(Slider replaySlider)
@@ -287,28 +300,30 @@ public class MainWindowController extends Application implements AnalysisPerform
 
     private void initChartUpdateDelayTextField(TextField chartUpdateDelayTextField)
     {
-        chartUpdateDelayTextField.textProperty().addListener(observable -> {
+        chartUpdateDelayTextField.textProperty()
+                                 .addListener(observable -> {
 
-            try
-            {
-                int number = Integer.parseInt(chartUpdateDelayTextField.getText());
-                if (number >= 100)
-                {
-                    chartUpdateDelayMs = number;
-                    initChartBlockingTimer();
-                }
-                else
-                {
-                    chartUpdateDelayTextField.setText("100");
-                    ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
-                }
-            }
-            catch (NumberFormatException e)
-            {
-                ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
-            }
+                                     try
+                                     {
+                                         int number = Integer.parseInt(chartUpdateDelayTextField.getText());
+                                         if (number >= 100)
+                                         {
+                                             chartUpdateDelayMs = number;
+                                             initChartBlockingTimer();
+                                         }
+                                         else
+                                         {
+                                             chartUpdateDelayTextField.setText("100");
+                                             ApplicationLogger.LOGGER.info(
+                                                     "Delay must be a number that higher than 100 ms.");
+                                         }
+                                     }
+                                     catch (NumberFormatException e)
+                                     {
+                                         ApplicationLogger.LOGGER.info("Delay must be a number that higher than 100 ms.");
+                                     }
 
-        });
+                                 });
     }
 
     /**
@@ -328,7 +343,8 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public void verticalLineSwitchEvent(ActionEvent event)
     {
-        ChartValueMarker.getInstance().setXMarkerVisibility(((CheckBox) event.getSource()).isSelected());
+        ChartValueMarker.getInstance()
+                        .setXMarkerVisibility(((CheckBox) event.getSource()).isSelected());
     }
 
     /**
@@ -339,7 +355,8 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public void horizontalLineSwitchEvent(ActionEvent event)
     {
-        ChartValueMarker.getInstance().setYMarkerVisibility(((CheckBox) event.getSource()).isSelected());
+        ChartValueMarker.getInstance()
+                        .setYMarkerVisibility(((CheckBox) event.getSource()).isSelected());
     }
 
     /**
@@ -374,12 +391,14 @@ public class MainWindowController extends Application implements AnalysisPerform
     public void openReplayBtnClick(ActionEvent actionEvent)
     {
         refreshChart();
-        Replay.getInstance().loadReplay();
+        Replay.getInstance()
+              .loadReplay();
     }
 
     public void addDummyButtonOnAction(ActionEvent actionEvent)
     {
-        DeviceConnectionListener.getInstance().addDummyDevice();
+        DeviceConnectionListener.getInstance()
+                                .addDummyDevice();
     }
 
     /**
@@ -389,23 +408,30 @@ public class MainWindowController extends Application implements AnalysisPerform
     {
         replaySliderPreviousValue = 0;
         replaySlider.setValue(0);
-        PacketAnalysis.getInstance().getTimedAnalysisResults().clear();
-        ChartLegend.getInstance().clearChartLegend();
-        lineChart.getData().clear();
+        PacketAnalysis.getInstance()
+                      .getTimedAnalysisResults()
+                      .clear();
+        ChartLegend.getInstance()
+                   .clearChartLegend();
+        lineChart.getData()
+                 .clear();
     }
 
     private void bindTooltipToLineChart(final LineChart<Number, Number> lineChart, GridPane tooltipPane)
     {
-        Font tooltipFont = Font.font(Font.getDefault().getName(),
+        Font tooltipFont = Font.font(Font.getDefault()
+                                         .getName(),
                                      FontWeight.BOLD,
                                      FontPosture.REGULAR,
-                                     Font.getDefault().getSize());
+                                     Font.getDefault()
+                                         .getSize());
 
         final Axis<Number> xAxis = lineChart.getXAxis();
         final Axis<Number> yAxis = lineChart.getYAxis();
 
         final Node chartBackground = lineChart.lookup(".chart-plot-background");
-        for (Node n : chartBackground.getParent().getChildrenUnmodifiable())
+        for (Node n : chartBackground.getParent()
+                                     .getChildrenUnmodifiable())
         {
             if (n != chartBackground && n != xAxis && n != yAxis)
             {
@@ -425,68 +451,75 @@ public class MainWindowController extends Application implements AnalysisPerform
             double xAxisValueForDisplay = (double) xAxis.getValueForDisplay(mouseEvent.getX());
             float scanRange = 0.25f;
 
-            lineChart.getData().forEach(numberSeries -> {
+            lineChart.getData()
+                     .forEach(numberSeries -> {
 
-                numberSeries.getData().forEach(numberData -> {
+                         numberSeries.getData()
+                                     .forEach(numberData -> {
 
-                    float xValue = (float) numberData.getXValue();
-                    Number yValue = numberData.getYValue();
-                    ArrayList<Text> rowTexts = new ArrayList<>();
+                                         float xValue = (float) numberData.getXValue();
+                                         Number yValue = numberData.getYValue();
+                                         ArrayList<Text> rowTexts = new ArrayList<>();
 
-                    if (xValue > xAxisValueForDisplay - scanRange && xValue < xAxisValueForDisplay + scanRange)
-                    {
-                        /**
-                         * Create Text object, configure and add it to row array
-                         */
-                        Text dBm = new Text(String.valueOf(yValue));
-                        Text dBmText = new Text(" dBm");
-                        Text hz = new Text('\t'/* + "2 4"*/ + String.valueOf(xValue));
-                        Text hzText = new Text(" kHz");
+                                         if (xValue > xAxisValueForDisplay - scanRange &&
+                                                 xValue < xAxisValueForDisplay + scanRange)
+                                         {
+                                             /**
+                                              * Create Text object, configure and add it to row array
+                                              */
+                                             Text dBm = new Text(String.valueOf(yValue));
+                                             Text dBmText = new Text(" dBm");
+                                             Text hz = new Text('\t'/* + "2 4"*/ + String.valueOf(xValue));
+                                             Text hzText = new Text(" kHz");
 
-                        rowTexts.add(dBm);
-                        rowTexts.add(dBmText);
-                        rowTexts.add(hz);
-                        rowTexts.add(hzText);
-                        Node numberSeriesNode = numberSeries.getNode();
-                        if (numberSeriesNode.isVisible())
-                        {
-                            rowsToView.put(rowTexts, numberSeriesNode.isVisible());
-                        }
+                                             rowTexts.add(dBm);
+                                             rowTexts.add(dBmText);
+                                             rowTexts.add(hz);
+                                             rowTexts.add(hzText);
+                                             Node numberSeriesNode = numberSeries.getNode();
+                                             if (numberSeriesNode.isVisible())
+                                             {
+                                                 rowsToView.put(rowTexts, numberSeriesNode.isVisible());
+                                             }
 
-                        //TODO MEMORY LEAK
-                        //Get numberSeries color and set it to text
-                        String numberSeriesString = numberSeriesNode.toString();
-                        int indexOf = numberSeriesString.indexOf("stroke=");
-                        String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
-                        for (Text text : rowTexts)
-                        {
-                            text.setFill(Paint.valueOf(substring));
-                            text.setFont(tooltipFont);
-                        }
+                                             //TODO MEMORY LEAK
+                                             //Get numberSeries color and set it to text
+                                             String numberSeriesString = numberSeriesNode.toString();
+                                             int indexOf = numberSeriesString.indexOf("stroke=");
+                                             String substring = numberSeriesString.substring(indexOf + 7, indexOf + 17);
+                                             for (Text text : rowTexts)
+                                             {
+                                                 text.setFill(Paint.valueOf(substring));
+                                                 text.setFont(tooltipFont);
+                                             }
 
-                        /**
-                         * Highlight selected node
-                         */
-                        if (lineChart.getCreateSymbols() && numberSeriesNode.isVisible())
-                        {
-                            numberData.getNode().setVisible(true);
-                            numberData.getNode().setEffect(new DropShadow());
-                        }
-                    }
-                    else
-                    {
-                        /**
-                         * Highlight down non selected node
-                         */
-                        if (lineChart.getCreateSymbols())
-                        {
-                            numberData.getNode().setVisible(false);
-                            numberData.getNode().setEffect(null);
-                        }
-                    }
+                                             /**
+                                              * Highlight selected node
+                                              */
+                                             if (lineChart.getCreateSymbols() && numberSeriesNode.isVisible())
+                                             {
+                                                 numberData.getNode()
+                                                           .setVisible(true);
+                                                 numberData.getNode()
+                                                           .setEffect(new DropShadow());
+                                             }
+                                         }
+                                         else
+                                         {
+                                             /**
+                                              * Highlight down non selected node
+                                              */
+                                             if (lineChart.getCreateSymbols())
+                                             {
+                                                 numberData.getNode()
+                                                           .setVisible(false);
+                                                 numberData.getNode()
+                                                           .setEffect(null);
+                                             }
+                                         }
 
-                });
-            });
+                                     });
+                     });
 
             /**
              * Add rowsToView with text objects to the tooltipPane
@@ -494,11 +527,14 @@ public class MainWindowController extends Application implements AnalysisPerform
             //if (rowsToView.size() > 0) is needed for tooltipPane always visibility
             if (rowsToView.size() > 0)
             {
-                tooltipPane.getChildren().clear();
+                tooltipPane.getChildren()
+                           .clear();
                 ArrayList<ArrayList<Text>> rowsToViewKeySet = new ArrayList<>(rowsToView.keySet());
                 //sorting in 1 line xD
-                rowsToViewKeySet.sort((o1, o2) -> Float.compare(Float.parseFloat(o1.get(0).getText()),
-                                                                Float.parseFloat(o2.get(0).getText())));
+                rowsToViewKeySet.sort((o1, o2) -> Float.compare(Float.parseFloat(o1.get(0)
+                                                                                   .getText()),
+                                                                Float.parseFloat(o2.get(0)
+                                                                                   .getText())));
 
                 for (int row = 0; row < rowsToViewKeySet.size(); row++)
                 {
@@ -512,7 +548,9 @@ public class MainWindowController extends Application implements AnalysisPerform
                             //set up alignment for first column
                             if (column == 0)
                             {
-                                tooltipPane.getColumnConstraints().get(0).setHalignment(HPos.RIGHT);
+                                tooltipPane.getColumnConstraints()
+                                           .get(0)
+                                           .setHalignment(HPos.RIGHT);
                             }
                         }
                     }
@@ -640,12 +678,14 @@ public class MainWindowController extends Application implements AnalysisPerform
 
             regex = regex.replace("/", "\\/");
 
-            if (series.getName().matches(regex))
+            if (series.getName()
+                      .matches(regex))
             {
                 ObservableList<XYChart.Data<Number, Number>> seriesDatas = series.getData();
                 for (XYChart.Data<Number, Number> seriesData : seriesDatas)
                 {
-                    seriesData.setYValue(seriesData.getYValue().floatValue() - oldValueF + newValueF);
+                    seriesData.setYValue(seriesData.getYValue()
+                                                   .floatValue() - oldValueF + newValueF);
                 }
             }
         }
@@ -656,7 +696,8 @@ public class MainWindowController extends Application implements AnalysisPerform
      */
     public synchronized static void forceUpdateChart()
     {
-        getInstance().updateChart(PacketAnalysis.getInstance().getTimedAnalysisResults());
+        getInstance().updateChart(PacketAnalysis.getInstance()
+                                                .getTimedAnalysisResults());
     }
 
     private void updateChart(final LinkedHashMap<Long, HashMap<DeviceInfo, HashMap<AnalysisKey, ArrayList<Byte>>>> analysisResult)
@@ -721,11 +762,14 @@ public class MainWindowController extends Application implements AnalysisPerform
 
             Long timeKey = timeKeys.get(que);
 
-            Set<DeviceInfo> deviceInfoKeys = analysisResult.get(timeKey).keySet();
+            Set<DeviceInfo> deviceInfoKeys = analysisResult.get(timeKey)
+                                                           .keySet();
             for (DeviceInfo deviceInfo : deviceInfoKeys)
             {
                 HashMap<AnalysisKey, ArrayList<Byte>> myHM = new HashMap<>();
-                Set<AnalysisKey> analysisKeys = analysisResult.get(timeKey).get(deviceInfo).keySet();
+                Set<AnalysisKey> analysisKeys = analysisResult.get(timeKey)
+                                                              .get(deviceInfo)
+                                                              .keySet();
                 //sort for fix chart legend unsorted out bug
                 List<AnalysisKey> sortedAnalysisKeys = Utils.asSortedList(analysisKeys);
 
@@ -733,10 +777,13 @@ public class MainWindowController extends Application implements AnalysisPerform
                 {
                     for (AnalysisKey analysisKey : sortedAnalysisKeys)
                     {
-                        combinedAnalysisResult.get(deviceInfo).remove(analysisKey);
+                        combinedAnalysisResult.get(deviceInfo)
+                                              .remove(analysisKey);
                         combinedAnalysisResult.get(deviceInfo)
                                               .put(analysisKey,
-                                                   analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
+                                                   analysisResult.get(timeKey)
+                                                                 .get(deviceInfo)
+                                                                 .get(analysisKey));
                     }
 
                     //                    analysisKeys.forEach(analysisKey -> {
@@ -751,7 +798,10 @@ public class MainWindowController extends Application implements AnalysisPerform
                 {
                     sortedAnalysisKeys.forEach(analysisKey -> {
 
-                        myHM.put(analysisKey, analysisResult.get(timeKey).get(deviceInfo).get(analysisKey));
+                        myHM.put(analysisKey,
+                                 analysisResult.get(timeKey)
+                                               .get(deviceInfo)
+                                               .get(analysisKey));
                     });
                     combinedAnalysisResult.put(deviceInfo, myHM);
                 }
@@ -784,7 +834,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                             " on " +
                             deviceInfo.getPortName() +
                             " " +
-                            analysisForDeviceKey.toString().toLowerCase();
+                            analysisForDeviceKey.toString()
+                                                .toLowerCase();
                     series.setName(seriesName);
 
                     ArrayList<Byte> listMax = new ArrayList<>(analysisForDevice.get(analysisForDeviceKey));
@@ -809,7 +860,8 @@ public class MainWindowController extends Application implements AnalysisPerform
                      * Use XYChart.Series
                      * Update series
                      */
-                    HashMap<Device, Integer> devToRssiShiftMap = SettingMenu.getInstance().getDevToRssiShiftMap();
+                    HashMap<Device, Integer> devToRssiShiftMap = SettingMenu.getInstance()
+                                                                            .getDevToRssiShiftMap();
                     ObservableList<XYChart.Series<Number, Number>> lineChartData = lineChart.getData();
                     if (Utils.isSeriesExist(lineChartData, seriesName))
                     {
@@ -817,7 +869,8 @@ public class MainWindowController extends Application implements AnalysisPerform
 
                             //TODO i can check here for series visibility, but it will cause lose data if disconnect device before visible on
 
-                            if (numberSeries.getName().equals(seriesName))
+                            if (numberSeries.getName()
+                                            .equals(seriesName))
                             {
                                 XYChart.Data<Number, Number> numberData;
                                 ObservableList<XYChart.Data<Number, Number>> data = numberSeries.getData();
@@ -826,13 +879,18 @@ public class MainWindowController extends Application implements AnalysisPerform
                                     numberData = data.get(i);
 
                                     //TODO it uses around 25% of CPU
-                                    numberData.setYValue(seriesData.get(i).getYValue().byteValue() +
+                                    numberData.setYValue(seriesData.get(i)
+                                                                   .getYValue()
+                                                                   .byteValue() +
                                                                  devToRssiShiftMap.get(deviceInfo.getDevice()));
                                     //---
 
-                                    if (!numberData.getXValue().equals(seriesData.get(i).getXValue()))
+                                    if (!numberData.getXValue()
+                                                   .equals(seriesData.get(i)
+                                                                     .getXValue()))
                                     {
-                                        numberData.setXValue(seriesData.get(i).getXValue());
+                                        numberData.setXValue(seriesData.get(i)
+                                                                       .getXValue());
                                     }
                                 }
                                 //--------

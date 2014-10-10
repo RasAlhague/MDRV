@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
 Main-Class: com.rasalhague.mdrv.gui.MainWindowController
+Implementation-Version: 0.2
 
