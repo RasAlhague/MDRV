@@ -65,7 +65,7 @@ public class WirelessAdapterDataVisualizer implements WirelessAdapterDataListene
         for (byte b = 1; b <= 14; b++)
         {
             spectralMaskPolygon = FXMLLoader.load(getClass().getResource(channelMask));
-            spectralMaskPolygon.setOpacity(0.5);
+            spectralMaskPolygon.setOpacity(0);
             spectralMaskPolygon.setVisible(true);
 
             if (b != 14)
