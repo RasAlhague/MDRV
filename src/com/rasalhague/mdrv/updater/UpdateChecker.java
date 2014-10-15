@@ -110,9 +110,9 @@ public class UpdateChecker implements Runnable
         if (manifestVersion == null)
         {
             //For testing purposes only
-            currentVersion = new Version("0.2");
+            currentVersion = new Version("0.9");
 
-            ApplicationLogger.LOGGER.warning("Debugging: currentVersion = new Version(\"0.2\");");
+            ApplicationLogger.LOGGER.warning("Debugging: currentVersion = new Version(\"0.9\");");
         }
         else
         {
