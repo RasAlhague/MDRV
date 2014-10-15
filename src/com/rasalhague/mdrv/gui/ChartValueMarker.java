@@ -124,6 +124,7 @@ public class ChartValueMarker implements LineChartMouseListener
 
         yMarker.setStartX(chartAreaBounds.getMinX());
         yMarker.setEndX(chartAreaBounds.getMaxX());
+        yMarker.setVisible(false);
     }
 
     private void addMarkersToChart()
