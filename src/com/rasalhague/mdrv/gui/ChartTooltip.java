@@ -93,7 +93,7 @@ public class ChartTooltip implements LineChartMousePointsListener
         if (axis == Axis.X)
         {
             if (!chartTooltip.isVisible()) chartTooltip.setVisible(true);
-            chartTooltip.setPrefHeight((points.size() * 23) + 30);
+            chartTooltip.setPrefHeight((points.size() * 24) + 30);
 
             double xBound = mouseEvent.getSceneX() + chartTooltipXShift + chartTooltip.getWidth();
             double yBound = mouseEvent.getSceneY() + chartTooltipYShift + chartTooltip.getHeight();
