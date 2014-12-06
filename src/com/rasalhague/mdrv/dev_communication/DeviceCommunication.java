@@ -21,7 +21,7 @@ public abstract class DeviceCommunication implements Runnable
      * @param devInfo
      *         the dev info
      */
-    DeviceCommunication(DeviceInfo devInfo)
+    protected DeviceCommunication(DeviceInfo devInfo)
     {
         deviceInfo = devInfo;
         rxRawDataReceiver = new RxRawDataReceiver(deviceInfo);
@@ -42,9 +42,6 @@ public abstract class DeviceCommunication implements Runnable
      *
      * @param deviceInfo
      *         the device info
-     * @param initializationMethod
-     * @param parseMethod
-     *
      * @return the instance
      */
     public static DeviceCommunication getInstance(DeviceInfo deviceInfo)
