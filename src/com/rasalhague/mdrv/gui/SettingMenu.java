@@ -228,7 +228,7 @@ public class SettingMenu implements AnalysisPerformedListener
         textFieldFowChSw.textProperty().addListener((observable, oldValue, newValue) -> {
 
             if (textFieldFowChSw.getText()
-                                .matches("(?<channelStart>\\d{1,2}[^15-99]*?)(-(?<channelEnd>\\d{1,2}[^15-99]))?"))
+                                .matches("(?<channelStart>\\d{1,2}[^15-99]*?)(-(?<channelEnd>\\d{1,2}[^15-99]*?))?"))
             {
                 wirelessAdapter.setChannelRoundSwitcher(new RoundVar(Utils.generateArrayToRound(textFieldFowChSw.getText())));
             }
