@@ -250,6 +250,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
                 device.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
 
                 Thread thread = new Thread(device.getDeviceCommunication());
+                thread.setName(device.getDeviceInfo().getFriendlyNameWithId());
                 thread.setDaemon(true);
                 thread.start();
             }
