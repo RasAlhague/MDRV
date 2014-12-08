@@ -37,7 +37,6 @@ public class DataPacket
         return isAnalyzable;
     }
 
-    //Constructor
     public DataPacket(ArrayList<Byte> rawData, DeviceInfo deviceInfo)
     {
         this.rawDataPacket = rawData.toString();
