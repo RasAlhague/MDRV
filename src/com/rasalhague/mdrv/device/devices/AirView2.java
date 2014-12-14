@@ -45,6 +45,14 @@ public class AirView2 extends Device
     public final static byte[] END_PACKET_SEQUENCE = new byte[]{10};
 
     /**
+     * Set this to TRUE only if you want to control device manually
+     * In this case the program will not try to open device and read from
+     * customReadMethod() becomes active
+     * For example check MetaGeekWiSpyGen1.java class file
+     */
+    public final static boolean MANUAL_DEVICE_CONTROL = false;
+
+    /**
      * Use this method for initialize your device.
      */
     @Override
@@ -89,5 +97,17 @@ public class AirView2 extends Device
         }
 
         return list;
+    }
+
+    /**
+     * Use this method for override default HIDUSB / COM read behavior. In most cases its usable for HIDUSB devices,
+     * when default com.codeminders.hidapi library read method does not work.
+     * <p>
+     * !!! IMPORTANT !!! If you want to use this method you need to set USE_CUSTOM_READ_METHOD field to TRUE
+     */
+    @Override
+    public byte[] customReadMethod()
+    {
+        return new byte[0];
     }
 }

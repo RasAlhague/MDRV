@@ -41,7 +41,16 @@ public class DeviceTemplate extends Device
     public final static byte[] END_PACKET_SEQUENCE = new byte[]{};
 
     /**
-     * Use this method for initialize your device.
+     * Set this to TRUE only if you want to control device manually
+     * In this case the program will not try to open device and read from
+     * customReadMethod() becomes active
+     * For example check MetaGeekWiSpyGen1.java class file
+     * Works only for HIDUSB devices
+     */
+    public final static boolean MANUAL_DEVICE_CONTROL = false;
+
+    /**
+     * Use this method for initialize your device. If device does not need initialization - leave this blank
      */
     @Override
     public void initializeDevice()
@@ -57,5 +66,17 @@ public class DeviceTemplate extends Device
     public ArrayList<Byte> parse(ArrayList<Byte> dataToParse)
     {
         return null;
+    }
+
+    /**
+     * Use this method for override default HIDUSB / COM read behavior. In most cases its usable for HIDUSB devices,
+     * when default com.codeminders.hidapi library read method does not work.
+     * <p>
+     * !!! IMPORTANT !!! If you want to use this method you need to set MANUAL_DEVICE_CONTROL field to TRUE
+     */
+    @Override
+    public byte[] customReadMethod()
+    {
+        return new byte[0];
     }
 }

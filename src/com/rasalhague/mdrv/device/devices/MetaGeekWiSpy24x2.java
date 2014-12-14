@@ -44,21 +44,20 @@ public class MetaGeekWiSpy24x2 extends Device
     public final static byte[] END_PACKET_SEQUENCE = new byte[]{74, 0, 0, 0};
 
     /**
+     * Set this to TRUE only if you want to control device manually
+     * In this case the program will not try to open device and read from
+     * customReadMethod() becomes active
+     * For example check MetaGeekWiSpyGen1.java class file
+     */
+    public final static boolean MANUAL_DEVICE_CONTROL = false;
+
+    /**
      * Use this method for initialize your device.
      */
     @Override
     public void initializeDevice()
     {
-        byte[] dataToWrite = new byte[]{0x53,
-                0x10,
-                0x11,
-                0x00,
-                (byte) 0x9F,
-                0x24,
-                0x00,
-                (byte) 0xC4,
-                0x15,
-                0x05,
+        byte[] dataToWrite = new byte[]{0x53, 0x10, 0x11, 0x00, (byte) 0x9F, 0x24, 0x00, (byte) 0xC4, 0x15, 0x05,
                 0x00,
                 0x6C,
                 (byte) 0xDC,
@@ -126,5 +125,17 @@ public class MetaGeekWiSpy24x2 extends Device
         }
 
         return clearPointArray;
+    }
+
+    /**
+     * Use this method for override default HIDUSB / COM read behavior. In most cases its usable for HIDUSB devices,
+     * when default com.codeminders.hidapi library read method does not work.
+     * <p>
+     * !!! IMPORTANT !!! If you want to use this method you need to set USE_CUSTOM_READ_METHOD field to TRUE
+     */
+    @Override
+    public byte[] customReadMethod()
+    {
+        return new byte[0];
     }
 }

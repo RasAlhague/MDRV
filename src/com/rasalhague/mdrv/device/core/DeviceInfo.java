@@ -2,8 +2,6 @@ package com.rasalhague.mdrv.device.core;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.rasalhague.mdrv.Utility.Utils;
-import com.rasalhague.mdrv.configuration.ConfigurationHolder;
-import com.rasalhague.mdrv.configuration.ConfigurationLoader;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -27,17 +25,11 @@ public class DeviceInfo
     private byte[]     endPacketSequence;
     private float      initialFrequency;
     private float      channelSpacing;
-    private int id = 0;
+    private int     id                  = 0;
+    private boolean manualDeviceControl = false;
 
     //transient for avoid logger Deadlock with Device class
     private transient Device device;
-
-    public enum DeviceType
-    {
-        HID,
-        COM,
-        DUMMY
-    }
 
     public DeviceInfo(HIDDeviceInfo hidDeviceInfo)
     {
@@ -47,8 +39,6 @@ public class DeviceInfo
         name = hidDeviceInfo.getProduct_string();
         productID = Utils.normalizePidVidToLength(Integer.toString(hidDeviceInfo.getProduct_id(), 16).toUpperCase());
         vendorID = Utils.normalizePidVidToLength(Integer.toString(hidDeviceInfo.getVendor_id(), 16).toUpperCase());
-
-        //        setSomeFieldsFromConfig(productID, vendorID);
     }
 
     public DeviceInfo(String devPortName)
@@ -60,8 +50,6 @@ public class DeviceInfo
         name = devInfMap.get("devName");
         productID = devInfMap.get("pid").toUpperCase();
         vendorID = devInfMap.get("vid").toUpperCase();
-
-        //        setSomeFieldsFromConfig(productID, vendorID);
     }
 
     public DeviceInfo(String vendorID,
@@ -83,6 +71,16 @@ public class DeviceInfo
         this.channelSpacing = channelSpacing;
     }
 
+    public boolean isManualDeviceControl()
+    {
+        return manualDeviceControl;
+    }
+
+    public void setManualDeviceControl(boolean manualDeviceControl)
+    {
+        this.manualDeviceControl = manualDeviceControl;
+    }
+
     public void setSomeFields(String friendlyName,
                               byte[] endPacketSequence,
                               float initialFrequency,
@@ -94,20 +92,6 @@ public class DeviceInfo
         this.initialFrequency = initialFrequency;
         this.channelSpacing = channelSpacing;
         this.device = device;
-    }
-
-    //TODO Dedicated
-    private void setSomeFieldsFromConfig(String pID, String vID)
-    {
-        ConfigurationHolder configuration = ConfigurationLoader.getConfiguration();
-        ConfigurationHolder.DeviceConfigurationHolder deviceConfiguration = configuration.getDeviceConfiguration(pID,
-                                                                                                                 vID);
-
-        endPacketSequence = deviceConfiguration.getEndPacketSequence();
-        initialFrequency = deviceConfiguration.getInitialFrequency();
-        channelSpacing = deviceConfiguration.getChannelSpacing();
-
-        //        System.out.println(pID + "\t" + initialFrequency + "\t" + channelSpacing);
     }
 
     public String getVendorID()
@@ -150,6 +134,11 @@ public class DeviceInfo
         return channelSpacing;
     }
 
+    public void setChannelSpacing(float channelSpacing)
+    {
+        this.channelSpacing = channelSpacing;
+    }
+
     public String getFriendlyName()
     {
         return friendlyName;
@@ -172,24 +161,29 @@ public class DeviceInfo
         return id;
     }
 
-    public Device getDevice()
-    {
-        return device;
-    }
-
-    public void setChannelSpacing(float channelSpacing)
-    {
-        this.channelSpacing = channelSpacing;
-    }
-
     public void setId(int id)
     {
         this.id = id;
     }
 
+    public Device getDevice()
+    {
+        return device;
+    }
+
     public boolean equalsPidVid(String pId, String vId)
     {
         return pId.equals(productID) && vId.equals(vendorID);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = vendorID.hashCode();
+        result = 31 * result + productID.hashCode();
+        result = 31 * result + portName.hashCode();
+        result = 31 * result + id;
+        return result;
     }
 
     @Override
@@ -206,16 +200,6 @@ public class DeviceInfo
         if (!vendorID.equals(that.vendorID)) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result = vendorID.hashCode();
-        result = 31 * result + productID.hashCode();
-        result = 31 * result + portName.hashCode();
-        result = 31 * result + id;
-        return result;
     }
 
     @Override
@@ -272,5 +256,12 @@ public class DeviceInfo
         ApplicationLogger.LOGGER.severe("OS does not support");
 
         return null;
+    }
+
+    public enum DeviceType
+    {
+        HID,
+        COM,
+        DUMMY
     }
 }

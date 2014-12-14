@@ -9,12 +9,13 @@ import java.util.regex.Pattern;
 
 public class WixelPololu extends Device
 {
-    public final static String FRIENDLY_NAME       = "Wixel Pololu";
-    public final static String VENDOR_ID           = "1FFB";
-    public final static String PRODUCT_ID          = "2200";
-    public final static float  INITIAL_FREQUENCY   = 2400;
-    public final static float  CHANNEL_SPACING     = 327.450980f;
-    public final static byte[] END_PACKET_SEQUENCE = new byte[]{10};
+    public final static String  FRIENDLY_NAME         = "Wixel Pololu";
+    public final static String  VENDOR_ID             = "1FFB";
+    public final static String  PRODUCT_ID            = "2200";
+    public final static float   INITIAL_FREQUENCY     = 2400;
+    public final static float   CHANNEL_SPACING       = 327.450980f;
+    public final static byte[]  END_PACKET_SEQUENCE   = new byte[]{10};
+    public final static boolean MANUAL_DEVICE_CONTROL = false;
 
     @Override
     public void initializeDevice()
@@ -48,5 +49,11 @@ public class WixelPololu extends Device
         }
 
         return dataToParse;
+    }
+
+    @Override
+    public byte[] customReadMethod()
+    {
+        return new byte[0];
     }
 }

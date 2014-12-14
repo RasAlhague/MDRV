@@ -14,11 +14,6 @@ import java.util.Arrays;
  */
 class HIDDeviceCommunication extends DeviceCommunication
 {
-    /**
-     * The Hid device.
-     */
-    //    HIDDevice hidDevice;
-
     static
     {
         com.codeminders.hidapi.ClassPathLibraryLoader.loadNativeHIDLibrary();
@@ -38,12 +33,24 @@ class HIDDeviceCommunication extends DeviceCommunication
     @Override
     public void run()
     {
-        openHIDDevice();
-        initializeDevice();
-        readDataFromDevice();
+        openHIDDevice(); //open only when MANUAL_DEVICE_CONTROL = false : use initializeDevice()
+        initializeDevice(); //call to specific device
+        readDataFromDevice(); //MANUAL_DEVICE_CONTROL ? customReadMethod() : defaultReadMethod()
     }
 
     private void readDataFromDevice()
+    {
+        if (deviceInfo.isManualDeviceControl())
+        {
+            customReadMethod();
+        }
+        else
+        {
+            defaultReadMethod();
+        }
+    }
+
+    private void defaultReadMethod()
     {
         /**
          * hidDevice.read() reads 1 message necessarily, no more no less.
@@ -74,9 +81,39 @@ class HIDDeviceCommunication extends DeviceCommunication
         }
     }
 
+    private void customReadMethod()
+    {
+        while (true)
+        {
+            byte[] buffer = deviceInfo.getDevice().customReadMethod();
+            if (buffer.length > 0)
+            {
+                rxRawDataReceiver.receiveRawData(buffer);
+            }
+            else
+            {
+                ApplicationLogger.getLogger().warning("customReadMethod() returns 0-length byte[]" +
+                                                              "\n" +
+                                                              "Breaking " +
+                                                              deviceInfo.getFriendlyNameWithId() +
+                                                              " communication thread");
+
+                break;
+            }
+        }
+    }
+
     private void openHIDDevice()
     {
-        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getName());
+        if (!deviceInfo.isManualDeviceControl())
+        {
+            defaultOpenMethod();
+        }
+    }
+
+    private void defaultOpenMethod()
+    {
+        ApplicationLogger.LOGGER.info("Trying to open " + deviceInfo.getName() + " using defaultOpenMethod()");
 
         try
         {
@@ -85,14 +122,15 @@ class HIDDeviceCommunication extends DeviceCommunication
                                             Integer.valueOf(deviceInfo.getProductID(), 16),
                                             null);
 
+            if (hidDevice == null) throw new NullPointerException("HIDManager.getInstance().openById() returns null");
+
             ApplicationLogger.LOGGER.info(deviceInfo.getName() + " " + "has been opened!");
         }
-        catch (IOException e)
+        catch (IOException | NullPointerException e)
         {
-            ApplicationLogger.LOGGER.severe(deviceInfo.getName() + " " + "opening IOException.");
+            ApplicationLogger.LOGGER.severe(deviceInfo.getName() + " opening Exception.");
             ApplicationLogger.LOGGER.severe(e.getMessage());
             e.printStackTrace();
         }
     }
-
 }

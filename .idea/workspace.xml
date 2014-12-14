@@ -11,13 +11,36 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="a">
+    <list default="true" id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="Add name to thread">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/natives/MetaGeekWiSpyGen1.co" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/natives/MetaGeekWiSpyGen1.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/natives/MetaGeekWiSpyGen1_32bit.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/natives/MetaGeekWiSpyGen1_64bit.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceTemplateI.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/tests/MetaGeekWiSpyGen1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/NativeUtils.java" />
+      <change type="DELETED" beforePath="D:\Gallery\Development_And_Programming\Java\MDRV\src\com\rasalhague\mdrv\device\core\Initializable.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Gallery\Development_And_Programming\Java\MDRV\src\com\rasalhague\mdrv\device\core\Parsable.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/artifacts/MDRV_jar/MDRV.jar" afterPath="$PROJECT_DIR$/artifacts/MDRV_jar/MDRV.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceInfo.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/My.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/WixelPololu.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/WixelPololu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java" afterPath="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MDRV.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/WD/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +48,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/MDRV$MainWindowController.coverage" NAME="MainWindowController Coverage Results" MODIFIED="1418132679091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="D:\Gallery\Development And Programming\Java\MDRV" />
   </component>
@@ -78,142 +104,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DeviceCommunication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
+      <file leaf-file-name="MetaGeekWiSpyGen1.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1230">
-              <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HIDDeviceCommunication.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1305">
-              <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.16643357" vertical-offset="0" max-vertical-offset="1887">
+              <caret line="24" column="78" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="78" />
               <folding>
-                <element signature="initializer##0;class#HIDDeviceCommunication#0" expanded="true" />
-                <element signature="method#run#0;class#HIDDeviceCommunication#0" expanded="true" />
-                <element signature="method#openHIDDevice#0;class#HIDDeviceCommunication#0" expanded="true" />
+                <element signature="initializer##0;class#MetaGeekWiSpyGen1#0" expanded="true" />
+                <element signature="e#1821#1907#0" expanded="false" />
+                <element signature="method#initializeDevice#0;class#MetaGeekWiSpyGen1#0" expanded="true" />
+                <element signature="e#6371#6437#0" expanded="false" />
+                <element signature="e#6965#7072#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChartValueMarker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartValueMarker.java">
+      <file leaf-file-name="MetaGeekWiSpy24x2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="1170">
-              <caret line="126" column="15" selection-start-line="126" selection-start-column="15" selection-end-line="126" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="989" max-vertical-offset="1717">
+              <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
               <folding>
-                <element signature="method#init#0;class#ChartValueMarker#0" expanded="true" />
-                <element signature="class#SizeListener#0;class#ChartValueMarker#0" expanded="false" />
-                <element signature="method#addMarkersToChart#0;class#ChartValueMarker#0" expanded="true" />
-                <element signature="method#setUpMarkersBehavior#0;class#ChartValueMarker#0" expanded="true" />
+                <element signature="docComment;method#initializeDevice#0;class#MetaGeekWiSpy24x2#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Version.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/updater/Version.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="690">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateChecker.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/updater/UpdateChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="402" max-vertical-offset="1095">
-              <caret line="114" column="91" selection-start-line="114" selection-start-column="91" selection-end-line="114" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ISMSniffer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-              <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RxRawDataReceiver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="2145">
-              <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="93" selection-end-column="12" />
-              <folding>
-                <element signature="docComment;method#receiveRawData#0;class#RxRawDataReceiver#0" expanded="true" />
-                <element signature="method#saveRawDataPacket#0;class#RxRawDataReceiver#0" expanded="true" />
-                <element signature="method#processReceivedByte#0;class#RxRawDataReceiver#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WirelessAdapterDataVisualizer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4694486" vertical-offset="450" max-vertical-offset="1755">
-              <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
-              <folding>
-                <element signature="docComment;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="docComment;method#getInstance#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="e#1653#1654#0" expanded="true" />
-                <element signature="e#1687#1688#0" expanded="true" />
-                <element signature="method#WirelessAdapterDataVisualizer#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="docComment;method#init#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="docComment;method#setUpSettings#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="method#wirelessAdapterDataEvent#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-                <element signature="method#processWirelessAdapterData#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="3360">
-              <caret line="198" column="55" selection-start-line="198" selection-start-column="55" selection-end-line="198" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelMask.fxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChannelMask.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="720">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.fxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.769231" vertical-offset="5863" max-vertical-offset="15705">
-              <caret line="413" column="33" selection-start-line="413" selection-start-column="33" selection-end-line="413" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -233,59 +148,30 @@
     </option>
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/devices/Device.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DeviceInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/devices/DeviceHistory.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/devices/WixelPololu.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/devices/DeviceTemplate.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/WixelPololu.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Initializable.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/Utils.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeek_WiSpy24x2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/RawDataProcessor/RawDataProcessor.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceTemplate.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceTemplateI.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/ExtendedClassLoader.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/diff1" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/diff2" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterChenelListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterChanelListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java" />
-        <option value="$PROJECT_DIR$/artifacts/start.sh" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/LineChartMouseListener.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/LineChartMouseTrigger.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/WixelPololu.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/DeviceHistory.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/UpdateChecker.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/updater/Version.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/NativeUtils.java" />
         <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/updater/UpdateChecker.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartValueMarker.java" />
-        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartTooltip.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/tests/MetaGeekWiSpyGen1.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java" />
+        <option value="$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java" />
       </list>
     </option>
   </component>
@@ -298,10 +184,13 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1334" />
-    <option name="height" value="882" />
+    <option name="y" value="28" />
+    <option name="width" value="1373" />
+    <option name="height" value="872" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="My">
@@ -473,6 +362,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -519,24 +409,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mdrv" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -559,73 +431,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Utility" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="updater" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="replay" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logging" />
+              <option name="myItemId" value="natives" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -669,11 +475,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
+              <option name="myItemId" value="device" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MDRV" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mdrv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="device" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devices" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -699,49 +527,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mdrv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connectionlistener" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MDRV_jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -756,7 +543,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.11795775" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../copy of MDRV/src/com/rasalhague/mdrv/start.sh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -769,7 +556,7 @@
     <property name="options.splitter.main.proportions" value="0.15210356" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="options.lastSelected" value="preferences.editor" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="&#10;C" />
@@ -796,6 +583,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="947" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -806,10 +594,11 @@
       <recent name="com.rasalhague.mdrv" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Gallery\Development_And_Programming\Java\MDRV\src\com\rasalhague\mdrv\natives" />
+      <recent name="$PROJECT_DIR$/src/com/rasalhague/mdrv/natives" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/cfg" />
-      <recent name="$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration" />
-      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\configuration" />
-      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\resources" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="com.rasalhague.mdrv.RawDataProcessor.RawDataProcessor" />
@@ -818,9 +607,11 @@
       <recent name="com.RasAlhague.MDRV.Utils" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Gallery\Development_And_Programming\Java\MDRV\src\com\rasalhague\mdrv\natives" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/com/rasalhague/mdrv" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui" />
       <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\view" />
-      <recent name="D:\Gallery\Development And Programming\Java\MDRV\src\com\rasalhague\mdrv\gui\model" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.rasalhague.mdrv.constants" />
@@ -832,39 +623,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainWindowController">
-    <configuration default="false" name="MainWindowController" type="Application" factoryName="Application" singleton="true" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.rasalhague.mdrv.gui.MainWindowController" />
-      <option name="VM_PARAMETERS" value="-Dprism.verbose=true -Dprism.order=es2 -Dprism.forceGPU=true " />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/WD" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="MDRV" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Debug with VisualVM">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="JProfiler">
-        <option name="WINDOW" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Debug with VisualVM" />
-      <ConfigurationWrapper RunnerId="JProfiler" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -892,17 +650,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <module name="MDRV" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -948,6 +695,7 @@
     </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
+        <option name="executionName" />
         <option name="externalProjectPath" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
@@ -978,6 +726,11 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -1023,14 +776,44 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="false" name="MainWindowController" type="Application" factoryName="Application" singleton="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.rasalhague.mdrv.gui.MainWindowController" />
+      <option name="VM_PARAMETERS" value="-Djava.library.path=D:\Gallery\Development_And_Programming\C++\Win32Project2\x64\Release" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/WD" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="MDRV" />
+      <envs />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Debug with VisualVM">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="WINDOW" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Debug with VisualVM" />
+      <ConfigurationWrapper RunnerId="JProfiler" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.MainWindowController" />
     </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.MainWindowController" />
-      </list>
-    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -1061,938 +844,305 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="600b62b5-9d7b-459a-96e6-6fc0b0db525d" name="Default" comment="" />
       <created>1392412496407</created>
+      <option name="number" value="Default" />
       <updated>1392412496407</updated>
       <workItem from="1402488234129" duration="2373000" />
     </task>
-    <task id="LOCAL-00001" summary="Little changes">
-      <created>1392414021102</created>
-      <updated>1392414021102</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Del unused classes">
-      <created>1392461773069</created>
-      <updated>1392461773069</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added real time device connection/disconnection">
-      <created>1392481283862</created>
-      <updated>1392481283862</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Del unused method">
-      <created>1392481803523</created>
-      <updated>1392481803523</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Del unused code">
-      <created>1392482092204</created>
-      <updated>1392482092204</updated>
-    </task>
-    <task id="LOCAL-00006" summary="A lot of refactoring!&#10;Now each device works in its own thread!">
-      <created>1392489747392</created>
-      <updated>1392489747392</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Clean up">
-      <created>1392490018838</created>
-      <updated>1392490018838</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Fix output">
-      <created>1392490198728</created>
-      <updated>1392490198728</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Del unused">
-      <created>1392490570466</created>
-      <updated>1392490570466</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Add form for output data">
-      <created>1392493134661</created>
-      <updated>1392493134661</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added GUI&#10;Now all data out in GUI">
-      <created>1392508983155</created>
-      <updated>1392508983155</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Clean up">
-      <created>1392511580750</created>
-      <updated>1392511580750</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Names changed according name convention">
-      <created>1392556375114</created>
-      <updated>1392556375114</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Refactor and clean up&#10;Add logging">
-      <created>1392662849712</created>
-      <updated>1392662849712</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added driver for devices in to Jar&#10;Change Jar structure">
-      <created>1392668150342</created>
-      <updated>1392668150342</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added Jar">
-      <created>1392669081922</created>
-      <updated>1392669081922</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Jar fix">
-      <created>1392671276863</created>
-      <updated>1392671276863</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Added bad implementation to Logger.java. Need to rework">
-      <created>1392750177084</created>
-      <updated>1392750177084</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Add Libs to project dir&#10;Add ApplicationLogger.java what replace sout&#10;">
-      <created>1392987190703</created>
-      <updated>1392987190703</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Jar">
-      <created>1392987995366</created>
-      <updated>1392987995366</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Fix in output">
-      <created>1392988533753</created>
-      <updated>1392988533753</updated>
-    </task>
-    <task id="LOCAL-00022" summary="test">
-      <created>1392993890501</created>
-      <updated>1392993890501</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Add blank PacketLogger.java&#10;">
-      <created>1392994598856</created>
-      <updated>1392994598856</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Now use libs from project dir">
-      <created>1392994778657</created>
-      <updated>1392994778657</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Artifact use project libs dir">
-      <created>1392994861680</created>
-      <updated>1392994861680</updated>
-    </task>
-    <task id="LOCAL-00026" summary="PacketLogger.java to singleton&#10;Clean up&#10;Rename package">
-      <created>1392996027211</created>
-      <updated>1392996027211</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Dict">
-      <created>1392996050767</created>
-      <updated>1392996050767</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Add realization to PacketLogger.java">
-      <created>1392996864417</created>
-      <updated>1392996864417</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Add realization to PacketLogger.java">
-      <created>1392996943944</created>
-      <updated>1392996943944</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Add realization to PacketLogger.java">
-      <created>1392996946796</created>
-      <updated>1392996946796</updated>
-    </task>
-    <task id="LOCAL-00031" summary="q">
-      <created>1392997978593</created>
-      <updated>1392997978593</updated>
-    </task>
-    <task id="LOCAL-00032" summary="q">
-      <created>1392998007781</created>
-      <updated>1392998007781</updated>
-    </task>
-    <task id="LOCAL-00033" summary="q">
-      <created>1392998142034</created>
-      <updated>1392998142034</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Safe cast&#10;">
-      <created>1393000451857</created>
-      <updated>1393000451857</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fix">
-      <created>1393000839537</created>
-      <updated>1393000839537</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Add MyLogFormatter class and integrate it">
-      <created>1393008738246</created>
-      <updated>1393008738246</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Fix string">
-      <created>1393008837758</created>
-      <updated>1393008837758</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Change console output format&#10;Change file output format&#10;">
-      <created>1393012015039</created>
-      <updated>1393012015039</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Rename&#10;">
-      <created>1393079803413</created>
-      <updated>1393079803413</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Comment line bcz bug detected and fixed: to access device on linux need root access">
-      <created>1393328813931</created>
-      <updated>1393328813931</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Name fix">
-      <created>1393328860450</created>
-      <updated>1393328860450</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Name fix&#10;Set pretty out put format form gson">
-      <created>1393328912410</created>
-      <updated>1393328912410</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Add new check for '\r'&#10;Del unused method">
-      <created>1393329021510</created>
-      <updated>1393329021510</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Format&#10;Fix">
-      <created>1393360217940</created>
-      <updated>1393360217940</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Add commons-lang3-3.2.1-bin">
-      <created>1393361398768</created>
-      <updated>1393361398768</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Add registry scanner">
-      <created>1393368807680</created>
-      <updated>1393368807680</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Hotfix">
-      <created>1393369374601</created>
-      <updated>1393369374601</updated>
-    </task>
-    <task id="LOCAL-00048" summary="move getDeviceNameFromWinRegistry">
-      <created>1393369998579</created>
-      <updated>1393369998579</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added: deviceVid, devicePid, deviceName">
-      <created>1393370042971</created>
-      <updated>1393370042971</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Jar">
-      <created>1393370258410</created>
-      <updated>1393370258410</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Add exc logging. Name changes">
-      <created>1393444186264</created>
-      <updated>1393444186264</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Encapsulate LOGGER field">
-      <created>1393444317652</created>
-      <updated>1393444317652</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Del unused code">
-      <created>1393444381208</created>
-      <updated>1393444381208</updated>
-    </task>
-    <task id="LOCAL-00054" summary="//TODO need to avoid new DeviceInfo every scan">
-      <created>1393444459377</created>
-      <updated>1393444459377</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Encapsulate fields and small refactor">
-      <created>1393444541934</created>
-      <updated>1393444541935</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Refactor: DeviceCommunication.java factory method correctly chose device now; Application logger adaptation; del unused code;">
-      <created>1393444724765</created>
-      <updated>1393444724765</updated>
-    </task>
-    <task id="LOCAL-00057" summary="lib">
-      <created>1393444747909</created>
-      <updated>1393444747909</updated>
-    </task>
-    <task id="LOCAL-00058" summary="jar">
-      <created>1393444807691</created>
-      <updated>1393444807691</updated>
-    </task>
-    <task id="LOCAL-00059" summary=".">
-      <created>1393876010441</created>
-      <updated>1393876010441</updated>
-    </task>
-    <task id="LOCAL-00060" summary="fix app logger">
-      <created>1393948950767</created>
-      <updated>1393948950767</updated>
-    </task>
-    <task id="LOCAL-00061" summary="New GUI&#10;A lot of refactor">
-      <created>1394149602022</created>
-      <updated>1394149602022</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Add Refresh button&#10;Add multi dev series support">
-      <created>1394151773531</created>
-      <updated>1394151773531</updated>
-    </task>
-    <task id="LOCAL-00063" summary="jar">
-      <created>1394151916134</created>
-      <updated>1394151916134</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Add Tooltips">
-      <created>1394221420073</created>
-      <updated>1394221420073</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Add legend">
-      <created>1394225204287</created>
-      <updated>1394225204287</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Add ez430RF2500 initializing">
-      <created>1394229262877</created>
-      <updated>1394229262877</updated>
-    </task>
-    <task id="LOCAL-00067" summary="clean up">
-      <created>1394229289198</created>
-      <updated>1394229289198</updated>
-    </task>
-    <task id="LOCAL-00068" summary="little fixes">
-      <created>1394288526923</created>
-      <updated>1394288526923</updated>
-    </task>
-    <task id="LOCAL-00069" summary="refactor">
-      <created>1394288958654</created>
-      <updated>1394288958655</updated>
-    </task>
-    <task id="LOCAL-00070" summary="fix">
-      <created>1394299399398</created>
-      <updated>1394299399398</updated>
-    </task>
-    <task id="LOCAL-00071" summary="clean up">
-      <created>1394301574022</created>
-      <updated>1394301574022</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Add constructor for DeviceType.HID">
-      <created>1394368485147</created>
-      <updated>1394368485147</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Now work with HID">
-      <created>1394368713201</created>
-      <updated>1394368713201</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Change enum DeviceType to public">
-      <created>1394369067073</created>
-      <updated>1394369067073</updated>
-    </task>
-    <task id="LOCAL-00075" summary="deviceConnectionEvent now delegates choosing DeviceType to DeviceCommunication.getInstance">
-      <created>1394371362868</created>
-      <updated>1394371362868</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Fix">
-      <created>1394399039689</created>
-      <updated>1394399039689</updated>
-    </task>
-    <task id="LOCAL-00077" summary="fix">
-      <created>1394399756489</created>
-      <updated>1394399756489</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Massive rework / refactor&#10;Now supports HID devices">
-      <created>1394490868179</created>
-      <updated>1394490868180</updated>
-    </task>
-    <task id="LOCAL-00079" summary="jar">
-      <created>1394490917856</created>
-      <updated>1394490917856</updated>
-    </task>
-    <task id="LOCAL-00080" summary="clean up">
-      <created>1394732921306</created>
-      <updated>1394732921306</updated>
-    </task>
-    <task id="LOCAL-00081" summary="WiSpy now works">
-      <created>1394809608082</created>
-      <updated>1394809608082</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Correctly close file handlers in ApplicationLogger.java">
-      <created>1394810307533</created>
-      <updated>1394810307533</updated>
-    </task>
-    <task id="LOCAL-00083" summary="final">
-      <created>1395524574119</created>
-      <updated>1395524574119</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Add Configurations file">
-      <created>1395527368973</created>
-      <updated>1395527368973</updated>
-    </task>
-    <task id="LOCAL-00085" summary=" Configurations file">
-      <created>1395527408658</created>
-      <updated>1395527408658</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Configuration file reservation">
-      <created>1395530106997</created>
-      <updated>1395530106997</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Rework Tooltip">
-      <created>1395625473810</created>
-      <updated>1395625473810</updated>
-    </task>
-    <task id="LOCAL-00088" summary="ChartLegendPane behavior realization!">
-      <created>1395663048196</created>
-      <updated>1395663048196</updated>
-    </task>
-    <task id="LOCAL-00089" summary="ChartLegendPane Collapsible realization">
-      <created>1395664655059</created>
-      <updated>1395664655059</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Code inspection">
-      <created>1395699492748</created>
-      <updated>1395699492748</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Code inspection">
-      <created>1395699504667</created>
-      <updated>1395699504667</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Data cleaning from chart">
-      <created>1395701548837</created>
-      <updated>1395701548837</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Add rawDataProcessor for MetaGeek_WiSpy24x2">
-      <created>1395951372577</created>
-      <updated>1395951372577</updated>
-    </task>
-    <task id="LOCAL-00094" summary="fixes in chart legend">
-      <created>1397143002309</created>
-      <updated>1397143002309</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Add initialFrequency and channelSpacing to config file.&#10;Improve chart series accurate">
-      <created>1397330711432</created>
-      <updated>1397330711432</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Add linux com name, pid, vid search&#10;Now all devices works on linux">
-      <created>1397378029375</created>
-      <updated>1397378029376</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Update config.cfg">
-      <created>1397378611730</created>
-      <updated>1397378611730</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Restructure analysis output - preparation to replay including">
-      <created>1397488296833</created>
-      <updated>1397488296833</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Add lib">
-      <created>1397488590646</created>
-      <updated>1397488590646</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Add real-time replaying">
-      <created>1397592183980</created>
-      <updated>1397592183980</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Add real-time replaying FIX">
-      <created>1397595339864</created>
-      <updated>1397595339864</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Add tooltip sorting&#10;Add series visibility switching&#10;Fix refresh button">
-      <created>1397646121336</created>
-      <updated>1397646121336</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Add record replay opportunity&#10;A little bit of refactoring">
-      <created>1397679810228</created>
-      <updated>1397679810228</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Inspection">
-      <created>1397680962432</created>
-      <updated>1397680962432</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Counter out of range exc">
-      <created>1397726383863</created>
-      <updated>1397726383863</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Add alignment to first tooltip column&#10;Fix Hz to kHz&#10;Trying to fix ConcurrentModificationException but nothing...">
-      <created>1397906885118</created>
-      <updated>1397906885118</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Fix ConcurrentModificationException">
-      <created>1397914301840</created>
-      <updated>1397914301840</updated>
-    </task>
-    <task id="LOCAL-00108" summary="fix brain fuck bug with timedAnalysisResults links overriding&#10;&#10;new bug with AnalysisKey.NEW_SERIES in combinedAnalysisResult">
-      <created>1398116018533</created>
-      <updated>1398116018533</updated>
-    </task>
-    <task id="LOCAL-00109" summary="linux...">
-      <created>1398529715588</created>
-      <updated>1398529715588</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Add mode, avr">
-      <created>1398530216135</created>
-      <updated>1398530216135</updated>
-    </task>
-    <task id="LOCAL-00111" summary="Add packetsRequiredToWrite constant">
-      <created>1398530598649</created>
-      <updated>1398530598649</updated>
-    </task>
-    <task id="LOCAL-00112" summary="Add javadoc">
-      <created>1398531243301</created>
-      <updated>1398531243302</updated>
-    </task>
-    <task id="LOCAL-00113" summary="Remove unnecessary array copy">
-      <created>1398534661674</created>
-      <updated>1398534661706</updated>
-    </task>
-    <task id="LOCAL-00114" summary="Add javadoc">
-      <created>1398579458094</created>
-      <updated>1398579458095</updated>
-    </task>
-    <task id="LOCAL-00115" summary="Add CURRENT">
-      <created>1398608123864</created>
-      <updated>1398608123864</updated>
-    </task>
-    <task id="LOCAL-00116" summary="Add MODE&#10;Adopt chart update function">
-      <created>1398621144848</created>
-      <updated>1398621144849</updated>
-    </task>
-    <task id="LOCAL-00117" summary="Add MEDIAN">
-      <created>1398698961170</created>
-      <updated>1398698961170</updated>
-    </task>
-    <task id="LOCAL-00118" summary="REAL TIME MODE AND MEDIAN ALGORITM">
-      <created>1398712611649</created>
-      <updated>1398712611649</updated>
-    </task>
-    <task id="LOCAL-00119" summary="Add chart Update Delay">
-      <created>1398775256894</created>
-      <updated>1398775256894</updated>
-    </task>
-    <task id="LOCAL-00120" summary="Little fix">
-      <created>1398775831330</created>
-      <updated>1398775831330</updated>
-    </task>
-    <task id="LOCAL-00121" summary="Fix china`s algorithm">
-      <created>1398776304529</created>
-      <updated>1398776304529</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Refactoring Integer -&gt; Byte">
-      <created>1398790441283</created>
-      <updated>1398790441283</updated>
-    </task>
-    <task id="LOCAL-00123" summary="Bugfixes">
-      <created>1398801314406</created>
-      <updated>1398801314406</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Remove unused code">
-      <created>1398830980391</created>
-      <updated>1398830980391</updated>
-    </task>
-    <task id="LOCAL-00125" summary="Remove unused checkboxes and button&#10;RSSI axis from -40 to -30">
-      <created>1398831587272</created>
-      <updated>1398831587272</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Organize classes">
-      <created>1398859587445</created>
-      <updated>1398859587445</updated>
-    </task>
-    <task id="LOCAL-00127" summary="Add WIRELESS_ADAPTER dev type">
-      <created>1398859909755</created>
-      <updated>1398859909755</updated>
-    </task>
-    <task id="LOCAL-00128" summary="Realization for: searchWirelessAdapters, chooseWirelessAdapter, switchToMonitorMode">
-      <created>1398894030907</created>
-      <updated>1398894030907</updated>
-    </task>
-    <task id="LOCAL-00129" summary="Move utils&#10;Little fix">
-      <created>1398894422097</created>
-      <updated>1398894422097</updated>
-    </task>
-    <task id="LOCAL-00130" summary="1 line round algorithm">
-      <created>1398924431227</created>
-      <updated>1398924431227</updated>
-    </task>
-    <task id="LOCAL-00131" summary="Add iterator">
-      <created>1398925812458</created>
-      <updated>1398925812458</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Fix">
-      <created>1398929527460</created>
-      <updated>1398929527460</updated>
-    </task>
-    <task id="LOCAL-00133" summary="Add channelToFrequencyMap">
-      <created>1399031685860</created>
-      <updated>1399031685860</updated>
-    </task>
-    <task id="LOCAL-00134" summary="Add runShellScriptBR">
-      <created>1399031699708</created>
-      <updated>1399031699708</updated>
-    </task>
-    <task id="LOCAL-00135" summary="Add realization">
-      <created>1399033233594</created>
-      <updated>1399033233594</updated>
-    </task>
-    <task id="LOCAL-00136" summary="Change HachMap to BidiMap">
-      <created>1399033264165</created>
-      <updated>1399033264165</updated>
-    </task>
-    <task id="LOCAL-00137" summary="Remove redundant parameter">
-      <created>1399033326442</created>
-      <updated>1399033326442</updated>
-    </task>
-    <task id="LOCAL-00138" summary="Remove redundant sout">
-      <created>1399033385198</created>
-      <updated>1399033385198</updated>
-    </task>
-    <task id="LOCAL-00139" summary="Fixes">
-      <created>1399033846365</created>
-      <updated>1399033846365</updated>
-    </task>
-    <task id="LOCAL-00140" summary="Add toString">
-      <created>1399034127816</created>
-      <updated>1399034127816</updated>
-    </task>
-    <task id="LOCAL-00141" summary="First Part of wireless adapter integration Complete!!!&#10;Now we have class that switch wireless adapter into monitor mode and starts listening tcpdump!">
-      <created>1399035179131</created>
-      <updated>1399035179131</updated>
-    </task>
-    <task id="LOCAL-00142" summary="get min&#10;get max">
-      <created>1399039345459</created>
-      <updated>1399039345459</updated>
-    </task>
-    <task id="LOCAL-00143" summary="Refactoring">
-      <created>1399045671818</created>
-      <updated>1399045671818</updated>
-    </task>
-    <task id="LOCAL-00144" summary="Add checkInxiExist()">
-      <created>1399216822038</created>
-      <updated>1399216822038</updated>
-    </task>
-    <task id="LOCAL-00145" summary="checkInxiExist">
-      <created>1399217562164</created>
-      <updated>1399217562164</updated>
-    </task>
-    <task id="LOCAL-00146" summary="Trying to colorize">
-      <created>1399222360559</created>
-      <updated>1399222360559</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Libs">
-      <created>1399294192341</created>
-      <updated>1399294192341</updated>
-    </task>
-    <task id="LOCAL-00148" summary="RSSI min up">
-      <created>1399294495844</created>
-      <updated>1399294495844</updated>
-    </task>
-    <task id="LOCAL-00149" summary="AVR">
-      <created>1399326221575</created>
-      <updated>1399326221575</updated>
-    </task>
-    <task id="LOCAL-00150" summary="Move settings menu to right">
-      <created>1399373954009</created>
-      <updated>1399373954010</updated>
-    </task>
-    <task id="LOCAL-00151" summary="Switch off chart symbols">
-      <created>1399375271675</created>
-      <updated>1399375271675</updated>
-    </task>
-    <task id="LOCAL-00152" summary="Filter from -20dBm to -105dBm">
-      <created>1399375467531</created>
-      <updated>1399375467531</updated>
-    </task>
-    <task id="LOCAL-00153" summary="lowerLimit to -110">
-      <created>1399375646325</created>
-      <updated>1399375646325</updated>
-    </task>
-    <task id="LOCAL-00154" summary="memory leak has been found&#10;little opt">
-      <created>1399379235722</created>
-      <updated>1399379235723</updated>
-    </task>
-    <task id="LOCAL-00155" summary="fix legend layout level">
-      <created>1399467419559</created>
-      <updated>1399467419559</updated>
-    </task>
-    <task id="LOCAL-00156" summary="Add installInxi">
-      <created>1399467450764</created>
-      <updated>1399467450764</updated>
-    </task>
-    <task id="LOCAL-00157" summary="little opt">
-      <created>1399467603510</created>
-      <updated>1399467603510</updated>
-    </task>
-    <task id="LOCAL-00158" summary="toLowerCase in series name">
-      <created>1399467973273</created>
-      <updated>1399467973273</updated>
-    </task>
-    <task id="LOCAL-00159" summary="clean up">
-      <created>1399470325642</created>
-      <updated>1399470325642</updated>
-    </task>
-    <task id="LOCAL-00160" summary="Add channel spacing setting">
-      <created>1399473804881</created>
-      <updated>1399473804881</updated>
-    </task>
-    <task id="LOCAL-00161" summary="TODO it uses around 25% of CPU">
-      <created>1399474123127</created>
-      <updated>1399474123127</updated>
-    </task>
-    <task id="LOCAL-00162" summary="Fix XYLines length">
-      <created>1399477559910</created>
-      <updated>1399477559910</updated>
-    </task>
-    <task id="LOCAL-00163" summary="Add check for channel spacing value">
-      <created>1399478295583</created>
-      <updated>1399478295583</updated>
-    </task>
-    <task id="LOCAL-00164" summary="Add rssi shift setting">
-      <created>1399481055734</created>
-      <updated>1399481055735</updated>
-    </task>
-    <task id="LOCAL-00165" summary="Chart legend rework">
-      <created>1399536653738</created>
-      <updated>1399536653738</updated>
-    </task>
-    <task id="LOCAL-00166" summary="Fix artifacts and add start.sh">
-      <created>1399556534960</created>
-      <updated>1399556534960</updated>
-    </task>
-    <task id="LOCAL-00167" summary="Refactoring">
-      <created>1399572844314</created>
-      <updated>1399572844315</updated>
-    </task>
-    <task id="LOCAL-00168" summary="Fix bugs with chart legend and setting">
-      <created>1399625495363</created>
-      <updated>1399625495363</updated>
-    </task>
-    <task id="LOCAL-00169" summary="Spectral Mask for 11g">
-      <created>1399736510062</created>
-      <updated>1399736510062</updated>
-    </task>
-    <task id="LOCAL-00170" summary="Quick fix add file">
-      <created>1399736567828</created>
-      <updated>1399736567828</updated>
-    </task>
-    <task id="LOCAL-00171" summary="Add new b/g/n identifying logic">
-      <created>1399753061172</created>
-      <updated>1399753061172</updated>
-    </task>
-    <task id="LOCAL-00172" summary="Temporary gag">
-      <created>1400014252379</created>
-      <updated>1400014252379</updated>
-    </task>
-    <task id="LOCAL-00173" summary="Debug grid switcher">
-      <created>1400327266958</created>
-      <updated>1400327266958</updated>
-    </task>
-    <task id="LOCAL-00174" summary="Change Byte to Float">
-      <created>1400692244942</created>
-      <updated>1400692244942</updated>
-    </task>
-    <task id="LOCAL-00175" summary="Fix">
-      <created>1400694533437</created>
-      <updated>1400694533437</updated>
-    </task>
-    <task id="LOCAL-00176" summary="Add n standart value from http://mcsindex.com/">
-      <created>1400699481404</created>
-      <updated>1400699481404</updated>
-    </task>
-    <task id="LOCAL-00177" summary="1. China`s wont work&#10;2. eZ430 work on linux (Ubuntu tested) via just plug and via plug first part then run program (init) then plug second part&#10;3. Add bugged fast reaction on RSSI shift">
-      <created>1401048857530</created>
-      <updated>1401048857530</updated>
-    </task>
-    <task id="LOCAL-00178" summary="searchWirelessAdapters via iw dev; can choose in cfg iw dev or iwconfig&#10;">
-      <created>1401102143540</created>
-      <updated>1401102143541</updated>
-    </task>
-    <task id="LOCAL-00179" summary="Fix layout">
-      <created>1401104305701</created>
-      <updated>1401104305702</updated>
-    </task>
-    <task id="LOCAL-00180" summary="Change access level for getInstance and add synchronized to updateChartIfCan and forceUpdateChart">
-      <created>1401104450208</created>
-      <updated>1401104450208</updated>
-    </task>
-    <task id="LOCAL-00181" summary="Cumulative push">
-      <created>1401104909559</created>
-      <updated>1401104909563</updated>
-    </task>
-    <task id="LOCAL-00182" summary="JavaDoc">
-      <created>1401219828858</created>
-      <updated>1401219828858</updated>
-    </task>
-    <task id="LOCAL-00183" summary="New feature: set channels to scan via config file&#10;Fix: change inxi to lspci">
-      <created>1401220045212</created>
-      <updated>1401220045212</updated>
-    </task>
-    <task id="LOCAL-00184" summary="Fix: channels to scan now work in reverse (14-10 = 14 13 12 11 10)">
-      <created>1401222429517</created>
-      <updated>1401222429517</updated>
-    </task>
-    <task id="LOCAL-00185" summary="Fix: del inxi code">
-      <created>1401367024043</created>
-      <updated>1401367024043</updated>
-    </task>
-    <task id="LOCAL-00186" summary="UnigenISMSniffer died">
-      <created>1401369119674</created>
-      <updated>1401369119674</updated>
-    </task>
-    <task id="LOCAL-00187" summary="Fix: now chart legend items always in same order">
-      <created>1401393371956</created>
-      <updated>1401393371956</updated>
-    </task>
-    <task id="LOCAL-00188" summary="Added another channel mask and text view to control channel switching&#10;Same fixes">
-      <created>1401469765235</created>
-      <updated>1401469765236</updated>
-    </task>
     <task id="LOCAL-00189" summary="Del unused settings">
       <created>1401529725273</created>
+      <option name="number" value="00189" />
+      <option name="project" value="LOCAL" />
       <updated>1401529725273</updated>
     </task>
     <task id="LOCAL-00190" summary="Added BSSID to WirelessAdapterData.java">
       <created>1401535565398</created>
+      <option name="number" value="00190" />
+      <option name="project" value="LOCAL" />
       <updated>1401535565399</updated>
     </task>
     <task id="LOCAL-00191" summary="Same fixes">
       <created>1401540468492</created>
+      <option name="number" value="00191" />
+      <option name="project" value="LOCAL" />
       <updated>1401540468497</updated>
     </task>
     <task id="LOCAL-00192" summary="Dummy added">
       <created>1403624150705</created>
+      <option name="number" value="00192" />
+      <option name="project" value="LOCAL" />
       <updated>1403624150706</updated>
     </task>
     <task id="LOCAL-00193" summary="Added Dummy button!">
       <created>1403624657204</created>
+      <option name="number" value="00193" />
+      <option name="project" value="LOCAL" />
       <updated>1403624657204</updated>
     </task>
     <task id="LOCAL-00194" summary="Del unused">
       <created>1410527804667</created>
+      <option name="number" value="00194" />
+      <option name="project" value="LOCAL" />
       <updated>1410527804667</updated>
     </task>
     <task id="LOCAL-00195" summary="Change working dir">
       <created>1410593647649</created>
+      <option name="number" value="00195" />
+      <option name="project" value="LOCAL" />
       <updated>1410593647650</updated>
     </task>
     <task id="LOCAL-00196" summary="Reorganize project directory. Libs from Maven. Prepare for new branch.">
       <created>1410601635049</created>
+      <option name="number" value="00196" />
+      <option name="project" value="LOCAL" />
       <updated>1410601635049</updated>
     </task>
     <task id="LOCAL-00197" summary="First step of New architecture works. Wixel tested. &#10;&#10;Disabled via errors:&#10; Wireless adapter module&#10; Logging">
       <created>1410639008346</created>
+      <option name="number" value="00197" />
+      <option name="project" value="LOCAL" />
       <updated>1410639008346</updated>
     </task>
     <task id="LOCAL-00198" summary="Logging now works! Deadlock solved.">
       <created>1410640708914</created>
+      <option name="number" value="00198" />
+      <option name="project" value="LOCAL" />
       <updated>1410640708915</updated>
     </task>
     <task id="LOCAL-00199" summary="Logging on">
       <created>1410640732760</created>
+      <option name="number" value="00199" />
+      <option name="project" value="LOCAL" />
       <updated>1410640732760</updated>
     </task>
     <task id="LOCAL-00200" summary="Little log fix">
       <created>1410640773318</created>
+      <option name="number" value="00200" />
+      <option name="project" value="LOCAL" />
       <updated>1410640773318</updated>
     </task>
     <task id="LOCAL-00201" summary="Adaptive filter! Will detect packets with different length!">
       <created>1410643331107</created>
+      <option name="number" value="00201" />
+      <option name="project" value="LOCAL" />
       <updated>1410643331107</updated>
     </task>
     <task id="LOCAL-00202" summary="Change log message">
       <created>1410643405842</created>
+      <option name="number" value="00202" />
+      <option name="project" value="LOCAL" />
       <updated>1410643405842</updated>
     </task>
     <task id="LOCAL-00203" summary="Debug info view fix">
       <created>1410644414407</created>
+      <option name="number" value="00203" />
+      <option name="project" value="LOCAL" />
       <updated>1410644414407</updated>
     </task>
     <task id="LOCAL-00204" summary="Fix Setting Menu">
       <created>1410645725841</created>
+      <option name="number" value="00204" />
+      <option name="project" value="LOCAL" />
       <updated>1410645725841</updated>
     </task>
     <task id="LOCAL-00205" summary="Device history feature. Allow connect the same device as different device. Also allow connect device to any early created by this device flow.&#10;&#10;Fix names in Setting menu">
       <created>1410691651930</created>
+      <option name="number" value="00205" />
+      <option name="project" value="LOCAL" />
       <updated>1410691651930</updated>
     </task>
     <task id="LOCAL-00206" summary="Translate device configs to new device system.&#10;Reorganise same files.&#10;Delete unused files.">
       <created>1410887461556</created>
+      <option name="number" value="00206" />
+      <option name="project" value="LOCAL" />
       <updated>1410887461556</updated>
     </task>
     <task id="LOCAL-00207" summary="Inspection">
       <created>1410887797313</created>
+      <option name="number" value="00207" />
+      <option name="project" value="LOCAL" />
       <updated>1410887797313</updated>
     </task>
     <task id="LOCAL-00208" summary="Fixes in Wireless module. Del Wireless constructor from DeviceInfo.">
       <created>1410890965386</created>
+      <option name="number" value="00208" />
+      <option name="project" value="LOCAL" />
       <updated>1410890965386</updated>
     </task>
     <task id="LOCAL-00209" summary="Fixes in Wireless module, now it works. Del Wireless constructor from DeviceInfo.&#10;">
       <created>1410894319031</created>
+      <option name="number" value="00209" />
+      <option name="project" value="LOCAL" />
       <updated>1410894319031</updated>
     </task>
     <task id="LOCAL-00210" summary="Fixes">
       <created>1411067852458</created>
+      <option name="number" value="00210" />
+      <option name="project" value="LOCAL" />
       <updated>1411067852458</updated>
     </task>
     <task id="LOCAL-00211" summary="v0.2">
       <created>1411162041952</created>
+      <option name="number" value="00211" />
+      <option name="project" value="LOCAL" />
       <updated>1411162041953</updated>
     </task>
     <task id="LOCAL-00212" summary="Test dev branch">
       <created>1411162883416</created>
+      <option name="number" value="00212" />
+      <option name="project" value="LOCAL" />
       <updated>1411162883416</updated>
     </task>
     <task id="LOCAL-00213" summary="Now RSSI shift works even if device disconnected">
       <created>1411212970250</created>
+      <option name="number" value="00213" />
+      <option name="project" value="LOCAL" />
       <updated>1411212970250</updated>
     </task>
     <task id="LOCAL-00214" summary="jar">
       <created>1411213556266</created>
+      <option name="number" value="00214" />
+      <option name="project" value="LOCAL" />
       <updated>1411213556266</updated>
     </task>
     <task id="LOCAL-00215" summary="New changelist">
       <created>1411221318351</created>
+      <option name="number" value="00215" />
+      <option name="project" value="LOCAL" />
       <updated>1411221318351</updated>
     </task>
     <task id="LOCAL-00216" summary="Line chart animation switcher checkbox">
       <created>1411233292371</created>
+      <option name="number" value="00216" />
+      <option name="project" value="LOCAL" />
       <updated>1411233292379</updated>
     </task>
     <task id="LOCAL-00217" summary="Chart markers rework: now stick to points. Little performance improvement">
       <created>1411311564887</created>
+      <option name="number" value="00217" />
+      <option name="project" value="LOCAL" />
       <updated>1411311564887</updated>
     </task>
     <task id="LOCAL-00218" summary="Fixes in Markers module">
       <created>1411312942913</created>
+      <option name="number" value="00218" />
+      <option name="project" value="LOCAL" />
       <updated>1411312942913</updated>
     </task>
     <task id="LOCAL-00219" summary="Development in dev branch">
       <created>1411389116296</created>
+      <option name="number" value="00219" />
+      <option name="project" value="LOCAL" />
       <updated>1411389116296</updated>
     </task>
     <task id="LOCAL-00220" summary="Rework chart tooltip">
       <created>1411418744592</created>
+      <option name="number" value="00220" />
+      <option name="project" value="LOCAL" />
       <updated>1411418744592</updated>
     </task>
     <task id="LOCAL-00221" summary="chooseTcpDumpCommand enable">
       <created>1411422071618</created>
+      <option name="number" value="00221" />
+      <option name="project" value="LOCAL" />
       <updated>1411422071618</updated>
     </task>
     <task id="LOCAL-00222" summary="Change tcpdump command">
       <created>1411490536218</created>
+      <option name="number" value="00222" />
+      <option name="project" value="LOCAL" />
       <updated>1411490536218</updated>
     </task>
     <task id="LOCAL-00223" summary="Fix">
       <created>1411490976218</created>
+      <option name="number" value="00223" />
+      <option name="project" value="LOCAL" />
       <updated>1411490976219</updated>
     </task>
     <task id="LOCAL-00224" summary="Fixes. Disable tcpdump command choosing.">
       <created>1411494315658</created>
+      <option name="number" value="00224" />
+      <option name="project" value="LOCAL" />
       <updated>1411494315658</updated>
     </task>
     <task id="LOCAL-00225" summary="Fixes">
       <created>1411749045518</created>
+      <option name="number" value="00225" />
+      <option name="project" value="LOCAL" />
       <updated>1411749045519</updated>
     </task>
     <task id="LOCAL-00226" summary="Fixes">
       <created>1411899532963</created>
+      <option name="number" value="00226" />
+      <option name="project" value="LOCAL" />
       <updated>1411899532963</updated>
     </task>
     <task id="LOCAL-00227" summary="CSSing tooltip">
       <created>1411906236308</created>
+      <option name="number" value="00227" />
+      <option name="project" value="LOCAL" />
       <updated>1411906236309</updated>
     </task>
     <task id="LOCAL-00228" summary="v0.3">
       <created>1412962023368</created>
+      <option name="number" value="00228" />
+      <option name="project" value="LOCAL" />
       <updated>1412962023368</updated>
     </task>
     <task id="LOCAL-00229" summary="Fix height">
       <created>1413399396030</created>
+      <option name="number" value="00229" />
+      <option name="project" value="LOCAL" />
       <updated>1413399396030</updated>
     </task>
     <task id="LOCAL-00230" summary="Fix visibility">
       <created>1413399413002</created>
+      <option name="number" value="00230" />
+      <option name="project" value="LOCAL" />
       <updated>1413399413002</updated>
     </task>
     <task id="LOCAL-00231" summary="Fix code for debugging">
       <created>1413399443307</created>
+      <option name="number" value="00231" />
+      <option name="project" value="LOCAL" />
       <updated>1413399443307</updated>
     </task>
     <task id="LOCAL-00232" summary="Set initial opacity to 0.0">
       <created>1413399463895</created>
+      <option name="number" value="00232" />
+      <option name="project" value="LOCAL" />
       <updated>1413399463896</updated>
     </task>
-    <option name="localTasksCounter" value="233" />
+    <task id="LOCAL-00233" summary="Fix version for dev branch">
+      <created>1413399775286</created>
+      <option name="number" value="00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1413399775286</updated>
+    </task>
+    <task id="LOCAL-00234" summary="Fix constructor to protected">
+      <created>1417899970159</created>
+      <option name="number" value="00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1417899970159</updated>
+    </task>
+    <task id="LOCAL-00235" summary="Fix regex">
+      <created>1418055767504</created>
+      <option name="number" value="00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1418055767504</updated>
+    </task>
+    <task id="LOCAL-00236" summary="Clean up&#10;">
+      <created>1418055800911</created>
+      <option name="number" value="00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1418055800911</updated>
+    </task>
+    <task id="LOCAL-00237" summary="Add name to thread">
+      <created>1418055859601</created>
+      <option name="number" value="00237" />
+      <option name="project" value="LOCAL" />
+      <updated>1418055859601</updated>
+    </task>
+    <option name="localTasksCounter" value="238" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
@@ -2020,44 +1170,45 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1334" height="882" extended-state="0" />
+    <frame x="0" y="28" width="1373" height="872" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31633988" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31633988" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3151596" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14109589" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38219896" sideWeight="0.552" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31564987" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38031915" sideWeight="0.552" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.410596" sideWeight="0.30722892" order="12" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30628273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32241154" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40824467" sideWeight="0.30745342" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32919255" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32241154" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30585107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2511664" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32460734" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24792139" sideWeight="0.4986911" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24976349" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980666" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40837696" sideWeight="0.6927711" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16575342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18954249" sideWeight="0.5013089" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40583554" sideWeight="0.6925466" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.61895293" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16575342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="simpleUML" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286945" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32944608" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="613" y="100" width="887" height="670" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35789475" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34199437" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32407406" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2079,11 +1230,6 @@
       <TodoPanelSettings />
     </option>
     <confirmMoveToFailedCommit value="1" />
-    <MESSAGE value="Translate device configs to new device system.&#10;Reorganise same files.&#10;Delete unused files." />
-    <MESSAGE value="Inspection" />
-    <MESSAGE value="Fixes in Wireless module. Del Wireless constructor from DeviceInfo." />
-    <MESSAGE value="Fixes in Wireless module, now it works. Del Wireless constructor from DeviceInfo." />
-    <MESSAGE value="Fixes in Wireless module, now it works. Del Wireless constructor from DeviceInfo.&#10;" />
     <MESSAGE value="v0.2" />
     <MESSAGE value="Test dev branch" />
     <MESSAGE value="Now RSSI shift works even if device disconnected" />
@@ -2104,21 +1250,18 @@
     <MESSAGE value="Fix visibility" />
     <MESSAGE value="Fix code for debugging" />
     <MESSAGE value="Set initial opacity to 0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set initial opacity to 0.0" />
+    <MESSAGE value="Fix version for dev branch" />
+    <MESSAGE value="Fix constructor to protected" />
+    <MESSAGE value="Fix regex" />
+    <MESSAGE value="Clean up&#10;" />
+    <MESSAGE value="Add name to thread" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add name to thread" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java</url>
-          <line>37</line>
-          <properties />
-          <option name="timeStamp" value="467" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -2126,410 +1269,29 @@
         <breakpoint enabled="true" type="java-exception">
           <dependency id="0" />
           <properties>
+            <option name="class-filters-enabled" value="true" />
             <class-filters>
               <class-filter pattern="com.rasalhague.mdrv.wirelessadapter.WirelessAdapter" />
               <class-filter pattern="com.rasalhague.mdrv.gui.WirelessAdapterDataVisualizer" />
               <class-filter pattern="com.rasalhague.mdrv.wirelessadapter.WirelessAdapterCommunication" />
               <class-filter pattern="com.rasalhague.mdrv.*" />
             </class-filters>
-            <option name="class-filters-enabled" value="true" />
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="544" />
+      <option name="time" value="591" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5497954" vertical-offset="317" max-vertical-offset="1050">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DummyDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888131" vertical-offset="0" max-vertical-offset="733">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="4770">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="870">
-          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="990">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hidapi-1.1.jar!/com/codeminders/hidapi/ClassPathLibraryLoader.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21186441" vertical-offset="0" max-vertical-offset="708">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.043656208" vertical-offset="137" max-vertical-offset="870">
-          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/RoundVar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/start.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterDataListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterChanelListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.186722" vertical-offset="0" max-vertical-offset="482">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/config.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53571427" vertical-offset="0" max-vertical-offset="1275">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/scene/chart/XYChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33286715" vertical-offset="1502" max-vertical-offset="9495">
-          <caret line="239" column="45" selection-start-line="239" selection-start-column="45" selection-end-line="239" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1923077" vertical-offset="0" max-vertical-offset="702">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacketListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041208792" vertical-offset="0" max-vertical-offset="728">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/LineChartMouseTrigger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="1950">
-          <caret line="106" column="48" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35434175" vertical-offset="347" max-vertical-offset="1380">
-          <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1390" max-vertical-offset="2130">
-          <caret line="194" column="31" selection-start-line="194" selection-start-column="31" selection-end-line="194" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/resources/ChartStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1695">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartLegend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1065">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/configuration/ConfigurationLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28493893" vertical-offset="0" max-vertical-offset="737">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/io/FileInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34871098" vertical-offset="433" max-vertical-offset="1170">
-          <caret line="244" column="15" selection-start-line="244" selection-start-column="15" selection-end-line="244" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1245">
-          <caret line="164" column="4" selection-start-line="164" selection-start-column="4" selection-end-line="164" selection-end-column="4" />
-          <folding>
-            <element signature="method#setChannelRoundSwitcher#0;class#WirelessAdapter#0" expanded="false" />
-            <element signature="method#startChannelSwitching#0;class#WirelessAdapter#0" expanded="true" />
-            <element signature="method#nextChannel#0;class#WirelessAdapter#0" expanded="true" />
-            <element signature="method#notifyChannelSwitchingListeners#0;class#WirelessAdapter#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1528" max-vertical-offset="2265">
-          <caret line="206" column="4" selection-start-line="206" selection-start-column="4" selection-end-line="206" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/FXUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6117647" vertical-offset="475" max-vertical-offset="900">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/DeviceHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1170">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/LogOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16783217" vertical-offset="0" max-vertical-offset="715">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
-          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08141112" vertical-offset="0" max-vertical-offset="737">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/replay/Replay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8993576" vertical-offset="45" max-vertical-offset="615">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.102783725" vertical-offset="27" max-vertical-offset="600">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="526" max-vertical-offset="1605">
-          <caret line="85" column="16" selection-start-line="85" selection-start-column="16" selection-end-line="85" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
-          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6923077" vertical-offset="0" max-vertical-offset="715">
-          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1230">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/hidapi-1.1.jar!/com/codeminders/hidapi/HIDManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46528804" vertical-offset="0" max-vertical-offset="677">
-          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2377622" vertical-offset="0" max-vertical-offset="1545">
-          <caret line="179" column="39" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="2145">
-          <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="93" selection-end-column="12" />
-          <folding>
-            <element signature="docComment;method#receiveRawData#0;class#RxRawDataReceiver#0" expanded="true" />
-            <element signature="method#saveRawDataPacket#0;class#RxRawDataReceiver#0" expanded="true" />
-            <element signature="method#processReceivedByte#0;class#RxRawDataReceiver#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.769231" vertical-offset="5863" max-vertical-offset="15705">
-          <caret line="413" column="33" selection-start-line="413" selection-start-column="33" selection-end-line="413" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/ChannelMask.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1334" max-vertical-offset="3360">
-          <caret line="198" column="55" selection-start-line="198" selection-start-column="55" selection-end-line="198" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/updater/Version.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="690">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1305">
-          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-          <folding>
-            <element signature="initializer##0;class#HIDDeviceCommunication#0" expanded="true" />
-            <element signature="method#run#0;class#HIDDeviceCommunication#0" expanded="true" />
-            <element signature="method#openHIDDevice#0;class#HIDDeviceCommunication#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartTooltip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43722942" vertical-offset="372" max-vertical-offset="1575">
-          <caret line="92" column="27" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
-          <folding>
-            <element signature="method#createChartTooltip#0;class#ChartTooltip#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartValueMarker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="1170">
           <caret line="126" column="15" selection-start-line="126" selection-start-column="15" selection-end-line="126" selection-end-column="15" />
-          <folding>
-            <element signature="method#init#0;class#ChartValueMarker#0" expanded="true" />
-            <element signature="class#SizeListener#0;class#ChartValueMarker#0" expanded="false" />
-            <element signature="method#addMarkersToChart#0;class#ChartValueMarker#0" expanded="true" />
-            <element signature="method#setUpMarkersBehavior#0;class#ChartValueMarker#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2537,24 +1299,376 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="402" max-vertical-offset="1095">
           <caret line="114" column="91" selection-start-line="114" selection-start-column="91" selection-end-line="114" selection-end-column="91" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04070556" vertical-offset="0" max-vertical-offset="737">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/view/MainWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33239833" vertical-offset="273" max-vertical-offset="15705">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hidapi-1.1.jar!/com/codeminders/hidapi/HIDManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48034933" vertical-offset="0" max-vertical-offset="687">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb4java-1.2.0.jar!/org/usb4java/LibUsb.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.16" vertical-offset="2951" max-vertical-offset="5490">
+          <caret line="247" column="29" selection-start-line="247" selection-start-column="29" selection-end-line="247" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb4java-1.2.0.jar!/org/usb4java/DeviceHandle.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10714286" vertical-offset="0" max-vertical-offset="700">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/hidapi-1.1.jar!/com/codeminders/hidapi/HIDDevice.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44285715" vertical-offset="5" max-vertical-offset="705">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DummyDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceTemplateI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49655172" vertical-offset="0" max-vertical-offset="725">
+          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/ApplicationLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39310345" vertical-offset="0" max-vertical-offset="725">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com_rasalhague_mdrv_device_devices_MetaGeekWiSpyGen1.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/DeviceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2689655" vertical-offset="60" max-vertical-offset="1665">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/AirView2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5241379" vertical-offset="70" max-vertical-offset="870">
+          <caret line="51" column="7" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ISMSniffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42068964" vertical-offset="145" max-vertical-offset="870">
+          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/WixelPololu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24827586" vertical-offset="0" max-vertical-offset="725">
+          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionStateEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/ez430RF2500.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64827585" vertical-offset="145" max-vertical-offset="870">
+          <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/PacketAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1474719" vertical-offset="0" max-vertical-offset="2160">
+          <caret line="14" column="110" selection-start-line="14" selection-start-column="110" selection-end-line="14" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5310345" vertical-offset="0" max-vertical-offset="1935">
+          <caret line="109" column="25" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/wirelessadapter/WirelessAdapterCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41379312" vertical-offset="0" max-vertical-offset="1200">
+          <caret line="157" column="23" selection-start-line="157" selection-start-column="12" selection-end-line="157" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/SettingMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4827586" vertical-offset="1825" max-vertical-offset="2550">
+          <caret line="230" column="117" selection-start-line="230" selection-start-column="117" selection-end-line="230" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/DataPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18620689" vertical-offset="0" max-vertical-offset="810">
+          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/WirelessAdapterDataVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4694486" vertical-offset="450" max-vertical-offset="1755">
-          <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.64827585" vertical-offset="475" max-vertical-offset="2460">
+          <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/analysis/AnalysisKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.062068965" vertical-offset="0" max-vertical-offset="725">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/logging/PacketLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44" vertical-offset="416" max-vertical-offset="1635">
+          <caret line="85" column="27" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/RxRawDataReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.702069" vertical-offset="616" max-vertical-offset="1545">
+          <caret line="112" column="50" selection-start-line="112" selection-start-column="50" selection-end-line="112" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/connectionlistener/DeviceConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7233146" vertical-offset="1045" max-vertical-offset="1860">
+          <caret line="260" column="0" selection-start-line="260" selection-start-column="0" selection-end-line="260" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/DeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="540">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/FXUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39310345" vertical-offset="0" max-vertical-offset="1215">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/COMDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47586206" vertical-offset="0" max-vertical-offset="725">
+          <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar!/org/apache/commons/lang3/SystemUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.56" vertical-offset="1054" max-vertical-offset="3128">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/DeviceTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08928572" vertical-offset="71" max-vertical-offset="799">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="897" max-vertical-offset="5151">
+          <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/security/AccessController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="1989">
+          <caret line="297" column="31" selection-start-line="297" selection-start-column="31" selection-end-line="297" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6609" max-vertical-offset="9214">
+          <caret line="1861" column="0" selection-start-line="1861" selection-start-column="0" selection-end-line="1861" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/Utility/NativeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="849" max-vertical-offset="1564">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="docComment;method#getInstance#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="e#1653#1654#0" expanded="true" />
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="method#WirelessAdapterDataVisualizer#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="docComment;method#init#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="docComment;method#setUpSettings#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="method#wirelessAdapterDataEvent#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
-            <element signature="method#processWirelessAdapterData#0;class#WirelessAdapterDataVisualizer#0" expanded="true" />
+            <element signature="docComment;method#loadLibraryFromJar#0;class#NativeUtils#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/core/Device.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="1428">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="method#initializeObject#0;class#Device#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb-api-1.0.2.jar!/javax/usb/UsbConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26600283" vertical-offset="0" max-vertical-offset="703">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb-api-1.0.2.jar!/javax/usb/UsbConst.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.28" vertical-offset="408" max-vertical-offset="1275">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/dev_communication/HIDDeviceCommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="734" max-vertical-offset="1564">
+          <caret line="134" column="9" selection-start-line="117" selection-start-column="8" selection-end-line="134" selection-end-column="9" />
+          <folding>
+            <element signature="method#defaultReadMethod#0;class#HIDDeviceCommunication#0" expanded="true" />
+            <element signature="method#openHIDDevice#0;class#HIDDeviceCommunication#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb4java-javax-1.2.0-sources.jar!/org/usb4java/javax/ExceptionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb-api-1.0.2.jar!/javax/usb/UsbDevice.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74537694" vertical-offset="241" max-vertical-offset="969">
+          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb-api-1.0.2.jar!/javax/usb/UsbControlIrp.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14509246" vertical-offset="0" max-vertical-offset="703">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb4java-javax-1.2.0-sources.jar!/org/usb4java/javax/AbstractIrpQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="972" max-vertical-offset="1700">
+          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/usb4java-javax-1.2.0-sources.jar!/org/usb4java/javax/ControlIrpQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/ChartTooltip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43818682" vertical-offset="446" max-vertical-offset="1479">
+          <caret line="92" column="27" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/tests/MetaGeekWiSpyGen1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5645604" vertical-offset="0" max-vertical-offset="1496">
+          <caret line="69" column="17" selection-start-line="69" selection-start-column="17" selection-end-line="69" selection-end-column="17" />
+          <folding>
+            <element signature="method#findDevice#0;class#MetaGeekWiSpyGen1#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/gui/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33286715" vertical-offset="646" max-vertical-offset="3808">
+          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpy24x2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="989" max-vertical-offset="1717">
+          <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;method#initializeDevice#0;class#MetaGeekWiSpy24x2#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/rasalhague/mdrv/device/devices/MetaGeekWiSpyGen1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16643357" vertical-offset="0" max-vertical-offset="1887">
+          <caret line="24" column="78" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="78" />
+          <folding>
+            <element signature="initializer##0;class#MetaGeekWiSpyGen1#0" expanded="true" />
+            <element signature="e#1821#1907#0" expanded="false" />
+            <element signature="method#initializeDevice#0;class#MetaGeekWiSpyGen1#0" expanded="true" />
+            <element signature="e#6371#6437#0" expanded="false" />
+            <element signature="e#6965#7072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2582,7 +1696,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2273622" />
+                <option value="0.11795775" />
               </list>
             </option>
           </splitter-proportions>
@@ -2605,7 +1719,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2273622" />
+                <option value="0.11795775" />
               </list>
             </option>
           </splitter-proportions>
@@ -2617,7 +1731,8 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2273622" />
+                <option value="0.11795775" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -2637,11 +1752,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>uk.com.robust-it:cloning:1.9.0</last-edited>
+          <last-edited>org.usb4java:usb4java-javax:1.2.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.32922536" />
+                <option value="0.36248562" />
               </list>
             </option>
           </splitter-proportions>
@@ -2701,4 +1816,3 @@
     </Packagediagram>
   </component>
 </project>
-
