@@ -72,7 +72,7 @@ public class MetaGeekWiSpyGen1 extends Device
     @Override
     public void initializeDevice()
     {
-        if ((SystemUtils.IS_OS_LINUX || SystemUtils.IS_OS_WINDOWS) && MANUAL_DEVICE_CONTROL)
+        if ((SystemUtils.IS_OS_LINUX /*|| SystemUtils.IS_OS_WINDOWS*/) && MANUAL_DEVICE_CONTROL)
         {
             releaseBeforeUnplugWindow();
 
@@ -116,7 +116,7 @@ public class MetaGeekWiSpyGen1 extends Device
     @Override
     public ArrayList<Byte> parse(ArrayList<Byte> dataToParse)
     {
-        System.out.println("parse: " + dataToParse);
+        //        System.out.println("parse: " + dataToParse);
         //        System.out.println(dataToParse.size());
 
         dataToParse.remove(0);
@@ -165,7 +165,7 @@ public class MetaGeekWiSpyGen1 extends Device
                 finalArray = Arrays.copyOfRange(rawReadedBytes, 1, rawArrayLength);
             }
 
-            //            System.out.println(Arrays.toString(rawReadedBytes));
+            //                        System.out.println(Arrays.toString(rawReadedBytes));
             //            System.out.println(Arrays.toString(finalArray));
 
             return finalArray;
