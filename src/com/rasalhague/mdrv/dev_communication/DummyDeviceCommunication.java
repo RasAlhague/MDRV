@@ -49,6 +49,6 @@ public class DummyDeviceCommunication extends DeviceCommunication
                 transfersCount = transfersCount + dummyData.length;
             }
 
-        }, 0, 10, TimeUnit.MILLISECONDS);
+        }, 0, 5, TimeUnit.MILLISECONDS);
     }
 }
