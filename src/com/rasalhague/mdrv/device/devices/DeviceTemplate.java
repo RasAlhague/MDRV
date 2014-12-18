@@ -61,11 +61,14 @@ public class DeviceTemplate extends Device
     /**
      * Use this method for parse data which you device out. Return format - Byte array. Every item - RSSI in format
      * "-100".
+     * Do not pass @dataToParse as return parameter
      */
     @Override
     public ArrayList<Byte> parse(ArrayList<Byte> dataToParse)
     {
-        return null;
+        ArrayList<Byte> finalArray = new ArrayList<>(dataToParse);
+
+        return finalArray;
     }
 
     /**
