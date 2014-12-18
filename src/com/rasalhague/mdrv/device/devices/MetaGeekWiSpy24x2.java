@@ -12,43 +12,12 @@ import java.util.ArrayList;
  */
 public class MetaGeekWiSpy24x2 extends Device
 {
-    /**
-     * Use in GUI Labels for identify device.
-     */
-    public final static String FRIENDLY_NAME = "MetaGeek WiSpy 24x2";
-
-    /**
-     * Must be upper case in 16 base. F.e. "1FFB".
-     */
-    public final static String VENDOR_ID = "1DD5";
-
-    /**
-     * Must be upper case in 16 base.
-     */
-    public final static String PRODUCT_ID = "2410";
-
-    /**
-     * Minimal frequency that device can see. F.e. 2400f.
-     */
-    public final static float INITIAL_FREQUENCY = 2400f;
-
-    /**
-     * Device channel spacing. F.e. 327.450980f.
-     */
-    public final static float CHANNEL_SPACING = 327.586f;
-
-    /**
-     * Byte or sequence of byte that identify end of packet. "Packet" means RSSI set from INITIAL_FREQUENCY to end of
-     * device vision.
-     */
+    public final static String FRIENDLY_NAME       = "MetaGeek WiSpy 24x2";
+    public final static String VENDOR_ID           = "1DD5";
+    public final static String PRODUCT_ID          = "2410";
+    public final static float  INITIAL_FREQUENCY   = 2400f;
+    public final static float  CHANNEL_SPACING     = 327.586f;
     public final static byte[] END_PACKET_SEQUENCE = new byte[]{74, 0, 0, 0};
-
-    /**
-     * Set this to TRUE only if you want to control device manually
-     * In this case the program will not try to open device and read from
-     * customReadMethod() becomes active
-     * For example check MetaGeekWiSpyGen1.java class file
-     */
     public final static boolean MANUAL_DEVICE_CONTROL = false;
 
     /**
@@ -57,8 +26,8 @@ public class MetaGeekWiSpy24x2 extends Device
     @Override
     public void initializeDevice()
     {
-        byte[] dataToWrite = new byte[]{0x53, 0x10, 0x11, 0x00, (byte) 0x9F, 0x24, 0x00, (byte) 0xC4, 0x15, 0x05,
-                0x00,
+        byte[] dataToWrite = new byte[]{0x53, 0x10, 0x11,
+                0x00, (byte) 0x9F, 0x24, 0x00, (byte) 0xC4, 0x15, 0x05, 0x00,
                 0x6C,
                 (byte) 0xDC,
                 0x02,
@@ -88,7 +57,7 @@ public class MetaGeekWiSpy24x2 extends Device
                 deviceCommunication.hidDevice.write(dataToWrite);
                 ApplicationLogger.LOGGER.info("MetaGeek_WiSpy24x2 has been initialized");
             }
-            else
+            else if (SystemUtils.IS_OS_WINDOWS)
             {
                 ApplicationLogger.LOGGER.info("MetaGeek_WiSpy24x2 has not been initialized due to OS");
             }
