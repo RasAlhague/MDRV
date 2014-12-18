@@ -2,12 +2,8 @@ package com.rasalhague.mdrv.connectionlistener;
 
 import com.codeminders.hidapi.HIDDeviceInfo;
 import com.codeminders.hidapi.HIDManager;
-import com.rasalhague.mdrv.analysis.PacketAnalysis;
-import com.rasalhague.mdrv.device.core.Device;
 import com.rasalhague.mdrv.device.core.DeviceInfo;
 import com.rasalhague.mdrv.logging.ApplicationLogger;
-import com.rasalhague.mdrv.logging.PacketLogger;
-import com.rits.cloning.Cloner;
 import jssc.SerialPortList;
 
 import java.io.IOException;
@@ -18,7 +14,7 @@ import java.util.*;
  * <p>
  * Singleton. Listen for a new device connections.
  */
-public class DeviceConnectionListener implements DeviceConnectionListenerI
+public class DeviceConnectionListener
 {
     private final ArrayList<DeviceInfo>           dummyDeviceList     = new ArrayList<>();
     private final ArrayList<DeviceInfo>           connectedDeviceList = new ArrayList<>();
@@ -27,7 +23,7 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     private       boolean                         isListening         = false;
     private Timer timer;
 
-    private static final DeviceConnectionListener instance = new DeviceConnectionListener();
+    private static final DeviceConnectionListener INSTANCE = new DeviceConnectionListener();
 
     static
     {
@@ -35,19 +31,17 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     }
 
     /**
-     * Gets instance.
+     * Gets INSTANCE.
      *
-     * @return the instance
+     * @return the INSTANCE
      */
     public static DeviceConnectionListener getInstance()
     {
-        return instance;
+        return INSTANCE;
     }
 
     private DeviceConnectionListener()
-    {
-        addListener(this);
-    }
+    { }
 
     /**
      * Start listening.
@@ -74,17 +68,10 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
     {
         Random random = new Random();
 
-        short dummyDeviceLastNumber = 0;
-        if (dummyDeviceList.size() > 0)
-        {
-            String[] split = dummyDeviceList.get(dummyDeviceList.size() - 1).getName().split(" ");
-            dummyDeviceLastNumber = Short.parseShort(split[split.length]);
-        }
-
-        dummyDeviceList.add(new DeviceInfo(String.valueOf(Integer.valueOf(String.valueOf(random.nextInt(65535)), 16)),
-                                           String.valueOf(Integer.valueOf(String.valueOf(random.nextInt(65535)), 16)),
-                                           "DummyDevice " + ++dummyDeviceLastNumber,
-                                           "DummyPort",
+        dummyDeviceList.add(new DeviceInfo("1111",
+                                           "1111",
+                                           "DummyDevice " + (dummyDeviceList.size() + 1),
+                                           "DummyPort " + (dummyDeviceList.size() + 1),
                                            DeviceInfo.DeviceType.DUMMY,
                                            new byte[]{10},
                                            2399,
@@ -228,37 +215,6 @@ public class DeviceConnectionListener implements DeviceConnectionListenerI
                 performDeviceConnectionEvent(deviceInfo, DeviceConnectionStateEnum.DISCONNECTED);
                 connectedDeviceList.remove(deviceInfo);
             }
-        }
-    }
-
-    @Override
-    public void deviceConnectionEvent(DeviceInfo connectedDevice, DeviceConnectionStateEnum deviceConnectionStateEnum)
-    {
-        DeviceInfo deviceInfoClone = new Cloner().deepClone(connectedDevice);
-
-        ApplicationLogger.LOGGER.info(deviceInfoClone.getName() + " " + deviceConnectionStateEnum);
-
-        if (deviceConnectionStateEnum == DeviceConnectionStateEnum.CONNECTED)
-        {
-            //Call Factory method
-            Device device = Device.getConcreteDevice(deviceInfoClone);
-
-            //filter known device
-            if (device != null)
-            {
-                device.getRxRawDataReceiver().addListener(PacketLogger.getInstance());
-                device.getRxRawDataReceiver().addListener(PacketAnalysis.getInstance());
-
-                Thread thread = new Thread(device.getDeviceCommunication());
-                thread.setName(device.getDeviceInfo().getFriendlyNameWithId());
-                thread.setDaemon(true);
-                thread.start();
-            }
-            else
-            {
-                ApplicationLogger.LOGGER.info(deviceInfoClone.getName() + " ignored.");
-            }
-
         }
     }
 

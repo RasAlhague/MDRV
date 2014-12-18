@@ -5,6 +5,7 @@ import com.rasalhague.mdrv.analysis.AnalysisKey;
 import com.rasalhague.mdrv.analysis.AnalysisPerformedListener;
 import com.rasalhague.mdrv.analysis.PacketAnalysis;
 import com.rasalhague.mdrv.configuration.ConfigurationLoader;
+import com.rasalhague.mdrv.connectionlistener.DeviceConnectionHandler;
 import com.rasalhague.mdrv.connectionlistener.DeviceConnectionListener;
 import com.rasalhague.mdrv.device.core.Device;
 import com.rasalhague.mdrv.device.core.DeviceInfo;
@@ -138,6 +139,10 @@ public class MainWindowController extends Application implements AnalysisPerform
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        //run tests if needed
+        //for debugging
+        //        MyTestRunner.run();
+
         ApplicationLogger.setup();
         //        com.rasalhague.mdrv.logging.LogOutputStream.setup();
         ConfigurationLoader.initialize();
@@ -227,9 +232,11 @@ public class MainWindowController extends Application implements AnalysisPerform
         Thread wirelessAdapterCommunicationThread = new Thread(wirelessAdapterCommunication);
         wirelessAdapterCommunicationThread.start();
 
-        //fake button press
-        DeviceConnectionListener.getInstance()
-                                .startListening();
+        //start listening for device
+        DeviceConnectionListener deviceConnectionListener = DeviceConnectionListener.getInstance();
+        DeviceConnectionHandler deviceConnectionHandler = new DeviceConnectionHandler();
+        deviceConnectionListener.addListener(deviceConnectionHandler);
+        deviceConnectionListener.startListening();
     }
 
     /**
