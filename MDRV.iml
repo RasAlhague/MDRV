@@ -18,6 +18,7 @@
     <orderEntry type="library" exported="" name="org.usb4java:usb4java-javax:1.2.0" level="project" />
     <orderEntry type="library" exported="" name="org.controlsfx:controlsfx:8.0.6_20" level="project" />
     <orderEntry type="library" exported="" name="org.controlsfx:controlsfx:8.0.6" level="project" />
+    <orderEntry type="library" name="junit:junit:4.11" level="project" />
   </component>
   <component name="org.twodividedbyzero.idea.findbugs">
     <option name="_basePreferences">
@@ -213,4 +214,3 @@
     </option>
   </component>
 </module>
-
